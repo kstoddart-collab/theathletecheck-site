@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About | The Athlete Check</title>
+  <meta name="description" content="The Athlete Check was built by student-athletes to support mental health, identity, leadership, and performance.">
+  <style>
+    :root{
+      --bg:#020713;--panel:#06142b;--ink:#f7fbff;--muted:#bdc9dc;--orange:#0a64ff;--blue:#0747c9;--navy:#000b2e;--line:rgba(255,255,255,.18);
+      --max:1180px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Impact,Arial,sans-serif;line-height:1.45;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.32;background:radial-gradient(circle at 70% 8%,rgba(0,112,255,.6),transparent 28%),radial-gradient(circle at 20% 65%,rgba(0,27,95,.65),transparent 29%),linear-gradient(transparent 0 98%,rgba(255,255,255,.05) 100%);background-size:auto,auto,100% 5px;z-index:-2}
+    a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.orange{color:var(--orange)}.blue{color:#2490ff}.script{font-family:"Brush Script MT","Segoe Print",cursive;font-style:italic;letter-spacing:.02em}.kicker{color:var(--orange);text-transform:uppercase;letter-spacing:.16em;font-weight:900}.display{font-family:Impact,"Arial Black",sans-serif;text-transform:uppercase;letter-spacing:.015em;line-height:.92}.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 22px;background:linear-gradient(135deg,#0b7dff,#0038c8);color:white;font-weight:950;text-transform:uppercase;letter-spacing:.04em;border:1px solid rgba(255,255,255,.28);box-shadow:0 0 30px rgba(0,105,255,.34)}
+    header{position:sticky;top:0;z-index:10;background:rgba(0,7,22,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.nav{height:86px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;font-weight:950;text-transform:uppercase}.brand-logo{display:block;width:210px;max-width:34vw;height:auto;background:white;padding:5px;border:1px solid rgba(255,255,255,.24);box-shadow:0 0 24px rgba(0,100,255,.22)}.footer-logo{width:180px;max-width:100%}.links{display:flex;align-items:center;gap:30px;font-weight:900;text-transform:uppercase;font-size:13px}.links a:hover,.links .active{color:var(--orange)}.nav-toggle{display:none;background:none;border:0;color:var(--ink);cursor:pointer;padding:8px;flex-direction:column;gap:5px}.nav-toggle span{display:block;width:26px;height:3px;background:var(--ink);border-radius:2px}
+    .hero{position:relative;min-height:680px;display:flex;align-items:center;border-bottom:1px solid var(--line);overflow:hidden}.hero:after{content:"TAC";position:absolute;right:2%;top:4%;font-family:Impact;font-size:32vw;color:transparent;-webkit-text-stroke:2px rgba(0,100,255,.42);opacity:.6}.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.18fr;gap:20px;align-items:center}.hero h1{font-size:clamp(58px,9vw,126px);margin:0 0 16px}.hero h1 span{display:block;color:var(--orange);text-shadow:0 0 28px rgba(0,100,255,.32)}.hero .script{font-size:clamp(26px,3vw,46px);line-height:1.05;margin:0 0 28px}.hero p{max-width:500px;color:#eaf2ff;font-size:18px}.hero-people{position:relative;min-height:620px}.splash{position:absolute;inset:9% 0 8% 0;background:radial-gradient(circle at 52% 52%,rgba(0,112,255,.82),transparent 35%),radial-gradient(circle at 64% 58%,rgba(255,255,255,.55),transparent 16%);filter:blur(.2px);opacity:.9}.hero-frame{position:absolute;bottom:42px;width:47%;height:510px;padding:7px;background:linear-gradient(140deg,#fff,#0a64ff 45%,#000b2e);clip-path:polygon(10% 0,100% 0,90% 100%,0 100%);filter:drop-shadow(0 24px 36px rgba(0,0,0,.72));z-index:1}.hero-frame:before{content:"";position:absolute;inset:auto -26px 34px auto;width:58%;height:13px;background:#0a64ff;box-shadow:-28px 24px 0 #fff,-58px 48px 0 #0747c9;transform:skew(-24deg);z-index:3}.hero-frame img{width:100%;height:100%;object-fit:cover;object-position:center 16%;display:block;clip-path:polygon(10% 0,100% 0,90% 100%,0 100%)}.luke-main{left:3%;transform:rotate(-3deg)}.wyatt-main{right:0;transform:rotate(3deg)}.brush{position:absolute;left:17%;right:2%;bottom:14px;background:linear-gradient(90deg,#000b2e,#0747c9,#0a64ff,#000b2e);padding:17px 24px;text-align:center;transform:skew(-7deg);box-shadow:0 0 35px rgba(0,101,255,.55);z-index:3}.brush span{display:block;transform:skew(7deg);font-family:"Brush Script MT","Segoe Print",cursive;font-size:42px;color:white}.brush em{color:#9ed0ff;font-style:normal}
+    section{padding:72px 0;border-bottom:1px solid var(--line)}.intro h2{font-size:clamp(42px,6vw,84px);margin:8px 0 34px}.founders{display:grid;grid-template-columns:1fr 1fr;gap:38px}.card{position:relative;min-height:430px;background:linear-gradient(135deg,rgba(12,76,190,.16),rgba(255,255,255,.02));border:1px solid var(--line);overflow:hidden;padding:38px}.card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 45%,rgba(0,100,255,.38),transparent 28%),radial-gradient(circle at 85% 35%,rgba(255,255,255,.14),transparent 30%),radial-gradient(circle at 15% 15%,rgba(0,14,58,.86),transparent 38%);opacity:.95}.card:after{content:"";position:absolute;right:-36px;bottom:50px;width:240px;height:16px;background:#0a64ff;box-shadow:-38px 34px 0 #fff,-76px 68px 0 #0747c9;transform:skew(-24deg);opacity:.88;z-index:1}.card-copy{position:relative;z-index:2;width:50%}.card h3{font-size:44px;color:var(--orange);margin:0}.founder-photo{position:absolute;right:20px;bottom:24px;width:45%;height:348px;padding:6px;background:linear-gradient(135deg,#fff,#0a64ff 46%,#000b2e);clip-path:polygon(14% 0,100% 0,86% 100%,0 100%);filter:drop-shadow(0 22px 32px rgba(0,0,0,.58));z-index:2}.founder-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 14%;clip-path:polygon(14% 0,100% 0,86% 100%,0 100%)}.card p{color:#dfe9f8}.signature{font-family:"Brush Script MT","Segoe Print",cursive;font-size:34px;margin-top:22px}.mission{text-align:center}.mission h2{font-size:58px;margin:4px 0 18px}.mission p{max-width:780px;margin:auto;color:#dfe9f8}.values{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:44px}.value{padding:26px 22px;border-left:1px solid var(--line)}.value:last-child{border-right:1px solid var(--line)}.icon{font-size:42px;line-height:1;margin-bottom:14px;color:#8fc8ff}.value h4{color:var(--orange);margin:0 0 8px;text-transform:uppercase}.value p{font-size:14px;color:#d5e3f4}.story-grid{display:grid;grid-template-columns:.8fr 1fr 1fr 1fr;gap:22px;align-items:stretch}.story-title h2{font-size:56px;margin:0}.story-title h2 span{color:var(--orange);display:block}.tile{min-height:230px;background:#07162f;border:1px solid var(--line);position:relative;overflow:hidden;clip-path:polygon(8% 0,100% 0,92% 100%,0 100%)}.tile:before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,9,34,.88),transparent 60%),var(--img);background-size:cover;background-position:var(--pos,center 22%);filter:saturate(1.1)}.tile span{position:absolute;left:0;right:0;bottom:0;padding:12px;background:linear-gradient(90deg,#000b2e,#0747c9);font-family:"Brush Script MT";font-size:26px;text-align:center}.cta{background:radial-gradient(circle at 70% 50%,rgba(0,100,255,.45),transparent 28%)}.cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}.check{font-family:Impact;font-size:180px;line-height:.75;color:transparent;-webkit-text-stroke:8px white;filter:drop-shadow(0 0 20px rgba(0,105,255,.58));transform:rotate(-8deg)}.cta h2{font-size:42px;margin:0 0 10px}.cta strong{color:var(--orange)}footer{padding:28px 0 34px;background:#000713}.foot{display:grid;grid-template-columns:1.2fr .8fr 1fr .8fr;gap:24px;align-items:center}.foot nav{display:grid;gap:4px;font-size:12px;text-transform:uppercase}.qr{width:92px;height:92px;background:white;padding:5px;margin-left:auto}.copyright{font-size:11px;color:#93a2b8;margin-top:20px}
+    @media (max-width:900px){.nav{height:auto;padding:18px 0;align-items:center}.nav-toggle{display:flex}.links{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:rgba(0,7,22,.98);backdrop-filter:blur(12px);border-top:1px solid var(--line)}.links.open{display:flex}.links a{padding:16px 20px;border-bottom:1px solid var(--line)}.links a.btn{margin:14px 20px;border-bottom:0}.hero{min-height:auto;padding:64px 0 0}.hero-grid,.founders,.cta-grid{grid-template-columns:1fr}.hero-people{min-height:560px}.hero-frame{height:470px;width:48%;bottom:50px}.luke-main{left:1%}.wyatt-main{right:0}.card-copy{width:54%}.founder-photo{width:44%;height:350px}.values{grid-template-columns:1fr 1fr}.story-grid{grid-template-columns:1fr}.foot{grid-template-columns:1fr 1fr}.qr{margin-left:0}}
+    @media (max-width:560px){.wrap{width:min(100% - 28px,var(--max))}.brand-logo{width:172px;max-width:58vw;padding:4px}.hero h1{font-size:52px}.hero-people{min-height:470px}.hero-frame{height:385px;width:57%;bottom:56px}.luke-main{left:-10%}.wyatt-main{right:-13%}.brush{left:0;right:0}.brush span{font-size:28px}.founders{gap:18px}.card{padding:24px;min-height:650px}.card-copy{width:100%}.founder-photo{width:86%;height:330px;right:7%;bottom:26px}.card h3{font-size:36px}.values{grid-template-columns:1fr}.value,.value:last-child{border-left:0;border-right:0;border-top:1px solid var(--line)}.foot{grid-template-columns:1fr}.display,.story-title h2{font-size:42px}.check{font-size:120px}.hero p{font-size:16px}}
+  </style>
+<!-- ===== SHARED SITE HEADER (self-contained: scoped classes, no Tailwind required) ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap">
+<style>
+/* Mirrors the homepage nav exactly. Every property is declared explicitly so the
+   header renders identically on pages that do not load Tailwind or its reset. */
+.tac-navbar,.tac-navbar *,.tac-navbar *::before,.tac-navbar *::after{box-sizing:border-box}
+.tac-navbar{position:fixed;top:0;left:0;right:auto;bottom:auto;width:100%;z-index:1000;margin:0;padding:0;background:rgba(4, 11, 20, 0.96);border:0;border-bottom:1px solid rgba(26,143,227,0.2);box-shadow:none;backdrop-filter:none;text-align:left;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-nav-inner{width:100%;max-width:80rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:0;padding:0.75rem 1.25rem}
+.tac-nav-brand{flex:0 0 auto;display:block;padding:0;margin:0;border:0;background:none;line-height:0;text-decoration:none}
+.tac-nav-logo{display:block;height:44px;width:auto;max-width:none;min-width:0;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none;object-fit:contain}
+.tac-nav-links{display:none;align-items:center;gap:2rem}
+.tac-nav-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-style:normal;font-size:1.125rem;line-height:1.75rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-nav-link:hover{color:#1A8FE3;text-decoration:none}
+.tac-nav-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1rem;line-height:1.5rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.5rem 1.5rem;margin:0;border:0;border-radius:0.25rem;box-shadow:none;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-nav-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
+.tac-nav-toggle,.tac-nav-close{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;width:auto;height:auto;padding:0.5rem;margin:0;background:none;border:0;border-radius:0;color:#ffffff;cursor:pointer;line-height:0;-webkit-appearance:none;appearance:none}
+.tac-nav-toggle svg,.tac-nav-close svg{display:block;width:28px;height:28px}
+.tac-mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1001;flex-direction:column;background:rgba(4, 11, 20, 0.99);font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-mobile-menu.tac-open{display:flex}
+.tac-mobile-top{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid rgba(26,143,227,0.2)}
+.tac-mobile-links{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1 1 0%;gap:2rem;padding:0;margin:0}
+.tac-mobile-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.875rem;line-height:2.25rem;letter-spacing:0.1em;text-transform:none;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-mobile-link:hover{color:#1A8FE3;text-decoration:none}
+.tac-mobile-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.25rem;line-height:1.75rem;letter-spacing:0.1em;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.75rem 2rem;margin:1rem 0 0;border:0;border-radius:0.25rem;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-mobile-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
+@media (min-width:768px){
+  .tac-nav-links{display:flex}
+  .tac-nav-toggle{display:none}
+}
+/* Keeps page content clear of the fixed header (44px logo + 2x12px padding + 1px border). */
+body.tac-nav-offset{padding-top:69px}
+</style>
+</head>
+<body class="tac-nav-offset">
+<!-- ===== SHARED SITE HEADER ===== -->
+<nav class="tac-navbar" id="tac-navbar">
+  <div class="tac-nav-inner">
+    <a class="tac-nav-brand" href="/">
+      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+    </a>
+    <div class="tac-nav-links">
+      <a class="tac-nav-link" href="/registration">REGISTRATION</a><a class="tac-nav-link" href="/about">ABOUT</a>
+      <a class="tac-nav-link" href="/assessment">ASSESSMENT</a>
+      <a class="tac-nav-link" href="/advocate">ADVOCATE</a>
+      <a class="tac-nav-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-nav-link" href="/courses">COURSES</a>
+      <a class="tac-nav-link" href="/proudmoment">PROUD MOMENT</a>
+      <a class="tac-nav-cta" href="/assessment">TAKE THE CHECK</a>
+    </div>
+    <button class="tac-nav-toggle" id="tac-nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="tac-mobile-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="tac-mobile-menu" id="tac-mobile-menu">
+    <div class="tac-mobile-top">
+      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+      <button class="tac-nav-close" id="tac-nav-close" type="button" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+    </div>
+    <div class="tac-mobile-links">
+      <a class="tac-mobile-link" href="/registration">REGISTRATION</a><a class="tac-mobile-link" href="/about">ABOUT</a>
+      <a class="tac-mobile-link" href="/assessment">ASSESSMENT</a>
+      <a class="tac-mobile-link" href="/advocate">ADVOCATE</a>
+      <a class="tac-mobile-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-mobile-link" href="/courses">COURSES</a>
+      <a class="tac-mobile-link" href="/proudmoment">PROUD MOMENT</a>
+      <a class="tac-mobile-cta" href="/assessment">TAKE THE CHECK</a>
+    </div>
+  </div>
+</nav>
+<script>
+/* Shared site header: mobile menu toggle + scroll background, self-contained. */
+(function () {
+  var toggle = document.getElementById('tac-nav-toggle');
+  var menu = document.getElementById('tac-mobile-menu');
+  var closeBtn = document.getElementById('tac-nav-close');
+
+  if (toggle && menu && closeBtn) {
+    var openMenu = function () {
+      menu.classList.add('tac-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+    var closeMenu = function () {
+      menu.classList.remove('tac-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    toggle.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    Array.prototype.forEach.call(menu.querySelectorAll('a'), function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  var bar = document.getElementById('tac-navbar');
+  if (bar) {
+    window.addEventListener('scroll', function () {
+      bar.style.background = window.scrollY > 80 ? 'rgba(4, 11, 20, 0.99)' : 'rgba(4, 11, 20, 0.96)';
+    });
+  }
+})();
+</script>
+<main>
+<section class="hero"><div class="wrap hero-grid"><div><h1 class="display">About <span>The Athlete Check</span></h1><p class="script">Student-athletes. Leaders. Advocates. Changemakers.</p><p>TheAthleteCheck.com was built by student-athletes who saw a problem and decided to be part of the solution. We’re here to lead a movement that’s changing the way student-athletes think about mental health, identity, and performance.</p></div><div class="hero-people"><div class="splash"></div><div class="hero-frame luke-main"><img src="images/luke-stenson-portrait.jpg" alt="Luke Stenson, Co-Founder"></div><div class="hero-frame wyatt-main"><img src="images/wyatt-porch-portrait.jpg" alt="Wyatt Porch, Co-Founder"></div><div class="brush"><span><em>We are the</em> movement.</span></div></div></div></section>
+<section class="intro"><div class="wrap"><div class="kicker">Co-Founders</div><h2 class="display">Built by student-athletes.<br>Driven by purpose.</h2><div class="founders"><article class="card"><div class="card-copy"><h3 class="display">Luke Stenson</h3><strong>CO-FOUNDER</strong><p>A Division I student-athlete and leader on and off the field, Luke knows what it means to push limits, face adversity, and inspire others.</p><p>He built The Athlete Check to make sure no athlete has to navigate the mental side of sport alone.</p><div class="signature">Luke Stenson</div></div><div class="founder-photo"><img src="images/luke-stenson-portrait.jpg" alt="Luke Stenson"></div></article><article class="card"><div class="card-copy"><h3 class="display">Wyatt Porch</h3><strong>CO-FOUNDER</strong><p>A Division I swimmer and mental health advocate, Wyatt has seen firsthand the pressure student-athletes face.</p><p>He co-founded The Athlete Check to create real change and help athletes thrive in all areas of life.</p><div class="signature">Wyatt Porch</div></div><div class="founder-photo"><img src="images/wyatt-porch-portrait.jpg" alt="Wyatt Porch"></div></article></div></div></section>
+<section class="mission"><div class="wrap"><div class="kicker">Our Mission</div><h2 class="display">Why We Exist</h2><p>We believe student-athletes are more than athletes. You’re leaders, students, teammates, and individuals with purpose. Our mission is to give you the tools, resources, and support to thrive — not just in sports, but in life.</p><div class="values"><div class="value"><div class="icon">◎</div><h4>We Advocate.</h4><p>We amplify your voice and normalize the mental health conversation.</p></div><div class="value"><div class="icon">▱</div><h4>We Educate.</h4><p>We provide resources to help you grow, on and off the field.</p></div><div class="value"><div class="icon">☷</div><h4>We Empower.</h4><p>We equip you with tools to take control of your identity and your future.</p></div><div class="value"><div class="icon">♢</div><h4>We Protect.</h4><p>We’re here to support your mental health and overall well-being.</p></div><div class="value"><div class="icon">☆</div><h4>We Inspire.</h4><p>We celebrate stories of resilience, leadership, and real impact.</p></div></div></div></section>
+<section><div class="wrap story-grid"><div class="story-title"><h2 class="display">This is bigger than <span>sports.</span></h2><p class="script" style="font-size:34px">It’s about life.</p></div><div class="tile" style="--img:url('images/luke-stenson-action.jpg');--pos:center 18%"><span>Real Conversations.</span></div><div class="tile" style="--img:url('images/wyatt-porch-action.jpg');--pos:center center"><span>Real Support.</span></div><div class="tile" style="--img:url('images/luke-stenson-action.jpg');--pos:center 30%"><span>Real Change.</span></div></div></section>
+<section class="cta"><div class="wrap cta-grid"><div><h2 class="script">Online Store</h2><p>Together, we’re building a culture where student-athletes feel seen, supported, and unstoppable.</p><p><strong>The movement is stronger with you in it.</strong></p><a class="btn" href="/courses">Click Here</a></div><div class="check">✓ <span class="script" style="font-size:48px;color:white;-webkit-text-stroke:0">We are <b class="orange">the movement</b></span></div></div></section>
+</main>
+<footer><div class="wrap foot"><a class="brand" href="/"><img class="brand-logo footer-logo" src="images/athlete-check-official-logo.png" alt="The Athlete Check"></a><nav><a href="/">Home</a><a href="/registration">REGISTRATION</a><a href="/about">About</a><a href="/assessment">Assessment</a><a href="/advocate">Advocate</a><a href="/coaches">Coaches/ADs</a><a href="/courses">Courses</a><a href="/proudmoment">Proud Moment</a></nav><div><div class="kicker">Join The Movement</div><strong class="orange">TheAthleteCheck.com/Advocate</strong></div><img class="qr" src="images/athletecheck-about/assets/advocate-qr.png" alt="QR code for The Athlete Check advocate page"></div><div class="wrap copyright">© 2026 The Athlete Check. All rights reserved.</div></footer>
+
+
+</body></html>

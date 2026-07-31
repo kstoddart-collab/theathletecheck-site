@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>AthleteCheck Advocacy Landing Page</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+navy: {
+900: '#040B14',
+800: '#071525',
+700: '#0A1929',
+600: '#081020',
+500: '#122a45',
+},
+blue: {
+DEFAULT: '#1A8FE3',
+light: '#00B4FF',
+dark: '#1478c0',
+50: '#e8f4fd',
+},
+},
+fontFamily: {
+display: ['"Bebas Neue"', 'sans-serif'],
+body: ['"Inter"', 'sans-serif'],
+},
+},
+},
+};
+</script>
+<script src="https://unpkg.com/lucide@latest" defer=""></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+<style>
+
+:root {
+--navy-900: #040B14;
+--navy-800: #071525;
+--navy-700: #0A1929;
+--accent: #1A8FE3;
+--accent-light: #00B4FF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+font-family: 'Inter', sans-serif;
+background-color: var(--navy-900);
+color: #ffffff;
+overflow-x: hidden;
+}
+
+.font-display {
+font-family: 'Bebas Neue', sans-serif;
+}
+
+/* Hero diagonal grid pattern */
+.hero-pattern {
+background-image:
+linear-gradient(135deg, rgba(26,143,227,0.03) 25%, transparent 25%),
+linear-gradient(225deg, rgba(26,143,227,0.03) 25%, transparent 25%),
+linear-gradient(45deg, rgba(26,143,227,0.03) 25%, transparent 25%),
+linear-gradient(315deg, rgba(26,143,227,0.03) 25%, transparent 25%);
+background-size: 60px 60px;
+background-position: 0 0, 0 30px, 30px -30px, 30px 0px;
+}
+
+.hero-grid-overlay {
+background-image:
+linear-gradient(rgba(26,143,227,0.06) 1px, transparent 1px),
+linear-gradient(90deg, rgba(26,143,227,0.06) 1px, transparent 1px);
+background-size: 80px 80px;
+}
+
+/* Scroll animation */
+.fade-up {
+opacity: 0;
+transform: translateY(40px);
+transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.fade-up.visible {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* Bounce arrow */
+@keyframes bounceArrow {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(12px); }
+}
+.bounce-arrow {
+animation: bounceArrow 2s ease-in-out infinite;
+}
+
+/* Blue underline accent */
+.gold-underline {
+position: relative;
+display: inline-block;
+}
+.gold-underline::after {
+content: '';
+position: absolute;
+bottom: -8px;
+left: 0;
+width: 100%;
+height: 4px;
+background: var(--accent);
+border-radius: 2px;
+}
+
+/* Form inputs */
+.form-input {
+background: var(--navy-800);
+border: 1.5px solid rgba(26,143,227,0.2);
+color: #fff;
+border-radius: 8px;
+padding: 12px 16px;
+font-size: 15px;
+width: 100%;
+transition: border-color 0.3s, box-shadow 0.3s;
+font-family: 'Inter', sans-serif;
+}
+.form-input:focus {
+outline: none;
+border-color: var(--accent);
+box-shadow: 0 0 0 3px rgba(26,143,227,0.15);
+}
+.form-input::placeholder {
+color: rgba(255,255,255,0.35);
+}
+.form-input.error {
+border-color: #ef4444;
+box-shadow: 0 0 0 3px rgba(239,68,68,0.15);
+}
+.form-label {
+font-size: 13px;
+font-weight: 600;
+color: rgba(255,255,255,0.8);
+margin-bottom: 6px;
+display: block;
+letter-spacing: 0.5px;
+}
+.form-label .required {
+color: var(--accent);
+margin-left: 2px;
+}
+
+/* Success checkmark animation */
+@keyframes scaleIn {
+0% { transform: scale(0); opacity: 0; }
+60% { transform: scale(1.2); }
+100% { transform: scale(1); opacity: 1; }
+}
+.success-check {
+animation: scaleIn 0.6s ease-out forwards;
+}
+
+/* Card hover lift */
+.card-hover {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+transform: translateY(-6px);
+box-shadow: 0 20px 40px rgba(26,143,227,0.15);
+}
+
+/* Checklist item */
+.check-item {
+transition: transform 0.2s ease;
+}
+.check-item:hover {
+transform: translateX(8px);
+}
+
+/* CTA button pulse */
+@keyframes subtlePulse {
+0%, 100% { box-shadow: 0 0 0 0 rgba(26,143,227,0.4); }
+50% { box-shadow: 0 0 0 8px rgba(26,143,227,0); }
+}
+.cta-pulse {
+animation: subtlePulse 3s ease-in-out infinite;
+}
+
+/* Sticky nav styling */
+.nav-scrolled {
+background: rgba(4,11,20,0.97) !important;
+backdrop-filter: blur(12px);
+box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* Select dropdown styling */
+select.form-input {
+appearance: none;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%231A8FE3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+background-repeat: no-repeat;
+background-position: right 12px center;
+padding-right: 40px;
+}
+select.form-input option {
+background: #071525;
+color: #fff;
+}
+</style>
+<!-- ===== SHARED SITE HEADER (self-contained: scoped classes, no Tailwind required) ===== -->
+<style>
+/* Mirrors the homepage nav exactly. Every property is declared explicitly so the
+   header renders identically on pages that do not load Tailwind or its reset. */
+.tac-navbar,.tac-navbar *,.tac-navbar *::before,.tac-navbar *::after{box-sizing:border-box}
+.tac-navbar{position:fixed;top:0;left:0;right:auto;bottom:auto;width:100%;z-index:1000;margin:0;padding:0;background:rgba(4, 11, 20, 0.96);border:0;border-bottom:1px solid rgba(26,143,227,0.2);box-shadow:none;backdrop-filter:none;text-align:left;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-nav-inner{width:100%;max-width:80rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:0;padding:0.75rem 1.25rem}
+.tac-nav-brand{flex:0 0 auto;display:block;padding:0;margin:0;border:0;background:none;line-height:0;text-decoration:none}
+.tac-nav-logo{display:block;height:44px;width:auto;max-width:none;min-width:0;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none;object-fit:contain}
+.tac-nav-links{display:none;align-items:center;gap:2rem}
+.tac-nav-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-style:normal;font-size:1.125rem;line-height:1.75rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-nav-link:hover{color:#1A8FE3;text-decoration:none}
+.tac-nav-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1rem;line-height:1.5rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.5rem 1.5rem;margin:0;border:0;border-radius:0.25rem;box-shadow:none;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-nav-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
+.tac-nav-toggle,.tac-nav-close{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;width:auto;height:auto;padding:0.5rem;margin:0;background:none;border:0;border-radius:0;color:#ffffff;cursor:pointer;line-height:0;-webkit-appearance:none;appearance:none}
+.tac-nav-toggle svg,.tac-nav-close svg{display:block;width:28px;height:28px}
+.tac-mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1001;flex-direction:column;background:rgba(4, 11, 20, 0.99);font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-mobile-menu.tac-open{display:flex}
+.tac-mobile-top{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid rgba(26,143,227,0.2)}
+.tac-mobile-links{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1 1 0%;gap:2rem;padding:0;margin:0}
+.tac-mobile-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.875rem;line-height:2.25rem;letter-spacing:0.1em;text-transform:none;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-mobile-link:hover{color:#1A8FE3;text-decoration:none}
+.tac-mobile-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.25rem;line-height:1.75rem;letter-spacing:0.1em;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.75rem 2rem;margin:1rem 0 0;border:0;border-radius:0.25rem;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-mobile-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
+@media (min-width:768px){
+  .tac-nav-links{display:flex}
+  .tac-nav-toggle{display:none}
+}
+/* Keeps page content clear of the fixed header (44px logo + 2x12px padding + 1px border). */
+body.tac-nav-offset{padding-top:69px}
+</style>
+</head>
+<body class="tac-nav-offset" data-id="0">
+<!-- ===== SHARED SITE HEADER ===== -->
+<nav class="tac-navbar" id="tac-navbar">
+  <div class="tac-nav-inner">
+    <a class="tac-nav-brand" href="/">
+      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+    </a>
+    <div class="tac-nav-links">
+      <a class="tac-nav-link" href="/registration">REGISTRATION</a><a class="tac-nav-link" href="/about">ABOUT</a>
+      <a class="tac-nav-link" href="/assessment">ASSESSMENT</a>
+      <a class="tac-nav-link" href="/advocate">ADVOCATE</a>
+      <a class="tac-nav-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-nav-link" href="/courses">COURSES</a>
+      <a class="tac-nav-link" href="/proudmoment">PROUD MOMENT</a>
+      <a class="tac-nav-cta" href="/assessment">TAKE THE CHECK</a>
+    </div>
+    <button class="tac-nav-toggle" id="tac-nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="tac-mobile-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="tac-mobile-menu" id="tac-mobile-menu">
+    <div class="tac-mobile-top">
+      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+      <button class="tac-nav-close" id="tac-nav-close" type="button" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+    </div>
+    <div class="tac-mobile-links">
+      <a class="tac-mobile-link" href="/registration">REGISTRATION</a><a class="tac-mobile-link" href="/about">ABOUT</a>
+      <a class="tac-mobile-link" href="/assessment">ASSESSMENT</a>
+      <a class="tac-mobile-link" href="/advocate">ADVOCATE</a>
+      <a class="tac-mobile-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-mobile-link" href="/courses">COURSES</a>
+      <a class="tac-mobile-link" href="/proudmoment">PROUD MOMENT</a>
+      <a class="tac-mobile-cta" href="/assessment">TAKE THE CHECK</a>
+    </div>
+  </div>
+</nav>
+<script>
+/* Shared site header: mobile menu toggle + scroll background, self-contained. */
+(function () {
+  var toggle = document.getElementById('tac-nav-toggle');
+  var menu = document.getElementById('tac-mobile-menu');
+  var closeBtn = document.getElementById('tac-nav-close');
+
+  if (toggle && menu && closeBtn) {
+    var openMenu = function () {
+      menu.classList.add('tac-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+    var closeMenu = function () {
+      menu.classList.remove('tac-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    toggle.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    Array.prototype.forEach.call(menu.querySelectorAll('a'), function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  var bar = document.getElementById('tac-navbar');
+  if (bar) {
+    window.addEventListener('scroll', function () {
+      bar.style.background = window.scrollY > 80 ? 'rgba(4, 11, 20, 0.99)' : 'rgba(4, 11, 20, 0.96)';
+    });
+  }
+})();
+</script>
+<app-icon data-id="1" hidden="" data-icon="zap" data-palette="Blue"></app-icon>
+
+<!-- ===== PAGE ANCHOR SUB-NAVIGATION (sits directly below the shared site header) ===== -->
+<nav data-id="2" id="navbar-a1b2" class="fixed left-0 w-full z-40 transition-all duration-300" style="top: 69px; background: rgba(4,11,20,0.95); backdrop-filter: blur(8px);">
+<div data-id="3" class="max-w-7xl mx-auto px-4 md:px-8 flex flex-wrap items-center justify-center gap-3 md:gap-6 py-2.5">
+<a data-id="7" href="#about-e5f6" class="text-sm font-medium text-white/70 hover:text-blue transition-colors">About</a>
+<a data-id="8" href="#criteria-g7h8" class="text-sm font-medium text-white/70 hover:text-blue transition-colors">Who We Want</a>
+<a data-id="9" href="#benefits-i9j0" class="text-sm font-medium text-white/70 hover:text-blue transition-colors">Benefits</a>
+<a data-id="10" href="#apply-k1l2" class="bg-blue hover:bg-blue-light text-white font-bold text-sm px-6 py-2.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue/20">Apply Now</a>
+</div>
+</nav>
+
+<main data-id="20">
+<!-- ===== HERO SECTION ===== -->
+<section data-id="21" id="hero-s9t0" class="relative min-h-screen flex items-center justify-center bg-navy-900 hero-pattern overflow-hidden">
+<div data-id="22" class="absolute inset-0 hero-grid-overlay"></div>
+<!-- Decorative diagonal blue lines -->
+<div data-id="23" class="absolute top-0 right-0 w-1/2 h-full opacity-[0.04]" style="background: linear-gradient(135deg, transparent 40%, #1A8FE3 40%, #1A8FE3 40.5%, transparent 40.5%, transparent 60%, #1A8FE3 60%, #1A8FE3 60.5%, transparent 60.5%);"></div>
+<div data-id="24" class="absolute bottom-0 left-0 w-96 h-96 rounded-full opacity-[0.05]" style="background: radial-gradient(circle, #1A8FE3, transparent 70%);"></div>
+
+<div data-id="25" class="relative z-10 text-center px-4 md:px-8 max-w-5xl mx-auto pt-20">
+<div data-id="26" class="fade-up">
+<!-- Hero Logo Image -->
+<div data-id="27" class="mb-6 md:mb-8" id="hero-logo-wrap-z1a1">
+<img data-id="28" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo" class="mx-auto h-[140px] md:h-[180px] w-auto" id="hero-logo-img-b2c2">
+<p data-id="29" class="font-display text-white/40 text-xs md:text-sm tracking-[0.25em] mt-3" id="powered-badge-d3e3">POWERED BY IMA</p>
+</div>
+<!-- Brand Badge -->
+<p data-id="30" class="inline-block font-display text-white text-sm md:text-base tracking-[0.3em] mb-4 md:mb-6 bg-blue/15 border border-blue/30 px-5 py-2 rounded-full" id="brand-badge-f4g4">TEST. TRAIN. TRANSFORM.</p>
+<h1 data-id="31" class="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl leading-[0.95] tracking-wide mb-6 md:mb-8">
+<span data-id="32" class="text-white">BECOME AN</span><br data-id="33">
+<span data-id="34" class="text-white">ATHLETE CHECK </span><span data-id="35" class="text-blue">ADVOCATE</span>
+</h1>
+<p data-id="36" class="text-white/70 text-base md:text-xl max-w-2xl mx-auto mb-8 md:mb-12 font-light leading-relaxed">
+Are you a student athlete who believes mental strength is just as important as physical strength? Join our movement.
+</p>
+<div data-id="37" class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<a data-id="38" href="#apply-k1l2" class="cta-pulse bg-blue hover:bg-blue-light text-white font-bold text-sm md:text-base px-8 py-3.5 md:py-4 rounded-lg transition-all duration-300 hover:shadow-xl hover:shadow-blue/20 w-full sm:w-auto text-center tracking-wide">Apply to Be an Advocate</a>
+<a data-id="39" href="#about-e5f6" class="border-2 border-white/30 hover:border-blue text-white hover:text-blue font-semibold text-sm md:text-base px-8 py-3.5 md:py-4 rounded-lg transition-all duration-300 hover:bg-blue/5 w-full sm:w-auto text-center tracking-wide">Learn More</a>
+<a data-id="39b" href="mailto:luke@theathletecheck.com,wyatt@theathletecheck.com" class="cta-pulse bg-blue hover:bg-blue-light text-white font-bold text-sm md:text-base px-8 py-3.5 md:py-4 rounded-lg transition-all duration-300 hover:shadow-xl hover:shadow-blue/20 w-full sm:w-auto text-center tracking-wide">Email Luke and Wyatt</a>
+</div>
+</div>
+<!-- Scroll arrow -->
+<div data-id="40" class="mt-16 md:mt-24 bounce-arrow">
+<a data-id="41" href="#about-e5f6" class="inline-block text-blue/60 hover:text-blue transition-colors" aria-label="Scroll down">
+<i data-id="42" data-lucide="chevron-down" class="w-8 h-8"></i>
+</a>
+</div>
+</div>
+</section>
+
+<!-- ===== WHAT IS ATHLETE CHECK? ===== -->
+<section data-id="43" id="about-e5f6" class="py-20 md:py-28 bg-white text-navy-900">
+<div data-id="44" class="max-w-6xl mx-auto px-4 md:px-8">
+<div data-id="45" class="text-center mb-14 md:mb-20 fade-up">
+<p data-id="46" class="font-display text-blue-dark text-base md:text-lg tracking-[0.25em] mb-3" style="color:#1478c0;">WHAT IS THE ATHLETE CHECK?</p>
+<h2 data-id="47" class="font-display text-4xl md:text-6xl text-navy-900 tracking-wide">More Than an App. A Movement.</h2>
+</div>
+
+<div data-id="48" class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+<!-- Card 1 -->
+<div data-id="49" class="fade-up card-hover rounded-2xl p-8 md:p-10 text-center" id="card1-u1v2" style="background:#0A1929;">
+<div data-id="50" class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-blue/10 flex items-center justify-center">
+<i data-id="51" data-lucide="brain" class="w-8 h-8" style="color:#1A8FE3;"></i>
+</div>
+<h3 data-id="52" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-4">Mental Wellness First</h3>
+<p data-id="53" class="text-white/60 text-sm leading-relaxed">We help student athletes prioritize their mental health, emotional resilience, and overall well-being throughout their athletic career.</p>
+</div>
+
+<!-- Card 2 -->
+<div data-id="54" class="fade-up card-hover rounded-2xl p-8 md:p-10 text-center" id="card2-w3x4" style="transition-delay: 0.1s; background:#0A1929;">
+<div data-id="55" class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-blue/10 flex items-center justify-center">
+<i data-id="56" data-lucide="zap" class="w-8 h-8" style="color:#1A8FE3;"></i>
+</div>
+<h3 data-id="57" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-4">IronMind Mentality</h3>
+<p data-id="58" class="text-white/60 text-sm leading-relaxed">A philosophy of mental toughness, focus, and preparation. Training the mind just as hard as the body — because champions are built from the inside out.</p>
+</div>
+
+<!-- Card 3 -->
+<div data-id="59" class="fade-up card-hover rounded-2xl p-8 md:p-10 text-center" id="card3-y5z6" style="transition-delay: 0.2s; background:#0A1929;">
+<div data-id="60" class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-blue/10 flex items-center justify-center">
+<i data-id="61" data-lucide="graduation-cap" class="w-8 h-8" style="color:#1A8FE3;"></i>
+</div>
+<h3 data-id="62" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-4">Life After the Game</h3>
+<p data-id="63" class="text-white/60 text-sm leading-relaxed">We prepare student athletes for the next phase of their lives — helping them translate athletic discipline into career success and personal fulfillment.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== WHO WE'RE LOOKING FOR ===== -->
+<section data-id="64" id="criteria-g7h8" class="py-20 md:py-28 relative overflow-hidden" style="background:#040B14;">
+<!-- Subtle background accent -->
+<div data-id="65" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-[0.03]" style="background: radial-gradient(circle, #1A8FE3, transparent 70%);"></div>
+
+<div data-id="66" class="max-w-4xl mx-auto px-4 md:px-8 relative z-10">
+<div data-id="67" class="text-center mb-14 md:mb-18 fade-up">
+<p data-id="68" class="font-display text-blue text-base md:text-lg tracking-[0.25em] mb-3" style="color:#1A8FE3;">WHO WE'RE LOOKING FOR</p>
+<h2 data-id="69" class="font-display text-4xl md:text-6xl text-white tracking-wide">
+<span data-id="70" class="gold-underline">Are You Our Next Advocate?</span>
+</h2>
+<p data-id="71" class="text-white/60 mt-8 md:mt-10 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">We're seeking passionate student athletes who embody the IronMind Mentality and are ready to lead.</p>
+</div>
+
+<!-- Checklist -->
+<div data-id="72" class="space-y-5 md:space-y-6 mb-14 md:mb-18">
+<div data-id="73" class="check-item fade-up flex items-start gap-4 md:gap-5 rounded-xl p-5 md:p-6 border border-blue/10" id="chk1-a7b8" style="background:rgba(10,25,41,0.5);">
+<div data-id="74" class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-blue/15 flex items-center justify-center mt-0.5">
+<i data-id="75" data-lucide="check" class="w-5 h-5 md:w-6 md:h-6" style="color:#1A8FE3;"></i>
+</div>
+<p data-id="76" class="text-white text-base md:text-lg font-medium leading-relaxed">Currently a student athlete (any sport, any level)</p>
+</div>
+
+<div data-id="77" class="check-item fade-up flex items-start gap-4 md:gap-5 rounded-xl p-5 md:p-6 border border-blue/10" id="chk2-c9d0" style="transition-delay:0.08s; background:rgba(10,25,41,0.5);">
+<div data-id="78" class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-blue/15 flex items-center justify-center mt-0.5">
+<i data-id="79" data-lucide="check" class="w-5 h-5 md:w-6 md:h-6" style="color:#1A8FE3;"></i>
+</div>
+<p data-id="80" class="text-white text-base md:text-lg font-medium leading-relaxed">Passionate about mental health and athlete well-being</p>
+</div>
+
+<div data-id="81" class="check-item fade-up flex items-start gap-4 md:gap-5 rounded-xl p-5 md:p-6 border border-blue/10" id="chk3-e1f2" style="transition-delay:0.16s; background:rgba(10,25,41,0.5);">
+<div data-id="82" class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-blue/15 flex items-center justify-center mt-0.5">
+<i data-id="83" data-lucide="check" class="w-5 h-5 md:w-6 md:h-6" style="color:#1A8FE3;"></i>
+</div>
+<p data-id="84" class="text-white text-base md:text-lg font-medium leading-relaxed">Committed to the IronMind Mentality philosophy</p>
+</div>
+
+<div data-id="85" class="check-item fade-up flex items-start gap-4 md:gap-5 rounded-xl p-5 md:p-6 border border-blue/10" id="chk4-g3h4" style="transition-delay:0.24s; background:rgba(10,25,41,0.5);">
+<div data-id="86" class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-blue/15 flex items-center justify-center mt-0.5">
+<i data-id="87" data-lucide="check" class="w-5 h-5 md:w-6 md:h-6" style="color:#1A8FE3;"></i>
+</div>
+<p data-id="88" class="text-white text-base md:text-lg font-medium leading-relaxed">Eager to help fellow athletes prepare for life beyond sports</p>
+</div>
+</div>
+
+<!-- Pull Quote -->
+<div data-id="89" class="fade-up text-center">
+<div data-id="90" class="inline-block relative">
+<span data-id="91" class="font-display text-blue/20 text-7xl md:text-9xl absolute -top-6 -left-4 md:-top-8 md:-left-6 select-none" style="color:rgba(26,143,227,0.2);">"</span>
+<blockquote data-id="92" class="font-display text-2xl md:text-4xl lg:text-5xl tracking-wide leading-tight italic relative z-10 px-6 md:px-12" id="quote-i5j6" style="color:#1A8FE3;">
+The strongest muscle is the mind.<br data-id="93">Be the reason another athlete believes that.
+</blockquote>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== ADVOCATE BENEFITS ===== -->
+<section data-id="94" id="benefits-i9j0" class="py-20 md:py-28 bg-white text-navy-900">
+<div data-id="95" class="max-w-6xl mx-auto px-4 md:px-8">
+<div data-id="96" class="text-center mb-14 md:mb-20 fade-up">
+<p data-id="97" class="font-display text-base md:text-lg tracking-[0.25em] mb-3" style="color:#1478c0;">ADVOCATE BENEFITS</p>
+<h2 data-id="98" class="font-display text-4xl md:text-6xl text-navy-900 tracking-wide">What You'll Gain as an Advocate</h2>
+</div>
+
+<div data-id="99" class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+<!-- Benefit 1 -->
+<div data-id="100" class="fade-up card-hover rounded-2xl p-8 md:p-10" id="ben1-k7l8" style="background:#0A1929;">
+<div data-id="101" class="w-14 h-14 mb-5 rounded-xl bg-blue/10 flex items-center justify-center">
+<i data-id="102" data-lucide="users" class="w-7 h-7" style="color:#1A8FE3;"></i>
+</div>
+<h3 data-id="103" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-3">Community Access</h3>
+<p data-id="104" class="text-white/55 text-sm leading-relaxed">Exclusive access to The Athlete Check advocate network — connect with like-minded student athletes across the nation who share your mission.</p>
+</div>
+
+<!-- Benefit 2 -->
+<div data-id="105" class="fade-up card-hover rounded-2xl p-8 md:p-10" id="ben2-m9n0" style="transition-delay:0.1s; background:#0A1929;">
+<div data-id="106" class="w-14 h-14 mb-5 rounded-xl bg-blue/10 flex items-center justify-center">
+<i data-id="107" data-lucide="book-open" class="w-7 h-7" style="color:#1A8FE3;"></i>
+</div>
+<h3 data-id="108" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-3">IronMind Resources</h3>
+<p data-id="109" class="text-white/55 text-sm leading-relaxed">Early access to mental performance tools, guides, and workshops designed to sharpen your mind and elevate your game.</p>
+</div>
+
+<!-- Benefit 3 -->
+<div data-id="110" class="fade-up card-hover rounded-2xl p-8 md:p-10" id="ben3-o1p2" style="transition-delay:0.2s; background:#0A1929;">
+<div data-id="111" class="w-14 h-14 mb-5 rounded-xl bg-blue/10 flex items-center justify-center">
+<i data-id="112" data-lucide="trophy" class="w-7 h-7" style="color:#1A8FE3;"></i>
+</div>
+<h3 data-id="113" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-3">Recognition</h3>
+<p data-id="114" class="text-white/55 text-sm leading-relaxed">Featured on AthleteCheck.com and across our social platforms — build your personal brand as a mental health champion in athletics.</p>
+</div>
+
+<!-- Benefit 4 -->
+<div data-id="115" class="fade-up card-hover rounded-2xl p-8 md:p-10" id="ben4-q3r4" style="transition-delay:0.3s; background:#0A1929;">
+<div data-id="116" class="w-14 h-14 mb-5 rounded-xl bg-blue/10 flex items-center justify-center">
+<i data-id="117" data-lucide="rocket" class="w-7 h-7" style="color:#1A8FE3;"></i>
+</div>
+<h3 data-id="118" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-3">Leadership Experience</h3>
+<p data-id="119" class="text-white/55 text-sm leading-relaxed">Build your personal brand and advocacy portfolio. Gain meaningful leadership experience that sets you apart on and off the field.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== APPLICATION FORM ===== -->
+<section data-id="120" id="apply-k1l2" class="py-20 md:py-28 relative overflow-hidden" style="background:#040B14;">
+<div data-id="121" class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue/30 to-transparent" style="background:linear-gradient(to right, transparent, rgba(26,143,227,0.3), transparent);"></div>
+<div data-id="122" class="absolute bottom-1/4 right-0 w-72 h-72 rounded-full opacity-[0.04]" style="background: radial-gradient(circle, #1A8FE3, transparent 70%);"></div>
+
+<div data-id="123" class="max-w-3xl mx-auto px-4 md:px-8 relative z-10">
+<div data-id="124" class="text-center mb-12 md:mb-16 fade-up">
+<p data-id="125" class="font-display text-base md:text-lg tracking-[0.25em] mb-3" style="color:#1A8FE3;">TAKE THE FIRST STEP</p>
+<h2 data-id="126" class="font-display text-4xl md:text-6xl text-white tracking-wide mb-4">Ready to Make an Impact?</h2>
+<p data-id="127" class="text-white/60 text-base md:text-lg max-w-xl mx-auto leading-relaxed">Fill out the form below and take the first step toward becoming an Athlete Check Advocate.</p>
+</div>
+
+<!-- Form Card -->
+<div data-id="128" id="form-card-s5t6" class="fade-up rounded-2xl p-6 md:p-10 border border-blue/10 shadow-2xl" style="background:rgba(10,25,41,0.6);">
+<form data-id="129" id="advocate-form-u7v8" novalidate="">
+<div data-id="130" class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+<!-- First Name -->
+<div data-id="131">
+<label data-id="132" for="firstName-w9x0" class="form-label">First Name <span data-id="133" class="required">*</span></label>
+<input data-id="134" type="text" id="firstName-w9x0" class="form-input" placeholder="Your first name" required="">
+<p data-id="135" class="text-red-400 text-xs mt-1 hidden" id="err-fn-a1b1"></p>
+</div>
+<!-- Last Name -->
+<div data-id="136">
+<label data-id="137" for="lastName-c2d2" class="form-label">Last Name <span data-id="138" class="required">*</span></label>
+<input data-id="139" type="text" id="lastName-c2d2" class="form-input" placeholder="Your last name" required="">
+<p data-id="140" class="text-red-400 text-xs mt-1 hidden" id="err-ln-e3f3"></p>
+</div>
+<!-- Email -->
+<div data-id="141">
+<label data-id="142" for="email-g4h4" class="form-label">Email Address <span data-id="143" class="required">*</span></label>
+<input data-id="144" type="email" id="email-g4h4" class="form-input" placeholder="athlete@school.edu" required="">
+<p data-id="145" class="text-red-400 text-xs mt-1 hidden" id="err-em-i5j5"></p>
+</div>
+<!-- Phone -->
+<div data-id="146">
+<label data-id="147" for="phone-k6l6" class="form-label">Phone Number</label>
+<input data-id="148" type="tel" id="phone-k6l6" class="form-input" placeholder="(555) 123-4567">
+</div>
+<!-- School -->
+<div data-id="149">
+<label data-id="150" for="school-m7n7" class="form-label">School / University <span data-id="151" class="required">*</span></label>
+<input data-id="152" type="text" id="school-m7n7" class="form-input" placeholder="e.g. University of Minnesota" required="">
+<p data-id="153" class="text-red-400 text-xs mt-1 hidden" id="err-sc-o8p8"></p>
+</div>
+<!-- Sport -->
+<div data-id="154">
+<label data-id="155" for="sport-q9r9" class="form-label">Sport(s) You Play <span data-id="156" class="required">*</span></label>
+<input data-id="157" type="text" id="sport-q9r9" class="form-input" placeholder="e.g. Basketball, Track &amp; Field" required="">
+<p data-id="158" class="text-red-400 text-xs mt-1 hidden" id="err-sp-s0t0"></p>
+</div>
+<!-- Academic Year -->
+<div data-id="159">
+<label data-id="160" for="year-u1v1" class="form-label">Academic Year <span data-id="161" class="required">*</span></label>
+<select data-id="162" id="year-u1v1" class="form-input" required="">
+<option data-id="163" value="" disabled="" selected="">Select your year</option>
+<option data-id="164" value="Freshman">Freshman</option>
+<option data-id="165" value="Sophomore">Sophomore</option>
+<option data-id="166" value="Junior">Junior</option>
+<option data-id="167" value="Senior">Senior</option>
+<option data-id="168" value="Graduate Student">Graduate Student</option>
+<option data-id="169" value="Other">Other</option>
+</select>
+<p data-id="170" class="text-red-400 text-xs mt-1 hidden" id="err-yr-w2x2"></p>
+</div>
+<!-- Social Media Platform -->
+<div data-id="171">
+<label data-id="172" for="platform-y3z3" class="form-label">Primary Social Media Platform</label>
+<select data-id="173" id="platform-y3z3" class="form-input">
+<option data-id="174" value="" disabled="" selected="">Select platform</option>
+<option data-id="175" value="Instagram">Instagram</option>
+<option data-id="176" value="TikTok">TikTok</option>
+<option data-id="177" value="Twitter/X">Twitter/X</option>
+<option data-id="178" value="YouTube">YouTube</option>
+<option data-id="179" value="Other">Other</option>
+</select>
+</div>
+</div>
+
+<!-- Full-width fields -->
+<div data-id="180" class="mt-5 md:mt-6 space-y-5 md:space-y-6">
+<!-- Social Handle -->
+<div data-id="181">
+<label data-id="182" for="handle-a4b4" class="form-label">Social Media Handle(s)</label>
+<input data-id="183" type="text" id="handle-a4b4" class="form-input" placeholder="@yourusername">
+</div>
+
+<!-- Why Advocate -->
+<div data-id="184">
+<label data-id="185" for="why-c5d5" class="form-label">Why do you want to be an Athlete Check Advocate? <span data-id="186" class="required">*</span></label>
+<textarea data-id="187" id="why-c5d5" class="form-input" rows="4" placeholder="Share your passion for athlete mental health and well-being..." required=""></textarea>
+<p data-id="188" class="text-red-400 text-xs mt-1 hidden" id="err-why-e6f6"></p>
+</div>
+
+<!-- IronMind -->
+<div data-id="189">
+<label data-id="190" for="ironmind-g7h7" class="form-label">What does the IronMind Mentality mean to you? <span data-id="191" class="required">*</span></label>
+<textarea data-id="192" id="ironmind-g7h7" class="form-input" rows="4" placeholder="Describe how mental toughness has shaped your athletic journey..." required=""></textarea>
+<p data-id="193" class="text-red-400 text-xs mt-1 hidden" id="err-im-i8j8"></p>
+</div>
+
+<!-- Help Others -->
+<div data-id="194">
+<label data-id="195" for="help-k9l9" class="form-label">How can you help fellow student athletes prepare for the next phase of their life?</label>
+<textarea data-id="196" id="help-k9l9" class="form-input" rows="3" placeholder="Tell us how you'd make an impact..."></textarea>
+</div>
+
+<!-- Checkbox -->
+<div data-id="197" class="flex items-start gap-3">
+<input data-id="198" type="checkbox" id="agree-m0n0" class="mt-1 w-5 h-5 rounded border-blue/30 bg-navy-800 flex-shrink-0 cursor-pointer" style="accent-color:#1A8FE3;" required="">
+<label data-id="199" for="agree-m0n0" class="text-white/60 text-sm leading-relaxed cursor-pointer">I agree to be contacted by The Athlete Check team regarding my application. <span data-id="200" class="text-xs" style="color:#1A8FE3;">*</span></label>
+</div>
+<p data-id="201" class="text-red-400 text-xs hidden -mt-3" id="err-agree-o1p1"></p>
+
+<!-- Submit Button -->
+<button data-id="202" type="submit" id="submit-btn-q2r2" class="w-full text-white font-bold text-base md:text-lg py-4 rounded-xl transition-all duration-300 tracking-wider font-display flex items-center justify-center gap-2" style="background:#1A8FE3; box-shadow:0 8px 24px rgba(26,143,227,0.2);" onmouseenter="" onmouseleave="">
+SUBMIT MY APPLICATION
+<i data-id="203" data-lucide="arrow-right" class="w-5 h-5"></i>
+</button>
+</div>
+</form>
+</div>
+
+<!-- Success State (hidden by default) -->
+<div data-id="204" id="success-state-s3t3" class="hidden fade-up">
+<div data-id="205" class="rounded-2xl p-10 md:p-16 border border-blue/20 text-center shadow-2xl" style="background:rgba(10,25,41,0.6);">
+<div data-id="206" class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-6 rounded-full bg-blue/15 flex items-center justify-center success-check">
+<i data-id="207" data-lucide="check-circle" class="w-10 h-10 md:w-12 md:h-12" style="color:#1A8FE3;"></i>
+</div>
+<h3 data-id="208" class="font-display text-3xl md:text-5xl text-white tracking-wide mb-4" id="success-name-u4v4">Thank You!</h3>
+<p data-id="209" class="text-white/70 text-base md:text-lg leading-relaxed max-w-md mx-auto">
+Your application has been received. The Athlete Check team will be in touch soon.
+</p>
+<p data-id="210" class="font-display text-2xl md:text-3xl mt-6 tracking-wide" style="color:#1A8FE3;">Keep that IronMind strong. 💪</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer data-id="211" id="footer-w5x5" class="border-t border-white/5 py-10 md:py-14" style="background:#040B14;">
+<div data-id="212" class="max-w-6xl mx-auto px-4 md:px-8">
+<div data-id="213" class="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4">
+<!-- Logo -->
+<div data-id="214" class="flex items-center gap-2">
+<img data-id="215" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo" class="h-8 w-auto" id="footer-logo-h5i5">
+</div>
+<!-- Copyright -->
+<p data-id="216" class="text-white/40 text-xs md:text-sm text-center">© 2026 AthleteCheck.com · All Rights Reserved</p>
+<!-- Links -->
+<div data-id="217" class="flex items-center gap-4 text-sm">
+<a data-id="218" href="#" class="text-white/50 hover:text-blue transition-colors">Privacy Policy</a>
+<span data-id="219" class="text-white/20">|</span>
+<a data-id="220" href="#" class="text-white/50 hover:text-blue transition-colors">Contact Us</a>
+</div>
+</div>
+<div data-id="221" class="text-center mt-6 md:mt-8">
+<p data-id="222" class="font-display text-sm md:text-base tracking-[0.2em]" style="color:rgba(26,143,227,0.4);">Train Smarter. Perform Stronger. Be Unstoppable.</p>
+</div>
+<p data-id="223" class="text-white/25 text-xs text-center mt-4">Made by Copilot</p>
+</div>
+</footer>
+
+<script>
+// ===== LUCIDE ICONS =====
+// lucide is loaded with `defer`, so it is not defined yet when this inline
+// script first runs. Wait for DOMContentLoaded before rendering icons so the
+// mobile menu button (and other icons) actually appear.
+function tacRenderIcons() {
+if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
+lucide.createIcons();
+}
+}
+if (document.readyState === "loading") {
+document.addEventListener("DOMContentLoaded", tacRenderIcons);
+} else {
+tacRenderIcons();
+}
+
+// ===== SUBMIT BUTTON HOVER =====
+var submitBtn = document.getElementById('submit-btn-q2r2');
+if (submitBtn) {
+submitBtn.addEventListener('mouseenter', function() {
+this.style.background = '#00B4FF';
+this.style.boxShadow = '0 12px 32px rgba(0,180,255,0.3)';
+});
+submitBtn.addEventListener('mouseleave', function() {
+this.style.background = '#1A8FE3';
+this.style.boxShadow = '0 8px 24px rgba(26,143,227,0.2)';
+});
+}
+
+// ===== MOBILE MENU =====
+const mobileMenuBtn = document.getElementById('mobile-menu-btn-m3n4');
+const mobileMenu = document.getElementById('mobile-menu-o5p6');
+const mobileMenuClose = document.getElementById('mobile-menu-close-q7r8');
+
+if (mobileMenuBtn && mobileMenu && mobileMenuClose) {
+mobileMenuBtn.addEventListener('click', function() {
+mobileMenu.classList.remove('hidden');
+document.body.style.overflow = 'hidden';
+});
+mobileMenuClose.addEventListener('click', function() {
+mobileMenu.classList.add('hidden');
+document.body.style.overflow = '';
+});
+// Close on nav link click
+mobileMenu.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+link.addEventListener('click', function() {
+mobileMenu.classList.add('hidden');
+document.body.style.overflow = '';
+});
+});
+}
+
+// ===== STICKY NAV SCROLL EFFECT =====
+const navbar = document.getElementById('navbar-a1b2');
+if (navbar) {
+window.addEventListener('scroll', function() {
+if (window.scrollY > 60) {
+navbar.classList.add('nav-scrolled');
+} else {
+navbar.classList.remove('nav-scrolled');
+}
+});
+}
+
+// ===== SCROLL-TRIGGERED FADE-IN =====
+const fadeEls = document.querySelectorAll('.fade-up');
+if (fadeEls.length > 0) {
+const observer = new IntersectionObserver(function(entries) {
+entries.forEach(function(entry) {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+observer.unobserve(entry.target);
+}
+});
+}, {
+threshold: 0.15,
+rootMargin: '0px 0px -40px 0px'
+});
+fadeEls.forEach(function(el) {
+observer.observe(el);
+});
+}
+
+// ===== FORM VALIDATION & SUBMISSION =====
+const form = document.getElementById('advocate-form-u7v8');
+const formCard = document.getElementById('form-card-s5t6');
+const successState = document.getElementById('success-state-s3t3');
+
+// Validation config
+const requiredFields = [
+{ id: 'firstName-w9x0', errId: 'err-fn-a1b1', msg: 'First name is required.' },
+{ id: 'lastName-c2d2', errId: 'err-ln-e3f3', msg: 'Last name is required.' },
+{ id: 'email-g4h4', errId: 'err-em-i5j5', msg: 'A valid email address is required.', type: 'email' },
+{ id: 'school-m7n7', errId: 'err-sc-o8p8', msg: 'School or university is required.' },
+{ id: 'sport-q9r9', errId: 'err-sp-s0t0', msg: 'Please enter your sport(s).' },
+{ id: 'year-u1v1', errId: 'err-yr-w2x2', msg: 'Please select your academic year.' },
+{ id: 'why-c5d5', errId: 'err-why-e6f6', msg: 'Please share why you want to be an advocate.' },
+{ id: 'ironmind-g7h7', errId: 'err-im-i8j8', msg: 'Please share what IronMind Mentality means to you.' },
+];
+
+function validateField(fieldConfig) {
+const el = document.getElementById(fieldConfig.id);
+const errEl = document.getElementById(fieldConfig.errId);
+if (!el || !errEl) return true;
+
+let valid = true;
+const val = el.value.trim();
+
+if (!val) {
+valid = false;
+} else if (fieldConfig.type === 'email') {
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+valid = emailRegex.test(val);
+}
+
+if (!valid) {
+el.classList.add('error');
+errEl.textContent = fieldConfig.msg;
+errEl.classList.remove('hidden');
+} else {
+el.classList.remove('error');
+errEl.textContent = '';
+errEl.classList.add('hidden');
+}
+return valid;
+}
+
+// Real-time blur validation
+requiredFields.forEach(function(config) {
+const el = document.getElementById(config.id);
+if (el) {
+el.addEventListener('blur', function() {
+validateField(config);
+});
+el.addEventListener('input', function() {
+if (el.classList.contains('error')) {
+validateField(config);
+}
+});
+}
+});
+
+if (form) {
+form.addEventListener('submit', function(e) {
+e.preventDefault();
+
+let allValid = true;
+requiredFields.forEach(function(config) {
+const isValid = validateField(config);
+if (!isValid) allValid = false;
+});
+
+// Check agree checkbox
+const agreeBox = document.getElementById('agree-m0n0');
+const agreeErr = document.getElementById('err-agree-o1p1');
+if (agreeBox && !agreeBox.checked) {
+allValid = false;
+if (agreeErr) {
+agreeErr.textContent = 'You must agree to be contacted to submit your application.';
+agreeErr.classList.remove('hidden');
+}
+} else if (agreeErr) {
+agreeErr.textContent = '';
+agreeErr.classList.add('hidden');
+}
+
+if (!allValid) {
+// Scroll to first error
+const firstError = form.querySelector('.error');
+if (firstError) {
+firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+firstError.focus();
+}
+return;
+}
+
+// Get first name for personalized success message
+const firstNameVal = document.getElementById('firstName-w9x0').value.trim();
+
+// Show success state
+if (formCard) formCard.classList.add('hidden');
+if (successState) {
+successState.classList.remove('hidden');
+const successName = document.getElementById('success-name-u4v4');
+if (successName) {
+successName.textContent = 'Thank You, ' + firstNameVal + '!';
+}
+// Re-initialize lucide icons for the success state
+if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
+lucide.createIcons();
+  // Send results email
+  emailjs.send('service_rqkabua', 'template_38yv0ev', {
+    to_name: userName || 'Athlete',
+    overall_score: allPct + '%',
+    tier_label: tier.label,
+    tier_desc: tier.desc,
+    readiness_pct: getPillarPct('readiness') + '%',
+    clarity_pct: getPillarPct('clarity') + '%',
+    transition_pct: getPillarPct('transition') + '%'
+  }).then(function() {
+    console.log('Results email sent!');
+  }).catch(function(err) {
+    console.error('Email failed:', err);
+  });
+}
+successState.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+});
+}
+
+// ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+const tacHeader = document.getElementById('tac-navbar');
+document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+link.addEventListener('click', function(e) {
+const targetId = this.getAttribute('href');
+if (targetId && targetId !== '#') {
+const target = document.querySelector(targetId);
+if (target) {
+e.preventDefault();
+const navHeight = (navbar ? navbar.offsetHeight : 0) + (tacHeader ? tacHeader.offsetHeight : 0);
+const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+window.scrollTo({ top: targetPos, behavior: 'smooth' });
+}
+}
+});
+});
+</script>
+
+
+</body></html>

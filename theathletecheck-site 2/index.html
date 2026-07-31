@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>AthleteCheck Homepage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#040B14',
+              secondary: '#071525',
+              card: '#0A1929',
+              accent: '#1A8FE3',
+              bright: '#00B4FF',
+              deepnavy: '#020810',
+              muted: '#94a3b8',
+              lighttext: '#e2e8f0',
+            },
+            fontFamily: {
+              display: ['"Bebas Neue"', 'sans-serif'],
+              body: ['"Inter"', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://unpkg.com/lucide@latest" defer=""></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+    <style>
+      :root {
+        --primary-bg: #040B14;
+        --secondary-bg: #071525;
+        --card-bg: #0A1929;
+        --accent: #1A8FE3;
+        --bright: #00B4FF;
+        --deep-navy: #020810;
+        --muted: #94a3b8;
+        --light-text: #e2e8f0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--primary-bg);
+        color: #ffffff;
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+      }
+
+      .font-display {
+        font-family: 'Bebas Neue', sans-serif;
+      }
+
+      .font-body {
+        font-family: 'Inter', sans-serif;
+      }
+
+      /* Hero grid overlay */
+      .hero-grid {
+        background-image:
+          linear-gradient(rgba(26,143,227,0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(26,143,227,0.05) 1px, transparent 1px);
+        background-size: 80px 80px;
+      }
+
+      /* Logo glow */
+      .logo-glow {
+        filter: drop-shadow(0 0 40px rgba(26,143,227,0.35));
+      }
+
+      /* Fade-up animation */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      }
+
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Scroll arrow bounce */
+      @keyframes bounce-arrow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(12px); }
+      }
+
+      .scroll-arrow {
+        animation: bounce-arrow 2s ease-in-out infinite;
+      }
+
+      /* CTA hover lift */
+      .cta-btn {
+        transition: filter 0.2s ease, transform 0.2s ease;
+      }
+
+      .cta-btn:hover {
+        filter: brightness(1.15);
+        transform: translateY(-2px);
+      }
+
+      /* Nav link hover */
+      .nav-link {
+        transition: color 0.2s ease;
+      }
+
+      .nav-link:hover {
+        color: var(--accent) !important;
+      }
+
+      /* Card hover */
+      .pillar-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .pillar-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(26,143,227,0.15);
+      }
+
+      /* Blue top border on cards */
+      .blue-top-border {
+        border-top: 3px solid var(--accent);
+      }
+
+      /* Avatar circle */
+      .avatar-circle {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 2rem;
+        color: #fff;
+        margin: 0 auto 1.25rem;
+      }
+
+      /* Blue HR */
+      .blue-hr {
+        width: 60px;
+        height: 2px;
+        background: var(--accent);
+        border: none;
+        margin: 1rem auto;
+      }
+
+      /* Quote marks */
+      .quote-statement::before {
+        content: '\201C';
+        font-size: 2em;
+        line-height: 0;
+        vertical-align: -0.25em;
+        margin-right: 0.1em;
+        opacity: 0.5;
+      }
+
+      .quote-statement::after {
+        content: '\201D';
+        font-size: 2em;
+        line-height: 0;
+        vertical-align: -0.25em;
+        margin-left: 0.1em;
+        opacity: 0.5;
+      }
+    </style>
+</head>
+<body data-id="0">
+    <app-icon data-id="1" hidden="" data-icon="activity" data-palette="Blue"></app-icon>
+
+    <!-- ===== STICKY NAVIGATION ===== -->
+    <nav data-id="2" id="navbar-a1b2" class="fixed top-0 left-0 w-full z-50" style="background: rgba(4, 11, 20, 0.96); border-bottom: 1px solid rgba(26,143,227,0.2);">
+      <div data-id="3" class="max-w-7xl mx-auto flex items-center justify-between px-5 py-3">
+        <!-- Logo -->
+        <a class="flex-shrink-0" data-id="4" href="/">
+          <img data-id="5" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo" style="height: 44px;" class="w-auto" id="nav-logo-c3d4">
+        </a>
+
+        <!-- Desktop Nav -->
+        <div data-id="6" class="hidden md:flex items-center gap-8" id="desktop-nav-e5f6">
+          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="7" href="/registration">REGISTRATION</a><a class="nav-link font-display text-white tracking-widest text-lg" data-id="7" href="/about">ABOUT</a>
+          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="8" href="/assessment">ASSESSMENT</a>
+          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="9" href="/advocate">ADVOCATE</a>
+          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="9a" href="/coaches">COACHES/ADS</a>
+          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="9b" href="/courses">COURSES</a>
+          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="9c" href="/proudmoment">PROUD MOMENT</a>
+          <a class="cta-btn font-display tracking-widest text-white text-base px-6 py-2 rounded" data-id="10" href="/assessment" id="nav-cta-g7h8" style="background: #1A8FE3; letter-spacing: 0.1em;">TAKE THE CHECK</a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button data-id="11" id="mobile-menu-btn-i9j0" class="md:hidden p-2 text-white" aria-label="Open menu">
+          <i data-id="12" data-lucide="menu" class="w-7 h-7"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Nav -->
+      <div data-id="13" id="mobile-menu-k1l2" class="hidden fixed inset-0 z-50 flex flex-col" style="background: rgba(4, 11, 20, 0.99);">
+        <div data-id="14" class="flex items-center justify-between px-5 py-3" style="border-bottom: 1px solid rgba(26,143,227,0.2);">
+          <img data-id="15" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo" style="height: 44px;" class="w-auto">
+          <button data-id="16" id="mobile-menu-close-m3n4" class="p-2 text-white" aria-label="Close menu">
+            <i data-id="17" data-lucide="x" class="w-7 h-7"></i>
+          </button>
+        </div>
+        <div data-id="18" class="flex flex-col items-center justify-center flex-1 gap-8">
+          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="19" href="/registration">REGISTRATION</a><a class="nav-link font-display text-white tracking-widest text-3xl" data-id="19" href="/about">ABOUT</a>
+          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="20" href="/assessment">ASSESSMENT</a>
+          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="21" href="/advocate">ADVOCATE</a>
+          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="21a" href="/coaches">COACHES/ADS</a>
+          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="21b" href="/courses">COURSES</a>
+          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="21c" href="/proudmoment">PROUD MOMENT</a>
+          <a class="cta-btn font-display tracking-widest text-white text-xl px-8 py-3 rounded mt-4" data-id="22" href="/assessment" style="background: #1A8FE3; letter-spacing: 0.1em;">TAKE THE CHECK</a>
+        </div>
+      </div>
+    </nav>
+
+    <main data-id="23">
+      <!-- ===== HERO SECTION ===== -->
+      <section data-id="24" id="hero-o5p6" class="hero-grid relative flex flex-col items-center justify-center min-h-screen px-5 pt-20 pb-12" style="background-color: #040B14;">
+        <div data-id="25" class="flex flex-col items-center text-center max-w-3xl mx-auto justify-center">
+          <!-- Large Logo -->
+          <img data-id="26" src="images/theathletecheck-logo.png" alt="The Athlete Check" class="logo-glow w-full mb-8" style="max-width: 480px;" id="hero-logo-q7r8">
+
+          <!-- Badge Pill -->
+          <div data-id="27" class="font-display tracking-[0.2em] text-white text-sm px-5 py-1.5 rounded-full mb-8" style="background: #1A8FE3;" id="badge-pill-s9t0">
+            POWERED BY IRONMIND
+          </div>
+
+          <!-- Tagline -->
+          <h1 data-id="28" class="font-display leading-[1.05] mb-10" style="font-size: clamp(2.8rem, 6vw, 5.5rem); letter-spacing: 0.04em;" id="hero-tagline-u1v2">
+            BUILT BY STUDENT ATHLETES.<br data-id="29">
+            BACKED BY IRONMIND.<br data-id="30">
+            DESIGNED FOR <span data-id="31" style="color: #1A8FE3;">THE NEXT LEVEL.</span>
+          </h1>
+
+          <!-- CTA Buttons -->
+          <div data-id="32" class="flex flex-col sm:flex-row items-center gap-4 mb-12" id="hero-ctas-w3x4">
+            <a class="cta-btn font-display tracking-[0.1em] text-white text-lg px-10 py-4 rounded" data-id="33" href="/assessment" style="background: #1A8FE3;">
+              TAKE THE ATHLETE CHECK →
+            </a>
+            <a class="cta-btn font-display tracking-[0.1em] text-white text-lg px-10 py-4 rounded border-2 border-white bg-transparent" data-id="34" href="/advocate">
+              BECOME AN ADVOCATE
+            </a>
+          </div>
+        </div>
+
+        <!-- Scroll Arrow -->
+        <div data-id="35" class="scroll-arrow absolute bottom-8" id="scroll-arrow-y5z6">
+          <i data-id="36" data-lucide="chevron-down" class="w-8 h-8" style="color: #1A8FE3;"></i>
+        </div>
+      </section>
+
+      <!-- ===== MISSION STATEMENT SECTION ===== -->
+      <section data-id="37" id="mission-a2b3" class="fade-up" style="background: #071525; padding: 100px 20px;">
+        <div data-id="38" class="max-w-[860px] mx-auto text-center">
+          <!-- Overline -->
+          <span data-id="39" class="font-display text-sm tracking-[0.2em]" style="color: #1A8FE3;" id="mission-label-c4d5">OUR MISSION</span>
+          <hr data-id="40" class="blue-hr">
+
+          <!-- Mission Text -->
+          <p data-id="41" class="font-body mt-8 mb-10 leading-[1.9]" style="font-size: 1.15rem; color: #e2e8f0;" id="mission-text-e6f7">
+            The Athlete Check is a readiness and identity platform created by student athletes, for student athletes. Founded by Luke Stenson and Wyatt Porch, both Division I athletes, the platform was born out of the IronMind Summer Internship Program — a high performance environment built around identity, leadership, and personal development.
+          </p>
+
+          <!-- Quote Statement -->
+          <p data-id="42" class="quote-statement font-display" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: #1A8FE3; line-height: 1.2;" id="mission-quote-g8h9">
+            The mission is simple: Help student athletes understand where they truly stand, and prepare them for what comes next.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== THREE PILLARS SECTION ===== -->
+      <section data-id="43" id="pillars-i0j1" class="fade-up" style="background: #040B14; padding: 100px 20px;">
+        <div data-id="44" class="max-w-6xl mx-auto">
+          <!-- Section Heading -->
+          <h2 data-id="45" class="font-display text-center text-white mb-4 tracking-wider" style="font-size: clamp(2.5rem, 5vw, 4rem);" id="pillars-heading-k2l3">WHAT WE DO</h2>
+          <hr data-id="46" class="blue-hr mb-14">
+
+          <!-- Cards Grid -->
+          <div data-id="47" class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8" id="pillars-grid-m4n5">
+            <!-- Card 1 -->
+            <div data-id="48" class="pillar-card blue-top-border rounded-lg p-8 text-center fade-up" style="background: #0A1929;" data-delay="0" id="pillar1-o6p7">
+              <div data-id="49" class="text-4xl mb-5">🎯</div>
+              <h3 data-id="50" class="font-display text-2xl tracking-wider mb-4" style="color: #1A8FE3;">KNOW YOUR EDGE</h3>
+              <p data-id="51" class="font-body text-sm leading-relaxed" style="color: #94a3b8;">
+                A comprehensive readiness assessment that shows you exactly where you stand — mentally, physically, and professionally.
+              </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div data-id="52" class="pillar-card blue-top-border rounded-lg p-8 text-center fade-up" style="background: #0A1929;" data-delay="150" id="pillar2-q8r9">
+              <div data-id="53" class="text-4xl mb-5">⚡</div>
+              <h3 data-id="54" class="font-display text-2xl tracking-wider mb-4" style="color: #1A8FE3;">IRONMIND MENTALITY</h3>
+              <p data-id="55" class="font-body text-sm leading-relaxed" style="color: #94a3b8;">
+                Train your mind like your body. Build the mental toughness, identity, and resilience to compete at every level of life.
+              </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div data-id="56" class="pillar-card blue-top-border rounded-lg p-8 text-center fade-up" style="background: #0A1929;" data-delay="300" id="pillar3-s0t1">
+              <div data-id="57" class="text-4xl mb-5">🚀</div>
+              <h3 data-id="58" class="font-display text-2xl tracking-wider mb-4" style="color: #1A8FE3;">PREPARE FOR WHAT'S NEXT</h3>
+              <p data-id="59" class="font-body text-sm leading-relaxed" style="color: #94a3b8;">
+                Transition from student athlete to high performer. We help you carry your athletic identity into every room you walk into.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== FOUNDERS SECTION ===== -->
+      <section data-id="60" id="founders-u2v3" class="fade-up" style="background: #071525; padding: 100px 20px;">
+        <div data-id="61" class="max-w-5xl mx-auto text-center">
+          <!-- Section Heading -->
+          <h2 data-id="62" class="font-display text-white tracking-wider mb-3" style="font-size: clamp(2.2rem, 4.5vw, 3.5rem);" id="founders-heading-w4x5">BUILT BY ATHLETES, FOR ATHLETES</h2>
+          <p data-id="63" class="font-body mb-14" style="color: #94a3b8; font-size: 1.05rem;" id="founders-subtitle-y6z7">
+            The Athlete Check was created by Division I athletes who lived the experience firsthand.
+          </p>
+
+          <!-- Founder Cards -->
+          <div data-id="64" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto" id="founders-grid-a8b9">
+            <!-- Luke -->
+            <div data-id="65" class="rounded-xl p-10 text-center" style="background: #0A1929;" id="founder1-c0d1">
+              <div data-id="66" class="avatar-circle">LS</div>
+              <h3 data-id="67" class="font-display text-3xl tracking-wider text-white mb-1">LUKE STENSON</h3>
+              <p data-id="68" class="font-body text-sm font-medium mb-3" style="color: #1A8FE3;">Co-Founder · Division I Athlete</p>
+              <p data-id="69" class="font-body text-xs" style="color: #94a3b8;">IronMind Summer Internship Program Alumni</p>
+            </div>
+
+            <!-- Wyatt -->
+            <div data-id="70" class="rounded-xl p-10 text-center" style="background: #0A1929;" id="founder2-e2f3">
+              <div data-id="71" class="avatar-circle">WP</div>
+              <h3 data-id="72" class="font-display text-3xl tracking-wider text-white mb-1">WYATT PORCH</h3>
+              <p data-id="73" class="font-body text-sm font-medium mb-3" style="color: #1A8FE3;">Co-Founder · Division I Athlete</p>
+              <p data-id="74" class="font-body text-xs" style="color: #94a3b8;">IronMind Summer Internship Program Alumni</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CTA BANNER SECTION ===== -->
+      <section data-id="75" id="cta-banner-g4h5" class="fade-up text-center" style="background: linear-gradient(135deg, #1A8FE3 0%, #0d6abf 100%); padding: 80px 20px;">
+        <div data-id="76" class="max-w-3xl mx-auto">
+          <h2 data-id="77" class="font-display text-white tracking-wider mb-4" style="font-size: clamp(2.5rem, 5vw, 4rem);" id="cta-heading-i6j7">READY TO KNOW WHERE YOU STAND?</h2>
+          <p data-id="78" class="font-body text-white mb-10" style="opacity: 0.9; font-size: 1.1rem;" id="cta-subtitle-k8l9">
+            Take the Athlete Check assessment and start preparing for the next level.
+          </p>
+          <a class="cta-btn inline-block font-display tracking-[0.1em] text-lg px-12 py-4 rounded font-bold" data-id="79" href="/assessment" id="cta-btn-m0n1" style="background: #ffffff; color: #1A8FE3;">
+            TAKE THE CHECK NOW →
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer data-id="80" id="footer-o2p3" class="text-center" style="background: #020810; padding: 60px 20px 40px;">
+      <div data-id="81" class="max-w-4xl mx-auto">
+        <!-- Footer Logo -->
+        <img data-id="82" src="images/theathletecheck-logo.png" alt="The Athlete Check" class="mx-auto mb-6" style="height: 60px;" id="footer-logo-q4r5">
+
+        <!-- Footer Nav -->
+        <div data-id="83" class="flex items-center justify-center gap-2 mb-6 font-body text-sm" id="footer-nav-s6t7">
+          <a class="nav-link" data-id="84" href="/registration" style="color: #94a3b8;">REGISTRATION</a><a class="nav-link" data-id="84" href="/about" style="color: #94a3b8;">About</a>
+          <span data-id="85" style="color: #94a3b8;">·</span>
+          <a class="nav-link" data-id="86" href="/assessment" style="color: #94a3b8;">Assessment</a>
+          <span data-id="87" style="color: #94a3b8;">·</span>
+          <a class="nav-link" data-id="88" href="/advocate" style="color: #94a3b8;">Advocate</a>
+        </div>
+
+        <!-- Taglines -->
+        <p data-id="89" class="font-display tracking-[0.15em] text-sm mb-1" style="color: #94a3b8;" id="footer-tagline1-u8v9">TEST. TRAIN. TRANSFORM.</p>
+        <p data-id="90" class="font-display tracking-[0.1em] text-xs mb-6" style="color: #94a3b8;" id="footer-tagline2-w0x1">POWERED BY IRONMIND · BUILT FOR MORE</p>
+
+        <!-- Copyright -->
+        <p data-id="91" class="font-body text-xs mb-2" style="color: #64748b;" id="footer-copy-y2z3">© 2026 The Athlete Check · AthleteCheck.com · All Rights Reserved</p>
+        <p data-id="92" class="font-body text-xs" style="color: #475569;" id="footer-founders-a4b5">Founded by Luke Stenson &amp; Wyatt Porch</p>
+
+        <p data-id="93" class="font-body text-xs mt-6" style="color: #334155;">Made by Copilot</p>
+      </div>
+    </footer>
+
+    <script>
+      // ===== Lucide Icons (progressive enhancement) =====
+      // The lucide library is loaded with `defer`, so it is not available yet
+      // when this inline script first runs. Wait for DOMContentLoaded (which
+      // fires after deferred scripts have executed) before rendering icons,
+      // otherwise icons such as the mobile menu button never appear.
+      function tacRenderIcons() {
+        if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
+          lucide.createIcons();
+        }
+      }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", tacRenderIcons);
+      } else {
+        tacRenderIcons();
+      }
+
+      // ===== Mobile Menu Toggle =====
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn-i9j0');
+      const mobileMenu = document.getElementById('mobile-menu-k1l2');
+      const mobileMenuClose = document.getElementById('mobile-menu-close-m3n4');
+
+      if (mobileMenuBtn && mobileMenu && mobileMenuClose) {
+        mobileMenuBtn.addEventListener('click', function() {
+          mobileMenu.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+          document.body.style.overflow = '';
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(function(link) {
+          link.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+
+      // ===== Navbar background on scroll =====
+      const navbar = document.getElementById('navbar-a1b2');
+      if (navbar) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 80) {
+            navbar.style.background = 'rgba(4, 11, 20, 0.99)';
+          } else {
+            navbar.style.background = 'rgba(4, 11, 20, 0.96)';
+          }
+        });
+      }
+
+      // ===== Scroll-triggered fade-up animations =====
+      const fadeUpElements = document.querySelectorAll('.fade-up');
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -60px 0px',
+        threshold: 0.1,
+      };
+
+      const fadeUpObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            const delay = parseInt(entry.target.getAttribute('data-delay') || '0', 10);
+            setTimeout(function() {
+              entry.target.classList.add('visible');
+            }, delay);
+            fadeUpObserver.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      fadeUpElements.forEach(function(el) {
+        fadeUpObserver.observe(el);
+      });
+
+      // ===== Smooth scroll for scroll arrow =====
+      const scrollArrow = document.getElementById('scroll-arrow-y5z6');
+      if (scrollArrow) {
+        scrollArrow.addEventListener('click', function() {
+          const missionSection = document.getElementById('mission-a2b3');
+          if (missionSection) {
+            missionSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+        scrollArrow.style.cursor = 'pointer';
+      }
+    </script>
+
+</body></html>

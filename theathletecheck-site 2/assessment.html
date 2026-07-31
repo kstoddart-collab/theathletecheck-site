@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IronMind Readiness Assessment | IronMind for Student Athletes</title>
+<meta name="description" content="Discover your IronMind Readiness Profile — 40 questions, 8 domains, 3 pillars that reveal how prepared you truly are for life beyond the sport.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+steel: '#3576b5',
+'steel-light': '#4a90d9',
+iron: '#c0392b',
+'iron-light': '#e74c3c',
+dark: '#111827',
+'dark-card': '#1a2332',
+muted: '#9ca3af',
+bgCard: '#1a2332',
+bgInput: '#0f1923'
+}
+}
+}
+};
+document.addEventListener('DOMContentLoaded', function() {
+emailjs.init('uOKlxkuTvvG_oTXoM');
+});
+</script>
+<style>
+html, body { margin: 0; padding: 0; background: #0a0f1a; overflow-x: hidden; }
+.view { display: none !important; }
+.view.active { display: block !important; }
+.fade-in { animation: fadeIn 0.6s ease forwards; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.fade-in-up { animation: fadeIn 0.5s ease 0.1s both; }
+.fade-in-up-2 { animation: fadeIn 0.5s ease 0.25s both; }
+.fade-in-up-3 { animation: fadeIn 0.5s ease 0.4s both; }
+.name-input:focus { outline: none; border-color: #3576b5; box-shadow: 0 0 0 3px rgba(53,118,181,0.15); }
+.rating-btn { transition: all 0.15s ease; cursor: pointer; border: 2px solid transparent; }
+.rating-btn:hover { border-color: #3576b5; background: rgba(53,118,181,0.12); }
+.rating-btn.selected { background: #3576b5 !important; border-color: #3576b5 !important; color: white !important; }
+.progress-fill { transition: width 0.4s ease; }
+.domain-bar-fill { transition: width 1s ease; }
+.pulse-ring { animation: pulseRing 2s ease-in-out infinite; }
+@keyframes pulseRing { 0%,100% { box-shadow: 0 0 0 0 rgba(53,118,181,0.25); } 50% { box-shadow: 0 0 0 20px rgba(53,118,181,0); } }
+.calc-progress { transition: width 0.3s ease; }
+.pillar-card { border-left: 4px solid #3576b5; }
+.pillar-readiness { border-left-color: #3576b5; }
+.pillar-clarity { border-left-color: #10b981; }
+.pillar-transition { border-left-color: #f59e0b; }
+.tier-ironmind { background: linear-gradient(135deg, #1e3a5f, #2d5a8e); border: 1px solid #3576b5; }
+.tier-ready { background: linear-gradient(135deg, #1a3a2a, #2d6b4a); border: 1px solid #10b981; }
+.tier-developing { background: linear-gradient(135deg, #2a2a1a, #5a5a2a); border: 1px solid #f59e0b; }
+.tier-emerging { background: linear-gradient(135deg, #2a1a1a, #5a2a2a); border: 1px solid #ef4444; }
+.off-white { background: #f8f9fa; }
+.bg-off-white { background-color: #f8f9fa; }
+/* Scrollable results */
+#view-results { overflow-y: auto; }
+</style>
+<!-- ===== SHARED SITE HEADER (self-contained: scoped classes, no Tailwind required) ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap">
+<style>
+/* Mirrors the homepage nav exactly. Every property is declared explicitly so the
+   header renders identically on pages that do not load Tailwind or its reset. */
+.tac-navbar,.tac-navbar *,.tac-navbar *::before,.tac-navbar *::after{box-sizing:border-box}
+.tac-navbar{position:fixed;top:0;left:0;right:auto;bottom:auto;width:100%;z-index:1000;margin:0;padding:0;background:rgba(4, 11, 20, 0.96);border:0;border-bottom:1px solid rgba(26,143,227,0.2);box-shadow:none;backdrop-filter:none;text-align:left;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-nav-inner{width:100%;max-width:80rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:0;padding:0.75rem 1.25rem}
+.tac-nav-brand{flex:0 0 auto;display:block;padding:0;margin:0;border:0;background:none;line-height:0;text-decoration:none}
+.tac-nav-logo{display:block;height:44px;width:auto;max-width:none;min-width:0;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none;object-fit:contain}
+.tac-nav-links{display:none;align-items:center;gap:2rem}
+.tac-nav-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-style:normal;font-size:1.125rem;line-height:1.75rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-nav-link:hover{color:#1A8FE3;text-decoration:none}
+.tac-nav-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1rem;line-height:1.5rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.5rem 1.5rem;margin:0;border:0;border-radius:0.25rem;box-shadow:none;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-nav-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
+.tac-nav-toggle,.tac-nav-close{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;width:auto;height:auto;padding:0.5rem;margin:0;background:none;border:0;border-radius:0;color:#ffffff;cursor:pointer;line-height:0;-webkit-appearance:none;appearance:none}
+.tac-nav-toggle svg,.tac-nav-close svg{display:block;width:28px;height:28px}
+.tac-mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1001;flex-direction:column;background:rgba(4, 11, 20, 0.99);font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-mobile-menu.tac-open{display:flex}
+.tac-mobile-top{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid rgba(26,143,227,0.2)}
+.tac-mobile-links{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1 1 0%;gap:2rem;padding:0;margin:0}
+.tac-mobile-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.875rem;line-height:2.25rem;letter-spacing:0.1em;text-transform:none;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-mobile-link:hover{color:#1A8FE3;text-decoration:none}
+.tac-mobile-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.25rem;line-height:1.75rem;letter-spacing:0.1em;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.75rem 2rem;margin:1rem 0 0;border:0;border-radius:0.25rem;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-mobile-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
+@media (min-width:768px){
+  .tac-nav-links{display:flex}
+  .tac-nav-toggle{display:none}
+}
+/* Keeps page content clear of the fixed header (44px logo + 2x12px padding + 1px border). */
+body.tac-nav-offset{padding-top:69px}
+/* The assessment's own progress bar is fixed to the top too - keep it below the header. */
+#view-assessment > .fixed.top-0{top:69px}
+</style>
+</head>
+<body class="bg-[#0a0f1a] tac-nav-offset">
+<!-- ===== SHARED SITE HEADER ===== -->
+<nav class="tac-navbar" id="tac-navbar">
+  <div class="tac-nav-inner">
+    <a class="tac-nav-brand" href="/">
+      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+    </a>
+    <div class="tac-nav-links">
+      <a class="tac-nav-link" href="/registration">REGISTRATION</a><a class="tac-nav-link" href="/about">ABOUT</a>
+      <a class="tac-nav-link" href="/assessment">ASSESSMENT</a>
+      <a class="tac-nav-link" href="/advocate">ADVOCATE</a>
+      <a class="tac-nav-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-nav-link" href="/courses">COURSES</a>
+      <a class="tac-nav-link" href="/proudmoment">PROUD MOMENT</a>
+      <a class="tac-nav-cta" href="/assessment">TAKE THE CHECK</a>
+    </div>
+    <button class="tac-nav-toggle" id="tac-nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="tac-mobile-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="tac-mobile-menu" id="tac-mobile-menu">
+    <div class="tac-mobile-top">
+      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+      <button class="tac-nav-close" id="tac-nav-close" type="button" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+    </div>
+    <div class="tac-mobile-links">
+      <a class="tac-mobile-link" href="/registration">REGISTRATION</a><a class="tac-mobile-link" href="/about">ABOUT</a>
+      <a class="tac-mobile-link" href="/assessment">ASSESSMENT</a>
+      <a class="tac-mobile-link" href="/advocate">ADVOCATE</a>
+      <a class="tac-mobile-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-mobile-link" href="/courses">COURSES</a>
+      <a class="tac-mobile-link" href="/proudmoment">PROUD MOMENT</a>
+      <a class="tac-mobile-cta" href="/assessment">TAKE THE CHECK</a>
+    </div>
+  </div>
+</nav>
+<script>
+/* Shared site header: mobile menu toggle + scroll background, self-contained. */
+(function () {
+  var toggle = document.getElementById('tac-nav-toggle');
+  var menu = document.getElementById('tac-mobile-menu');
+  var closeBtn = document.getElementById('tac-nav-close');
+
+  if (toggle && menu && closeBtn) {
+    var openMenu = function () {
+      menu.classList.add('tac-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+    var closeMenu = function () {
+      menu.classList.remove('tac-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    toggle.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    Array.prototype.forEach.call(menu.querySelectorAll('a'), function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  var bar = document.getElementById('tac-navbar');
+  if (bar) {
+    window.addEventListener('scroll', function () {
+      bar.style.background = window.scrollY > 80 ? 'rgba(4, 11, 20, 0.99)' : 'rgba(4, 11, 20, 0.96)';
+    });
+  }
+})();
+</script>
+
+<!-- ============ NETLIFY FORM (hidden) ============
+     Detected by Netlify at build time so completed assessments are
+     captured server-side and an email notification is sent on every
+     submission. Submitted via AJAX from the results page. -->
+<form hidden="" method="post" name="assessment-results">
+<input type="hidden" name="form-name" value="assessment-results">
+<input name="bot-field">
+<input name="name">
+<input name="email">
+<input name="phone">
+<input name="overall_score">
+<input name="tier">
+<input name="completed_date">
+<textarea name="domain_scores"></textarea>
+</form>
+
+<!-- ============ VIEW 1: WELCOME ============ -->
+<div id="view-welcome" class="view active">
+<div class="min-h-screen flex flex-col items-center justify-center px-4 py-12 md:py-20">
+<div class="max-w-[700px] w-full mx-auto text-center fade-in">
+<!-- Badge -->
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-steel/30 bg-steel/10 mb-8">
+<span class="text-steel text-xs font-semibold tracking-[0.2em] uppercase">✦ IronMind for Student Athletes</span>
+</div>
+<!-- Headline -->
+<h1 class="text-3xl md:text-[52px] font-bold text-white leading-[1.08] tracking-tight mb-6">
+Discover Your<br>IronMind Readiness Profile™
+</h1>
+<!-- Subheadline -->
+<p class="text-muted text-base md:text-lg max-w-[580px] mx-auto mb-10 leading-relaxed">
+40 questions. 8 domains. 3 pillars. One honest look at how prepared you are for life beyond the sport.
+</p>
+<!-- What to Expect Card -->
+<div class="bg-dark-card border border-steel/25 rounded-2xl p-6 md:p-8 text-left mb-8">
+<p class="text-steel text-xs font-semibold tracking-[0.15em] uppercase mb-5">What You'll Discover</p>
+<div class="space-y-5">
+<div class="flex items-start gap-3">
+<span class="mt-1.5 w-2.5 h-2.5 rounded-full bg-steel flex-shrink-0"></span>
+<div>
+<span class="text-white font-semibold">3 Readiness Pillars</span>
+<span class="text-muted text-sm block mt-0.5">Readiness · Clarity · Transition Strength — the three indicators of real-world preparedness</span>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="mt-1.5 w-2.5 h-2.5 rounded-full bg-steel flex-shrink-0"></span>
+<div>
+<span class="text-white font-semibold">8 Domains</span>
+<span class="text-muted text-sm block mt-0.5">Professional Readiness, Communication, Brand Identity, Identity Beyond the Jersey, Purpose &amp; Direction, Values, Resilience, Leadership Without a Title</span>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="mt-1.5 w-2.5 h-2.5 rounded-full bg-steel flex-shrink-0"></span>
+<div>
+<span class="text-white font-semibold">40 Questions · 10–15 Minutes</span>
+<span class="text-muted text-sm block mt-0.5">5 questions per domain, rated 1–5. Answer based on who you are today — not who you plan to be.</span>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="mt-1.5 w-2.5 h-2.5 rounded-full bg-steel flex-shrink-0"></span>
+<div>
+<span class="text-white font-semibold">Your IronMind Readiness Level</span>
+<span class="text-muted text-sm block mt-0.5">A personalized profile showing exactly where you stand — and what to focus on next</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Honesty note -->
+<p class="text-steel text-sm md:text-[15px] italic mb-8 max-w-[540px] mx-auto">
+"This isn't about who you aspire to be. Answer honestly — the profile is only useful if it's real."
+</p>
+<!-- Name input -->
+<div class="max-w-[400px] mx-auto mb-6">
+<input type="text" id="name-input" class="name-input w-full bg-dark border border-steel/25 rounded-lg px-4 py-3.5 text-white text-base placeholder-muted/60 transition-all" placeholder="Enter your first name to personalize your profile">
+</div>
+<!-- Begin button -->
+<button id="begin-btn" class="max-w-[400px] w-full bg-steel hover:bg-steel-light text-white text-base font-bold py-4 px-8 rounded-lg transition-all hover:shadow-[0_0_24px_rgba(53,118,181,0.35)] disabled:opacity-40 disabled:cursor-not-allowed" disabled="">
+Begin My Assessment →
+</button>
+<!-- Tagline -->
+<p class="text-muted/40 text-xs mt-6 tracking-widest uppercase">Forged in Identity. Built for Impact.</p>
+</div>
+</div>
+</div>
+
+<!-- ============ VIEW 2: ASSESSMENT ============ -->
+<div id="view-assessment" class="view">
+<!-- Top bar -->
+<div class="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm">
+<div class="h-1 bg-dark-card w-full">
+<div id="progress-bar" class="progress-fill h-full bg-steel" style="width:0%"></div>
+</div>
+<div class="flex items-center justify-between px-4 md:px-8 py-3">
+<button id="prev-btn" class="text-muted hover:text-white text-sm flex items-center gap-1 transition-colors min-h-[44px] min-w-[44px] justify-center">
+<i data-lucide="arrow-left" class="w-4 h-4"></i>
+<span class="hidden sm:inline">Previous</span>
+</button>
+<span id="domain-label" class="text-muted text-xs tracking-[0.15em] uppercase font-medium"></span>
+<div class="w-[44px]"></div>
+</div>
+</div>
+<!-- Domain content -->
+<div class="pt-20 pb-28">
+<div class="text-center py-8 md:py-12 px-4">
+<div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-steel/15 text-steel text-lg font-bold mb-4" id="domain-num"></div>
+<div id="pillar-badge" class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase mb-4 ml-2"></div>
+<h2 id="domain-title" class="text-2xl md:text-4xl font-bold text-white mb-3"></h2>
+<p id="domain-desc" class="text-muted text-sm md:text-base max-w-[560px] mx-auto leading-relaxed"></p>
+</div>
+<div class="bg-off-white mx-4 md:mx-auto max-w-[720px] rounded-2xl p-5 md:p-10">
+<div id="questions-container" class="space-y-5"></div>
+</div>
+</div>
+<!-- Bottom nav -->
+<div class="fixed bottom-0 left-0 right-0 bg-black/90 border-t border-steel/15 z-50">
+<div class="flex items-center justify-between px-4 md:px-8 py-4 max-w-[720px] mx-auto">
+<span id="domain-counter" class="text-muted text-sm"></span>
+<button id="next-btn" class="bg-steel text-white font-bold text-sm md:text-base py-3 px-6 md:px-8 rounded-lg transition-all hover:bg-steel-light disabled:opacity-40 disabled:cursor-not-allowed min-h-[44px]" disabled="">
+Next Domain →
+</button>
+</div>
+</div>
+</div>
+
+<!-- ============ VIEW 3: CALCULATING ============ -->
+<div id="view-calculating" class="view">
+<div class="min-h-screen flex flex-col items-center justify-center px-4">
+<div class="text-center">
+<div class="pulse-ring w-48 h-48 md:w-56 md:h-56 rounded-full border-2 border-steel/40 flex items-center justify-center mx-auto mb-10 relative">
+<div class="absolute inset-1 rounded-full border border-steel/20"></div>
+<span class="text-white text-lg md:text-xl font-medium px-4">Building your profile...</span>
+</div>
+<div id="calc-domains" class="flex flex-wrap justify-center gap-x-3 gap-y-2 max-w-lg mx-auto mb-10 text-sm text-muted"></div>
+<div class="max-w-xs mx-auto">
+<div class="w-full h-1.5 bg-dark-card rounded-full overflow-hidden">
+<div id="calc-progress" class="calc-progress h-full bg-steel rounded-full" style="width:0%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ VIEW 4: RESULTS ============ -->
+<div id="view-results" class="view">
+
+<!-- Hero -->
+<section class="bg-[#0a0f1a] py-14 md:py-20 px-4">
+<div class="max-w-3xl mx-auto text-center">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-steel/30 bg-steel/10 mb-6">
+<span class="text-steel text-xs font-semibold tracking-[0.2em] uppercase">✦ IronMind for Student Athletes</span>
+</div>
+<p id="report-label" class="text-muted text-sm mb-2"></p>
+<h1 id="results-headline" class="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight"></h1>
+<!-- Tier badge -->
+<div id="tier-badge" class="inline-flex items-center px-6 py-2.5 rounded-full text-white text-sm font-bold tracking-wider uppercase mb-6 mt-2"></div>
+<p id="tier-desc" class="text-muted italic text-base max-w-lg mx-auto mb-10"></p>
+
+<!-- Overall score ring (percentage) -->
+<div class="flex justify-center mb-10">
+<div class="relative w-44 h-44 md:w-52 md:h-52">
+<svg class="w-full h-full -rotate-90" viewBox="0 0 120 120">
+<circle cx="60" cy="60" r="50" fill="none" stroke="#1a2332" stroke-width="10"></circle>
+<circle id="score-ring" cx="60" cy="60" r="50" fill="none" stroke="#3576b5" stroke-width="10" stroke-dasharray="314" stroke-dashoffset="314" stroke-linecap="round" style="transition: stroke-dashoffset 1.2s ease;"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-muted text-[10px] tracking-widest uppercase">Overall</span>
+<span id="overall-pct" class="text-4xl md:text-5xl font-bold text-white tabular-nums">0%</span>
+<span class="text-muted text-xs mt-0.5">readiness</span>
+</div>
+</div>
+</div>
+
+<p class="text-muted/60 text-xs tracking-widest uppercase">Forged in Identity. Built for Impact.</p>
+</div>
+</section>
+
+<!-- 3 Pillar Scores -->
+<section class="bg-dark-card py-12 md:py-16 px-4">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-white text-2xl md:text-3xl font-bold mb-2 text-center">Your Readiness Pillars</h2>
+<p class="text-muted text-sm text-center mb-10">The three dimensions that define your real-world preparedness</p>
+<div id="pillar-cards" class="grid grid-cols-1 md:grid-cols-3 gap-5"></div>
+</div>
+</section>
+
+<!-- Domain Breakdown -->
+<section class="bg-off-white py-12 md:py-16 px-4">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-dark text-2xl md:text-3xl font-bold mb-2 text-center">Domain Breakdown</h2>
+<p class="text-gray-500 text-sm text-center mb-10">How you scored across each of the 8 domains</p>
+<div id="domain-bars" class="space-y-4"></div>
+</div>
+</section>
+
+<!-- Personalized Insights -->
+<section class="bg-[#0a0f1a] py-12 md:py-16 px-4">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-white text-2xl md:text-3xl font-bold mb-2 text-center">What Your Profile Reveals</h2>
+<p class="text-muted text-sm text-center mb-10">Personalized insights for each domain</p>
+<div id="insight-cards" class="space-y-4"></div>
+</div>
+</section>
+
+<!-- Email full report -->
+<section class="bg-dark-card py-12 md:py-16 px-4 border-t border-steel/10">
+<div class="max-w-xl mx-auto text-center">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-steel/30 bg-steel/10 mb-6">
+<span class="text-steel text-xs font-semibold tracking-[0.2em] uppercase">✦ Get Your Full Report</span>
+</div>
+<h2 class="text-white text-2xl md:text-3xl font-bold mb-2">Want Your Full Report?</h2>
+<p class="text-muted text-sm mb-8 leading-relaxed max-w-md mx-auto">Enter a valid email address and we'll send your complete IronMind Readiness Report — your overall score, all three pillars, every domain breakdown, and your personalized insights — straight to your inbox.</p>
+<div class="space-y-4 text-left">
+<div>
+<label for="contact-name" class="block text-muted text-xs tracking-widest uppercase mb-2">Name <span class="text-muted/50 normal-case tracking-normal">(optional)</span></label>
+<input id="contact-name" type="text" autocomplete="name" placeholder="Your name" class="w-full bg-[#0a0f1a] border border-steel/20 rounded-lg px-4 py-3 text-white placeholder-muted/40 focus:outline-none focus:border-steel transition-colors">
+</div>
+<div>
+<label for="contact-email" class="block text-muted text-xs tracking-widest uppercase mb-2">Email Address</label>
+<input id="contact-email" type="email" autocomplete="email" inputmode="email" required="" placeholder="you@example.com" class="w-full bg-[#0a0f1a] border border-steel/20 rounded-lg px-4 py-3 text-white placeholder-muted/40 focus:outline-none focus:border-steel transition-colors">
+</div>
+<button id="contact-submit-btn" class="w-full bg-steel hover:bg-steel-light text-white font-bold py-4 px-8 rounded-lg transition-all hover:shadow-[0_0_24px_rgba(53,118,181,0.35)] disabled:opacity-40 disabled:cursor-not-allowed">
+Email Me My Full Report →
+</button>
+<p class="text-muted/50 text-xs text-center">We'll only use your email to send your report. No spam.</p>
+<p id="contact-confirm" class="hidden text-center text-sm pt-1"></p>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="bg-dark-card py-14 md:py-20 px-4">
+<div class="max-w-xl mx-auto text-center">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-steel/30 bg-steel/10 mb-6">
+<span class="text-steel text-xs font-semibold tracking-[0.2em] uppercase">✦ Your Next Step</span>
+</div>
+<h2 class="text-white text-2xl md:text-4xl font-bold mb-4">Ready to Close the Gap?</h2>
+<p class="text-muted text-base mb-8 leading-relaxed">
+IronMind for Student Athletes exists to prepare you for exactly what this assessment reveals. The program doesn't just identify gaps — it closes them.
+</p>
+<a href="https://ironmindadvisors.com" target="_blank" class="inline-block bg-steel hover:bg-steel-light text-white font-bold py-4 px-10 rounded-lg transition-all hover:shadow-[0_0_24px_rgba(53,118,181,0.35)] text-base">
+Learn About IronMind →
+</a>
+<p class="text-muted/40 text-xs mt-8 tracking-widest uppercase">Forged in Identity. Built for Impact.</p>
+</div>
+</section>
+</div>
+
+<script>
+// ============================================================
+// DOMAIN DATA
+// ============================================================
+const DOMAINS = [
+// ── PILLAR 1: READINESS ───────────────────────────────
+{
+pillar: 'readiness',
+pillarLabel: 'Readiness',
+pillarColor: '#3576b5',
+name: 'Professional Readiness',
+desc: 'How prepared you are to enter and perform in real-world professional environments.',
+icon: 'briefcase',
+questions: [
+'I understand what employers and organizations actually expect from me in a professional setting.',
+'I can navigate a professional environment — meetings, deadlines, communication — without needing constant direction.',
+'I take ownership of my responsibilities without waiting to be reminded twice.',
+'I am prepared to work alongside people who do not know or care about my athletic achievements.',
+'My daily habits and standards outside of sport reflect the level of professionalism I want to be known for.'
+],
+insightHigh: 'Your professional readiness is a real asset. You walk into rooms with the habits and mindset employers are looking for — ownership, accountability, and composure. The challenge now is channeling your athletic discipline into sustained professional consistency.',
+insightLow: 'Professional readiness is a skill, not a gift — and it is built through exposure and intention. The gap is not about talent. IronMind is specifically designed to accelerate this development and close that gap fast.'
+},
+{
+pillar: 'readiness',
+pillarLabel: 'Readiness',
+pillarColor: '#3576b5',
+name: 'Communication & Executive Presence',
+desc: 'Your ability to communicate clearly, confidently, and professionally in high-stakes situations.',
+icon: 'message-square',
+questions: [
+'I can clearly articulate my thoughts and ideas in a room full of adults and professionals I do not know.',
+'I am comfortable speaking up, asking questions, and sharing my perspective in professional settings.',
+'I can write a professional email that represents me well without needing someone to review it first.',
+'When I disagree with someone in authority, I know how to express it respectfully and constructively.',
+'People outside of sports take me seriously when I communicate with them.'
+],
+insightHigh: 'Your voice is an asset. You communicate with a confidence and clarity that most people your age have not developed yet. The next level is learning to modulate your presence — knowing when to lead the room and when to listen deeply.',
+insightLow: 'Communication is the currency of the real world. In sports, your performance speaks for you. In professional environments, you have to. IronMind will help you develop the executive voice that translates your athleticism into professional credibility.'
+},
+{
+pillar: 'readiness',
+pillarLabel: 'Readiness',
+pillarColor: '#3576b5',
+name: 'Brand & Professional Identity',
+desc: 'How clearly and consistently you present yourself as a professional — online and in person.',
+icon: 'star',
+questions: [
+'I have a clear sense of how I want to be known professionally — beyond my sport.',
+'My social media presence accurately reflects the professional I am becoming.',
+'I can speak confidently about my skills, strengths, and value in a professional conversation.',
+'I have a resume, LinkedIn profile, or professional portfolio I am proud to share.',
+'I know what makes me different from every other athlete competing for the same opportunities.'
+],
+insightHigh: 'You understand that your brand is a strategic asset. You have done the work of defining who you are beyond the field — and that clarity will open doors that athletic achievement alone cannot.',
+insightLow: 'Most athletes let their sport define them until it ends. Then they have no brand left. IronMind will help you build a professional identity that is intentional, distinctive, and built to outlast your athletic career.'
+},
+
+// ── PILLAR 2: CLARITY ─────────────────────────────────
+{
+pillar: 'clarity',
+pillarLabel: 'Clarity',
+pillarColor: '#10b981',
+name: 'Identity Beyond the Jersey',
+desc: 'How well you know who you are when athletics is removed from the equation.',
+icon: 'user',
+questions: [
+'I have a strong, settled sense of who I am completely separate from my sport.',
+'If my athletic career ended tomorrow, I would still know what I stand for and what drives me.',
+'My sense of self-worth does not depend entirely on my athletic performance or status.',
+'I have interests, strengths, and passions that exist completely outside of sports.',
+'I can answer the question "Who are you?" without mentioning my sport or my position.'
+],
+insightHigh: 'You have done the rare work of separating who you are from what you do. That distinction — identity versus performance — is the foundation of everything IronMind builds on. You are already ahead of most athletes at your level.',
+insightLow: 'This is the most common and most costly blind spot for athletes. When the jersey comes off, many do not know who is left. IronMind was built specifically to answer that question — and help you own the answer before the transition happens.'
+},
+{
+pillar: 'clarity',
+pillarLabel: 'Clarity',
+pillarColor: '#10b981',
+name: 'Purpose & Direction',
+desc: 'The clarity you have about your path, your goals, and why you are pursuing them.',
+icon: 'compass',
+questions: [
+'I have a clear picture of what I want my life and career to look like in the next five years.',
+'I know why I want the things I am pursuing — not just what they are.',
+'My goals are driven by my own values and vision, not by what others expect from me.',
+'I can explain my professional direction to a stranger in 60 seconds and make it compelling.',
+'When I face setbacks, I have a clear enough purpose to keep moving forward without losing direction.'
+],
+insightHigh: 'Purpose is your compass, and yours is calibrated. You know where you are going and why — which means every experience, including this internship, becomes a deliberate step rather than a random event.',
+insightLow: 'Without a clear purpose, you will keep chasing other people\'s definitions of success. IronMind does not give you your purpose — but it will help you find it. And that clarity changes the entire trajectory of what comes next.'
+},
+{
+pillar: 'clarity',
+pillarLabel: 'Clarity',
+pillarColor: '#10b981',
+name: 'Values & Decision-Making',
+desc: 'How clearly your values guide your choices, relationships, and behavior under pressure.',
+icon: 'shield',
+questions: [
+'I can name three to five core values that genuinely guide how I live and make decisions.',
+'When I face a hard decision, my values give me a clear framework — I do not just go with what feels right in the moment.',
+'I have said no to something that compromised my values, even when it cost me something.',
+'My behavior is consistent whether I am being observed or not.',
+'I choose my relationships and environments based on alignment with who I am and who I want to become.'
+],
+insightHigh: 'Values-led living is a practice, not a personality trait — and you have developed it. Your decisions have a foundation. That integrity will define your professional reputation long after your athletic career is a footnote on your resume.',
+insightLow: 'Values are not decoration — they are the operating system of your decision-making. Without them clearly defined, you are reactive. IronMind will help you get precise about what you actually stand for, and start building from that foundation.'
+},
+
+// ── PILLAR 3: TRANSITION STRENGTH ────────────────────
+{
+pillar: 'transition',
+pillarLabel: 'Transition Strength',
+pillarColor: '#f59e0b',
+name: 'Resilience & Adaptability',
+desc: 'Your capacity to handle adversity, uncertainty, and major change without losing your footing.',
+icon: 'zap',
+questions: [
+'I have navigated real adversity in my life — not just in competition — and come out stronger for it.',
+'When things do not go as planned, I can recalibrate quickly without spiraling or shutting down.',
+'I am comfortable in environments where I am not the most experienced or recognized person in the room.',
+'Failure and rejection make me more determined, not more defeated.',
+'I can handle genuine ambiguity — situations where there is no playbook, no coach, and no clear next step.'
+],
+insightHigh: 'Resilience is not just your athletic superpower — it is your life superpower. You have proven you can absorb impact and keep moving. That capacity is exactly what the real world — and IronMind — tests for.',
+insightLow: 'Athletics gives you resilience within a structured environment — coaches, teammates, rules. The real world has none of that scaffolding. The transition can feel destabilizing. IronMind prepares you for that ambiguity before it arrives and overwhelms.'
+},
+{
+pillar: 'transition',
+pillarLabel: 'Transition Strength',
+pillarColor: '#f59e0b',
+name: 'Leadership Without a Title',
+desc: 'Your ability to influence, contribute, and add value in settings where your athletic status is irrelevant.',
+icon: 'users',
+questions: [
+'I lead through my actions and character — not through my position or athletic reputation.',
+'I know how to earn respect in a new environment where no one knows my athletic background.',
+'I actively make teams and groups better — not just as a participant, but as someone others look to.',
+'I am comfortable being a beginner in a room and still showing up as a leader in how I carry myself.',
+'I understand that real-world leadership is about service and earned influence — not status or recognition.'
+],
+insightHigh: 'You lead from the inside out — the only kind of leadership that translates across every environment. Your athletic background gave you the habits. IronMind will give you the language, strategy, and platform to deploy them professionally.',
+insightLow: 'Athletic leadership is often positional — captain, starter, star. Real-world leadership requires you to lead from zero. No title. No reputation. No scoreboard. IronMind specifically teaches you how to build influence without any of those shortcuts.'
+}
+];
+
+// ============================================================
+// PILLAR CONFIG
+// ============================================================
+const PILLARS = {
+readiness: { label: 'Readiness', color: '#3576b5', bg: 'pillar-readiness', desc: 'How equipped you are to enter and perform in professional environments.' },
+clarity: { label: 'Clarity', color: '#10b981', bg: 'pillar-clarity', desc: 'How well you know who you are, where you\'re going, and what drives you.' },
+transition: { label: 'Transition Strength', color: '#f59e0b', bg: 'pillar-transition', desc: 'Your capacity to adapt, recover, and lead through major life change.' }
+};
+
+// ============================================================
+// STATE
+// ============================================================
+let currentDomain = 0;
+let answers = {}; // key: "domainIndex-questionIndex", value: 1-5
+let userName = '';
+let resultsEmailSent = false;
+let contactEmailSent = false;
+let lastAllPct = 0;
+let lastTier = null;
+
+// ============================================================
+// HELPERS
+// ============================================================
+function showView(id) {
+document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+window.scrollTo(0, 0);
+}
+
+function getDomainScore(domainIndex) {
+let total = 0;
+for (let q = 0; q < 5; q++) {
+total += answers[`${domainIndex}-${q}`] || 0;
+}
+return total; // max 25
+}
+
+function getDomainPct(domainIndex) {
+return Math.round((getDomainScore(domainIndex) / 25) * 100);
+}
+
+function getTierInfo(pct) {
+if (pct >= 80) return { label: 'IronMind Prepared', cls: 'tier-ironmind', color: '#3576b5', desc: 'You are ready. The foundation is built — now it is time to build the structure.' };
+if (pct >= 65) return { label: 'IronMind Ready', cls: 'tier-ready', color: '#10b981', desc: 'You have the foundation. With intention and exposure, the gap closes quickly.' };
+if (pct >= 50) return { label: 'Developing', cls: 'tier-developing', color: '#f59e0b', desc: 'You are building the right things. Awareness is the first step — now comes the work.' };
+if (pct >= 35) return { label: 'Emerging', cls: 'tier-emerging', color: '#ef4444', desc: 'The awareness is there. The real work begins here — and IronMind meets you exactly where you are.' };
+return { label: 'Beginning', cls: 'tier-emerging', color: '#ef4444', desc: 'This is precisely where IronMind starts. Honest self-assessment is courage — and you just showed it.' };
+}
+
+function getPillarPct(pillarKey) {
+const pillarDomains = DOMAINS.map((d, i) => ({ d, i })).filter(({ d }) => d.pillar === pillarKey);
+const total = pillarDomains.reduce((sum, { i }) => sum + getDomainScore(i), 0);
+const max = pillarDomains.length * 25;
+return Math.round((total / max) * 100);
+}
+
+function getFirstName() {
+return nameInput.value.trim().split(/\s+/)[0] || '';
+}
+
+function buildAndSendEmail(allPct, tier, contact) {
+contact = contact || {};
+const completionDate = new Date().toLocaleDateString('en-US', {
+weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+});
+
+const domainScores = DOMAINS.map((domain, i) => {
+return `${domain.name}: ${getDomainPct(i)}`;
+}).join('\n');
+
+// Prefer a name the user typed into the contact form, otherwise the welcome name.
+const contactFirst = contact.name ? contact.name.trim().split(/\s+/)[0] : '';
+const firstName = contactFirst || userName || 'Anonymous';
+
+return emailjs.send('service_rqkabua', 'template_38yv0ev', {
+name: firstName,
+first_name: firstName,
+user_name: firstName,
+to_name: firstName,
+score: String(allPct),
+overall_score: String(allPct),
+igs_score: String(allPct),
+tier: tier.label,
+tier_label: tier.label,
+completed: completionDate,
+completed_date: completionDate,
+domain_scores: domainScores,
+contact_name: contact.name || '',
+contact_email: contact.email || '',
+contact_phone: contact.phone || ''
+});
+}
+
+// Submit completed-assessment data to Netlify Forms. This is the reliable
+// notification path: Netlify captures every submission server-side and emails
+// the owner (configured under Project configuration > Notifications). Unlike
+// the client-only EmailJS call, delivery does not depend on a third-party
+// account/template being configured correctly, and submissions are always
+// viewable in the Netlify dashboard.
+function submitResultsToNetlify(allPct, tier, contact) {
+contact = contact || {};
+const completionDate = new Date().toLocaleDateString('en-US', {
+weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+});
+const domainScores = DOMAINS.map((domain, i) => `${domain.name}: ${getDomainPct(i)}`).join('\n');
+const contactFirst = contact.name ? contact.name.trim().split(/\s+/)[0] : '';
+const firstName = contactFirst || userName || 'Anonymous';
+
+const data = {
+'form-name': 'assessment-results',
+name: firstName,
+email: contact.email || '',
+phone: contact.phone || '',
+overall_score: String(allPct),
+tier: tier.label,
+completed_date: completionDate,
+domain_scores: domainScores
+};
+
+return fetch('/', {
+method: 'POST',
+headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+body: new URLSearchParams(data).toString()
+}).catch(function(error) {
+console.error('Netlify Forms submission failed:', error);
+});
+}
+
+function sendResultsEmail(allPct, tier) {
+if (resultsEmailSent) return;
+resultsEmailSent = true;
+userName = getFirstName() || userName;
+
+// Reliable, server-side capture + owner email notification via Netlify Forms.
+submitResultsToNetlify(allPct, tier, {});
+
+buildAndSendEmail(allPct, tier, {})
+.then(function() {
+console.log('Results email sent!');
+})
+.catch(function(error) {
+console.error('EmailJS failed:', error);
+});
+}
+
+// ============================================================
+// WELCOME
+// ============================================================
+const nameInput = document.getElementById('name-input');
+const beginBtn = document.getElementById('begin-btn');
+
+nameInput.addEventListener('input', function() {
+beginBtn.disabled = this.value.trim().length === 0;
+});
+
+beginBtn.addEventListener('click', function() {
+userName = getFirstName();
+currentDomain = 0;
+answers = {};
+resultsEmailSent = false;
+contactEmailSent = false;
+renderDomain(0);
+showView('view-assessment');
+if (typeof lucide !== 'undefined') lucide.createIcons();
+});
+
+// ============================================================
+// CONTACT (optional follow-up details on the results page)
+// ============================================================
+const contactSubmitBtn = document.getElementById('contact-submit-btn');
+const contactConfirm = document.getElementById('contact-confirm');
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+contactSubmitBtn.addEventListener('click', function() {
+const contact = {
+name: document.getElementById('contact-name').value.trim(),
+email: document.getElementById('contact-email').value.trim(),
+phone: ''
+};
+
+// A valid email is required — that is where the full report gets sent.
+if (!contact.email || !EMAIL_RE.test(contact.email)) {
+contactConfirm.textContent = 'Please enter a valid email address so we can send your full report.';
+contactConfirm.className = 'text-center text-muted text-sm pt-1';
+return;
+}
+
+if (contactEmailSent) return;
+contactSubmitBtn.disabled = true;
+contactSubmitBtn.textContent = 'Sending...';
+
+// Reliable, server-side capture + owner email notification via Netlify Forms.
+submitResultsToNetlify(lastAllPct, lastTier, contact);
+
+buildAndSendEmail(lastAllPct, lastTier, contact)
+.then(function() {
+contactEmailSent = true;
+contactSubmitBtn.textContent = 'Sent ✓';
+contactConfirm.textContent = '✓ Thanks! Your full report is on its way to ' + contact.email + '.';
+contactConfirm.className = 'text-center text-steel text-sm pt-1';
+})
+.catch(function(error) {
+console.error('EmailJS failed:', error);
+contactSubmitBtn.disabled = false;
+contactSubmitBtn.textContent = 'Email Me My Full Report →';
+contactConfirm.textContent = 'Something went wrong — please try again.';
+contactConfirm.className = 'text-center text-red-400 text-sm pt-1';
+});
+});
+
+// ============================================================
+// ASSESSMENT
+// ============================================================
+function renderDomain(index) {
+const domain = DOMAINS[index];
+const pillar = PILLARS[domain.pillar];
+
+// Top bar
+document.getElementById('domain-label').textContent = `Domain ${index + 1} of ${DOMAINS.length}`;
+document.getElementById('domain-counter').textContent = `Domain ${index + 1} / ${DOMAINS.length}`;
+
+// Header
+document.getElementById('domain-num').textContent = index + 1;
+document.getElementById('domain-title').textContent = domain.name;
+document.getElementById('domain-desc').textContent = domain.desc;
+
+// Pillar badge
+const badge = document.getElementById('pillar-badge');
+badge.textContent = pillar.label;
+badge.style.background = pillar.color + '22';
+badge.style.color = pillar.color;
+badge.style.border = `1px solid ${pillar.color}55`;
+
+// Progress
+const pct = ((index) / DOMAINS.length) * 100;
+document.getElementById('progress-bar').style.width = pct + '%';
+
+// Questions
+const container = document.getElementById('questions-container');
+container.innerHTML = '';
+domain.questions.forEach((q, qi) => {
+const saved = answers[`${index}-${qi}`] || 0;
+const qEl = document.createElement('div');
+qEl.className = 'bg-white rounded-xl p-5 shadow-sm border border-gray-100';
+qEl.innerHTML = `
+<p class="text-gray-800 text-sm md:text-base font-medium mb-4 leading-relaxed">${qi + 1}. ${q}</p>
+<div class="flex gap-2 flex-wrap">
+${[1,2,3,4,5].map(v => `
+<button class="rating-btn flex-1 min-w-[40px] h-11 rounded-lg text-sm font-bold text-gray-500 bg-gray-100 ${saved === v ? 'selected' : ''}"
+data-q="${qi}" data-v="${v}">${v}</button>
+`).join('')}
+</div>
+<div class="flex justify-between text-[10px] text-gray-400 mt-2 px-0.5">
+<span>Strongly Disagree</span><span>Strongly Agree</span>
+</div>
+`;
+container.appendChild(qEl);
+});
+
+// Rating buttons
+container.querySelectorAll('.rating-btn').forEach(btn => {
+btn.addEventListener('click', function() {
+const qi = parseInt(this.dataset.q);
+const v = parseInt(this.dataset.v);
+answers[`${index}-${qi}`] = v;
+// Update UI
+const row = this.closest('.flex.gap-2');
+row.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('selected'));
+this.classList.add('selected');
+// Enable next if all answered
+checkNextBtn(index);
+});
+});
+
+// Prev/Next
+document.getElementById('prev-btn').style.visibility = index === 0 ? 'hidden' : 'visible';
+checkNextBtn(index);
+window.scrollTo(0, 0);
+}
+
+function checkNextBtn(index) {
+let allAnswered = true;
+for (let q = 0; q < 5; q++) {
+if (!answers[`${index}-${q}`]) { allAnswered = false; break; }
+}
+const btn = document.getElementById('next-btn');
+btn.disabled = !allAnswered;
+btn.textContent = (index === DOMAINS.length - 1) ? 'See My Profile →' : 'Next Domain →';
+}
+
+document.getElementById('next-btn').addEventListener('click', function() {
+if (currentDomain < DOMAINS.length - 1) {
+currentDomain++;
+renderDomain(currentDomain);
+} else {
+showCalculating();
+}
+});
+
+document.getElementById('prev-btn').addEventListener('click', function() {
+if (currentDomain > 0) {
+currentDomain--;
+renderDomain(currentDomain);
+}
+});
+
+// ============================================================
+// CALCULATING
+// ============================================================
+function showCalculating() {
+showView('view-calculating');
+const domainList = document.getElementById('calc-domains');
+domainList.innerHTML = DOMAINS.map(d => `<span class="opacity-0 transition-opacity duration-300">✓ ${d.name}</span>`).join('');
+const spans = domainList.querySelectorAll('span');
+const progress = document.getElementById('calc-progress');
+let i = 0;
+const interval = setInterval(() => {
+if (i < spans.length) {
+spans[i].style.opacity = '1';
+progress.style.width = `${((i + 1) / spans.length) * 100}%`;
+i++;
+} else {
+clearInterval(interval);
+setTimeout(showResults, 600);
+}
+}, 280);
+}
+
+// ============================================================
+// RESULTS
+// ============================================================
+function showResults() {
+showView('view-results');
+
+// Overall
+const allPct = Math.round(
+DOMAINS.reduce((sum, _, i) => sum + getDomainPct(i), 0) / DOMAINS.length
+);
+const tier = getTierInfo(allPct);
+lastAllPct = allPct;
+lastTier = tier;
+sendResultsEmail(allPct, tier);
+
+document.getElementById('report-label').textContent = `${userName ? userName + "'s " : ''}IronMind Readiness Profile™`;
+document.getElementById('results-headline').textContent = `${userName ? userName + ', you are ' : 'You are '} ${tier.label}.`;
+document.getElementById('tier-desc').textContent = tier.desc;
+
+const tierBadge = document.getElementById('tier-badge');
+tierBadge.textContent = tier.label;
+tierBadge.className = `inline-flex items-center px-6 py-2.5 rounded-full text-white text-sm font-bold tracking-wider uppercase mb-6 mt-2 ${tier.cls}`;
+
+// Score ring
+const ring = document.getElementById('score-ring');
+const circumference = 314;
+setTimeout(() => {
+ring.style.strokeDashoffset = circumference - (allPct / 100) * circumference;
+ring.style.stroke = tier.color;
+}, 300);
+// Animate number
+let count = 0;
+const target = allPct;
+const numEl = document.getElementById('overall-pct');
+const counter = setInterval(() => {
+count = Math.min(count + 2, target);
+numEl.textContent = count + '%';
+if (count >= target) clearInterval(counter);
+}, 20);
+
+// Pillar cards
+const pillarContainer = document.getElementById('pillar-cards');
+pillarContainer.innerHTML = '';
+Object.entries(PILLARS).forEach(([key, p]) => {
+const pct = getPillarPct(key);
+const t = getTierInfo(pct);
+const card = document.createElement('div');
+card.className = `pillar-card ${p.bg} bg-[#111827] rounded-xl p-6`;
+card.innerHTML = `
+<p class="text-xs font-semibold tracking-widest uppercase mb-1" style="color:${p.color}">${p.label}</p>
+<div class="flex items-end gap-2 mb-3">
+<span class="text-4xl font-bold text-white">${pct}%</span>
+<span class="text-muted text-sm mb-1">${t.label}</span>
+</div>
+<div class="w-full h-1.5 bg-white/10 rounded-full mb-3">
+<div class="h-full rounded-full domain-bar-fill" style="width:0%;background:${p.color}" data-target="${pct}"></div>
+</div>
+<p class="text-muted text-xs leading-relaxed">${p.desc}</p>
+`;
+pillarContainer.appendChild(card);
+});
+
+// Domain bars
+const barsContainer = document.getElementById('domain-bars');
+barsContainer.innerHTML = '';
+DOMAINS.forEach((domain, i) => {
+const pct = getDomainPct(i);
+const pillar = PILLARS[domain.pillar];
+const bar = document.createElement('div');
+bar.className = 'bg-white rounded-xl p-4 shadow-sm';
+bar.innerHTML = `
+<div class="flex items-center justify-between mb-2">
+<div>
+<span class="text-dark font-semibold text-sm">${domain.name}</span>
+<span class="ml-2 text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full" style="background:${pillar.color}22;color:${pillar.color}">${pillar.label}</span>
+</div>
+<span class="text-dark font-bold text-sm">${pct}%</span>
+</div>
+<div class="w-full h-2 bg-gray-100 rounded-full">
+<div class="h-full rounded-full domain-bar-fill" style="width:0%;background:${pillar.color}" data-target="${pct}"></div>
+</div>
+`;
+barsContainer.appendChild(bar);
+});
+
+// Insight cards
+const insightContainer = document.getElementById('insight-cards');
+insightContainer.innerHTML = '';
+DOMAINS.forEach((domain, i) => {
+const pct = getDomainPct(i);
+const pillar = PILLARS[domain.pillar];
+const isHigh = pct >= 60;
+const card = document.createElement('div');
+card.className = 'bg-dark-card border border-white/5 rounded-xl p-6';
+card.innerHTML = `
+<div class="flex items-center gap-3 mb-3">
+<div class="w-8 h-8 rounded-full flex items-center justify-center" style="background:${pillar.color}22">
+<span class="text-xs font-bold" style="color:${pillar.color}">${pct}%</span>
+</div>
+<div>
+<p class="text-white font-semibold text-sm">${domain.name}</p>
+<p class="text-[10px] font-semibold tracking-wider uppercase" style="color:${pillar.color}">${pillar.label}</p>
+</div>
+</div>
+<p class="text-muted text-sm leading-relaxed">${isHigh ? domain.insightHigh : domain.insightLow}</p>
+`;
+insightContainer.appendChild(card);
+});
+
+// Animate bars after a short delay
+setTimeout(() => {
+document.querySelectorAll('.domain-bar-fill').forEach(bar => {
+bar.style.width = bar.dataset.target + '%';
+});
+}, 400);
+
+if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+</script>
+
+
+
+</body></html>

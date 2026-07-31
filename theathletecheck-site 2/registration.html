@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Registration — IronMind Elite Student Athletes | The Athlete Check</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#040B14',
+              secondary: '#071525',
+              card: '#0A1929',
+              accent: '#1A8FE3',
+              bright: '#00B4FF',
+              deepnavy: '#020810',
+              muted: '#94a3b8',
+              lighttext: '#e2e8f0',
+            },
+            fontFamily: {
+              display: ['"Bebas Neue"', 'sans-serif'],
+              body: ['"Inter"', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://unpkg.com/lucide@latest" defer=""></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+    <style>
+      :root {
+        --primary-bg: #040B14;
+        --secondary-bg: #071525;
+        --card-bg: #0A1929;
+        --accent: #1A8FE3;
+        --bright: #00B4FF;
+        --deep-navy: #020810;
+        --muted: #94a3b8;
+        --light-text: #e2e8f0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--primary-bg);
+        color: #ffffff;
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+      }
+
+      .font-display {
+        font-family: 'Bebas Neue', sans-serif;
+      }
+
+      .font-body {
+        font-family: 'Inter', sans-serif;
+      }
+
+      /* Hero grid overlay */
+      .hero-grid {
+        background-image:
+          linear-gradient(rgba(26,143,227,0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(26,143,227,0.05) 1px, transparent 1px);
+        background-size: 80px 80px;
+      }
+
+      /* Logo glow */
+      .logo-glow {
+        filter: drop-shadow(0 0 40px rgba(26,143,227,0.35));
+      }
+
+      /* Fade-up animation */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      }
+
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Scroll arrow bounce */
+      @keyframes bounce-arrow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(12px); }
+      }
+
+      .scroll-arrow {
+        animation: bounce-arrow 2s ease-in-out infinite;
+      }
+
+      /* CTA hover lift */
+      .cta-btn {
+        transition: filter 0.2s ease, transform 0.2s ease;
+      }
+
+      .cta-btn:hover {
+        filter: brightness(1.15);
+        transform: translateY(-2px);
+      }
+
+      /* Nav link hover */
+      .nav-link {
+        transition: color 0.2s ease;
+      }
+
+      .nav-link:hover {
+        color: var(--accent) !important;
+      }
+
+      /* Card hover */
+      .pillar-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .pillar-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(26,143,227,0.15);
+      }
+
+      /* Blue top border on cards */
+      .blue-top-border {
+        border-top: 3px solid var(--accent);
+      }
+
+      /* Avatar circle */
+      .avatar-circle {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 2rem;
+        color: #fff;
+        margin: 0 auto 1.25rem;
+      }
+
+      /* Blue HR */
+      .blue-hr {
+        width: 60px;
+        height: 2px;
+        background: var(--accent);
+        border: none;
+        margin: 1rem auto;
+      }
+
+      /* Quote marks */
+      .quote-statement::before {
+        content: '\201C';
+        font-size: 2em;
+        line-height: 0;
+        vertical-align: -0.25em;
+        margin-right: 0.1em;
+        opacity: 0.5;
+      }
+
+      .quote-statement::after {
+        content: '\201D';
+        font-size: 2em;
+        line-height: 0;
+        vertical-align: -0.25em;
+        margin-left: 0.1em;
+        opacity: 0.5;
+      }
+    </style>
+<style>
+.reg-hero{background:radial-gradient(circle at 50% 25%, #0b1726 0%, #040B14 70%);text-align:center;padding:80px 24px 70px}
+.reg-hero img{max-width:340px;width:70%;margin:0 auto 10px;filter:drop-shadow(0 0 45px rgba(26,143,227,.35))}
+.reg-h1{font-family:'Bebas Neue',sans-serif;line-height:.95;letter-spacing:.04em;font-size:clamp(3.4rem,9vw,6rem);margin:6px 0 22px;color:#fff}
+.reg-h1 .b{color:#1A8FE3}
+.reg-sub{max-width:520px;margin:0 auto 22px;font-size:1.05rem;line-height:1.75;color:#e2e8f0}
+.reg-rule{width:60px;height:2px;background:#1A8FE3;border:none;margin:0 auto 22px}
+.reg-tag{font-style:italic;color:#94a3b8;font-size:1.05rem;margin-bottom:30px}
+.reg-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.reg-pill{font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:.95rem;padding:8px 22px;border-radius:999px;color:#fff}
+.reg-pill.s{background:#1A8FE3}.reg-pill.o{border:1.5px solid #1A8FE3;color:#1A8FE3}
+.reg-sec{padding:70px 28px;max-width:900px;margin:0 auto}
+.reg-ol{font-family:'Bebas Neue',sans-serif;color:#1A8FE3;font-size:1rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:30px;display:block}
+.reg-about{display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap}
+.reg-about .tx{flex:1;min-width:260px;font-size:1.05rem;line-height:1.85}
+.reg-about .tx .em{color:#fff;font-weight:600}.reg-about .tx .ac{color:#1A8FE3;font-weight:600}
+.reg-stat{width:250px;background:#0A1929;border-top:3px solid #1A8FE3;border-radius:8px;padding:26px;display:flex;flex-direction:column;gap:16px}
+.reg-stat .row{display:flex;align-items:baseline;gap:16px}
+.reg-stat .n{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:#00B4FF;line-height:1}
+.reg-stat .l{font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#94a3b8}
+.reg-stat .dv{height:1px;background:rgba(26,143,227,.18)}
+.reg-pil{display:flex;flex-direction:column;gap:14px}
+.reg-pcard{background:#0A1929;border-left:3px solid #1A8FE3;border-radius:6px;padding:18px 24px;display:flex;gap:20px;align-items:flex-start}
+.reg-pcard .nn{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:#1A8FE3;line-height:1}
+.reg-pcard h3{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.12em;color:#fff}
+.reg-pcard p{font-size:.9rem;color:#94a3b8;margin-top:4px}
+.reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.reg-ecard{background:#0A1929;border-top:3px solid #1A8FE3;border-radius:8px;padding:26px}
+.reg-ecard .ic{font-size:1.7rem;margin-bottom:12px}
+.reg-ecard h3{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.12em;color:#1A8FE3;margin-bottom:8px}
+.reg-ecard p{font-size:.9rem;color:#94a3b8;line-height:1.65}
+.reg-checks{display:flex;flex-direction:column;gap:18px;max-width:640px}
+.reg-check{display:flex;gap:16px;align-items:flex-start;font-size:1.05rem;line-height:1.7}
+.reg-cbox{flex-shrink:0;width:24px;height:24px;margin-top:3px;border-radius:5px;background:#1A8FE3;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px}
+.reg-cities{background:linear-gradient(135deg,#1A8FE3,#0d6abf);padding:22px 16px;text-align:center;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px}
+.reg-cities .c{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.2em;color:#fff}.reg-cities .sp{color:rgba(255,255,255,.55)}
+.reg-cta{text-align:center;padding:80px 28px;background:radial-gradient(circle at 50% 60%, #0b1726 0%, #040B14 70%)}
+.reg-cta h2{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;font-size:clamp(2.8rem,7vw,4.4rem);margin:26px 0 22px;color:#fff}
+.reg-cta h2 .b{color:#1A8FE3}
+.reg-cta .bd{max-width:540px;margin:0 auto 26px;font-size:1.05rem;line-height:1.8;color:#e2e8f0}.reg-cta .bd .em{color:#fff;font-weight:700}
+.reg-cta .sig{font-size:.95rem;font-weight:500;letter-spacing:.04em;color:#e2e8f0;margin-bottom:16px}
+.reg-cta .cr{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#64748b}
+@media(max-width:680px){.reg-about{flex-direction:column}.reg-stat{width:100%}.reg-grid{grid-template-columns:1fr}}
+</style></head>
+<body data-id="0">
+    <app-icon data-id="1" hidden="" data-icon="activity" data-palette="Blue"></app-icon>
+
+    <!-- ===== STICKY NAVIGATION ===== -->
+    <nav data-id="2" id="navbar-a1b2" class="fixed top-0 left-0 w-full z-50" style="background: rgba(4, 11, 20, 0.96); border-bottom: 1px solid rgba(26,143,227,0.2);">
+      <div data-id="3" class="max-w-7xl mx-auto flex items-center justify-between px-5 py-3">
+        <!-- Logo -->
+        <a class="flex-shrink-0" data-id="4" href="/">
+          <img data-id="5" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo" style="height: 44px;" class="w-auto" id="nav-logo-c3d4">
+        </a>
+
+        <!-- Desktop Nav -->
+        <div data-id="6" class="hidden md:flex items-center gap-8" id="desktop-nav-e5f6">
+          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="7" href="/registration" style="color: rgb(26, 143, 227);">REGISTRATION</a><a class="nav-link font-display text-white tracking-widest text-lg" data-id="7" href="/about">ABOUT</a>
+          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="8" href="/assessment">ASSESSMENT</a>
+          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="9" href="/advocate">ADVOCATE</a>
+          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="9a" href="/coaches">COACHES/ADS</a>
+          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="9b" href="/courses">COURSES</a>
+          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="9c" href="/proudmoment">PROUD MOMENT</a>
+          <a class="cta-btn font-display tracking-widest text-white text-base px-6 py-2 rounded" data-id="10" href="/assessment" id="nav-cta-g7h8" style="background: #1A8FE3; letter-spacing: 0.1em;">TAKE THE CHECK</a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button data-id="11" id="mobile-menu-btn-i9j0" class="md:hidden p-2 text-white" aria-label="Open menu">
+          <i data-id="12" data-lucide="menu" class="w-7 h-7"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Nav -->
+      <div data-id="13" id="mobile-menu-k1l2" class="hidden fixed inset-0 z-50 flex flex-col" style="background: rgba(4, 11, 20, 0.99);">
+        <div data-id="14" class="flex items-center justify-between px-5 py-3" style="border-bottom: 1px solid rgba(26,143,227,0.2);">
+          <img data-id="15" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo" style="height: 44px;" class="w-auto">
+          <button data-id="16" id="mobile-menu-close-m3n4" class="p-2 text-white" aria-label="Close menu">
+            <i data-id="17" data-lucide="x" class="w-7 h-7"></i>
+          </button>
+        </div>
+        <div data-id="18" class="flex flex-col items-center justify-center flex-1 gap-8">
+          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="19" href="/registration" style="color: rgb(26, 143, 227);">REGISTRATION</a><a class="nav-link font-display text-white tracking-widest text-3xl" data-id="19" href="/about">ABOUT</a>
+          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="20" href="/assessment">ASSESSMENT</a>
+          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="21" href="/advocate">ADVOCATE</a>
+          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="21a" href="/coaches">COACHES/ADS</a>
+          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="21b" href="/courses">COURSES</a>
+          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="21c" href="/proudmoment">PROUD MOMENT</a>
+          <a class="cta-btn font-display tracking-widest text-white text-xl px-8 py-3 rounded mt-4" data-id="22" href="/assessment" style="background: #1A8FE3; letter-spacing: 0.1em;">TAKE THE CHECK</a>
+        </div>
+      </div>
+    </nav>
+
+    <main data-id="23" data-reg="1">
+<section class="reg-hero" style="background-color:#040B14">
+  <img src="images/ironmind-elite-logo.jpeg" alt="IronMind Elite">
+  <h1 class="reg-h1">TWO SPOTS. <span class="b">ONE SEASON.</span></h1>
+  <p class="reg-sub">The IronMind Elite Student Athletes Program is now accepting applications for 2 exclusive slots.</p>
+  <hr class="reg-rule">
+  <p class="reg-tag">“Identity first. Everything else follows.”</p>
+  <div class="reg-pills"><span class="reg-pill s">2026 PROGRAM</span><span class="reg-pill o">INVITATION-ONLY</span></div>
+</section>
+<section class="reg-sec"><span class="reg-ol">About the Program</span>
+  <div class="reg-about">
+    <p class="tx">This is not a training program. IronMind offers you something far more rare — <span class="ac">direct, one-on-one access to Kenny Stoddart</span> across four cities, four months, and five pillars of elite development. Most programs have cohorts. This one has two athletes. <span class="em">You and one other. That's it.</span></p>
+    <div class="reg-stat">
+      <div class="row"><span class="n">2</span><span class="l">Athletes Selected</span></div><div class="dv"></div>
+      <div class="row"><span class="n">4</span><span class="l">Program Cities</span></div><div class="dv"></div>
+      <div class="row"><span class="n">5</span><span class="l">Core Development Pillars</span></div>
+    </div>
+  </div>
+</section>
+<section class="reg-sec" style="padding-top:0"><span class="reg-ol">The IronMind Standard</span>
+  <div class="reg-pil">
+    <div class="reg-pcard"><span class="nn">01</span><div><h3>IDENTITY</h3><p>Know who you are before anyone defines you.</p></div></div>
+    <div class="reg-pcard"><span class="nn">02</span><div><h3>LEADERSHIP</h3><p>Lead through character, not position.</p></div></div>
+    <div class="reg-pcard"><span class="nn">03</span><div><h3>COMMUNICATION</h3><p>Speak and write at an elite level in every context.</p></div></div>
+    <div class="reg-pcard"><span class="nn">04</span><div><h3>OPERATIONAL EXCELLENCE</h3><p>Do the details right, every time, when no one is watching.</p></div></div>
+    <div class="reg-pcard"><span class="nn">05</span><div><h3>FOUNDER-LEVEL THINKING</h3><p>Own the outcome. See the whole picture.</p></div></div>
+  </div>
+</section>
+<section class="reg-sec" style="padding-top:0"><span class="reg-ol">What You'll Do</span>
+  <div class="reg-grid">
+    <div class="reg-ecard"><div class="ic">🏙️</div><h3>FOUR-CITY TOUR</h3><p>Charleston · Charlotte · Jacksonville · Atlanta</p></div>
+    <div class="reg-ecard"><div class="ic">🤝</div><h3>DIRECT FOUNDER ACCESS</h3><p>Weekly 1-on-1 development conversations with Kenny Stoddart.</p></div>
+    <div class="reg-ecard"><div class="ic">📋</div><h3>REAL DELIVERABLES</h3><p>Weekly journals, action reports, event pre/post briefs.</p></div>
+    <div class="reg-ecard"><div class="ic">🏆</div><h3>CAPSTONE PRESENTATION</h3><p>A live strategic recommendation delivered in Atlanta.</p></div>
+  </div>
+</section>
+<section class="reg-sec" style="padding-top:0"><span class="reg-ol">Are You the One?</span>
+  <div class="reg-checks">
+    <div class="reg-check"><span class="reg-cbox">✓</span><span>You are a student athlete who wants more than athletic performance.</span></div>
+    <div class="reg-check"><span class="reg-cbox">✓</span><span>You lead from identity, not from position.</span></div>
+    <div class="reg-check"><span class="reg-cbox">✓</span><span>You are ready to be pushed, stretched, and held to a standard you haven't reached yet.</span></div>
+  </div>
+</section>
+<section class="reg-cities">
+  <span class="c">CHARLESTON, SC</span><span class="sp">|</span><span class="c">CHARLOTTE, NC</span><span class="sp">|</span><span class="c">JACKSONVILLE, FL</span><span class="sp">|</span><span class="c">ATLANTA, GA</span>
+</section>
+<section class="reg-cta">
+  <hr class="reg-rule">
+  <h2>ONLY <span class="b">2 SPOTS</span> AVAILABLE.</h2>
+  <p class="bd">Selection is made at the sole discretion of Kenny Stoddart. There is no application. There is an invitation. If you believe you belong in this room — <span class="em">make that known.</span></p>
+  <p class="sig">IronMind Advisors, LLC — Kenny Stoddart, Founder &amp; Principal Advisor</p>
+  <p class="cr">© 2026 IronMind Advisors, LLC. All Rights Reserved. Confidential.</p>
+</section></main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer data-id="80" id="footer-o2p3" class="text-center" style="background: #020810; padding: 60px 20px 40px;">
+      <div data-id="81" class="max-w-4xl mx-auto">
+        <!-- Footer Logo -->
+        <img data-id="82" src="images/theathletecheck-logo.png" alt="The Athlete Check" class="mx-auto mb-6" style="height: 60px;" id="footer-logo-q4r5">
+
+        <!-- Footer Nav -->
+        <div data-id="83" class="flex items-center justify-center gap-2 mb-6 font-body text-sm" id="footer-nav-s6t7">
+          <a class="nav-link" data-id="84" href="/registration" style="color: rgb(26, 143, 227);">REGISTRATION</a><a class="nav-link" data-id="84" href="/about" style="color: #94a3b8;">About</a>
+          <span data-id="85" style="color: #94a3b8;">·</span>
+          <a class="nav-link" data-id="86" href="/assessment" style="color: #94a3b8;">Assessment</a>
+          <span data-id="87" style="color: #94a3b8;">·</span>
+          <a class="nav-link" data-id="88" href="/advocate" style="color: #94a3b8;">Advocate</a>
+        </div>
+
+        <!-- Taglines -->
+        <p data-id="89" class="font-display tracking-[0.15em] text-sm mb-1" style="color: #94a3b8;" id="footer-tagline1-u8v9">TEST. TRAIN. TRANSFORM.</p>
+        <p data-id="90" class="font-display tracking-[0.1em] text-xs mb-6" style="color: #94a3b8;" id="footer-tagline2-w0x1">POWERED BY IRONMIND · BUILT FOR MORE</p>
+
+        <!-- Copyright -->
+        <p data-id="91" class="font-body text-xs mb-2" style="color: #64748b;" id="footer-copy-y2z3">© 2026 The Athlete Check · AthleteCheck.com · All Rights Reserved</p>
+        <p data-id="92" class="font-body text-xs" style="color: #475569;" id="footer-founders-a4b5">Founded by Luke Stenson &amp; Wyatt Porch</p>
+
+        <p data-id="93" class="font-body text-xs mt-6" style="color: #334155;">Made by Copilot</p>
+      </div>
+    </footer>
+
+    <script>
+      // ===== Lucide Icons (progressive enhancement) =====
+      // The lucide library is loaded with `defer`, so it is not available yet
+      // when this inline script first runs. Wait for DOMContentLoaded (which
+      // fires after deferred scripts have executed) before rendering icons,
+      // otherwise icons such as the mobile menu button never appear.
+      function tacRenderIcons() {
+        if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
+          lucide.createIcons();
+        }
+      }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", tacRenderIcons);
+      } else {
+        tacRenderIcons();
+      }
+
+      // ===== Mobile Menu Toggle =====
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn-i9j0');
+      const mobileMenu = document.getElementById('mobile-menu-k1l2');
+      const mobileMenuClose = document.getElementById('mobile-menu-close-m3n4');
+
+      if (mobileMenuBtn && mobileMenu && mobileMenuClose) {
+        mobileMenuBtn.addEventListener('click', function() {
+          mobileMenu.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+          document.body.style.overflow = '';
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(function(link) {
+          link.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+
+      // ===== Navbar background on scroll =====
+      const navbar = document.getElementById('navbar-a1b2');
+      if (navbar) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 80) {
+            navbar.style.background = 'rgba(4, 11, 20, 0.99)';
+          } else {
+            navbar.style.background = 'rgba(4, 11, 20, 0.96)';
+          }
+        });
+      }
+
+      // ===== Scroll-triggered fade-up animations =====
+      const fadeUpElements = document.querySelectorAll('.fade-up');
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -60px 0px',
+        threshold: 0.1,
+      };
+
+      const fadeUpObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            const delay = parseInt(entry.target.getAttribute('data-delay') || '0', 10);
+            setTimeout(function() {
+              entry.target.classList.add('visible');
+            }, delay);
+            fadeUpObserver.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      fadeUpElements.forEach(function(el) {
+        fadeUpObserver.observe(el);
+      });
+
+      // ===== Smooth scroll for scroll arrow =====
+      const scrollArrow = document.getElementById('scroll-arrow-y5z6');
+      if (scrollArrow) {
+        scrollArrow.addEventListener('click', function() {
+          const missionSection = document.getElementById('mission-a2b3');
+          if (missionSection) {
+            missionSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+        scrollArrow.style.cursor = 'pointer';
+      }
+    </script>
+
+</body></html>

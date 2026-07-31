@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IronMind Mentality</title>
+<style>
+:root {
+--ink: #02081f;
+--muted: #586273;
+--line: #c9d8f2;
+--panel: #ffffff;
+--page: #f6f9ff;
+--brand: #0047c7;
+--brand-dark: #000a2e;
+--brand-mid: #063a9d;
+--accent: #008cff;
+--accent-light: #e7f3ff;
+}
+
+* {
+box-sizing: border-box;
+}
+
+body {
+margin: 0;
+background: var(--page);
+color: var(--ink);
+font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+line-height: 1.55;
+}
+
+a {
+color: var(--brand);
+font-weight: 700;
+text-decoration: none;
+}
+
+a:hover {
+text-decoration: underline;
+}
+
+.wrap {
+width: min(1120px, calc(100% - 32px));
+margin: 0 auto;
+}
+
+.hero {
+background:
+linear-gradient(135deg, rgba(0, 10, 46, 0.96), rgba(0, 71, 199, 0.86) 58%, rgba(0, 140, 255, 0.78)),
+radial-gradient(circle at 86% 20%, rgba(255, 255, 255, 0.28), transparent 28%);
+background-position: center;
+background-size: cover;
+color: #fff;
+padding: 72px 0 56px;
+}
+
+.hero img {
+width: min(460px, 100%);
+height: auto;
+margin-bottom: 32px;
+border-radius: 8px;
+box-shadow: 0 22px 48px rgba(0, 8, 38, 0.3);
+}
+
+.hero h1 {
+max-width: 760px;
+margin: 0;
+font-size: clamp(42px, 8vw, 84px);
+line-height: 0.95;
+letter-spacing: 0;
+}
+
+.hero p {
+max-width: 680px;
+margin: 22px 0 0;
+color: rgba(255, 255, 255, 0.88);
+font-size: 20px;
+}
+
+.actions {
+display: flex;
+flex-wrap: wrap;
+gap: 12px;
+margin-top: 30px;
+}
+
+.button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-height: 46px;
+padding: 0 18px;
+border: 1px solid rgba(255, 255, 255, 0.35);
+border-radius: 6px;
+background: #fff;
+color: var(--brand-dark);
+font-weight: 800;
+}
+
+.button.secondary {
+background: transparent;
+color: #fff;
+}
+
+.button:hover {
+background: var(--accent-light);
+text-decoration: none;
+}
+
+.button.secondary:hover {
+background: rgba(255, 255, 255, 0.12);
+}
+
+section {
+padding: 46px 0;
+}
+
+h2 {
+margin: 0 0 14px;
+color: var(--brand-dark);
+font-size: 30px;
+line-height: 1.15;
+}
+
+.lede {
+max-width: 840px;
+margin: 0;
+color: var(--muted);
+font-size: 18px;
+}
+
+.comparison {
+width: 100%;
+margin-top: 22px;
+border-collapse: collapse;
+overflow: hidden;
+background: var(--panel);
+border: 1px solid var(--line);
+box-shadow: 0 14px 34px rgba(0, 10, 46, 0.07);
+}
+
+.comparison th,
+.comparison td {
+padding: 16px;
+border-bottom: 1px solid var(--line);
+text-align: left;
+vertical-align: top;
+}
+
+.comparison th {
+background: var(--brand-dark);
+color: #fff;
+font-size: 14px;
+text-transform: uppercase;
+letter-spacing: 0.04em;
+}
+
+.comparison tr:last-child td {
+border-bottom: 0;
+}
+
+.paths {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 18px;
+margin-top: 24px;
+}
+
+.card {
+min-height: 100%;
+padding: 22px;
+border: 1px solid var(--line);
+border-radius: 8px;
+background: var(--panel);
+box-shadow: 0 12px 26px rgba(0, 10, 46, 0.08);
+}
+
+.card strong {
+display: block;
+margin-bottom: 8px;
+color: var(--brand-mid);
+font-size: 18px;
+}
+
+.price {
+color: var(--accent);
+font-size: 28px;
+font-weight: 900;
+}
+
+.tag {
+display: inline-block;
+margin: 12px 0;
+padding: 4px 9px;
+border-radius: 999px;
+background: var(--accent-light);
+color: var(--brand-dark);
+font-size: 13px;
+font-weight: 800;
+}
+
+ul {
+padding-left: 20px;
+}
+
+@media (max-width: 820px) {
+.paths {
+grid-template-columns: 1fr;
+}
+
+.comparison {
+display: block;
+overflow-x: auto;
+}
+}
+</style>
+<!-- ===== SHARED SITE HEADER (self-contained: scoped classes, no Tailwind required) ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap">
+<style>
+/* Mirrors the homepage nav exactly. Every property is declared explicitly so the
+   header renders identically on pages that do not load Tailwind or its reset. */
+.tac-navbar,.tac-navbar *,.tac-navbar *::before,.tac-navbar *::after{box-sizing:border-box}
+.tac-navbar{position:fixed;top:0;left:0;right:auto;bottom:auto;width:100%;z-index:1000;margin:0;padding:0;background:rgba(4, 11, 20, 0.96);border:0;border-bottom:1px solid rgba(26,143,227,0.2);box-shadow:none;backdrop-filter:none;text-align:left;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-nav-inner{width:100%;max-width:80rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:0;padding:0.75rem 1.25rem}
+.tac-nav-brand{flex:0 0 auto;display:block;padding:0;margin:0;border:0;background:none;line-height:0;text-decoration:none}
+.tac-nav-logo{display:block;height:44px;width:auto;max-width:none;min-width:0;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none;object-fit:contain}
+.tac-nav-links{display:none;align-items:center;gap:2rem}
+.tac-nav-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-style:normal;font-size:1.125rem;line-height:1.75rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-nav-link:hover{color:#1A8FE3;text-decoration:none}
+.tac-nav-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1rem;line-height:1.5rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.5rem 1.5rem;margin:0;border:0;border-radius:0.25rem;box-shadow:none;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-nav-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
+.tac-nav-toggle,.tac-nav-close{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;width:auto;height:auto;padding:0.5rem;margin:0;background:none;border:0;border-radius:0;color:#ffffff;cursor:pointer;line-height:0;-webkit-appearance:none;appearance:none}
+.tac-nav-toggle svg,.tac-nav-close svg{display:block;width:28px;height:28px}
+.tac-mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1001;flex-direction:column;background:rgba(4, 11, 20, 0.99);font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-mobile-menu.tac-open{display:flex}
+.tac-mobile-top{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid rgba(26,143,227,0.2)}
+.tac-mobile-links{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1 1 0%;gap:2rem;padding:0;margin:0}
+.tac-mobile-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.875rem;line-height:2.25rem;letter-spacing:0.1em;text-transform:none;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-mobile-link:hover{color:#1A8FE3;text-decoration:none}
+.tac-mobile-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.25rem;line-height:1.75rem;letter-spacing:0.1em;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.75rem 2rem;margin:1rem 0 0;border:0;border-radius:0.25rem;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-mobile-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
+@media (min-width:768px){
+  .tac-nav-links{display:flex}
+  .tac-nav-toggle{display:none}
+}
+/* Keeps page content clear of the fixed header (44px logo + 2x12px padding + 1px border). */
+body.tac-nav-offset{padding-top:69px}
+</style>
+</head>
+<body class="tac-nav-offset">
+<!-- ===== SHARED SITE HEADER ===== -->
+<nav class="tac-navbar" id="tac-navbar">
+  <div class="tac-nav-inner">
+    <a class="tac-nav-brand" href="/">
+      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+    </a>
+    <div class="tac-nav-links">
+      <a class="tac-nav-link" href="/registration">REGISTRATION</a><a class="tac-nav-link" href="/about">ABOUT</a>
+      <a class="tac-nav-link" href="/assessment">ASSESSMENT</a>
+      <a class="tac-nav-link" href="/advocate">ADVOCATE</a>
+      <a class="tac-nav-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-nav-link" href="/courses">COURSES</a>
+      <a class="tac-nav-link" href="/proudmoment">PROUD MOMENT</a>
+      <a class="tac-nav-cta" href="/assessment">TAKE THE CHECK</a>
+    </div>
+    <button class="tac-nav-toggle" id="tac-nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="tac-mobile-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="tac-mobile-menu" id="tac-mobile-menu">
+    <div class="tac-mobile-top">
+      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+      <button class="tac-nav-close" id="tac-nav-close" type="button" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+    </div>
+    <div class="tac-mobile-links">
+      <a class="tac-mobile-link" href="/registration">REGISTRATION</a><a class="tac-mobile-link" href="/about">ABOUT</a>
+      <a class="tac-mobile-link" href="/assessment">ASSESSMENT</a>
+      <a class="tac-mobile-link" href="/advocate">ADVOCATE</a>
+      <a class="tac-mobile-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-mobile-link" href="/courses">COURSES</a>
+      <a class="tac-mobile-link" href="/proudmoment">PROUD MOMENT</a>
+      <a class="tac-mobile-cta" href="/assessment">TAKE THE CHECK</a>
+    </div>
+  </div>
+</nav>
+<script>
+/* Shared site header: mobile menu toggle + scroll background, self-contained. */
+(function () {
+  var toggle = document.getElementById('tac-nav-toggle');
+  var menu = document.getElementById('tac-mobile-menu');
+  var closeBtn = document.getElementById('tac-nav-close');
+
+  if (toggle && menu && closeBtn) {
+    var openMenu = function () {
+      menu.classList.add('tac-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+    var closeMenu = function () {
+      menu.classList.remove('tac-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    toggle.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    Array.prototype.forEach.call(menu.querySelectorAll('a'), function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  var bar = document.getElementById('tac-navbar');
+  if (bar) {
+    window.addEventListener('scroll', function () {
+      bar.style.background = window.scrollY > 80 ? 'rgba(4, 11, 20, 0.99)' : 'rgba(4, 11, 20, 0.96)';
+    });
+  }
+})();
+</script>
+<header class="hero">
+<div class="wrap">
+<img src="images/the-athlete-check-logo.jpeg" alt="The Athlete Check">
+<h1>IronMind Mentality</h1>
+<p>Build the mind. Build the career. Build the athlete. Online courses built for student-athletes who are serious about winning in sports and in life.</p>
+<div class="actions">
+<a class="button" href="#courses">View Courses</a>
+<a class="button secondary" href="/about">More Information</a>
+</div>
+</div>
+</header>
+
+<main>
+<section>
+<div class="wrap">
+<h2>What Is The IronMind Mentality?</h2>
+<p class="lede">The IronMind Mentality is the belief that elite mental strength, professional readiness, and athletic excellence are forged through consistent habits and an unshakeable identity. It is not motivation. It is practice.</p>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>Quick Comparison</h2>
+<table class="comparison">
+<thead>
+<tr>
+<th>Plan</th>
+<th>Student Athletes</th>
+<th>Parents</th>
+<th>Gift Card</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price</td>
+<td>$197</td>
+<td>$297</td>
+<td>$20</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>8-week course</td>
+<td>Downloadable guide</td>
+<td>Gift card</td>
+</tr>
+<tr>
+<td>Depth</td>
+<td>Full deep dive</td>
+<td>Parent playbook</td>
+<td>Instant access</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="courses">
+<div class="wrap">
+<h2>Choose Your Path</h2>
+<p class="lede">Every tier is built on the same IronMind framework. Pick the depth that matches your commitment.</p>
+
+<div class="paths">
+<article class="card">
+<strong>IronMind for Student Athletes</strong>
+<div class="price">$197</div>
+<span class="tag">8 weeks | Flagship course</span>
+<p>The complete IronMind Mentality experience: 3 phases, 8 weeks, and a progressive path from athlete to professional.</p>
+<ul>
+<li>Identity and habit systems</li>
+<li>Mental strength and performance routines</li>
+<li>AI fluency, networking, and personal brand building</li>
+</ul>
+<a href="https://kstoddart.gumroad.com/l/ironmind-student-athletes">Enroll in the course</a>
+</article>
+
+<article class="card">
+<strong>IronMind for Parents</strong>
+<div class="price">$297</div>
+<span class="tag">Downloadable guide</span>
+<p>A parent playbook for understanding, supporting, and empowering a student-athlete through the IronMind journey.</p>
+<ul>
+<li>Athletic identity and pressure</li>
+<li>Language to reinforce growth at home</li>
+<li>A 30-day parent action plan</li>
+</ul>
+</article>
+
+<article class="card">
+<strong>Gift Card</strong>
+<div class="price">$20</div>
+<span class="tag">Instant access</span>
+<p>A simple way to help a student-athlete or parent start building the IronMind Mentality.</p>
+</article>
+</div>
+</div>
+</section>
+</main>
+
+
+
+</body></html>
