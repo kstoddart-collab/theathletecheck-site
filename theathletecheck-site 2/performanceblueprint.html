@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Performance Blueprint | IronMind for Student-Athletes — The Athlete Check</title>
+<meta name="description" content="The IronMind Student-Athlete Development &amp; Performance Blueprint: a mental conditioning system for coaches and athletic directors. 5-step program deployment, 3 certification phases, and a 12-point accountability rubric.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://www.theathletecheck.com/performanceblueprint">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Athlete Check">
+<meta property="og:title" content="IronMind Student-Athlete Performance Blueprint">
+<meta property="og:description" content="90% of in-game breakdowns are cognitive, not physical. Here is the system that trains the other 90% — built to drop into your season with zero disruption.">
+<meta property="og:url" content="https://www.theathletecheck.com/performanceblueprint">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0A0F1E">
+<style>
+:root{
+  --ink:#0A0F1A; --ink2:#3A4657; --ink3:#6B7A8D;
+  --line:#DFE5EC; --surface:#FFFFFF; --panel:#F4F7FA;
+  --blue:#127CFF; --blue-d:#0A2E63; --blue-m:#1E5FC4; --blue-l:#8FC0FF; --blue-xl:#E6F0FF;
+  --black:#05070C;
+  --good:#1E9E63;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Montserrat,-apple-system,Segoe UI,sans-serif;background:var(--panel);color:var(--ink);
+  -webkit-font-smoothing:antialiased}
+.page{width:100%;max-width:1600px;margin:0 auto;background:var(--surface)}
+.pad{padding:0 clamp(20px,4.5vw,72px)}
+
+/* ---------- header ---------- */
+header{background:var(--black);color:#fff;padding:clamp(28px,4vw,44px) clamp(20px,4.5vw,72px) clamp(28px,3.6vw,40px);position:relative;overflow:hidden}
+header::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(110% 130% at 88% -10%, rgba(18,124,255,.42) 0%, rgba(5,7,12,0) 62%)}
+.hrow{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:40px}
+.imlogo{display:block;background:url(data:image/png;base64,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) left center/contain no-repeat}
+.imlogo-lg{width:clamp(78px,8.1vw,117px);height:clamp(52px,5.4vw,78px)}
+.imlogo-sm{width:clamp(69px,6.6vw,93px);height:clamp(46px,4.4vw,62px)}
+.chip{border:2px solid var(--blue);color:#8FC0FF;font-weight:800;font-size:14px;letter-spacing:.24em;
+  padding:10px 20px;border-radius:100px;white-space:nowrap}
+.hactions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.dl{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;font-weight:800;font-family:inherit;border:0;cursor:pointer;
+  font-size:14px;letter-spacing:.1em;padding:13px 22px;border-radius:100px;white-space:nowrap;
+  transition:background .15s ease}
+.dl:hover{background:#0A62D6}
+.dl:focus-visible{outline:3px solid #8FC0FF;outline-offset:3px}
+/* --- site chrome --- */
+.tacnav{position:sticky;top:0;z-index:50;background:#0A0F1E;border-bottom:2px solid #3B82F6}
+.tacnav .in{max-width:1600px;margin:0 auto;padding:12px clamp(20px,4.5vw,72px);
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.tacnav img{height:40px;display:block}
+.tacnav nav{display:flex;gap:22px;flex-wrap:wrap}
+.tacnav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;transition:color .15s ease}
+.tacnav a:hover,.tacnav a[aria-current="page"]{color:#3B82F6}
+.tacfoot{background:#0A0F1E;border-top:1px solid rgba(255,255,255,.1);
+  padding:26px clamp(20px,4.5vw,72px) 30px;color:#8695A8}
+.tacfoot .in{max-width:1600px;margin:0 auto}
+.tacfoot nav{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:16px}
+.tacfoot a{color:#C4CFDC;text-decoration:none;font-size:13px;font-weight:600}
+.tacfoot a:hover{color:#3B82F6}
+.tacfoot .cr{font-size:12.5px}
+h1{position:relative;z-index:2;font-size:clamp(32px,4.4vw,60px);font-weight:900;letter-spacing:-.025em;line-height:1.02;margin-top:34px}
+h1 span{color:var(--blue)}
+.sub{position:relative;z-index:2;margin-top:18px;font-size:clamp(15px,1.5vw,21px);font-weight:500;color:#9FB0C4;max-width:1150px;line-height:1.45}
+
+/* ---------- hero stat band ---------- */
+.band{display:grid;grid-template-columns:1.35fr 1fr 1fr 1fr;gap:2px;background:var(--line)}
+.tile{background:var(--surface);padding:clamp(22px,2.6vw,38px) clamp(20px,2.4vw,36px)}
+.tile.hero{background:var(--blue);color:#fff}
+.stat{font-size:clamp(46px,5.4vw,80px);font-weight:900;letter-spacing:-.04em;line-height:.9}
+.tile.hero .stat{font-size:clamp(58px,7vw,104px)}
+.tile .stat.sm{font-size:clamp(36px,3.6vw,52px)}
+.tlabel{margin-top:14px;font-size:15px;font-weight:700;letter-spacing:.13em;color:var(--ink3);text-transform:uppercase}
+.tile.hero .tlabel{color:#DCEAFF}
+.tdesc{margin-top:12px;font-size:16px;line-height:1.5;color:var(--ink2);font-weight:500}
+.tile.hero .tdesc{color:#EAF3FF;font-weight:600;font-size:17px}
+
+/* ---------- section shell ---------- */
+section{padding:clamp(38px,4.5vw,62px) 0 8px}
+.shead{display:flex;align-items:baseline;gap:22px;margin-bottom:8px}
+.snum{font-size:15px;font-weight:900;letter-spacing:.2em;color:var(--blue)}
+h2{font-size:clamp(24px,2.9vw,38px);font-weight:900;letter-spacing:-.02em}
+.sdek{margin:12px 0 32px;font-size:clamp(14px,1.35vw,18px);color:var(--ink2);font-weight:500;line-height:1.5;max-width:1100px}
+
+/* ---------- stepper ---------- */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.step{background:var(--panel);border-top:6px solid var(--blue);padding:26px 22px 24px;position:relative;display:flex;flex-direction:column}
+.step .n{font-size:15px;font-weight:900;color:var(--blue);letter-spacing:.16em}
+.step .when{margin-top:4px;font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase}
+.step h3{margin-top:12px;font-size:21px;font-weight:800;line-height:1.2;letter-spacing:-.01em}
+.step ul{margin-top:14px;padding-left:0;list-style:none;flex:1}
+.step li{font-size:14.5px;line-height:1.5;color:var(--ink2);padding-left:16px;position:relative;margin-bottom:9px;font-weight:500}
+.step li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;background:var(--blue-l);border-radius:50%}
+.deliv{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;font-weight:800;
+  color:var(--blue-d);line-height:1.4}
+.deliv em{display:block;font-style:normal;font-size:11px;letter-spacing:.14em;color:var(--ink3);margin-bottom:6px}
+
+/* ---------- phases ---------- */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.phase{border:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden}
+.phase .cap{padding:22px 26px;color:#fff}
+.p1 .cap{background:var(--blue-l);color:var(--blue-d)}
+.p2 .cap{background:var(--blue)}
+.p3 .cap{background:var(--blue-d)}
+.cap .k{font-size:13px;font-weight:900;letter-spacing:.2em;opacity:.85}
+.cap h3{font-size:27px;font-weight:900;letter-spacing:-.015em;margin-top:6px}
+.cap .f{font-size:15px;font-weight:600;margin-top:4px;opacity:.9}
+.phase .body{padding:24px 26px;flex:1}
+.ms{display:flex;gap:14px;margin-bottom:18px}
+.ms .id{flex:0 0 auto;font-size:12px;font-weight:900;color:var(--blue);background:var(--blue-xl);
+  padding:5px 9px;border-radius:4px;letter-spacing:.06em;height:fit-content}
+.ms p{font-size:15px;line-height:1.5;color:var(--ink2);font-weight:500}
+.ms p b{color:var(--ink);font-weight:800}
+.gate{background:var(--black);color:#fff;padding:20px 26px}
+.gate .g{font-size:11.5px;font-weight:900;letter-spacing:.2em;color:var(--blue-l)}
+.gate p{font-size:15px;line-height:1.45;margin-top:8px;font-weight:600}
+
+/* ---------- rhythm ---------- */
+.rhythm{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--line);border:1px solid var(--line)}
+.rcell{background:var(--surface);padding:24px 22px;text-align:left}
+.rcell .day{font-size:12px;font-weight:900;letter-spacing:.16em;color:var(--blue)}
+.rcell h4{font-size:18px;font-weight:800;margin-top:8px;line-height:1.25;letter-spacing:-.01em}
+.rcell p{font-size:14px;color:var(--ink2);margin-top:8px;line-height:1.45;font-weight:500}
+.rcell .t{display:inline-block;margin-top:12px;font-size:11.5px;font-weight:900;letter-spacing:.1em;
+  background:var(--blue-xl);color:var(--blue-d);padding:5px 10px;border-radius:3px}
+
+/* ---------- rubric ---------- */
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;min-width:900px;border-collapse:collapse;font-size:14.5px}
+th,td{text-align:left;vertical-align:top;padding:16px 18px;border:1px solid var(--line)}
+thead th{background:var(--black);color:#fff;font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+thead th.l1{background:#3A4657}
+thead th.l2{background:var(--blue-m)}
+thead th.l3{background:var(--blue)}
+tbody th{background:var(--panel);font-weight:900;font-size:16px;width:250px;letter-spacing:-.01em}
+td{color:var(--ink2);font-weight:500;line-height:1.45}
+td.c1{background:#FBFCFD}
+td.c2{background:#F0F6FF}
+td.c3{background:#DEEBFF;color:var(--ink);font-weight:600}
+.rubnote{margin-top:16px;font-size:15px;font-weight:700;color:var(--ink2)}
+.rubnote b{color:var(--blue-d)}
+
+/* ---------- gets ---------- */
+.gets{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.get{background:var(--panel);padding:28px 24px;border-left:5px solid var(--blue)}
+.get h4{font-size:19px;font-weight:900;line-height:1.2;letter-spacing:-.01em}
+.get p{font-size:14.5px;color:var(--ink2);margin-top:10px;line-height:1.5;font-weight:500}
+
+/* ---------- roi ---------- */
+.roi{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);border:1px solid var(--line)}
+.roi div{background:var(--surface);padding:26px 24px}
+.roi h4{font-size:17px;font-weight:900;line-height:1.25;color:var(--blue-d)}
+.roi p{font-size:14px;color:var(--ink2);margin-top:9px;line-height:1.5;font-weight:500}
+
+/* ---------- footer ---------- */
+footer{background:var(--black);color:#fff;margin-top:clamp(40px,5vw,64px);padding:clamp(34px,4.5vw,52px) clamp(20px,4.5vw,72px) clamp(30px,4vw,46px);position:relative;overflow:hidden}
+footer::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(100% 140% at 85% 0%, rgba(18,124,255,.36) 0%, rgba(5,7,12,0) 62%)}
+.fin{position:relative;z-index:2}
+footer h2{font-size:clamp(24px,2.7vw,34px);margin-bottom:26px}
+.next{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.nx{border-top:4px solid var(--blue);padding-top:18px}
+.nx .n{font-size:13px;font-weight:900;letter-spacing:.2em;color:var(--blue-l)}
+.nx h4{font-size:21px;font-weight:800;margin-top:8px}
+.nx p{font-size:14.5px;color:#9FB0C4;margin-top:8px;line-height:1.5;font-weight:500}
+.flock{margin-top:44px;padding-top:26px;border-top:1px solid rgba(255,255,255,.14);
+  display:flex;align-items:center;justify-content:space-between;gap:30px}
+
+.flock .tg{text-align:right;font-size:13.5px;font-weight:900;letter-spacing:.16em}
+.flock .tg span{color:var(--blue)}
+.flock .tg em{display:block;font-style:normal;font-weight:600;font-size:12px;letter-spacing:.12em;
+  color:#7D8B9E;margin-top:7px}
+
+@media (max-width:1200px){
+  .band{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .phases{grid-template-columns:1fr}
+  .rhythm{grid-template-columns:repeat(2,1fr)}
+  .gets,.roi{grid-template-columns:repeat(2,1fr)}
+  .next{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .band{grid-template-columns:1fr}
+  .steps,.rhythm,.gets,.roi{grid-template-columns:1fr}
+  .hrow{flex-direction:column;align-items:flex-start;gap:18px}
+  .chip{font-size:11px;letter-spacing:.16em;padding:8px 14px;white-space:normal}
+  .flock{flex-direction:column;align-items:flex-start;gap:20px}
+  .flock .tg{text-align:left;font-size:11.5px;letter-spacing:.1em}
+  .shead{flex-direction:column;gap:6px}
+  tbody th{width:auto}
+  .tacnav nav{gap:14px}
+  .tacnav a{font-size:11px;letter-spacing:.08em}
+}
+@media print{
+  .dl,.tacnav,.tacfoot{display:none}
+  @page{size:letter portrait;margin:0}
+  body{background:#fff}
+  .page{width:100%}
+  section{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="tacnav"><div class="in">
+  <a href="/"><img src="images/athlete-check-official-logo.png" alt="The Athlete Check"></a>
+  <nav>
+    <a href="/">Home</a><a href="/registration">Registration</a><a href="/about">About</a>
+    <a href="/assessment">Assessment</a><a href="/advocate">Advocate</a>
+    <a href="/coaches">Coaches/ADs</a><a href="/courses">Courses</a>
+    <a href="/proudmoment">Proud Moment</a>
+  </nav>
+</div></div>
+<div class="page">
+
+<header>
+  <div class="hrow">
+    <span class="imlogo imlogo-lg" role="img" aria-label="The Athlete Check — An IronMind Company"></span>
+    <div class="hactions">
+      <div class="chip">COACH &amp; ATHLETIC DIRECTOR OVERVIEW</div>
+      <button class="dl" type="button" onclick="window.print()">PRINT / SAVE AS PDF</button>
+    </div>
+  </div>
+  <h1>Student-Athlete Development<br>&amp; Performance <span>Blueprint</span></h1>
+  <div class="sub">A structured mental conditioning system for resilience, tactical self-regulation, and high-performance leadership — built to integrate into your existing season without taking a single minute away from practice.</div>
+</header>
+
+<div class="band">
+  <div class="tile hero">
+    <div class="stat">90%</div>
+    <div class="tlabel">The gap you already see</div>
+    <div class="tdesc">of in-game performance breakdowns are cognitive and emotional — panic, slumps, fear of failure, outbursts, slow resets — not physical.</div>
+  </div>
+  <div class="tile">
+    <div class="stat sm">&lt;10<span style="font-size:26px">min</span></div>
+    <div class="tlabel">Athlete time per week</div>
+    <div class="tdesc">All check-ins, tracking, and video reviews completed on mobile.</div>
+  </div>
+  <div class="tile">
+    <div class="stat sm">5</div>
+    <div class="tlabel">Steps to full deployment</div>
+    <div class="tdesc">From signed agreement to in-season rhythm, with zero disruption.</div>
+  </div>
+  <div class="tile">
+    <div class="stat sm">3<span style="font-size:26px">sec</span></div>
+    <div class="tlabel">The core install</div>
+    <div class="tdesc">A physical reset anchor every athlete rehearses live on your field.</div>
+  </div>
+</div>
+
+<div class="pad">
+
+<section>
+  <div class="shead"><div class="snum">01</div><h2>Program Deployment — Coach to Roster</h2></div>
+  <div class="sdek">When a head coach, club director, or athletic department brings IronMind in, we run a standardized five-step institutional launch. Your total required time commitment is one 30-minute alignment call and one on-site session.</div>
+  <div class="steps">
+    <div class="step">
+      <div class="n">STEP 1</div><div class="when">Within 48 hours</div>
+      <h3>Scope &amp; Agreement Lock</h3>
+      <ul>
+        <li>Contract execution and roster ingestion</li>
+        <li>Season calendar lock — pre-season, regular season, championship windows</li>
+        <li>30-min Head Coach alignment call to diagnose team bottlenecks: flat starts, late-game collapse, sideline finger-pointing</li>
+      </ul>
+      <div class="deliv"><em>DELIVERABLE</em>Partnership Agreement &amp; Season Integration Roadmap</div>
+    </div>
+    <div class="step">
+      <div class="n">STEP 2</div><div class="when">Pre-launch protocol</div>
+      <h3>Parent &amp; AD Alignment</h3>
+      <ul>
+        <li>Parent Introduction &amp; Trust Charter dispatched — confidentiality and character standards spelled out</li>
+        <li>Batch digital onboarding links sent to every roster email</li>
+      </ul>
+      <div class="deliv"><em>DELIVERABLE</em>100% roster enrollment &amp; signed Parent Support Charters</div>
+    </div>
+    <div class="step">
+      <div class="n">STEP 3</div><div class="when">Diagnostic phase</div>
+      <h3>Team Mental Baseline Audit</h3>
+      <ul>
+        <li>Every athlete completes the IronMind Diagnostic Profile before the first live session</li>
+        <li>Data synthesized into an anonymized program report of the team's top friction triggers</li>
+      </ul>
+      <div class="deliv"><em>DELIVERABLE</em>Team Tilt Diagnostic Report to coaching staff</div>
+    </div>
+    <div class="step">
+      <div class="n">STEP 4</div><div class="when">Live launch session</div>
+      <h3>The Team Crucible Kickoff</h3>
+      <ul>
+        <li>90–120 minute on-site workshop, full roster plus coaching staff</li>
+        <li>Team Common Language installed</li>
+        <li>Live physical rehearsal of the 3-Second Mistake Reset on the field or court</li>
+      </ul>
+      <div class="deliv"><em>DELIVERABLE</em>Physical playbooks issued &amp; reset anchor installed</div>
+    </div>
+    <div class="step">
+      <div class="n">STEP 5</div><div class="when">Continuous execution</div>
+      <h3>In-Season Operating Rhythm</h3>
+      <ul>
+        <li>Weekly 15-minute "Mental Edge" chalk-talk before film or practice</li>
+        <li>Batch game-day AAR submissions with weekly staff trend reports</li>
+        <li>Bi-weekly Captains &amp; Leadership Council breakouts</li>
+      </ul>
+      <div class="deliv"><em>DELIVERABLE</em>Weekly metric trends &amp; leadership council progression</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><div class="snum">02</div><h2>The Certification Pathway — 3 Phases, 3 Gates</h2></div>
+  <div class="sdek">Athletes on the Certified Track don't participate — they qualify. Each phase ends at an assessment gate that must be passed before the next phase opens.</div>
+  <div class="phases">
+    <div class="phase p1">
+      <div class="cap"><div class="k">PHASE 1</div><h3>Foundation</h3><div class="f">The Internal Operating System</div></div>
+      <div class="body">
+        <div class="ms"><div class="id">1.1</div><p><b>Diagnostic Tilt Profile.</b> Identify individual triggers, anxiety spikes, and mental leakages.</p></div>
+        <div class="ms"><div class="id">1.2</div><p><b>Pre-Game Prime Routine.</b> A personalized 15-minute physiological and cognitive readiness protocol.</p></div>
+        <div class="ms"><div class="id">1.3</div><p><b>The 3-Second Mistake Reset.</b> Installing the physical and vocal anchor that erases unforced errors instantly.</p></div>
+      </div>
+      <div class="gate"><div class="g">ASSESSMENT GATE 1</div><p>Submission of the personalized IronMind Playbook + a 1-on-1 scenario defense walkthrough.</p></div>
+    </div>
+    <div class="phase p2">
+      <div class="cap"><div class="k">PHASE 2</div><h3>Execution</h3><div class="f">Live Pressure &amp; Performance</div></div>
+      <div class="body">
+        <div class="ms"><div class="id">2.1</div><p><b>Live Pressure Logs.</b> Executing resets during real competitive friction, not in a classroom.</p></div>
+        <div class="ms"><div class="id">2.2</div><p><b>Distraction Elimination Audit.</b> Sleep hygiene, digital discipline, academic stress management.</p></div>
+        <div class="ms"><div class="id">2.3</div><p><b>Slump &amp; Crucible Navigation.</b> Cognitive reframing during losing streaks, bench time, or injury.</p></div>
+      </div>
+      <div class="gate"><div class="g">ASSESSMENT GATE 2</div><p>Four consecutive verified game-day AARs averaging ≥ 9 / 12 on the IronMind rubric.</p></div>
+    </div>
+    <div class="phase p3">
+      <div class="cap"><div class="k">PHASE 3</div><h3>Mastery</h3><div class="f">Leadership &amp; Identity</div></div>
+      <div class="body">
+        <div class="ms"><div class="id">3.1</div><p><b>Sideline &amp; Locker Room Elevation.</b> Active communication and lifting teammates under adversity.</p></div>
+        <div class="ms"><div class="id">3.2</div><p><b>Dual-Career Balance Architecture.</b> A sustainable system for GPA excellence plus high-level athletic output.</p></div>
+        <div class="ms"><div class="id">3.3</div><p><b>The IronMind Manifesto.</b> A personal, non-negotiable code of honor and character.</p></div>
+      </div>
+      <div class="gate"><div class="g">ASSESSMENT GATE 3</div><p>Final capstone portfolio + a 20-minute certification defense panel with Kenny.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><div class="snum">03</div><h2>The Weekly In-Season Loop</h2></div>
+  <div class="sdek">The rhythm your staff actually feels. Nothing here competes with practice time, film, or conditioning.</div>
+  <div class="rhythm">
+    <div class="rcell"><div class="day">BEFORE PRACTICE</div><h4>Mental Edge Chalk-Talk</h4><p>A 15-minute rep delivered before film or practice — one concept, rehearsed, not lectured.</p><div class="t">15 MIN · STAFF PRESENT</div></div>
+    <div class="rcell"><div class="day">MIDWEEK</div><h4>Video &amp; Audio Drops</h4><p>Three-minute mental reps and audio drops land on athlete phones between sessions.</p><div class="t">3 MIN · MOBILE</div></div>
+    <div class="rcell"><div class="day">GAME DAY</div><h4>Live Reset Execution</h4><p>Athletes deploy the 3-second anchor at the moment of maximum adversity — bad call, turnover, deficit, benching.</p><div class="t">IN COMPETITION</div></div>
+    <div class="rcell"><div class="day">WITHIN 12–24 HRS</div><h4>After-Action Review</h4><p>A rapid 3-2-1 reflection submitted from a phone. Creates the feedback loop and kills emotional dwelling.</p><div class="t">5 MIN · MOBILE</div></div>
+    <div class="rcell"><div class="day">WEEKLY / BI-WEEKLY</div><h4>Staff Trend Report</h4><p>Rubric trend data to the coaching staff, plus Captains &amp; Leadership Council breakout masterminds.</p><div class="t">STAFF DASHBOARD</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><div class="snum">04</div><h2>The 12-Point Accountability Rubric</h2></div>
+  <div class="sdek">Every after-action review is scored across four competency pillars. This is the same language your staff can use on the sideline — and it is what makes the program measurable rather than motivational.</div>
+  <div class="tscroll"><table>
+    <thead><tr>
+      <th style="width:250px">Competency Pillar</th>
+      <th class="l1">Level 1 — Developing · 1 pt</th>
+      <th class="l2">Level 2 — Proficient · 2 pts</th>
+      <th class="l3">Level 3 — IronMind Standard · 3 pts</th>
+    </tr></thead>
+    <tbody>
+      <tr><th>1. Self-Awareness &amp; Candor</th>
+        <td class="c1">Vague, surface-level responses; defensive justifications; denies personal errors.</td>
+        <td class="c2">Identifies mistakes accurately, but hesitates to examine the root internal self-talk.</td>
+        <td class="c3">Radically honest and fully objective; transcribes internal mental state without excuses.</td></tr>
+      <tr><th>2. Reset Execution &amp; Recovery Speed</th>
+        <td class="c1">Failed to trigger the reset; frustration compounded and ruined multiple plays or quarters.</td>
+        <td class="c2">Reset deployed after a delay; took several possessions to regain full composure.</td>
+        <td class="c3">Reset deployed instantly; back to baseline neutral focus in under 3 seconds or by the next play.</td></tr>
+      <tr><th>3. Locus of Control</th>
+        <td class="c1">Blames external factors — referees, weather, coaching staff, teammates' mistakes.</td>
+        <td class="c2">Accepts responsibility, but the adjustment is generic: "try harder," "be more focused."</td>
+        <td class="c3">Zero external blaming; specifies a precise, controllable behavioral adjustment for the next practice.</td></tr>
+      <tr><th>4. Sideline Presence &amp; Leadership</th>
+        <td class="c1">Slumped body language, isolation, visible anger, or negative vocal tone.</td>
+        <td class="c2">Neutral presence; did not drain team energy, but failed to actively elevate others.</td>
+        <td class="c3">Proactive vocal leadership; contagious positive energy; actively stabilized teammates during deficits.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="rubnote">Certification threshold: <b>four consecutive game-day AARs averaging ≥ 9 of 12.</b> Scores below that don't fail an athlete — they set the next phase of work.</div>
+</section>
+
+<section>
+  <div class="shead"><div class="snum">05</div><h2>What Lands on the Coaching Staff's Desk</h2></div>
+  <div class="gets">
+    <div class="get"><h4>Team Tilt Diagnostic Report</h4><p>An anonymized program-level read on your roster's top friction triggers — delivered before the first live session.</p></div>
+    <div class="get"><h4>Weekly Rubric Trend Data</h4><p>Where reset speed, locus of control, and sideline presence are moving across the roster, week over week.</p></div>
+    <div class="get"><h4>A Common Team Language</h4><p>One shared vocabulary for adversity that your staff can coach with in real time, on the sideline.</p></div>
+    <div class="get"><h4>A Developing Leadership Council</h4><p>Captains and emerging leaders working in bi-weekly breakouts on the exact problems your team keeps hitting.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><div class="snum">06</div><h2>Why It Matters Past This Season</h2></div>
+  <div class="roi">
+    <div><h4>Ends "Practice Player" Syndrome</h4><p>Translates high practice skill into consistent live execution under real pressure.</p></div>
+    <div><h4>Protects Recruitment</h4><p>College scouts weigh coachability, body language, and response to adversity alongside raw talent.</p></div>
+    <div><h4>Spills Into the Classroom</h4><p>The same reset tools apply directly to exam anxiety, GPA management, and time discipline.</p></div>
+    <div><h4>A Lifelong Mentor</h4><p>Athletes graduate with written references and direct character advocacy for collegiate programs.</p></div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="fin">
+    <h2>Three Steps to Launch</h2>
+    <div class="next">
+      <div class="nx"><div class="n">STEP 01</div><h4>Select the Track</h4><p>Program-level team deployment, or individual athlete tracks (Community or Certified).</p></div>
+      <div class="nx"><div class="n">STEP 02</div><h4>Receive the Digital Invoice</h4><p>Itemized and dispatched to the email on file. Cards, ACH, POs, booster club and athletic department billing all supported.</p></div>
+      <div class="nx"><div class="n">STEP 03</div><h4>Complete Intake &amp; Lock Phase 1</h4><p>Roster submits the diagnostic assessment; the Phase 1 kickoff date goes on the season calendar.</p></div>
+    </div>
+    <div class="flock">
+      <span class="imlogo imlogo-sm" role="img" aria-label="The Athlete Check"></span>
+      <div class="tg">STRONGER TODAY · <span>PREPARED TOMORROW</span> · BEYOND THE SPORT
+        <em>IRONMIND STUDENT-ATHLETE PROGRAM · THEATHLETECHECK.COM</em></div>
+    </div>
+  </div>
+</footer>
+
+</div>
+<div class="tacfoot"><div class="in">
+  <nav>
+    <a href="/">Home</a><a href="/registration">Registration</a><a href="/about">About</a>
+    <a href="/assessment">Assessment</a><a href="/advocate">Advocate</a>
+    <a href="/coaches">Coaches/ADs</a><a href="/courses">Courses</a>
+    <a href="/proudmoment">Proud Moment</a>
+  </nav>
+  <div class="cr">© 2026 The Athlete Check. All rights reserved.</div>
+</div></div>
+</body>
+</html>
