@@ -199,12 +199,29 @@
 .tac-mobile-link:hover{color:#1A8FE3;text-decoration:none}
 .tac-mobile-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.25rem;line-height:1.75rem;letter-spacing:0.1em;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.75rem 2rem;margin:1rem 0 0;border:0;border-radius:0.25rem;transition:filter 0.2s ease,transform 0.2s ease}
 .tac-mobile-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
-@media (min-width:768px){
-  .tac-nav-links{display:flex}
+@media (min-width:1250px){
+  .tac-nav-links{display:flex;gap:0.8rem;flex-wrap:nowrap}
+  .tac-nav-link{font-size:0.9375rem;letter-spacing:0.06em}
+  .tac-nav-cta{font-size:0.875rem;letter-spacing:0.06em;padding:0.5rem 1.125rem}
   .tac-nav-toggle{display:none}
 }
 /* Keeps page content clear of the fixed header (44px logo + 2x12px padding + 1px border). */
 body.tac-nav-offset{padding-top:69px}
+
+/* ===== SHARED SITE FOOTER — every property explicit so it renders the same everywhere ===== */
+.tac-footer,.tac-footer *,.tac-footer *::before,.tac-footer *::after{box-sizing:border-box}
+.tac-footer{display:block;width:100%;margin:0;padding:60px 20px 40px;background:#020810;border:0;border-top:1px solid rgba(26,143,227,0.2);color:#94a3b8;text-align:center;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-footer-inner{width:100%;max-width:56rem;margin:0 auto;padding:0}
+.tac-footer-logo{display:block;height:56px;width:auto;max-width:100%;margin:0 auto 24px;padding:0;border:0;background:none;object-fit:contain}
+.tac-footer-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0.5rem 1rem;margin:0 0 24px;padding:0}
+.tac-footer-nav a{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-size:0.875rem;font-weight:500;line-height:1.4;letter-spacing:0.02em;color:#94a3b8;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-footer-nav a:hover{color:#1A8FE3;text-decoration:none}
+.tac-footer-tag{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.875rem;line-height:1.5;letter-spacing:0.15em;color:#94a3b8;margin:0 0 4px;padding:0}
+.tac-footer-tag2{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.75rem;line-height:1.5;letter-spacing:0.1em;color:#94a3b8;margin:0 0 20px;padding:0}
+.tac-footer-cta{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.9375rem;letter-spacing:0.12em;color:#1A8FE3;text-decoration:none;display:inline-block;margin:0 0 24px;padding:0}
+.tac-footer-cta:hover{color:#4FB0F0;text-decoration:none}
+.tac-footer-legal{font-size:0.75rem;line-height:1.6;color:#64748b;margin:0 0 6px;padding:0}
+.tac-footer-founders{font-size:0.75rem;line-height:1.6;color:#475569;margin:0;padding:0}
 </style>
 </head>
 <body data-id="0">
@@ -222,6 +239,7 @@ body.tac-nav-offset{padding-top:69px}
       <a class="tac-nav-link" href="/assessment">ASSESSMENT</a>
       <a class="tac-nav-link" href="/advocate">ADVOCATE</a>
       <a class="tac-nav-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-nav-link" href="/performanceblueprint">BLUEPRINT</a>
       <a class="tac-nav-link" href="/courses">COURSES</a>
       <a class="tac-nav-link" href="/proudmoment">PROUD MOMENT</a>
       <a class="tac-nav-cta" href="/assessment">TAKE THE CHECK</a>
@@ -242,6 +260,7 @@ body.tac-nav-offset{padding-top:69px}
       <a class="tac-mobile-link" href="/assessment">ASSESSMENT</a>
       <a class="tac-mobile-link" href="/advocate">ADVOCATE</a>
       <a class="tac-mobile-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-mobile-link" href="/performanceblueprint">BLUEPRINT</a>
       <a class="tac-mobile-link" href="/courses">COURSES</a>
       <a class="tac-mobile-link" href="/proudmoment">PROUD MOMENT</a>
       <a class="tac-mobile-cta" href="/assessment">TAKE THE CHECK</a>
@@ -421,33 +440,30 @@ body.tac-nav-offset{padding-top:69px}
     </main>
 
     <!-- ===== FOOTER ===== -->
-    <footer data-id="80" id="footer-o2p3" class="text-center" style="background: #020810; padding: 60px 20px 40px;">
-      <div data-id="81" class="max-w-4xl mx-auto">
-        <!-- Footer Logo -->
-        <img data-id="82" src="images/theathletecheck-logo.png" alt="The Athlete Check" class="mx-auto mb-6" style="height: 60px;" id="footer-logo-q4r5">
-
-        <!-- Footer Nav -->
-        <div data-id="83" class="flex items-center justify-center gap-2 mb-6 font-body text-sm" id="footer-nav-s6t7">
-          <a class="nav-link" data-id="84" href="/registration" style="color: #94a3b8;">REGISTRATION</a><a class="nav-link" data-id="84" href="/about" style="color: #94a3b8;">About</a>
-          <span data-id="85" style="color: #94a3b8;">·</span>
-          <a class="nav-link" data-id="86" href="/assessment" style="color: #94a3b8;">Assessment</a>
-          <span data-id="87" style="color: #94a3b8;">·</span>
-          <a class="nav-link" data-id="88" href="/advocate" style="color: #94a3b8;">Advocate</a>
-        </div>
-
-        <!-- Taglines -->
-        <p data-id="89" class="font-display tracking-[0.15em] text-sm mb-1" style="color: #94a3b8;" id="footer-tagline1-u8v9">TEST. TRAIN. TRANSFORM.</p>
-        <p data-id="90" class="font-display tracking-[0.1em] text-xs mb-6" style="color: #94a3b8;" id="footer-tagline2-w0x1">POWERED BY IRONMIND · BUILT FOR MORE</p>
-
-        <!-- Copyright -->
-        <p data-id="91" class="font-body text-xs mb-2" style="color: #64748b;" id="footer-copy-y2z3">© 2026 The Athlete Check · AthleteCheck.com · All Rights Reserved</p>
-        <p data-id="92" class="font-body text-xs" style="color: #475569;" id="footer-founders-a4b5">Founded by Luke Stenson &amp; Wyatt Porch</p>
-
-        <p data-id="93" class="font-body text-xs mt-6" style="color: #334155;">Made by Copilot</p>
-      </div>
-    </footer>
-
-    <script>
+    <!-- ===== SHARED SITE FOOTER ===== -->
+<footer class="tac-footer">
+  <div class="tac-footer-inner">
+    <a href="/"><img class="tac-footer-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check"></a>
+    <nav class="tac-footer-nav">
+      <a href="/">Home</a>
+      <a href="/registration">Registration</a>
+      <a href="/about">About</a>
+      <a href="/assessment">Assessment</a>
+      <a href="/advocate">Advocate</a>
+      <a href="/coaches">Coaches/ADs</a>
+      <a href="/performanceblueprint">Blueprint</a>
+      <a href="/courses">Courses</a>
+      <a href="/proudmoment">Proud Moment</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <a class="tac-footer-cta" href="/advocate">JOIN THE MOVEMENT — THEATHLETECHECK.COM/ADVOCATE</a>
+    <p class="tac-footer-tag">TEST. TRAIN. TRANSFORM.</p>
+    <p class="tac-footer-tag2">POWERED BY IRONMIND · BUILT FOR MORE</p>
+    <p class="tac-footer-legal">© 2026 The Athlete Check · TheAthleteCheck.com · All Rights Reserved</p>
+    <p class="tac-footer-founders">Founded by Luke Stenson &amp; Wyatt Porch</p>
+  </div>
+</footer>
+<script>
       // ===== Lucide Icons (progressive enhancement) =====
       // The lucide library is loaded with `defer`, so it is not available yet
       // when this inline script first runs. Wait for DOMContentLoaded (which
