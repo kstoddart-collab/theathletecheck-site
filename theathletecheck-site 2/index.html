@@ -176,54 +176,111 @@
         opacity: 0.5;
       }
     </style>
+<style>
+/* Mirrors the homepage nav exactly. Every property is declared explicitly so the
+   header renders identically on pages that do not load Tailwind or its reset. */
+.tac-navbar,.tac-navbar *,.tac-navbar *::before,.tac-navbar *::after{box-sizing:border-box}
+.tac-navbar{position:fixed;top:0;left:0;right:auto;bottom:auto;width:100%;z-index:1000;margin:0;padding:0;background:rgba(4, 11, 20, 0.96);border:0;border-bottom:1px solid rgba(26,143,227,0.2);box-shadow:none;backdrop-filter:none;text-align:left;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-nav-inner{width:100%;max-width:80rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:0;padding:0.75rem 1.25rem}
+.tac-nav-brand{flex:0 0 auto;display:block;padding:0;margin:0;border:0;background:none;line-height:0;text-decoration:none}
+.tac-nav-logo{display:block;height:44px;width:auto;max-width:none;min-width:0;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none;object-fit:contain}
+.tac-nav-links{display:none;align-items:center;gap:2rem}
+.tac-nav-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-style:normal;font-size:1.125rem;line-height:1.75rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-nav-link:hover{color:#1A8FE3;text-decoration:none}
+.tac-nav-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1rem;line-height:1.5rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.5rem 1.5rem;margin:0;border:0;border-radius:0.25rem;box-shadow:none;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-nav-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
+.tac-nav-toggle,.tac-nav-close{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;width:auto;height:auto;padding:0.5rem;margin:0;background:none;border:0;border-radius:0;color:#ffffff;cursor:pointer;line-height:0;-webkit-appearance:none;appearance:none}
+.tac-nav-toggle svg,.tac-nav-close svg{display:block;width:28px;height:28px}
+.tac-mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1001;flex-direction:column;background:rgba(4, 11, 20, 0.99);font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-mobile-menu.tac-open{display:flex}
+.tac-mobile-top{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid rgba(26,143,227,0.2)}
+.tac-mobile-links{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1 1 0%;gap:2rem;padding:0;margin:0}
+.tac-mobile-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.875rem;line-height:2.25rem;letter-spacing:0.1em;text-transform:none;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-mobile-link:hover{color:#1A8FE3;text-decoration:none}
+.tac-mobile-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.25rem;line-height:1.75rem;letter-spacing:0.1em;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.75rem 2rem;margin:1rem 0 0;border:0;border-radius:0.25rem;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-mobile-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
+@media (min-width:768px){
+  .tac-nav-links{display:flex}
+  .tac-nav-toggle{display:none}
+}
+/* Keeps page content clear of the fixed header (44px logo + 2x12px padding + 1px border). */
+body.tac-nav-offset{padding-top:69px}
+</style>
 </head>
 <body data-id="0">
     <app-icon data-id="1" hidden="" data-icon="activity" data-palette="Blue"></app-icon>
 
     <!-- ===== STICKY NAVIGATION ===== -->
-    <nav data-id="2" id="navbar-a1b2" class="fixed top-0 left-0 w-full z-50" style="background: rgba(4, 11, 20, 0.96); border-bottom: 1px solid rgba(26,143,227,0.2);">
-      <div data-id="3" class="max-w-7xl mx-auto flex items-center justify-between px-5 py-3">
-        <!-- Logo -->
-        <a class="flex-shrink-0" data-id="4" href="/">
-          <img data-id="5" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo" style="height: 44px;" class="w-auto" id="nav-logo-c3d4">
-        </a>
+    <!-- ===== SHARED SITE HEADER ===== -->
+<nav class="tac-navbar" id="tac-navbar">
+  <div class="tac-nav-inner">
+    <a class="tac-nav-brand" href="/">
+      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+    </a>
+    <div class="tac-nav-links">
+      <a class="tac-nav-link" href="/registration">REGISTRATION</a><a class="tac-nav-link" href="/about">ABOUT</a>
+      <a class="tac-nav-link" href="/assessment">ASSESSMENT</a>
+      <a class="tac-nav-link" href="/advocate">ADVOCATE</a>
+      <a class="tac-nav-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-nav-link" href="/courses">COURSES</a>
+      <a class="tac-nav-link" href="/proudmoment">PROUD MOMENT</a>
+      <a class="tac-nav-cta" href="/assessment">TAKE THE CHECK</a>
+    </div>
+    <button class="tac-nav-toggle" id="tac-nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="tac-mobile-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="tac-mobile-menu" id="tac-mobile-menu">
+    <div class="tac-mobile-top">
+      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+      <button class="tac-nav-close" id="tac-nav-close" type="button" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+    </div>
+    <div class="tac-mobile-links">
+      <a class="tac-mobile-link" href="/registration">REGISTRATION</a><a class="tac-mobile-link" href="/about">ABOUT</a>
+      <a class="tac-mobile-link" href="/assessment">ASSESSMENT</a>
+      <a class="tac-mobile-link" href="/advocate">ADVOCATE</a>
+      <a class="tac-mobile-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-mobile-link" href="/courses">COURSES</a>
+      <a class="tac-mobile-link" href="/proudmoment">PROUD MOMENT</a>
+      <a class="tac-mobile-cta" href="/assessment">TAKE THE CHECK</a>
+    </div>
+  </div>
+</nav>
+<script>
+/* Shared site header: mobile menu toggle + scroll background, self-contained. */
+(function () {
+  var toggle = document.getElementById('tac-nav-toggle');
+  var menu = document.getElementById('tac-mobile-menu');
+  var closeBtn = document.getElementById('tac-nav-close');
 
-        <!-- Desktop Nav -->
-        <div data-id="6" class="hidden md:flex items-center gap-8" id="desktop-nav-e5f6">
-          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="7" href="/registration">REGISTRATION</a><a class="nav-link font-display text-white tracking-widest text-lg" data-id="7" href="/about">ABOUT</a>
-          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="8" href="/assessment">ASSESSMENT</a>
-          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="9" href="/advocate">ADVOCATE</a>
-          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="9a" href="/coaches">COACHES/ADS</a>
-          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="9b" href="/courses">COURSES</a>
-          <a class="nav-link font-display text-white tracking-widest text-lg" data-id="9c" href="/proudmoment">PROUD MOMENT</a>
-          <a class="cta-btn font-display tracking-widest text-white text-base px-6 py-2 rounded" data-id="10" href="/assessment" id="nav-cta-g7h8" style="background: #1A8FE3; letter-spacing: 0.1em;">TAKE THE CHECK</a>
-        </div>
+  if (toggle && menu && closeBtn) {
+    var openMenu = function () {
+      menu.classList.add('tac-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+    var closeMenu = function () {
+      menu.classList.remove('tac-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    toggle.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    Array.prototype.forEach.call(menu.querySelectorAll('a'), function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+  }
 
-        <!-- Mobile Hamburger -->
-        <button data-id="11" id="mobile-menu-btn-i9j0" class="md:hidden p-2 text-white" aria-label="Open menu">
-          <i data-id="12" data-lucide="menu" class="w-7 h-7"></i>
-        </button>
-      </div>
-
-      <!-- Mobile Nav -->
-      <div data-id="13" id="mobile-menu-k1l2" class="hidden fixed inset-0 z-50 flex flex-col" style="background: rgba(4, 11, 20, 0.99);">
-        <div data-id="14" class="flex items-center justify-between px-5 py-3" style="border-bottom: 1px solid rgba(26,143,227,0.2);">
-          <img data-id="15" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo" style="height: 44px;" class="w-auto">
-          <button data-id="16" id="mobile-menu-close-m3n4" class="p-2 text-white" aria-label="Close menu">
-            <i data-id="17" data-lucide="x" class="w-7 h-7"></i>
-          </button>
-        </div>
-        <div data-id="18" class="flex flex-col items-center justify-center flex-1 gap-8">
-          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="19" href="/registration">REGISTRATION</a><a class="nav-link font-display text-white tracking-widest text-3xl" data-id="19" href="/about">ABOUT</a>
-          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="20" href="/assessment">ASSESSMENT</a>
-          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="21" href="/advocate">ADVOCATE</a>
-          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="21a" href="/coaches">COACHES/ADS</a>
-          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="21b" href="/courses">COURSES</a>
-          <a class="nav-link font-display text-white tracking-widest text-3xl" data-id="21c" href="/proudmoment">PROUD MOMENT</a>
-          <a class="cta-btn font-display tracking-widest text-white text-xl px-8 py-3 rounded mt-4" data-id="22" href="/assessment" style="background: #1A8FE3; letter-spacing: 0.1em;">TAKE THE CHECK</a>
-        </div>
-      </div>
-    </nav>
+  var bar = document.getElementById('tac-navbar');
+  if (bar) {
+    window.addEventListener('scroll', function () {
+      bar.style.background = window.scrollY > 80 ? 'rgba(4, 11, 20, 0.99)' : 'rgba(4, 11, 20, 0.96)';
+    });
+  }
+})();
+</script>
 
     <main data-id="23">
       <!-- ===== HERO SECTION ===== -->

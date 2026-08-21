@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Performance Blueprint | IronMind for Student-Athletes — The Athlete Check</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap">
+
 <meta name="description" content="The IronMind Student-Athlete Development &amp; Performance Blueprint: a mental conditioning system for coaches and athletic directors. 5-step program deployment, 3 certification phases, and a 12-point accountability rubric.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://www.theathletecheck.com/performanceblueprint">
@@ -45,14 +49,8 @@ header::after{content:"";position:absolute;inset:0;
 .dl:hover{background:#0A62D6}
 .dl:focus-visible{outline:3px solid #8FC0FF;outline-offset:3px}
 /* --- site chrome --- */
-.tacnav{position:sticky;top:0;z-index:50;background:#0A0F1E;border-bottom:2px solid #3B82F6}
-.tacnav .in{max-width:1600px;margin:0 auto;padding:12px clamp(20px,4.5vw,72px);
   display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.tacnav img{height:40px;display:block}
-.tacnav nav{display:flex;gap:22px;flex-wrap:wrap}
-.tacnav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:800;letter-spacing:.12em;
   text-transform:uppercase;transition:color .15s ease}
-.tacnav a:hover,.tacnav a[aria-current="page"]{color:#3B82F6}
 .tacfoot{background:#0A0F1E;border-top:1px solid rgba(255,255,255,.1);
   padding:26px clamp(20px,4.5vw,72px) 30px;color:#8695A8}
 .tacfoot .in{max-width:1600px;margin:0 auto}
@@ -189,28 +187,117 @@ footer h2{font-size:clamp(24px,2.7vw,34px);margin-bottom:26px}
   .flock .tg{text-align:left;font-size:11.5px;letter-spacing:.1em}
   .shead{flex-direction:column;gap:6px}
   tbody th{width:auto}
-  .tacnav nav{gap:14px}
-  .tacnav a{font-size:11px;letter-spacing:.08em}
-}
+    }
 @media print{
-  .dl,.tacnav,.tacfoot{display:none}
-  @page{size:letter portrait;margin:0}
+  .dl,  @page{size:letter portrait;margin:0}
   body{background:#fff}
   .page{width:100%}
   section{break-inside:avoid}
 }
 </style>
+<style>
+/* Mirrors the homepage nav exactly. Every property is declared explicitly so the
+   header renders identically on pages that do not load Tailwind or its reset. */
+.tac-navbar,.tac-navbar *,.tac-navbar *::before,.tac-navbar *::after{box-sizing:border-box}
+.tac-navbar{position:fixed;top:0;left:0;right:auto;bottom:auto;width:100%;z-index:1000;margin:0;padding:0;background:rgba(4, 11, 20, 0.96);border:0;border-bottom:1px solid rgba(26,143,227,0.2);box-shadow:none;backdrop-filter:none;text-align:left;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-nav-inner{width:100%;max-width:80rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:0;padding:0.75rem 1.25rem}
+.tac-nav-brand{flex:0 0 auto;display:block;padding:0;margin:0;border:0;background:none;line-height:0;text-decoration:none}
+.tac-nav-logo{display:block;height:44px;width:auto;max-width:none;min-width:0;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none;object-fit:contain}
+.tac-nav-links{display:none;align-items:center;gap:2rem}
+.tac-nav-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-style:normal;font-size:1.125rem;line-height:1.75rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-nav-link:hover{color:#1A8FE3;text-decoration:none}
+.tac-nav-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1rem;line-height:1.5rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.5rem 1.5rem;margin:0;border:0;border-radius:0.25rem;box-shadow:none;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-nav-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
+.tac-nav-toggle,.tac-nav-close{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;width:auto;height:auto;padding:0.5rem;margin:0;background:none;border:0;border-radius:0;color:#ffffff;cursor:pointer;line-height:0;-webkit-appearance:none;appearance:none}
+.tac-nav-toggle svg,.tac-nav-close svg{display:block;width:28px;height:28px}
+.tac-mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1001;flex-direction:column;background:rgba(4, 11, 20, 0.99);font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-mobile-menu.tac-open{display:flex}
+.tac-mobile-top{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid rgba(26,143,227,0.2)}
+.tac-mobile-links{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1 1 0%;gap:2rem;padding:0;margin:0}
+.tac-mobile-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.875rem;line-height:2.25rem;letter-spacing:0.1em;text-transform:none;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-mobile-link:hover{color:#1A8FE3;text-decoration:none}
+.tac-mobile-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.25rem;line-height:1.75rem;letter-spacing:0.1em;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.75rem 2rem;margin:1rem 0 0;border:0;border-radius:0.25rem;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-mobile-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
+@media (min-width:768px){
+  .tac-nav-links{display:flex}
+  .tac-nav-toggle{display:none}
+}
+/* Keeps page content clear of the fixed header (44px logo + 2x12px padding + 1px border). */
+body.tac-nav-offset{padding-top:69px}
+</style>
 </head>
-<body>
-<div class="tacnav"><div class="in">
-  <a href="/"><img src="images/athlete-check-official-logo.png" alt="The Athlete Check"></a>
-  <nav>
-    <a href="/">Home</a><a href="/registration">Registration</a><a href="/about">About</a>
-    <a href="/assessment">Assessment</a><a href="/advocate">Advocate</a>
-    <a href="/coaches">Coaches/ADs</a><a href="/courses">Courses</a>
-    <a href="/proudmoment">Proud Moment</a>
-  </nav>
-</div></div>
+<body class="tac-nav-offset">
+<!-- ===== SHARED SITE HEADER ===== -->
+<nav class="tac-navbar" id="tac-navbar">
+  <div class="tac-nav-inner">
+    <a class="tac-nav-brand" href="/">
+      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+    </a>
+    <div class="tac-nav-links">
+      <a class="tac-nav-link" href="/registration">REGISTRATION</a><a class="tac-nav-link" href="/about">ABOUT</a>
+      <a class="tac-nav-link" href="/assessment">ASSESSMENT</a>
+      <a class="tac-nav-link" href="/advocate">ADVOCATE</a>
+      <a class="tac-nav-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-nav-link" href="/courses">COURSES</a>
+      <a class="tac-nav-link" href="/proudmoment">PROUD MOMENT</a>
+      <a class="tac-nav-cta" href="/assessment">TAKE THE CHECK</a>
+    </div>
+    <button class="tac-nav-toggle" id="tac-nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="tac-mobile-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="tac-mobile-menu" id="tac-mobile-menu">
+    <div class="tac-mobile-top">
+      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+      <button class="tac-nav-close" id="tac-nav-close" type="button" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+    </div>
+    <div class="tac-mobile-links">
+      <a class="tac-mobile-link" href="/registration">REGISTRATION</a><a class="tac-mobile-link" href="/about">ABOUT</a>
+      <a class="tac-mobile-link" href="/assessment">ASSESSMENT</a>
+      <a class="tac-mobile-link" href="/advocate">ADVOCATE</a>
+      <a class="tac-mobile-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-mobile-link" href="/courses">COURSES</a>
+      <a class="tac-mobile-link" href="/proudmoment">PROUD MOMENT</a>
+      <a class="tac-mobile-cta" href="/assessment">TAKE THE CHECK</a>
+    </div>
+  </div>
+</nav>
+<script>
+/* Shared site header: mobile menu toggle + scroll background, self-contained. */
+(function () {
+  var toggle = document.getElementById('tac-nav-toggle');
+  var menu = document.getElementById('tac-mobile-menu');
+  var closeBtn = document.getElementById('tac-nav-close');
+
+  if (toggle && menu && closeBtn) {
+    var openMenu = function () {
+      menu.classList.add('tac-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+    var closeMenu = function () {
+      menu.classList.remove('tac-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    toggle.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    Array.prototype.forEach.call(menu.querySelectorAll('a'), function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  var bar = document.getElementById('tac-navbar');
+  if (bar) {
+    window.addEventListener('scroll', function () {
+      bar.style.background = window.scrollY > 80 ? 'rgba(4, 11, 20, 0.99)' : 'rgba(4, 11, 20, 0.96)';
+    });
+  }
+})();
+</script>
+
 <div class="page">
 
 <header>
