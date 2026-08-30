@@ -1,559 +1,571 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="dark">
-    <title>AthleteCheck Homepage</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#040B14',
-              secondary: '#071525',
-              card: '#0A1929',
-              accent: '#1A8FE3',
-              bright: '#00B4FF',
-              deepnavy: '#020810',
-              muted: '#94a3b8',
-              lighttext: '#e2e8f0',
-            },
-            fontFamily: {
-              display: ['"Bebas Neue"', 'sans-serif'],
-              body: ['"Inter"', 'sans-serif'],
-            },
-          },
-        },
-      };
-    </script>
-    <script src="https://unpkg.com/lucide@latest" defer=""></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
-    <style>
-      :root {
-        --primary-bg: #040B14;
-        --secondary-bg: #071525;
-        --card-bg: #0A1929;
-        --accent: #1A8FE3;
-        --bright: #00B4FF;
-        --deep-navy: #020810;
-        --muted: #94a3b8;
-        --light-text: #e2e8f0;
-      }
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="description" content="The Athlete Check is a readiness and identity platform built by Division I student athletes, for student athletes. An IronMind Company.">
+<title>The Athlete Check</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=Figtree:wght@400;500;600;800&family=JetBrains+Mono:wght@500;700&display=swap">
 
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        padding: 0;
-        background: var(--primary-bg);
-        color: #ffffff;
-        font-family: 'Inter', sans-serif;
-        overflow-x: hidden;
-      }
-
-      .font-display {
-        font-family: 'Bebas Neue', sans-serif;
-      }
-
-      .font-body {
-        font-family: 'Inter', sans-serif;
-      }
-
-      /* Hero grid overlay */
-      .hero-grid {
-        background-image:
-          linear-gradient(rgba(26,143,227,0.05) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(26,143,227,0.05) 1px, transparent 1px);
-        background-size: 80px 80px;
-      }
-
-      /* Logo glow */
-      .logo-glow {
-        filter: drop-shadow(0 0 40px rgba(26,143,227,0.35));
-      }
-
-      /* Fade-up animation */
-      .fade-up {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-      }
-
-      .fade-up.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Scroll arrow bounce */
-      @keyframes bounce-arrow {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(12px); }
-      }
-
-      .scroll-arrow {
-        animation: bounce-arrow 2s ease-in-out infinite;
-      }
-
-      /* CTA hover lift */
-      .cta-btn {
-        transition: filter 0.2s ease, transform 0.2s ease;
-      }
-
-      .cta-btn:hover {
-        filter: brightness(1.15);
-        transform: translateY(-2px);
-      }
-
-      /* Nav link hover */
-      .nav-link {
-        transition: color 0.2s ease;
-      }
-
-      .nav-link:hover {
-        color: var(--accent) !important;
-      }
-
-      /* Card hover */
-      .pillar-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .pillar-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 30px rgba(26,143,227,0.15);
-      }
-
-      /* Blue top border on cards */
-      .blue-top-border {
-        border-top: 3px solid var(--accent);
-      }
-
-      /* Avatar circle */
-      .avatar-circle {
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
-        background: var(--accent);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: 2rem;
-        color: #fff;
-        margin: 0 auto 1.25rem;
-      }
-
-      /* Blue HR */
-      .blue-hr {
-        width: 60px;
-        height: 2px;
-        background: var(--accent);
-        border: none;
-        margin: 1rem auto;
-      }
-
-      /* Quote marks */
-      .quote-statement::before {
-        content: '\201C';
-        font-size: 2em;
-        line-height: 0;
-        vertical-align: -0.25em;
-        margin-right: 0.1em;
-        opacity: 0.5;
-      }
-
-      .quote-statement::after {
-        content: '\201D';
-        font-size: 2em;
-        line-height: 0;
-        vertical-align: -0.25em;
-        margin-left: 0.1em;
-        opacity: 0.5;
-      }
-    </style>
 <style>
-/* Mirrors the homepage nav exactly. Every property is declared explicitly so the
-   header renders identically on pages that do not load Tailwind or its reset. */
-.tac-navbar,.tac-navbar *,.tac-navbar *::before,.tac-navbar *::after{box-sizing:border-box}
-.tac-navbar{position:fixed;top:0;left:0;right:auto;bottom:auto;width:100%;z-index:1000;margin:0;padding:0;background:rgba(4, 11, 20, 0.96);border:0;border-bottom:1px solid rgba(26,143,227,0.2);box-shadow:none;backdrop-filter:none;text-align:left;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
-.tac-nav-inner{width:100%;max-width:80rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:0;padding:0.75rem 1.25rem}
-.tac-nav-brand{flex:0 0 auto;display:block;padding:0;margin:0;border:0;background:none;line-height:0;text-decoration:none}
-.tac-nav-logo{display:block;height:44px;width:auto;max-width:none;min-width:0;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none;object-fit:contain}
-.tac-nav-links{display:none;align-items:center;gap:2rem}
-.tac-nav-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-style:normal;font-size:1.125rem;line-height:1.75rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
-.tac-nav-link:hover{color:#1A8FE3;text-decoration:none}
-.tac-nav-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1rem;line-height:1.5rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.5rem 1.5rem;margin:0;border:0;border-radius:0.25rem;box-shadow:none;transition:filter 0.2s ease,transform 0.2s ease}
-.tac-nav-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
-.tac-nav-toggle,.tac-nav-close{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;width:auto;height:auto;padding:0.5rem;margin:0;background:none;border:0;border-radius:0;color:#ffffff;cursor:pointer;line-height:0;-webkit-appearance:none;appearance:none}
-.tac-nav-toggle svg,.tac-nav-close svg{display:block;width:28px;height:28px}
-.tac-mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1001;flex-direction:column;background:rgba(4, 11, 20, 0.99);font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
-.tac-mobile-menu.tac-open{display:flex}
-.tac-mobile-top{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid rgba(26,143,227,0.2)}
-.tac-mobile-links{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1 1 0%;gap:2rem;padding:0;margin:0}
-.tac-mobile-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.875rem;line-height:2.25rem;letter-spacing:0.1em;text-transform:none;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
-.tac-mobile-link:hover{color:#1A8FE3;text-decoration:none}
-.tac-mobile-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.25rem;line-height:1.75rem;letter-spacing:0.1em;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.75rem 2rem;margin:1rem 0 0;border:0;border-radius:0.25rem;transition:filter 0.2s ease,transform 0.2s ease}
-.tac-mobile-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
-@media (min-width:1250px){
-  .tac-nav-links{display:flex;gap:0.8rem;flex-wrap:nowrap}
-  .tac-nav-link{font-size:0.9375rem;letter-spacing:0.06em}
-  .tac-nav-cta{font-size:0.875rem;letter-spacing:0.06em;padding:0.5rem 1.125rem}
-  .tac-nav-toggle{display:none}
-}
-/* Keeps page content clear of the fixed header (44px logo + 2x12px padding + 1px border). */
-body.tac-nav-offset{padding-top:69px}
+/* ==========================================================================
+   THE ATHLETE CHECK — bright identity
+   Deliberately single-theme (light). This is a brand site: the ground is
+   paper-white on every device, so every colour is painted explicitly and
+   no dark-mode inversion is applied.
+   ========================================================================== */
 
-/* ===== SHARED SITE FOOTER — every property explicit so it renders the same everywhere ===== */
-.tac-footer,.tac-footer *,.tac-footer *::before,.tac-footer *::after{box-sizing:border-box}
-.tac-footer{display:block;width:100%;margin:0;padding:60px 20px 40px;background:#020810;border:0;border-top:1px solid rgba(26,143,227,0.2);color:#94a3b8;text-align:center;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
-.tac-footer-inner{width:100%;max-width:56rem;margin:0 auto;padding:0}
-.tac-footer-logo{display:block;height:56px;width:auto;max-width:100%;margin:0 auto 24px;padding:0;border:0;background:none;object-fit:contain}
-.tac-footer-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0.5rem 1rem;margin:0 0 24px;padding:0}
-.tac-footer-nav a{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-size:0.875rem;font-weight:500;line-height:1.4;letter-spacing:0.02em;color:#94a3b8;text-decoration:none;background:none;transition:color 0.2s ease}
-.tac-footer-nav a:hover{color:#1A8FE3;text-decoration:none}
-.tac-footer-tag{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.875rem;line-height:1.5;letter-spacing:0.15em;color:#94a3b8;margin:0 0 4px;padding:0}
-.tac-footer-tag2{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.75rem;line-height:1.5;letter-spacing:0.1em;color:#94a3b8;margin:0 0 20px;padding:0}
-.tac-footer-cta{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.9375rem;letter-spacing:0.12em;color:#1A8FE3;text-decoration:none;display:inline-block;margin:0 0 24px;padding:0}
-.tac-footer-cta:hover{color:#4FB0F0;text-decoration:none}
-.tac-footer-legal{font-size:0.75rem;line-height:1.6;color:#64748b;margin:0 0 6px;padding:0}
-.tac-footer-founders{font-size:0.75rem;line-height:1.6;color:#475569;margin:0;padding:0}
+:root{
+  color-scheme: light;
+
+  /* Colour — sampled from the official logo, which is drawn on white */
+  --paper:      #F4F5F0;   /* chalk / infield off-white, faint green-grey bias */
+  --paper-2:    #FFFFFF;
+  --ink:        #0A1230;   /* logo's near-black navy */
+  --ink-soft:   #5A6482;   /* blue-biased grey */
+  --royal:      #003CB4;   /* logo blue */
+  --sky:        #3D8BFF;
+  --volt:       #DDFF57;   /* chalk-line highlight, only ever on ink/royal */
+  --ember:      #FF4D1F;   /* lane numbers, the "check" — graphic use only */
+  --ember-txt:  #C7380F;   /* accessible ember for small type (4.8:1 on paper) */
+  --rule:       #D8DAD2;
+
+  /* Type */
+  --display: "Archivo", "Arial Narrow", Impact, sans-serif;
+  --body:    "Figtree", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --mono:    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --shell: 1240px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img{ max-width:100%; height:auto; display:block; }
+a{ color: var(--royal); }
+
+.shell{ width:100%; max-width:var(--shell); margin-inline:auto; padding-inline:24px; }
+
+/* ---- Type roles ---------------------------------------------------------- */
+.d{
+  font-family: var(--display);
+  font-weight:900; font-stretch:70%; font-variation-settings:"wdth" 70,"wght" 900;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: 0.005em;
+  text-wrap: balance;
+  margin:0;
+}
+.d--wide{ font-weight:800; font-stretch:88%; font-variation-settings:"wdth" 88,"wght" 800; }
+
+.lane{                                  /* bib / lane label */
+  font-family: var(--mono);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.lead{ font-size:1.14rem; line-height:1.75; color:#2A3150; max-width:62ch; }
+
+/* ---- Buttons ------------------------------------------------------------- */
+.btn{
+  display:inline-flex; align-items:center; gap:.6rem;
+  font-family:var(--display); font-style:italic;
+  font-weight:800; font-stretch:82%; font-variation-settings:"wdth" 82,"wght" 800;
+  text-transform:uppercase; letter-spacing:.03em;
+  font-size:1.05rem;
+  padding: 17px 30px 15px;
+  text-decoration:none;
+  border:2px solid var(--ink);
+  transition: transform .16s ease, background-color .16s ease, color .16s ease, box-shadow .16s ease;
+}
+.btn--go{ background:var(--royal); border-color:var(--royal); color:#fff; box-shadow:5px 5px 0 var(--ink); }
+.btn--go:hover{ transform:translate(-2px,-2px); box-shadow:8px 8px 0 var(--ink); }
+.btn--ghost{ background:transparent; color:var(--ink); }
+.btn--ghost:hover{ background:var(--ink); color:var(--paper); transform:translate(-2px,-2px); }
+.btn--volt{ background:var(--volt); border-color:var(--ink); color:var(--ink); box-shadow:5px 5px 0 var(--ink); }
+.btn--volt:hover{ transform:translate(-2px,-2px); box-shadow:8px 8px 0 var(--ink); }
+.btn .arw{ transition: transform .16s ease; }
+.btn:hover .arw{ transform: translateX(4px); }
+
+a:focus-visible, button:focus-visible{
+  outline:3px solid var(--ember); outline-offset:3px;
+}
+
+/* ---- Nav ----------------------------------------------------------------- */
+.nav{
+  position:sticky; top:0; z-index:60;
+  background: rgba(244,245,240,.92);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.nav__in{ display:flex; align-items:center; justify-content:space-between; gap:20px; padding-block:14px; }
+.nav__logo{ text-decoration:none; display:block; line-height:1; }
+.nav__logo .wm{
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:68%; font-variation-settings:"wdth" 68,"wght" 900;
+  text-transform:uppercase; font-size:1.72rem; line-height:.9;
+  color:var(--ink); letter-spacing:.01em; white-space:nowrap;
+}
+.nav__logo .wm b{ color:var(--royal); font-weight:inherit; }
+@media (max-width:430px){ .nav__logo .wm{ font-size:1.32rem; } .nav__logo .sub{ font-size:.48rem; letter-spacing:.18em; } }
+.nav__logo .sub{
+  font-family:var(--mono); font-size:.53rem; font-weight:700;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--ink-soft);
+  margin-top:5px; display:block;
+}
+.nav__links{ display:flex; align-items:center; gap:30px; }
+.nav__links a{
+  font-family:var(--display); font-style:italic;
+  font-weight:700; font-stretch:80%; font-variation-settings:"wdth" 80,"wght" 700;
+  text-transform:uppercase; font-size:1rem; letter-spacing:.04em;
+  color:var(--ink); text-decoration:none; padding-block:4px;
+  border-bottom:3px solid transparent;
+}
+.nav__links a:hover{ border-bottom-color:var(--ember); }
+.nav__cta{
+  background:var(--royal); color:#fff !important; border-bottom:none !important;
+  padding:11px 20px 9px !important;
+}
+.nav__cta:hover{ background:var(--ink); }
+.burger{ display:none; background:none; border:2px solid var(--ink); padding:8px 10px; cursor:pointer; }
+.burger span{ display:block; width:20px; height:2px; background:var(--ink); margin:4px 0; }
+
+.sheet{ display:none; }
+.sheet.open{
+  display:flex; flex-direction:column; gap:6px;
+  position:fixed; inset:0; z-index:70; background:var(--ink);
+  padding:24px; justify-content:center; align-items:flex-start;
+}
+.sheet a{
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:72%; font-variation-settings:"wdth" 72,"wght" 900;
+  text-transform:uppercase; font-size:clamp(2rem,9vw,3.4rem); line-height:1.05;
+  color:var(--paper); text-decoration:none;
+}
+.sheet a:hover{ color:var(--volt); }
+.sheet__x{
+  position:absolute; top:20px; right:20px; background:none; border:2px solid var(--paper);
+  color:var(--paper); font-size:1.4rem; line-height:1; padding:6px 12px; cursor:pointer;
+}
+
+/* ---- Hero ---------------------------------------------------------------- */
+.hero{ position:relative; overflow:hidden; padding: clamp(48px,7vw,88px) 0 clamp(40px,5vw,64px); }
+.hero__stripes{
+  position:absolute; inset:0; pointer-events:none;
+  background: repeating-linear-gradient(
+    100deg,
+    transparent 0 62px,
+    rgba(0,60,180,.055) 62px 64px
+  );
+}
+.hero__in{ position:relative; display:grid; grid-template-columns: 1fr; gap:38px; }
+.hero__mark{ max-width:min(560px,100%); }
+.hero h1{ font-size: clamp(2.7rem, 7vw, 5.6rem); }
+.hero h1 .blue{ color:var(--royal); }
+.hero h1 .mark{
+  background: linear-gradient(transparent 58%, var(--volt) 58% 94%, transparent 94%);
+  padding-inline:.06em;
+}
+.hero__ctas{ display:flex; flex-wrap:wrap; gap:14px; }
+.hero__meta{ display:flex; flex-wrap:wrap; gap:10px 28px; color:var(--ink-soft); }
+.hero__meta span{ display:inline-flex; align-items:center; gap:8px; }
+.dot{ width:7px; height:7px; background:var(--ember); border-radius:50%; flex:none; }
+
+/* ---- Ribbon (stadium board) --------------------------------------------- */
+.ribbon{ background:var(--ink); color:var(--volt); overflow:hidden; padding:13px 0; }
+.ribbon__track{ display:flex; width:max-content; animation: roll 34s linear infinite; }
+.ribbon__track span{
+  font-family:var(--display); font-style:italic;
+  font-weight:800; font-stretch:78%; font-variation-settings:"wdth" 78,"wght" 800;
+  text-transform:uppercase; font-size:1.05rem; letter-spacing:.05em;
+  padding-inline:22px; white-space:nowrap;
+}
+.ribbon__track span:nth-child(even){ color:var(--paper); }
+@keyframes roll{ to{ transform: translateX(-50%); } }
+
+/* ---- Section chrome ------------------------------------------------------ */
+.sec{ padding: clamp(60px,8vw,104px) 0; }
+.sec--white{ background:var(--paper-2); }
+.sec__head{
+  display:flex; align-items:baseline; gap:16px;
+  border-top:2px solid var(--ink); padding-top:12px; margin-bottom:34px;
+}
+.sec__head .lane{ color:var(--ember-txt); flex:none; }
+.sec__head h2{ font-size: clamp(1.9rem,4.4vw,3.2rem); }
+
+/* ---- Mission ------------------------------------------------------------- */
+.mission__quote{
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:76%; font-variation-settings:"wdth" 76,"wght" 900;
+  text-transform:uppercase;
+  font-size: clamp(1.7rem,4.4vw,3.1rem);
+  line-height:1.03; margin: 30px 0 0; max-width:18ch;
+  color:var(--royal);
+}
+.mission__grid{ display:grid; grid-template-columns:1fr; gap:34px; }
+
+/* ---- Pillar cards -------------------------------------------------------- */
+.cards{ display:grid; grid-template-columns:1fr; gap:20px; }
+.card{
+  position:relative; background:var(--paper-2);
+  border:2px solid var(--ink); border-left-width:12px;
+  padding:30px 26px 28px;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.card:nth-child(1){ border-left-color:var(--royal); }
+.card:nth-child(2){ border-left-color:var(--ember); }
+.card:nth-child(3){ border-left-color:var(--ink); }
+.card:hover{ transform:translateY(-5px); box-shadow:0 14px 0 -6px rgba(10,18,48,.14); }
+.card .lane{ color:var(--ink-soft); }
+.card h3{
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:72%; font-variation-settings:"wdth" 72,"wght" 900;
+  text-transform:uppercase; font-size:1.85rem; line-height:.98;
+  margin:.55rem 0 .7rem;
+}
+.card p{ margin:0; color:#2A3150; font-size:.99rem; line-height:1.66; }
+.card__icon{ width:44px; height:44px; }
+.sec--white .card{ background:var(--paper); }
+
+/* ---- Founders ------------------------------------------------------------ */
+.founders{ display:grid; grid-template-columns:1fr; gap:24px; }
+.fig{ background:var(--paper-2); border:2px solid var(--ink); }
+.sec--white .fig{ background:var(--paper); }
+.fig__img{ aspect-ratio: 4/3; overflow:hidden; background:var(--ink); }
+.fig__img img{ width:100%; height:100%; object-fit:cover; object-position:center 22%; filter:saturate(1.05); }
+.fig__plate{ display:flex; align-items:flex-end; justify-content:space-between; gap:16px; padding:18px 20px 20px; }
+.fig__plate h3{
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:70%; font-variation-settings:"wdth" 70,"wght" 900;
+  text-transform:uppercase; font-size:clamp(1.6rem,3.4vw,2.2rem); line-height:.95; margin:0 0 6px;
+}
+.fig__plate p{ margin:0; color:var(--ink-soft); font-size:.86rem; }
+.fig__num{
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:70%; font-variation-settings:"wdth" 70,"wght" 900;
+  font-size:2.6rem; line-height:.8; color:var(--rule); flex:none;
+}
+
+/* ---- Closing CTA --------------------------------------------------------- */
+.close{ background:var(--royal); color:#fff; position:relative; overflow:hidden; padding: clamp(60px,8vw,96px) 0; }
+.close__stripes{
+  position:absolute; inset:0; opacity:.5; pointer-events:none;
+  background: repeating-linear-gradient(100deg, transparent 0 46px, rgba(255,255,255,.09) 46px 50px);
+}
+.close__in{ position:relative; display:grid; gap:24px; justify-items:start; }
+.close h2{ font-size: clamp(2.2rem,6vw,4.6rem); max-width:16ch; }
+.close h2 em{ font-style:italic; color:var(--volt); }
+.close p{ margin:0; max-width:52ch; color:#DCE6FF; font-size:1.08rem; }
+
+/* ---- Footer -------------------------------------------------------------- */
+.foot{ background:var(--ink); color:#A6AFC9; padding: 56px 0 34px; }
+.foot__top{ display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:space-between; gap:30px; }
+.foot__logo{ height:88px; width:auto; }
+.foot__nav{ display:flex; flex-wrap:wrap; gap:8px 22px; }
+.foot__nav a{ color:#A6AFC9; text-decoration:none; font-size:.94rem; }
+.foot__nav a:hover{ color:var(--volt); }
+.foot__tag{
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:74%; font-variation-settings:"wdth" 74,"wght" 900;
+  text-transform:uppercase; color:var(--paper);
+  font-size:clamp(1.5rem,4vw,2.4rem); line-height:.98; margin:38px 0 0;
+}
+.foot__tag b{ color:var(--volt); font-weight:inherit; }
+.foot__rule{ height:2px; background:#1D2A50; margin:26px 0 20px; }
+.foot__fine{ display:flex; flex-wrap:wrap; gap:6px 20px; font-size:.8rem; color:#8A94B6; }
+
+/* ---- Reveal -------------------------------------------------------------- */
+.up{ opacity:0; transform: translateY(26px); transition: opacity .6s ease, transform .6s ease; }
+.up.in{ opacity:1; transform:none; }
+
+/* ---- Breakpoints --------------------------------------------------------- */
+@media (min-width: 760px){
+  .cards{ grid-template-columns: repeat(3,1fr); }
+  .founders{ grid-template-columns: repeat(2,1fr); }
+  .mission__grid{ grid-template-columns: 1.05fr .95fr; gap:56px; align-items:start; }
+  .fig__img{ aspect-ratio: 3/4; }
+}
+@media (min-width: 1000px){
+  .hero__in{ grid-template-columns: 1.15fr .85fr; align-items:center; gap:56px; }
+  .hero__mark{ order:2; max-width:100%; }
+  .hero__copy{ order:1; }
+}
+@media (max-width: 860px){
+  .nav__links{ display:none; }
+  .burger{ display:block; }
+}
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
+  .up{ opacity:1; transform:none; }
+}
 </style>
 </head>
-<body data-id="0">
-    <app-icon data-id="1" hidden="" data-icon="activity" data-palette="Blue"></app-icon>
-
-    <!-- ===== STICKY NAVIGATION ===== -->
-    <!-- ===== SHARED SITE HEADER ===== -->
-<nav class="tac-navbar" id="tac-navbar">
-  <div class="tac-nav-inner">
-    <a class="tac-nav-brand" href="/">
-      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+<body>
+<!-- ============================== NAV ============================== -->
+<header class="nav">
+  <div class="shell nav__in">
+    <a class="nav__logo" href="/" aria-label="The Athlete Check — home">
+      <span class="wm">The Athlete <b>Check</b></span>
+      <span class="sub">An IronMind Company</span>
     </a>
-    <div class="tac-nav-links">
-      <a class="tac-nav-link" href="/registration">REGISTRATION</a><a class="tac-nav-link" href="/about">ABOUT</a>
-      <a class="tac-nav-link" href="/assessment">ASSESSMENT</a>
-      <a class="tac-nav-link" href="/advocate">ADVOCATE</a>
-      <a class="tac-nav-link" href="/coaches">COACHES/ADS</a>
-      <a class="tac-nav-link" href="/performanceblueprint">BLUEPRINT</a>
-      <a class="tac-nav-link" href="/courses">COURSES</a>
-      <a class="tac-nav-link" href="/proudmoment">PROUD MOMENT</a>
-      <a class="tac-nav-cta" href="/assessment">TAKE THE CHECK</a>
-    </div>
-    <button class="tac-nav-toggle" id="tac-nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="tac-mobile-menu">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+    <nav class="nav__links" aria-label="Main">
+      <a href="/about">About</a>
+      <a href="/assessment">Assessment</a>
+      <a href="/advocate">Advocate</a>
+      <a href="/performanceblueprint">Blueprint</a>
+      <a href="/coaches">Coaches &amp; ADs</a>
+      <a href="/courses">Courses</a>
+      <a class="nav__cta" href="/assessment">Take the Check</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
     </button>
   </div>
-  <div class="tac-mobile-menu" id="tac-mobile-menu">
-    <div class="tac-mobile-top">
-      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
-      <button class="tac-nav-close" id="tac-nav-close" type="button" aria-label="Close menu">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
-      </button>
+</header>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="sheet__x" id="sheetX" aria-label="Close menu">&times;</button>
+  <a href="/about">About</a>
+  <a href="/assessment">Assessment</a>
+  <a href="/advocate">Advocate</a>
+  <a href="/performanceblueprint">Blueprint</a>
+  <a href="/coaches">Coaches &amp; ADs</a>
+  <a href="/courses">Courses</a>
+  <a href="/registration">Registration</a>
+  <a href="/proudmoment">Proud Moment</a>
+  <a href="/contact">Contact</a>
+  <a href="/assessment" style="color:var(--volt)">Take the Check &rarr;</a>
+</div>
+
+<main>
+  <!-- ============================== HERO ============================== -->
+  <section class="hero">
+    <div class="hero__stripes" aria-hidden="true"></div>
+    <div class="shell hero__in">
+      <div class="hero__copy">
+        <p class="lane" style="color:var(--ember-txt); margin:0 0 18px;">An IronMind Company</p>
+        <h1 class="d">
+          Built by student athletes.<br>
+          Backed by IronMind.<br>
+          Designed for <span class="blue"><span class="mark">the next level.</span></span>
+        </h1>
+        <div class="hero__ctas" style="margin:34px 0 26px;">
+          <a class="btn btn--go" href="/assessment">Take the Athlete Check <span class="arw">&rarr;</span></a>
+          <a class="btn btn--ghost" href="/advocate">Become an Advocate</a>
+        </div>
+        <div class="hero__meta">
+          <span><i class="dot"></i> Mental &middot; Physical &middot; Professional</span>
+          <span><i class="dot"></i> Built by Division I athletes</span>
+        </div>
+      </div>
+      <div class="hero__mark">
+        <img src="images/athlete-check-logo-transparent.png" alt="The Athlete Check — winged sandal logo" width="843" height="466">
+      </div>
     </div>
-    <div class="tac-mobile-links">
-      <a class="tac-mobile-link" href="/registration">REGISTRATION</a><a class="tac-mobile-link" href="/about">ABOUT</a>
-      <a class="tac-mobile-link" href="/assessment">ASSESSMENT</a>
-      <a class="tac-mobile-link" href="/advocate">ADVOCATE</a>
-      <a class="tac-mobile-link" href="/coaches">COACHES/ADS</a>
-      <a class="tac-mobile-link" href="/performanceblueprint">BLUEPRINT</a>
-      <a class="tac-mobile-link" href="/courses">COURSES</a>
-      <a class="tac-mobile-link" href="/proudmoment">PROUD MOMENT</a>
-      <a class="tac-mobile-cta" href="/assessment">TAKE THE CHECK</a>
+  </section>
+
+  <!-- ============================== RIBBON ============================== -->
+  <div class="ribbon" aria-hidden="true">
+    <div class="ribbon__track" id="ribbon"></div>
+  </div>
+
+  <!-- ============================== MISSION ============================== -->
+  <section class="sec sec--white">
+    <div class="shell">
+      <div class="sec__head up">
+        <span class="lane">Our mission</span>
+        <h2 class="d">Know where you stand</h2>
+      </div>
+      <div class="mission__grid up">
+        <div>
+          <p class="lead">
+            The Athlete Check is a readiness and identity platform created by student athletes, for
+            student athletes. Founded by Luke Stenson and Wyatt Porch, both Division I athletes, the
+            platform was born out of the IronMind Summer Internship Program — a high performance
+            environment built around identity, leadership, and personal development.
+          </p>
+        </div>
+        <div>
+          <p class="mission__quote">Help athletes see where they truly stand — and get ready for what comes next.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PILLARS ============================== -->
+  <section class="sec">
+    <div class="shell">
+      <div class="sec__head up">
+        <span class="lane">What we do</span>
+        <h2 class="d">Three ways we move you</h2>
+      </div>
+      <div class="cards">
+        <article class="card up">
+          <svg class="card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="19" stroke="#003CB4" stroke-width="3"/>
+            <circle cx="24" cy="24" r="10" stroke="#003CB4" stroke-width="3"/>
+            <circle cx="24" cy="24" r="3.5" fill="#FF4D1F"/>
+          </svg>
+          <p class="lane">Assess</p>
+          <h3>Know your edge</h3>
+          <p>A readiness assessment that shows you exactly where you stand — mentally, physically, and professionally.</p>
+        </article>
+        <article class="card up">
+          <svg class="card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M26 4 11 27h10l-3 17 19-24H26l4-16Z" fill="#FF4D1F" stroke="#0A1230" stroke-width="2.5" stroke-linejoin="round"/>
+          </svg>
+          <p class="lane">Train</p>
+          <h3>IronMind mentality</h3>
+          <p>Train your mind like your body. Build the toughness, identity, and resilience to compete at every level of life.</p>
+        </article>
+        <article class="card up">
+          <svg class="card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M8 40 40 8" stroke="#0A1230" stroke-width="3" stroke-linecap="round"/>
+            <path d="M26 8h14v14" stroke="#0A1230" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 30h9M8 36h16" stroke="#003CB4" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <p class="lane">Transform</p>
+          <h3>Prepare for what's next</h3>
+          <p>Carry your athletic identity into every room you walk into — from the locker room to the interview room.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FOUNDERS ============================== -->
+  <section class="sec sec--white">
+    <div class="shell">
+      <div class="sec__head up">
+        <span class="lane">The founders</span>
+        <h2 class="d">Built by athletes, for athletes</h2>
+      </div>
+      <p class="lead up" style="margin:-14px 0 34px;">
+        The Athlete Check was created by Division I athletes who lived the experience firsthand.
+      </p>
+      <div class="founders">
+        <figure class="fig up" style="margin:0;">
+          <div class="fig__img"><img src="images/luke-stenson-action.jpg" alt="Luke Stenson in a Marist football uniform on the sideline"></div>
+          <figcaption class="fig__plate">
+            <div>
+              <h3>Luke Stenson</h3>
+              <p>Co-Founder &middot; Division I Football<br>IronMind Summer Internship alumnus</p>
+            </div>
+            <span class="fig__num" aria-hidden="true">01</span>
+          </figcaption>
+        </figure>
+        <figure class="fig up" style="margin:0;">
+          <div class="fig__img"><img src="images/wyatt-porch-action.jpg" alt="Wyatt Porch in cap and goggles on the pool deck"></div>
+          <figcaption class="fig__plate">
+            <div>
+              <h3>Wyatt Porch</h3>
+              <p>Co-Founder &middot; Division I Swimming<br>IronMind Summer Internship alumnus</p>
+            </div>
+            <span class="fig__num" aria-hidden="true">02</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== CLOSE ============================== -->
+  <section class="close">
+    <div class="close__stripes" aria-hidden="true"></div>
+    <div class="shell close__in">
+      <p class="lane" style="color:var(--volt); margin:0;">Start line</p>
+      <h2 class="d">Ready to know <em>where you stand?</em></h2>
+      <p>Take the Athlete Check and start preparing for the next level.</p>
+      <a class="btn btn--volt" href="/assessment">Take the Check now <span class="arw">&rarr;</span></a>
+    </div>
+  </section>
+</main>
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="foot">
+  <div class="shell">
+    <div class="foot__top">
+      <img class="foot__logo" src="images/athlete-check-logo-white.png" alt="The Athlete Check">
+      <nav class="foot__nav" aria-label="Footer">
+        <a href="/about">About</a>
+        <a href="/assessment">Assessment</a>
+        <a href="/advocate">Advocate</a>
+        <a href="/performanceblueprint">Blueprint</a>
+        <a href="/coaches">Coaches &amp; ADs</a>
+        <a href="/courses">Courses</a>
+        <a href="/registration">Registration</a>
+        <a href="/proudmoment">Proud Moment</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </div>
+    <p class="foot__tag">Test. <b>Train.</b> Transform.</p>
+    <div class="foot__rule"></div>
+    <div class="foot__fine">
+      <span>&copy; 2026 The Athlete Check &middot; theathletecheck.com</span>
+      <span>An IronMind Company &middot; Built for more</span>
+      <span>Founded by Luke Stenson &amp; Wyatt Porch</span>
     </div>
   </div>
-</nav>
-<script>
-/* Shared site header: mobile menu toggle + scroll background, self-contained. */
-(function () {
-  var toggle = document.getElementById('tac-nav-toggle');
-  var menu = document.getElementById('tac-mobile-menu');
-  var closeBtn = document.getElementById('tac-nav-close');
+</footer>
 
-  if (toggle && menu && closeBtn) {
-    var openMenu = function () {
-      menu.classList.add('tac-open');
-      toggle.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    };
-    var closeMenu = function () {
-      menu.classList.remove('tac-open');
-      toggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    };
-    toggle.addEventListener('click', openMenu);
-    closeBtn.addEventListener('click', closeMenu);
-    Array.prototype.forEach.call(menu.querySelectorAll('a'), function (link) {
-      link.addEventListener('click', closeMenu);
-    });
+<script>
+(function(){
+  /* Stadium ribbon — duplicated once so the -50% loop is seamless */
+  var phrases = ["Test. Train. Transform.","Know where you stand","An IronMind Company",
+                 "Built for more","Mental. Physical. Professional.","Built by Division I athletes"];
+  var track = document.getElementById('ribbon');
+  if (track){
+    var html = phrases.map(function(p){ return '<span>'+p+'</span><span>&#9679;</span>'; }).join('');
+    track.innerHTML = html + html;
   }
 
-  var bar = document.getElementById('tac-navbar');
-  if (bar) {
-    window.addEventListener('scroll', function () {
-      bar.style.background = window.scrollY > 80 ? 'rgba(4, 11, 20, 0.99)' : 'rgba(4, 11, 20, 0.96)';
-    });
+  /* Mobile sheet */
+  var burger = document.getElementById('burger'),
+      sheet  = document.getElementById('sheet'),
+      sheetX = document.getElementById('sheetX');
+  function setSheet(open){
+    sheet.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  if (burger && sheet && sheetX){
+    burger.addEventListener('click', function(){ setSheet(true); });
+    sheetX.addEventListener('click', function(){ setSheet(false); });
+    sheet.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setSheet(false); }); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setSheet(false); });
+  }
+
+  /* Scroll reveal */
+  var els = document.querySelectorAll('.up');
+  if (!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en, i){
+        if (en.isIntersecting){
+          setTimeout(function(){ en.target.classList.add('in'); }, i * 90);
+          io.unobserve(en.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -50px 0px', threshold: 0.08 });
+    els.forEach(function(el){ io.observe(el); });
   }
 })();
 </script>
 
-    <main data-id="23">
-      <!-- ===== HERO SECTION ===== -->
-      <section data-id="24" id="hero-o5p6" class="hero-grid relative flex flex-col items-center justify-center min-h-screen px-5 pt-20 pb-12" style="background-color: #040B14;">
-        <div data-id="25" class="flex flex-col items-center text-center max-w-3xl mx-auto justify-center">
-          <!-- Large Logo -->
-          <img data-id="26" src="images/theathletecheck-logo.png" alt="The Athlete Check" class="logo-glow w-full mb-8" style="max-width: 480px;" id="hero-logo-q7r8">
-
-          <!-- Badge Pill -->
-          <div data-id="27" class="font-display tracking-[0.2em] text-white text-sm px-5 py-1.5 rounded-full mb-8" style="background: #1A8FE3;" id="badge-pill-s9t0">
-            POWERED BY IRONMIND
-          </div>
-
-          <!-- Tagline -->
-          <h1 data-id="28" class="font-display leading-[1.05] mb-10" style="font-size: clamp(2.8rem, 6vw, 5.5rem); letter-spacing: 0.04em;" id="hero-tagline-u1v2">
-            BUILT BY STUDENT ATHLETES.<br data-id="29">
-            BACKED BY IRONMIND.<br data-id="30">
-            DESIGNED FOR <span data-id="31" style="color: #1A8FE3;">THE NEXT LEVEL.</span>
-          </h1>
-
-          <!-- CTA Buttons -->
-          <div data-id="32" class="flex flex-col sm:flex-row items-center gap-4 mb-12" id="hero-ctas-w3x4">
-            <a class="cta-btn font-display tracking-[0.1em] text-white text-lg px-10 py-4 rounded" data-id="33" href="/assessment" style="background: #1A8FE3;">
-              TAKE THE ATHLETE CHECK →
-            </a>
-            <a class="cta-btn font-display tracking-[0.1em] text-white text-lg px-10 py-4 rounded border-2 border-white bg-transparent" data-id="34" href="/advocate">
-              BECOME AN ADVOCATE
-            </a>
-          </div>
-        </div>
-
-        <!-- Scroll Arrow -->
-        <div data-id="35" class="scroll-arrow absolute bottom-8" id="scroll-arrow-y5z6">
-          <i data-id="36" data-lucide="chevron-down" class="w-8 h-8" style="color: #1A8FE3;"></i>
-        </div>
-      </section>
-
-      <!-- ===== MISSION STATEMENT SECTION ===== -->
-      <section data-id="37" id="mission-a2b3" class="fade-up" style="background: #071525; padding: 100px 20px;">
-        <div data-id="38" class="max-w-[860px] mx-auto text-center">
-          <!-- Overline -->
-          <span data-id="39" class="font-display text-sm tracking-[0.2em]" style="color: #1A8FE3;" id="mission-label-c4d5">OUR MISSION</span>
-          <hr data-id="40" class="blue-hr">
-
-          <!-- Mission Text -->
-          <p data-id="41" class="font-body mt-8 mb-10 leading-[1.9]" style="font-size: 1.15rem; color: #e2e8f0;" id="mission-text-e6f7">
-            The Athlete Check is a readiness and identity platform created by student athletes, for student athletes. Founded by Luke Stenson and Wyatt Porch, both Division I athletes, the platform was born out of the IronMind Summer Internship Program — a high performance environment built around identity, leadership, and personal development.
-          </p>
-
-          <!-- Quote Statement -->
-          <p data-id="42" class="quote-statement font-display" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: #1A8FE3; line-height: 1.2;" id="mission-quote-g8h9">
-            The mission is simple: Help student athletes understand where they truly stand, and prepare them for what comes next.
-          </p>
-        </div>
-      </section>
-
-      <!-- ===== THREE PILLARS SECTION ===== -->
-      <section data-id="43" id="pillars-i0j1" class="fade-up" style="background: #040B14; padding: 100px 20px;">
-        <div data-id="44" class="max-w-6xl mx-auto">
-          <!-- Section Heading -->
-          <h2 data-id="45" class="font-display text-center text-white mb-4 tracking-wider" style="font-size: clamp(2.5rem, 5vw, 4rem);" id="pillars-heading-k2l3">WHAT WE DO</h2>
-          <hr data-id="46" class="blue-hr mb-14">
-
-          <!-- Cards Grid -->
-          <div data-id="47" class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8" id="pillars-grid-m4n5">
-            <!-- Card 1 -->
-            <div data-id="48" class="pillar-card blue-top-border rounded-lg p-8 text-center fade-up" style="background: #0A1929;" data-delay="0" id="pillar1-o6p7">
-              <div data-id="49" class="text-4xl mb-5">🎯</div>
-              <h3 data-id="50" class="font-display text-2xl tracking-wider mb-4" style="color: #1A8FE3;">KNOW YOUR EDGE</h3>
-              <p data-id="51" class="font-body text-sm leading-relaxed" style="color: #94a3b8;">
-                A comprehensive readiness assessment that shows you exactly where you stand — mentally, physically, and professionally.
-              </p>
-            </div>
-
-            <!-- Card 2 -->
-            <div data-id="52" class="pillar-card blue-top-border rounded-lg p-8 text-center fade-up" style="background: #0A1929;" data-delay="150" id="pillar2-q8r9">
-              <div data-id="53" class="text-4xl mb-5">⚡</div>
-              <h3 data-id="54" class="font-display text-2xl tracking-wider mb-4" style="color: #1A8FE3;">IRONMIND MENTALITY</h3>
-              <p data-id="55" class="font-body text-sm leading-relaxed" style="color: #94a3b8;">
-                Train your mind like your body. Build the mental toughness, identity, and resilience to compete at every level of life.
-              </p>
-            </div>
-
-            <!-- Card 3 -->
-            <div data-id="56" class="pillar-card blue-top-border rounded-lg p-8 text-center fade-up" style="background: #0A1929;" data-delay="300" id="pillar3-s0t1">
-              <div data-id="57" class="text-4xl mb-5">🚀</div>
-              <h3 data-id="58" class="font-display text-2xl tracking-wider mb-4" style="color: #1A8FE3;">PREPARE FOR WHAT'S NEXT</h3>
-              <p data-id="59" class="font-body text-sm leading-relaxed" style="color: #94a3b8;">
-                Transition from student athlete to high performer. We help you carry your athletic identity into every room you walk into.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===== FOUNDERS SECTION ===== -->
-      <section data-id="60" id="founders-u2v3" class="fade-up" style="background: #071525; padding: 100px 20px;">
-        <div data-id="61" class="max-w-5xl mx-auto text-center">
-          <!-- Section Heading -->
-          <h2 data-id="62" class="font-display text-white tracking-wider mb-3" style="font-size: clamp(2.2rem, 4.5vw, 3.5rem);" id="founders-heading-w4x5">BUILT BY ATHLETES, FOR ATHLETES</h2>
-          <p data-id="63" class="font-body mb-14" style="color: #94a3b8; font-size: 1.05rem;" id="founders-subtitle-y6z7">
-            The Athlete Check was created by Division I athletes who lived the experience firsthand.
-          </p>
-
-          <!-- Founder Cards -->
-          <div data-id="64" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto" id="founders-grid-a8b9">
-            <!-- Luke -->
-            <div data-id="65" class="rounded-xl p-10 text-center" style="background: #0A1929;" id="founder1-c0d1">
-              <div data-id="66" class="avatar-circle">LS</div>
-              <h3 data-id="67" class="font-display text-3xl tracking-wider text-white mb-1">LUKE STENSON</h3>
-              <p data-id="68" class="font-body text-sm font-medium mb-3" style="color: #1A8FE3;">Co-Founder · Division I Athlete</p>
-              <p data-id="69" class="font-body text-xs" style="color: #94a3b8;">IronMind Summer Internship Program Alumni</p>
-            </div>
-
-            <!-- Wyatt -->
-            <div data-id="70" class="rounded-xl p-10 text-center" style="background: #0A1929;" id="founder2-e2f3">
-              <div data-id="71" class="avatar-circle">WP</div>
-              <h3 data-id="72" class="font-display text-3xl tracking-wider text-white mb-1">WYATT PORCH</h3>
-              <p data-id="73" class="font-body text-sm font-medium mb-3" style="color: #1A8FE3;">Co-Founder · Division I Athlete</p>
-              <p data-id="74" class="font-body text-xs" style="color: #94a3b8;">IronMind Summer Internship Program Alumni</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===== CTA BANNER SECTION ===== -->
-      <section data-id="75" id="cta-banner-g4h5" class="fade-up text-center" style="background: linear-gradient(135deg, #1A8FE3 0%, #0d6abf 100%); padding: 80px 20px;">
-        <div data-id="76" class="max-w-3xl mx-auto">
-          <h2 data-id="77" class="font-display text-white tracking-wider mb-4" style="font-size: clamp(2.5rem, 5vw, 4rem);" id="cta-heading-i6j7">READY TO KNOW WHERE YOU STAND?</h2>
-          <p data-id="78" class="font-body text-white mb-10" style="opacity: 0.9; font-size: 1.1rem;" id="cta-subtitle-k8l9">
-            Take the Athlete Check assessment and start preparing for the next level.
-          </p>
-          <a class="cta-btn inline-block font-display tracking-[0.1em] text-lg px-12 py-4 rounded font-bold" data-id="79" href="/assessment" id="cta-btn-m0n1" style="background: #ffffff; color: #1A8FE3;">
-            TAKE THE CHECK NOW →
-          </a>
-        </div>
-      </section>
-    </main>
-
-    <!-- ===== FOOTER ===== -->
-    <!-- ===== SHARED SITE FOOTER ===== -->
-<footer class="tac-footer">
-  <div class="tac-footer-inner">
-    <a href="/"><img class="tac-footer-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check"></a>
-    <nav class="tac-footer-nav">
-      <a href="/">Home</a>
-      <a href="/registration">Registration</a>
-      <a href="/about">About</a>
-      <a href="/assessment">Assessment</a>
-      <a href="/advocate">Advocate</a>
-      <a href="/coaches">Coaches/ADs</a>
-      <a href="/performanceblueprint">Blueprint</a>
-      <a href="/courses">Courses</a>
-      <a href="/proudmoment">Proud Moment</a>
-      <a href="/contact">Contact</a>
-    </nav>
-    <a class="tac-footer-cta" href="/advocate">JOIN THE MOVEMENT — THEATHLETECHECK.COM/ADVOCATE</a>
-    <p class="tac-footer-tag">TEST. TRAIN. TRANSFORM.</p>
-    <p class="tac-footer-tag2">POWERED BY IRONMIND · BUILT FOR MORE</p>
-    <p class="tac-footer-legal">© 2026 The Athlete Check · TheAthleteCheck.com · All Rights Reserved</p>
-    <p class="tac-footer-founders">Founded by Luke Stenson &amp; Wyatt Porch</p>
-  </div>
-</footer>
-<script>
-      // ===== Lucide Icons (progressive enhancement) =====
-      // The lucide library is loaded with `defer`, so it is not available yet
-      // when this inline script first runs. Wait for DOMContentLoaded (which
-      // fires after deferred scripts have executed) before rendering icons,
-      // otherwise icons such as the mobile menu button never appear.
-      function tacRenderIcons() {
-        if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
-          lucide.createIcons();
-        }
-      }
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", tacRenderIcons);
-      } else {
-        tacRenderIcons();
-      }
-
-      // ===== Mobile Menu Toggle =====
-      const mobileMenuBtn = document.getElementById('mobile-menu-btn-i9j0');
-      const mobileMenu = document.getElementById('mobile-menu-k1l2');
-      const mobileMenuClose = document.getElementById('mobile-menu-close-m3n4');
-
-      if (mobileMenuBtn && mobileMenu && mobileMenuClose) {
-        mobileMenuBtn.addEventListener('click', function() {
-          mobileMenu.classList.remove('hidden');
-          document.body.style.overflow = 'hidden';
-        });
-
-        mobileMenuClose.addEventListener('click', function() {
-          mobileMenu.classList.add('hidden');
-          document.body.style.overflow = '';
-        });
-
-        // Close mobile menu when a link is clicked
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(function(link) {
-          link.addEventListener('click', function() {
-            mobileMenu.classList.add('hidden');
-            document.body.style.overflow = '';
-          });
-        });
-      }
-
-      // ===== Navbar background on scroll =====
-      const navbar = document.getElementById('navbar-a1b2');
-      if (navbar) {
-        window.addEventListener('scroll', function() {
-          if (window.scrollY > 80) {
-            navbar.style.background = 'rgba(4, 11, 20, 0.99)';
-          } else {
-            navbar.style.background = 'rgba(4, 11, 20, 0.96)';
-          }
-        });
-      }
-
-      // ===== Scroll-triggered fade-up animations =====
-      const fadeUpElements = document.querySelectorAll('.fade-up');
-
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px 0px -60px 0px',
-        threshold: 0.1,
-      };
-
-      const fadeUpObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            const delay = parseInt(entry.target.getAttribute('data-delay') || '0', 10);
-            setTimeout(function() {
-              entry.target.classList.add('visible');
-            }, delay);
-            fadeUpObserver.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      fadeUpElements.forEach(function(el) {
-        fadeUpObserver.observe(el);
-      });
-
-      // ===== Smooth scroll for scroll arrow =====
-      const scrollArrow = document.getElementById('scroll-arrow-y5z6');
-      if (scrollArrow) {
-        scrollArrow.addEventListener('click', function() {
-          const missionSection = document.getElementById('mission-a2b3');
-          if (missionSection) {
-            missionSection.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-        scrollArrow.style.cursor = 'pointer';
-      }
-    </script>
-
-</body></html>
+</body>
+</html>
