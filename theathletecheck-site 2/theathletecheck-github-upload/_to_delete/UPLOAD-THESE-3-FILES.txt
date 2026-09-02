@@ -1,0 +1,32 @@
+THE ATHLETE CHECK — bright homepage
+Repo: github.com/kstoddart-collab/theathletecheck-site
+Site root in the repo: "theathletecheck-site 2/"
+
+Upload exactly these 3 files (GitHub web UI: Add file > Upload files):
+
+  index.html
+      -> replaces  "theathletecheck-site 2/index.html"
+
+  images/athlete-check-logo-transparent.png     (NEW)
+  images/athlete-check-logo-white.png           (NEW)
+      -> both go in "theathletecheck-site 2/images/"
+
+Commit to main. Netlify (project meek-squirrel-950c13) rebuilds
+www.theathletecheck.com automatically in about a minute.
+
+Nothing else changes. luke-stenson-action.jpg and wyatt-porch-action.jpg
+are already in the repo and are reused as-is.
+
+Verified before packaging
+-------------------------
+  - all 4 images load from their relative paths
+  - no console errors
+  - no horizontal overflow at 1440px or 390px
+  - every nav/footer link points at a page that exists:
+    / /about /assessment /advocate /performanceblueprint
+    /coaches /courses /registration /proudmoment /contact
+  - text contrast passes AA throughout
+
+Still to do
+-----------
+The other 9 pages are still on the old near-black theme.

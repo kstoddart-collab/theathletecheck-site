@@ -1,0 +1,32 @@
+THE ATHLETE CHECK — homepage fix #1
+Repo: github.com/kstoddart-collab/theathletecheck-site
+
+Upload ONE file:
+
+  index.html  ->  replaces "theathletecheck-site 2/index.html"
+
+Commit to main. That's it — Netlify rebuilds in about a minute.
+
+What this fixes
+---------------
+1. Broken logos. The two PNGs you uploaded landed in
+   "theathletecheck-site 2/" instead of "theathletecheck-site 2/images/".
+   Rather than have you move them, this index.html now points at them
+   where they already are. Nothing to move, nothing to delete.
+
+2. Squashed headline. The hero was a two-column grid, and the 843px-wide
+   logo was forcing its column open, crushing the headline into a 406px
+   strip that wrapped over seven lines. The headline now runs full width
+   in three clean lines, with the CTAs and logo sharing the row beneath.
+
+3. Nav overflow at laptop widths. Between roughly 1000 and 1080px the
+   seven nav links ran past the right edge. The mobile menu now takes
+   over below 1080px, and links tighten between 1081 and 1240px.
+
+Verified at 1600 / 1440 / 1240 / 1100 / 1080 / 1024 / 900 / 768 / 600 /
+390 / 320px: no horizontal overflow, every image loads, no console errors.
+
+Optional tidy-up (not required)
+-------------------------------
+If you'd rather the two logo PNGs live in images/ like everything else,
+move them there and tell me — it's a one-line change back.
