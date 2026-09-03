@@ -174,15 +174,19 @@ a:focus-visible, button:focus-visible{
     rgba(0,60,180,.055) 62px 64px
   );
 }
-.hero__in{ position:relative; display:grid; grid-template-columns: 1fr; gap:38px; }
-.hero__mark{ max-width:min(560px,100%); }
-.hero h1{ font-size: clamp(2.7rem, 7vw, 5.6rem); }
+.hero__in{ position:relative; display:grid; grid-template-columns: 1fr; gap:30px; }
+.hero__copy{ width:100%; }
+.hero h1{ font-size: clamp(2.4rem, 5.4vw, 4.5rem); max-width: 1150px; }
+/* headline runs full width; CTAs and the mark share the row beneath it */
+.hero__foot{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:34px; }
+.hero__actions{ flex:1 1 360px; min-width:0; }
+.hero__mark{ flex:0 1 460px; min-width:0; max-width:460px; }
 .hero h1 .blue{ color:var(--royal); }
 .hero h1 .mark{
   background: linear-gradient(transparent 58%, var(--volt) 58% 94%, transparent 94%);
   padding-inline:.06em;
 }
-.hero__ctas{ display:flex; flex-wrap:wrap; gap:14px; }
+.hero__ctas{ display:flex; flex-wrap:wrap; gap:14px; margin:0 0 22px; }
 .hero__meta{ display:flex; flex-wrap:wrap; gap:10px 28px; color:var(--ink-soft); }
 .hero__meta span{ display:inline-flex; align-items:center; gap:8px; }
 .dot{ width:7px; height:7px; background:var(--ember); border-radius:50%; flex:none; }
@@ -301,12 +305,12 @@ a:focus-visible, button:focus-visible{
   .mission__grid{ grid-template-columns: 1.05fr .95fr; gap:56px; align-items:start; }
   .fig__img{ aspect-ratio: 3/4; }
 }
-@media (min-width: 1000px){
-  .hero__in{ grid-template-columns: 1.15fr .85fr; align-items:center; gap:56px; }
-  .hero__mark{ order:2; max-width:100%; }
-  .hero__copy{ order:1; }
+@media (min-width:1081px) and (max-width:1240px){
+  .nav__links{ gap:20px; }
+  .nav__links a{ font-size:.92rem; }
+  .nav__cta{ padding:10px 15px 8px !important; }
 }
-@media (max-width: 860px){
+@media (max-width: 1080px){
   .nav__links{ display:none; }
   .burger{ display:block; }
 }
@@ -365,17 +369,21 @@ a:focus-visible, button:focus-visible{
           Backed by IronMind.<br>
           Designed for <span class="blue"><span class="mark">the next level.</span></span>
         </h1>
-        <div class="hero__ctas" style="margin:34px 0 26px;">
-          <a class="btn btn--go" href="/assessment">Take the Athlete Check <span class="arw">&rarr;</span></a>
-          <a class="btn btn--ghost" href="/advocate">Become an Advocate</a>
+        <div class="hero__foot">
+          <div class="hero__actions">
+            <div class="hero__ctas">
+              <a class="btn btn--go" href="/assessment">Take the Athlete Check <span class="arw">&rarr;</span></a>
+              <a class="btn btn--ghost" href="/advocate">Become an Advocate</a>
+            </div>
+            <div class="hero__meta">
+              <span><i class="dot"></i> Mental &middot; Physical &middot; Professional</span>
+              <span><i class="dot"></i> Built by Division I athletes</span>
+            </div>
+          </div>
+          <div class="hero__mark">
+            <img src="/athlete-check-logo-transparent.png" alt="The Athlete Check — winged sandal logo" width="843" height="466">
+          </div>
         </div>
-        <div class="hero__meta">
-          <span><i class="dot"></i> Mental &middot; Physical &middot; Professional</span>
-          <span><i class="dot"></i> Built by Division I athletes</span>
-        </div>
-      </div>
-      <div class="hero__mark">
-        <img src="images/athlete-check-logo-transparent.png" alt="The Athlete Check — winged sandal logo" width="843" height="466">
       </div>
     </div>
   </section>
@@ -460,7 +468,7 @@ a:focus-visible, button:focus-visible{
       </p>
       <div class="founders">
         <figure class="fig up" style="margin:0;">
-          <div class="fig__img"><img src="images/luke-stenson-action.jpg" alt="Luke Stenson in a Marist football uniform on the sideline"></div>
+          <div class="fig__img"><img src="/images/luke-stenson-action.jpg" alt="Luke Stenson in a Marist football uniform on the sideline"></div>
           <figcaption class="fig__plate">
             <div>
               <h3>Luke Stenson</h3>
@@ -470,7 +478,7 @@ a:focus-visible, button:focus-visible{
           </figcaption>
         </figure>
         <figure class="fig up" style="margin:0;">
-          <div class="fig__img"><img src="images/wyatt-porch-action.jpg" alt="Wyatt Porch in cap and goggles on the pool deck"></div>
+          <div class="fig__img"><img src="/images/wyatt-porch-action.jpg" alt="Wyatt Porch in cap and goggles on the pool deck"></div>
           <figcaption class="fig__plate">
             <div>
               <h3>Wyatt Porch</h3>
@@ -499,7 +507,7 @@ a:focus-visible, button:focus-visible{
 <footer class="foot">
   <div class="shell">
     <div class="foot__top">
-      <img class="foot__logo" src="images/athlete-check-logo-white.png" alt="The Athlete Check">
+      <img class="foot__logo" src="/athlete-check-logo-white.png" alt="The Athlete Check">
       <nav class="foot__nav" aria-label="Footer">
         <a href="/about">About</a>
         <a href="/assessment">Assessment</a>
