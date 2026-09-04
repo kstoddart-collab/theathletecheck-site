@@ -12,7 +12,8 @@
 
 <style>
 /* ==========================================================================
-   THE ATHLETE CHECK — bright identity
+   THE ATHLETE CHECK — Citadel edition
+   Palette: The Citadel official brand colours (brand.citadel.edu/identity/colors)
    Deliberately single-theme (light). This is a brand site: the ground is
    paper-white on every device, so every colour is painted explicitly and
    no dark-mode inversion is applied.
@@ -21,17 +22,19 @@
 :root{
   color-scheme: light;
 
-  /* Colour — sampled from the official logo, which is drawn on white */
-  --paper:      #F4F5F0;   /* chalk / infield off-white, faint green-grey bias */
+  /* Colour — The Citadel official palette. Contrast ratios noted are vs --paper
+     unless stated; every text pairing below meets WCAG AA. */
+  --paper:      #EDF1F3;   /* light tint of Bulldog Gray */
   --paper-2:    #FFFFFF;
-  --ink:        #0A1230;   /* logo's near-black navy */
-  --ink-soft:   #5A6482;   /* blue-biased grey */
-  --royal:      #003CB4;   /* logo blue */
-  --sky:        #3D8BFF;
-  --volt:       #DDFF57;   /* chalk-line highlight, only ever on ink/royal */
-  --ember:      #FF4D1F;   /* lane numbers, the "check" — graphic use only */
-  --ember-txt:  #C7380F;   /* accessible ember for small type (4.8:1 on paper) */
-  --rule:       #D8DAD2;
+  --ink:        #002856;   /* Flag Blue        12.9:1 */
+  --ink-soft:   #575856;   /* Pepper Gray       6.3:1 */
+  --royal:      #002856;   /* Flag Blue — primary actions, dark grounds */
+  --sky:        #3D7CC9;   /* Modern Blue       3.8:1 — large display text only */
+  --infantry:   #7BADD3;   /* Infantry Blue — graphic, and type on Flag Blue (6.1:1) */
+  --volt:       #EDAE17;   /* Ring Gold — ground only; carries Flag Blue at 7.4:1 */
+  --ember:      #BA0C2F;   /* Big Red           5.8:1 */
+  --ember-txt:  #BA0C2F;   /* Big Red already passes AA — no darkened variant needed */
+  --rule:       #D8DFE1;   /* Bulldog Gray */
 
   /* Type */
   --display: "Archivo", "Arial Narrow", Impact, sans-serif;
@@ -80,7 +83,7 @@ a{ color: var(--royal); }
   text-transform: uppercase;
 }
 
-.lead{ font-size:1.14rem; line-height:1.75; color:#2A3150; max-width:62ch; }
+.lead{ font-size:1.14rem; line-height:1.75; color:#24333F; max-width:62ch; }
 
 /* ---- Buttons ------------------------------------------------------------- */
 .btn{
@@ -94,12 +97,12 @@ a{ color: var(--royal); }
   border:2px solid var(--ink);
   transition: transform .16s ease, background-color .16s ease, color .16s ease, box-shadow .16s ease;
 }
-.btn--go{ background:var(--royal); border-color:var(--royal); color:#fff; box-shadow:5px 5px 0 var(--ink); }
-.btn--go:hover{ transform:translate(-2px,-2px); box-shadow:8px 8px 0 var(--ink); }
+.btn--go{ background:var(--royal); border-color:var(--royal); color:#fff; box-shadow:5px 5px 0 var(--volt); }
+.btn--go:hover{ transform:translate(-2px,-2px); box-shadow:8px 8px 0 var(--volt); }
 .btn--ghost{ background:transparent; color:var(--ink); }
 .btn--ghost:hover{ background:var(--ink); color:var(--paper); transform:translate(-2px,-2px); }
-.btn--volt{ background:var(--volt); border-color:var(--ink); color:var(--ink); box-shadow:5px 5px 0 var(--ink); }
-.btn--volt:hover{ transform:translate(-2px,-2px); box-shadow:8px 8px 0 var(--ink); }
+.btn--ongold{ background:var(--ink); border-color:var(--ink); color:#fff; box-shadow:5px 5px 0 var(--paper-2); }
+.btn--ongold:hover{ transform:translate(-2px,-2px); box-shadow:8px 8px 0 var(--paper-2); }
 .btn .arw{ transition: transform .16s ease; }
 .btn:hover .arw{ transform: translateX(4px); }
 
@@ -110,7 +113,7 @@ a:focus-visible, button:focus-visible{
 /* ---- Nav ----------------------------------------------------------------- */
 .nav{
   position:sticky; top:0; z-index:60;
-  background: rgba(244,245,240,.92);
+  background: rgba(237,241,243,.92);
   backdrop-filter: blur(10px);
   border-bottom:1px solid var(--rule);
 }
@@ -122,7 +125,7 @@ a:focus-visible, button:focus-visible{
   text-transform:uppercase; font-size:1.72rem; line-height:.9;
   color:var(--ink); letter-spacing:.01em; white-space:nowrap;
 }
-.nav__logo .wm b{ color:var(--royal); font-weight:inherit; }
+.nav__logo .wm b{ color:var(--sky); font-weight:inherit; }
 @media (max-width:430px){ .nav__logo .wm{ font-size:1.32rem; } .nav__logo .sub{ font-size:.48rem; letter-spacing:.18em; } }
 .nav__logo .sub{
   font-family:var(--mono); font-size:.53rem; font-weight:700;
@@ -137,7 +140,7 @@ a:focus-visible, button:focus-visible{
   color:var(--ink); text-decoration:none; padding-block:4px;
   border-bottom:3px solid transparent;
 }
-.nav__links a:hover{ border-bottom-color:var(--ember); }
+.nav__links a:hover{ border-bottom-color:var(--volt); }
 .nav__cta{
   background:var(--royal); color:#fff !important; border-bottom:none !important;
   padding:11px 20px 9px !important;
@@ -171,7 +174,7 @@ a:focus-visible, button:focus-visible{
   background: repeating-linear-gradient(
     100deg,
     transparent 0 62px,
-    rgba(0,60,180,.055) 62px 64px
+    rgba(0,40,86,.07) 62px 64px
   );
 }
 .hero__in{ position:relative; display:grid; grid-template-columns: 1fr; gap:30px; }
@@ -220,7 +223,7 @@ a:focus-visible, button:focus-visible{
   text-transform:uppercase;
   font-size: clamp(1.7rem,4.4vw,3.1rem);
   line-height:1.03; margin: 30px 0 0; max-width:18ch;
-  color:var(--royal);
+  color:var(--sky);
 }
 .mission__grid{ display:grid; grid-template-columns:1fr; gap:34px; }
 
@@ -234,7 +237,7 @@ a:focus-visible, button:focus-visible{
 }
 .card:nth-child(1){ border-left-color:var(--royal); }
 .card:nth-child(2){ border-left-color:var(--ember); }
-.card:nth-child(3){ border-left-color:var(--ink); }
+.card:nth-child(3){ border-left-color:var(--volt); }
 .card:hover{ transform:translateY(-5px); box-shadow:0 14px 0 -6px rgba(10,18,48,.14); }
 .card .lane{ color:var(--ink-soft); }
 .card h3{
@@ -243,7 +246,7 @@ a:focus-visible, button:focus-visible{
   text-transform:uppercase; font-size:1.85rem; line-height:.98;
   margin:.55rem 0 .7rem;
 }
-.card p{ margin:0; color:#2A3150; font-size:.99rem; line-height:1.66; }
+.card p{ margin:0; color:#24333F; font-size:.99rem; line-height:1.66; }
 .card__icon{ width:44px; height:44px; }
 .sec--white .card{ background:var(--paper); }
 
@@ -267,22 +270,23 @@ a:focus-visible, button:focus-visible{
 }
 
 /* ---- Closing CTA --------------------------------------------------------- */
-.close{ background:var(--royal); color:#fff; position:relative; overflow:hidden; padding: clamp(60px,8vw,96px) 0; }
+.close{ background:var(--volt); color:var(--ink); position:relative; overflow:hidden; padding: clamp(60px,8vw,96px) 0; }
 .close__stripes{
   position:absolute; inset:0; opacity:.5; pointer-events:none;
-  background: repeating-linear-gradient(100deg, transparent 0 46px, rgba(255,255,255,.09) 46px 50px);
+  background: repeating-linear-gradient(100deg, transparent 0 46px, rgba(0,40,86,.10) 46px 50px);
 }
 .close__in{ position:relative; display:grid; gap:24px; justify-items:start; }
-.close h2{ font-size: clamp(2.2rem,6vw,4.6rem); max-width:16ch; }
-.close h2 em{ font-style:italic; color:var(--volt); }
-.close p{ margin:0; max-width:52ch; color:#DCE6FF; font-size:1.08rem; }
+.close h2{ font-size: clamp(2.2rem,6vw,4.6rem); max-width:16ch; line-height:1.1; }
+/* inverts the hero: there gold highlights navy, here navy highlights gold */
+.close h2 em{ font-style:italic; color:var(--volt); background:var(--ink); padding:.02em .14em; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+.close p{ margin:0; max-width:52ch; color:var(--ink); font-size:1.08rem; }
 
 /* ---- Footer -------------------------------------------------------------- */
 .foot{ background:var(--ink); color:#A6AFC9; padding: 56px 0 34px; }
 .foot__top{ display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:space-between; gap:30px; }
 .foot__logo{ height:88px; width:auto; }
 .foot__nav{ display:flex; flex-wrap:wrap; gap:8px 22px; }
-.foot__nav a{ color:#A6AFC9; text-decoration:none; font-size:.94rem; }
+.foot__nav a{ color:#A9C0D2; text-decoration:none; font-size:.94rem; }
 .foot__nav a:hover{ color:var(--volt); }
 .foot__tag{
   font-family:var(--display); font-style:italic;
@@ -291,8 +295,8 @@ a:focus-visible, button:focus-visible{
   font-size:clamp(1.5rem,4vw,2.4rem); line-height:.98; margin:38px 0 0;
 }
 .foot__tag b{ color:var(--volt); font-weight:inherit; }
-.foot__rule{ height:2px; background:#1D2A50; margin:26px 0 20px; }
-.foot__fine{ display:flex; flex-wrap:wrap; gap:6px 20px; font-size:.8rem; color:#8A94B6; }
+.foot__rule{ height:2px; background:#1B4470; margin:26px 0 20px; }
+.foot__fine{ display:flex; flex-wrap:wrap; gap:6px 20px; font-size:.8rem; color:#8FA8BC; }
 
 /* ---- Reveal -------------------------------------------------------------- */
 .up{ opacity:0; transform: translateY(26px); transition: opacity .6s ease, transform .6s ease; }
@@ -426,9 +430,9 @@ a:focus-visible, button:focus-visible{
       <div class="cards">
         <article class="card up">
           <svg class="card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-            <circle cx="24" cy="24" r="19" stroke="#003CB4" stroke-width="3"/>
-            <circle cx="24" cy="24" r="10" stroke="#003CB4" stroke-width="3"/>
-            <circle cx="24" cy="24" r="3.5" fill="#FF4D1F"/>
+            <circle cx="24" cy="24" r="19" stroke="#002856" stroke-width="3"/>
+            <circle cx="24" cy="24" r="10" stroke="#002856" stroke-width="3"/>
+            <circle cx="24" cy="24" r="3.5" fill="#BA0C2F"/>
           </svg>
           <p class="lane">Assess</p>
           <h3>Know your edge</h3>
@@ -436,7 +440,7 @@ a:focus-visible, button:focus-visible{
         </article>
         <article class="card up">
           <svg class="card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-            <path d="M26 4 11 27h10l-3 17 19-24H26l4-16Z" fill="#FF4D1F" stroke="#0A1230" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M26 4 11 27h10l-3 17 19-24H26l4-16Z" fill="#BA0C2F" stroke="#002856" stroke-width="2.5" stroke-linejoin="round"/>
           </svg>
           <p class="lane">Train</p>
           <h3>IronMind mentality</h3>
@@ -444,9 +448,9 @@ a:focus-visible, button:focus-visible{
         </article>
         <article class="card up">
           <svg class="card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-            <path d="M8 40 40 8" stroke="#0A1230" stroke-width="3" stroke-linecap="round"/>
-            <path d="M26 8h14v14" stroke="#0A1230" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M8 30h9M8 36h16" stroke="#003CB4" stroke-width="3" stroke-linecap="round"/>
+            <path d="M8 40 40 8" stroke="#002856" stroke-width="3" stroke-linecap="round"/>
+            <path d="M26 8h14v14" stroke="#002856" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 30h9M8 36h16" stroke="#002856" stroke-width="3" stroke-linecap="round"/>
           </svg>
           <p class="lane">Transform</p>
           <h3>Prepare for what's next</h3>
@@ -498,7 +502,7 @@ a:focus-visible, button:focus-visible{
       <p class="lane" style="color:var(--volt); margin:0;">Start line</p>
       <h2 class="d">Ready to know <em>where you stand?</em></h2>
       <p>Take the Athlete Check and start preparing for the next level.</p>
-      <a class="btn btn--volt" href="/assessment">Take the Check now <span class="arw">&rarr;</span></a>
+      <a class="btn btn--ongold" href="/assessment">Take the Check now <span class="arw">&rarr;</span></a>
     </div>
   </section>
 </main>
