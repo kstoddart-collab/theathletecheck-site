@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Registration — IronMind Elite Student Athletes | The Athlete Check</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#EDF1F3',
+              secondary: '#F5F8FA',
+              card: '#FFFFFF',
+              accent: '#002856',
+              bright: '#3D7CC9',
+              deepnavy: '#002856',
+              muted: '#575856',
+              lighttext: '#24333F',
+            },
+            fontFamily: {
+              display: ['"Bebas Neue"', 'sans-serif'],
+              body: ['"Inter"', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://unpkg.com/lucide@latest" defer=""></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+    <style>
+      :root {
+        --primary-bg: #EDF1F3;
+        --secondary-bg: #F5F8FA;
+        --card-bg: #FFFFFF;
+        --accent: #002856;
+        --bright: #3D7CC9;
+        --deep-navy: #002856;
+        --muted: #575856;
+        --light-text: #24333F;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--primary-bg);
+        color: #002856;
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+      }
+
+      .font-display {
+        font-family: 'Bebas Neue', sans-serif;
+      }
+
+      .font-body {
+        font-family: 'Inter', sans-serif;
+      }
+
+      /* Hero grid overlay */
+      .hero-grid {
+        background-image:
+          linear-gradient(rgba(26,143,227,0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(26,143,227,0.05) 1px, transparent 1px);
+        background-size: 80px 80px;
+      }
+
+      /* Logo glow */
+      .logo-glow {
+        filter: drop-shadow(0 0 40px rgba(26,143,227,0.35));
+      }
+
+      /* Fade-up animation */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      }
+
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Scroll arrow bounce */
+      @keyframes bounce-arrow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(12px); }
+      }
+
+      .scroll-arrow {
+        animation: bounce-arrow 2s ease-in-out infinite;
+      }
+
+      /* CTA hover lift */
+      .cta-btn {
+        transition: filter 0.2s ease, transform 0.2s ease;
+      }
+
+      .cta-btn:hover {
+        filter: brightness(1.15);
+        transform: translateY(-2px);
+      }
+
+      /* Nav link hover */
+      .nav-link {
+        transition: color 0.2s ease;
+      }
+
+      .nav-link:hover {
+        color: var(--accent) !important;
+      }
+
+      /* Card hover */
+      .pillar-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .pillar-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px #D8DFE1;
+      }
+
+      /* Blue top border on cards */
+      .blue-top-border {
+        border-top: 3px solid var(--accent);
+      }
+
+      /* Avatar circle */
+      .avatar-circle {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 2rem;
+        color: #FFFFFF;
+        margin: 0 auto 1.25rem;
+      }
+
+      /* Blue HR */
+      .blue-hr {
+        width: 60px;
+        height: 2px;
+        background: var(--accent);
+        border: none;
+        margin: 1rem auto;
+      }
+
+      /* Quote marks */
+      .quote-statement::before {
+        content: '\201C';
+        font-size: 2em;
+        line-height: 0;
+        vertical-align: -0.25em;
+        margin-right: 0.1em;
+        opacity: 0.5;
+      }
+
+      .quote-statement::after {
+        content: '\201D';
+        font-size: 2em;
+        line-height: 0;
+        vertical-align: -0.25em;
+        margin-left: 0.1em;
+        opacity: 0.5;
+      }
+    
+/* small-screen safety: long footer CTA and wide tables must not push the page sideways */
+.tac-footer-cta{max-width:100%;overflow-wrap:anywhere}
+table{max-width:100%}
+@media (max-width:520px){.tac-footer-cta{font-size:0.8rem;letter-spacing:.06em}}
+</style>
+<style>
+.reg-hero{background:radial-gradient(circle at 50% 25%, #FFFFFF 0%, #EDF1F3 70%);text-align:center;padding:80px 24px 70px}
+.reg-hero img{max-width:340px;width:70%;margin:0 auto 10px;filter:drop-shadow(0 0 45px rgba(26,143,227,.35))}
+.reg-h1{font-family:'Bebas Neue',sans-serif;line-height:.95;letter-spacing:.04em;font-size:clamp(3.4rem,9vw,6rem);margin:6px 0 22px;color:#002856}
+.reg-h1 .b{color:#2E67AC}
+.reg-sub{max-width:520px;margin:0 auto 22px;font-size:1.05rem;line-height:1.75;color:#24333F}
+.reg-rule{width:60px;height:2px;background:#002856;border:none;margin:0 auto 22px}
+.reg-tag{font-style:italic;color:#575856;font-size:1.05rem;margin-bottom:30px}
+.reg-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.reg-pill{font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:.95rem;padding:8px 22px;border-radius:999px;color:#002856}
+.reg-pill.s{background:#002856}.reg-pill.o{border:1.5px solid #D8DFE1;color:#2E67AC}
+.reg-sec{padding:70px 28px;max-width:900px;margin:0 auto}
+.reg-ol{font-family:'Bebas Neue',sans-serif;color:#2E67AC;font-size:1rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:30px;display:block}
+.reg-about{display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap}
+.reg-about .tx{flex:1;min-width:260px;font-size:1.05rem;line-height:1.85}
+.reg-about .tx .em{color:#002856;font-weight:600}.reg-about .tx .ac{color:#2E67AC;font-weight:600}
+.reg-stat{width:250px;background:#FFFFFF;border-top:3px solid #D8DFE1;border-radius:8px;padding:26px;display:flex;flex-direction:column;gap:16px}
+.reg-stat .row{display:flex;align-items:baseline;gap:16px}
+.reg-stat .n{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:#2E67AC;line-height:1}
+.reg-stat .l{font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#575856}
+.reg-stat .dv{height:1px;background:rgba(26,143,227,.18)}
+.reg-pil{display:flex;flex-direction:column;gap:14px}
+.reg-pcard{background:#FFFFFF;border-left:3px solid #D8DFE1;border-radius:6px;padding:18px 24px;display:flex;gap:20px;align-items:flex-start}
+.reg-pcard .nn{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:#2E67AC;line-height:1}
+.reg-pcard h3{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.12em;color:#002856}
+.reg-pcard p{font-size:.9rem;color:#575856;margin-top:4px}
+.reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.reg-ecard{background:#FFFFFF;border-top:3px solid #D8DFE1;border-radius:8px;padding:26px}
+.reg-ecard .ic{font-size:1.7rem;margin-bottom:12px}
+.reg-ecard h3{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.12em;color:#2E67AC;margin-bottom:8px}
+.reg-ecard p{font-size:.9rem;color:#575856;line-height:1.65}
+.reg-checks{display:flex;flex-direction:column;gap:18px;max-width:640px}
+.reg-check{display:flex;gap:16px;align-items:flex-start;font-size:1.05rem;line-height:1.7}
+.reg-cbox{flex-shrink:0;width:24px;height:24px;margin-top:3px;border-radius:5px;background:#002856;display:flex;align-items:center;justify-content:center;color:#FFFFFF;font-weight:800;font-size:14px}
+.reg-cities{background:linear-gradient(135deg,#002856,#002856);padding:22px 16px;text-align:center;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px}
+.reg-cities .c{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.2em;color:#002856}.reg-cities .sp{color:rgba(0,40,86,.55)}
+.reg-cta{text-align:center;padding:80px 28px;background:radial-gradient(circle at 50% 60%, #FFFFFF 0%, #EDF1F3 70%)}
+.reg-cta h2{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;font-size:clamp(2.8rem,7vw,4.4rem);margin:26px 0 22px;color:#002856}
+.reg-cta h2 .b{color:#2E67AC}
+.reg-cta .bd{max-width:540px;margin:0 auto 26px;font-size:1.05rem;line-height:1.8;color:#24333F}.reg-cta .bd .em{color:#002856;font-weight:700}
+.reg-cta .sig{font-size:.95rem;font-weight:500;letter-spacing:.04em;color:#24333F;margin-bottom:16px}
+.reg-cta .cr{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#575856}
+@media(max-width:680px){.reg-about{flex-direction:column}.reg-stat{width:100%}.reg-grid{grid-template-columns:1fr}}
+</style><style>
+
+.tac-brand-type{line-height:1;text-decoration:none;display:block}
+.tac-wm{display:block;font-family:'Archivo','Arial Narrow',Impact,sans-serif;font-style:italic;font-weight:900;font-stretch:68%;font-variation-settings:"wdth" 68,"wght" 900;text-transform:uppercase;font-size:1.6rem;line-height:.9;color:#002856;letter-spacing:.01em;white-space:nowrap}
+.tac-wm b{color:#3D7CC9;font-weight:inherit}
+.tac-sub{display:block;margin-top:5px;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:.5rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#575856}
+@media (max-width:430px){.tac-wm{font-size:1.28rem}.tac-sub{font-size:.45rem;letter-spacing:.18em}}
+/* Mirrors the homepage nav exactly. Every property is declared explicitly so the
+   header renders identically on pages that do not load Tailwind or its reset. */
+.tac-navbar,.tac-navbar *,.tac-navbar *::before,.tac-navbar *::after{box-sizing:border-box}
+.tac-navbar{position:fixed;top:0;left:0;right:auto;bottom:auto;width:100%;z-index:1000;margin:0;padding:0;background:rgba(237,241,243,0.94);border:0;border-bottom:1px solid #D8DFE1;box-shadow:none;backdrop-filter:none;text-align:left;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-nav-inner{width:100%;max-width:80rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:0;padding:0.75rem 1.25rem}
+.tac-nav-brand{flex:0 0 auto;display:block;padding:0;margin:0;border:0;background:none;line-height:0;text-decoration:none}
+.tac-nav-logo{display:block;height:44px;width:auto;max-width:none;min-width:0;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none;object-fit:contain}
+.tac-nav-links{display:none;align-items:center;gap:2rem}
+.tac-nav-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-style:normal;font-size:1.125rem;line-height:1.75rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;color:#002856;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-nav-link:hover{color:#BA0C2F;text-decoration:none}
+.tac-nav-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1rem;line-height:1.5rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;display:inline-block;color:#ffffff;text-decoration:none;background:#002856;padding:0.5rem 1.5rem;margin:0;border:0;border-radius:0.25rem;box-shadow:none;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-nav-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
+.tac-nav-toggle,.tac-nav-close{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;width:auto;height:auto;padding:0.5rem;margin:0;background:none;border:0;border-radius:0;color:#002856;cursor:pointer;line-height:0;-webkit-appearance:none;appearance:none}
+.tac-nav-toggle svg,.tac-nav-close svg{display:block;width:28px;height:28px}
+.tac-mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1001;flex-direction:column;background:#002856;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-mobile-menu.tac-open{display:flex}
+.tac-mobile-top{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid rgba(123,173,211,0.35)}
+.tac-mobile-links{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1 1 0%;gap:2rem;padding:0;margin:0}
+.tac-mobile-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.875rem;line-height:2.25rem;letter-spacing:0.1em;text-transform:none;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-mobile-link:hover{color:#EDAE17;text-decoration:none}
+.tac-mobile-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.25rem;line-height:1.75rem;letter-spacing:0.1em;display:inline-block;color:#ffffff;text-decoration:none;background:#002856;padding:0.75rem 2rem;margin:1rem 0 0;border:0;border-radius:0.25rem;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-mobile-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
+@media (min-width:1250px){
+  .tac-nav-links{display:flex;gap:0.8rem;flex-wrap:nowrap}
+  .tac-nav-link{font-size:0.9375rem;letter-spacing:0.06em}
+  .tac-nav-cta{font-size:0.875rem;letter-spacing:0.06em;padding:0.5rem 1.125rem}
+  .tac-nav-toggle{display:none}
+}
+/* Keeps page content clear of the fixed header (44px logo + 2x12px padding + 1px border). */
+body.tac-nav-offset{padding-top:69px}
+
+/* ===== SHARED SITE FOOTER — every property explicit so it renders the same everywhere ===== */
+.tac-footer,.tac-footer *,.tac-footer *::before,.tac-footer *::after{box-sizing:border-box}
+.tac-footer{display:block;width:100%;margin:0;padding:60px 20px 40px;background:#002856;border:0;border-top:1px solid rgba(123,173,211,0.3);color:#FFFFFF;text-align:center;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-footer-inner{width:100%;max-width:56rem;margin:0 auto;padding:0}
+.tac-footer-logo{display:block;height:56px;width:auto;max-width:100%;margin:0 auto 24px;padding:0;border:0;background:none;object-fit:contain}
+.tac-footer-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0.5rem 1rem;margin:0 0 24px;padding:0}
+.tac-footer-nav a{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-size:0.875rem;font-weight:500;line-height:1.4;letter-spacing:0.02em;color:#A9C0D2;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-footer-nav a:hover{color:#EDAE17;text-decoration:none}
+.tac-footer-tag{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.875rem;line-height:1.5;letter-spacing:0.15em;color:#EDF1F3;margin:0 0 4px;padding:0}
+.tac-footer-tag2{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.75rem;line-height:1.5;letter-spacing:0.1em;color:#A9C0D2;margin:0 0 20px;padding:0}
+.tac-footer-cta{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.9375rem;letter-spacing:0.12em;color:#EDAE17;text-decoration:none;display:inline-block;margin:0 0 24px;padding:0}
+.tac-footer-cta:hover{color:#FFFFFF;text-decoration:none}
+.tac-footer-legal{font-size:0.75rem;line-height:1.6;color:#8FA8BC;margin:0 0 6px;padding:0}
+.tac-footer-founders{font-size:0.75rem;line-height:1.6;color:#8FA8BC;margin:0;padding:0}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=JetBrains+Mono:wght@500;700&display=swap">
+</head>
+<body data-id="0">
+    <app-icon data-id="1" hidden="" data-icon="activity" data-palette="Blue"></app-icon>
+
+    <!-- ===== STICKY NAVIGATION ===== -->
+    <!-- ===== SHARED SITE HEADER ===== -->
+<nav class="tac-navbar" id="tac-navbar">
+  <div class="tac-nav-inner">
+    <a class="tac-nav-brand tac-brand-type" href="/" aria-label="The Athlete Check — home">
+      <span class="tac-wm">THE ATHLETE <b>CHECK</b></span>
+      <span class="tac-sub">AN IRONMIND COMPANY</span>
+    </a>
+    <div class="tac-nav-links">
+      <a class="tac-nav-link" href="/registration">REGISTRATION</a><a class="tac-nav-link" href="/about">ABOUT</a>
+      <a class="tac-nav-link" href="/assessment">ASSESSMENT</a>
+      <a class="tac-nav-link" href="/advocate">ADVOCATE</a>
+      <a class="tac-nav-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-nav-link" href="/performanceblueprint">BLUEPRINT</a>
+      <a class="tac-nav-link" href="/courses">COURSES</a>
+      <a class="tac-nav-link" href="/proudmoment">PROUD MOMENT</a>
+      <a class="tac-nav-cta" href="/assessment">TAKE THE CHECK</a>
+    </div>
+    <button class="tac-nav-toggle" id="tac-nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="tac-mobile-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="tac-mobile-menu" id="tac-mobile-menu">
+    <div class="tac-mobile-top">
+      <img class="tac-nav-logo" src="/athlete-check-logo-white.png" alt="The Athlete Check" style="height:52px">
+      <button class="tac-nav-close" id="tac-nav-close" type="button" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+    </div>
+    <div class="tac-mobile-links">
+      <a class="tac-mobile-link" href="/registration">REGISTRATION</a><a class="tac-mobile-link" href="/about">ABOUT</a>
+      <a class="tac-mobile-link" href="/assessment">ASSESSMENT</a>
+      <a class="tac-mobile-link" href="/advocate">ADVOCATE</a>
+      <a class="tac-mobile-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-mobile-link" href="/performanceblueprint">BLUEPRINT</a>
+      <a class="tac-mobile-link" href="/courses">COURSES</a>
+      <a class="tac-mobile-link" href="/proudmoment">PROUD MOMENT</a>
+      <a class="tac-mobile-cta" href="/assessment">TAKE THE CHECK</a>
+    </div>
+  </div>
+</nav>
+<script>
+/* Shared site header: mobile menu toggle + scroll background, self-contained. */
+(function () {
+  var toggle = document.getElementById('tac-nav-toggle');
+  var menu = document.getElementById('tac-mobile-menu');
+  var closeBtn = document.getElementById('tac-nav-close');
+
+  if (toggle && menu && closeBtn) {
+    var openMenu = function () {
+      menu.classList.add('tac-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+    var closeMenu = function () {
+      menu.classList.remove('tac-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    toggle.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    Array.prototype.forEach.call(menu.querySelectorAll('a'), function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  var bar = document.getElementById('tac-navbar');
+  if (bar) {
+    window.addEventListener('scroll', function () {
+      bar.style.background = window.scrollY > 80 ? 'rgba(4, 11, 20, 0.99)' : 'rgba(4, 11, 20, 0.96)';
+    });
+  }
+})();
+</script>
+
+    <main data-id="23" data-reg="1">
+<section class="reg-hero" style="background-color:#EDF1F3">
+  <img src="images/ironmind-elite-logo.jpeg" alt="IronMind Elite">
+  <h1 class="reg-h1">TWO SPOTS. <span class="b">ONE SEASON.</span></h1>
+  <p class="reg-sub">The IronMind Elite Student Athletes Program is now accepting applications for 2 exclusive slots.</p>
+  <hr class="reg-rule">
+  <p class="reg-tag">“Identity first. Everything else follows.”</p>
+  <div class="reg-pills"><span class="reg-pill s" style="color:#FFFFFF">2026 PROGRAM</span><span class="reg-pill o">INVITATION-ONLY</span></div>
+</section>
+<section class="reg-sec"><span class="reg-ol">About the Program</span>
+  <div class="reg-about">
+    <p class="tx">This is not a training program. IronMind offers you something far more rare — <span class="ac">direct, one-on-one access to Kenny Stoddart</span> across four cities, four months, and five pillars of elite development. Most programs have cohorts. This one has two athletes. <span class="em">You and one other. That's it.</span></p>
+    <div class="reg-stat">
+      <div class="row"><span class="n">2</span><span class="l">Athletes Selected</span></div><div class="dv"></div>
+      <div class="row"><span class="n">4</span><span class="l">Program Cities</span></div><div class="dv"></div>
+      <div class="row"><span class="n">5</span><span class="l">Core Development Pillars</span></div>
+    </div>
+  </div>
+</section>
+<section class="reg-sec" style="padding-top:0"><span class="reg-ol">The IronMind Standard</span>
+  <div class="reg-pil">
+    <div class="reg-pcard"><span class="nn">01</span><div><h3>IDENTITY</h3><p>Know who you are before anyone defines you.</p></div></div>
+    <div class="reg-pcard"><span class="nn">02</span><div><h3>LEADERSHIP</h3><p>Lead through character, not position.</p></div></div>
+    <div class="reg-pcard"><span class="nn">03</span><div><h3>COMMUNICATION</h3><p>Speak and write at an elite level in every context.</p></div></div>
+    <div class="reg-pcard"><span class="nn">04</span><div><h3>OPERATIONAL EXCELLENCE</h3><p>Do the details right, every time, when no one is watching.</p></div></div>
+    <div class="reg-pcard"><span class="nn">05</span><div><h3>FOUNDER-LEVEL THINKING</h3><p>Own the outcome. See the whole picture.</p></div></div>
+  </div>
+</section>
+<section class="reg-sec" style="padding-top:0"><span class="reg-ol">What You'll Do</span>
+  <div class="reg-grid">
+    <div class="reg-ecard"><div class="ic">🏙️</div><h3>FOUR-CITY TOUR</h3><p>Charleston · Charlotte · Jacksonville · Atlanta</p></div>
+    <div class="reg-ecard"><div class="ic">🤝</div><h3>DIRECT FOUNDER ACCESS</h3><p>Weekly 1-on-1 development conversations with Kenny Stoddart.</p></div>
+    <div class="reg-ecard"><div class="ic">📋</div><h3>REAL DELIVERABLES</h3><p>Weekly journals, action reports, event pre/post briefs.</p></div>
+    <div class="reg-ecard"><div class="ic">🏆</div><h3>CAPSTONE PRESENTATION</h3><p>A live strategic recommendation delivered in Atlanta.</p></div>
+  </div>
+</section>
+<section class="reg-sec" style="padding-top:0"><span class="reg-ol">Are You the One?</span>
+  <div class="reg-checks">
+    <div class="reg-check"><span class="reg-cbox">✓</span><span>You are a student athlete who wants more than athletic performance.</span></div>
+    <div class="reg-check"><span class="reg-cbox">✓</span><span>You lead from identity, not from position.</span></div>
+    <div class="reg-check"><span class="reg-cbox">✓</span><span>You are ready to be pushed, stretched, and held to a standard you haven't reached yet.</span></div>
+  </div>
+</section>
+<section class="reg-cities">
+  <span class="c">CHARLESTON, SC</span><span class="sp">|</span><span class="c">CHARLOTTE, NC</span><span class="sp">|</span><span class="c">JACKSONVILLE, FL</span><span class="sp">|</span><span class="c">ATLANTA, GA</span>
+</section>
+<section class="reg-cta">
+  <hr class="reg-rule">
+  <h2>ONLY <span class="b">2 SPOTS</span> AVAILABLE.</h2>
+  <p class="bd">Selection is made at the sole discretion of Kenny Stoddart. There is no application. There is an invitation. If you believe you belong in this room — <span class="em">make that known.</span></p>
+  <p class="sig">IronMind Advisors, LLC — Kenny Stoddart, Founder &amp; Principal Advisor</p>
+  <p class="cr">© 2026 IronMind Advisors, LLC. All Rights Reserved. Confidential.</p>
+</section></main>
+
+    <!-- ===== FOOTER ===== -->
+    <!-- ===== SHARED SITE FOOTER ===== -->
+<footer class="tac-footer">
+  <div class="tac-footer-inner">
+    <a href="/"><img class="tac-footer-logo" src="/athlete-check-logo-white.png" alt="The Athlete Check" style="height:76px"></a>
+    <nav class="tac-footer-nav">
+      <a href="/">Home</a>
+      <a href="/registration">Registration</a>
+      <a href="/about">About</a>
+      <a href="/assessment">Assessment</a>
+      <a href="/advocate">Advocate</a>
+      <a href="/coaches">Coaches/ADs</a>
+      <a href="/performanceblueprint">Blueprint</a>
+      <a href="/courses">Courses</a>
+      <a href="/proudmoment">Proud Moment</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <a class="tac-footer-cta" href="/advocate">JOIN THE MOVEMENT — THEATHLETECHECK.COM/ADVOCATE</a>
+    <p class="tac-footer-tag">TEST. TRAIN. TRANSFORM.</p>
+    <p class="tac-footer-tag2">POWERED BY IRONMIND · BUILT FOR MORE</p>
+    <p class="tac-footer-legal">© 2026 The Athlete Check · TheAthleteCheck.com · All Rights Reserved</p>
+    <p class="tac-footer-founders">Founded by Luke Stenson &amp; Wyatt Porch</p>
+  </div>
+</footer>
+<script>
+      // ===== Lucide Icons (progressive enhancement) =====
+      // The lucide library is loaded with `defer`, so it is not available yet
+      // when this inline script first runs. Wait for DOMContentLoaded (which
+      // fires after deferred scripts have executed) before rendering icons,
+      // otherwise icons such as the mobile menu button never appear.
+      function tacRenderIcons() {
+        if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
+          lucide.createIcons();
+        }
+      }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", tacRenderIcons);
+      } else {
+        tacRenderIcons();
+      }
+
+      // ===== Mobile Menu Toggle =====
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn-i9j0');
+      const mobileMenu = document.getElementById('mobile-menu-k1l2');
+      const mobileMenuClose = document.getElementById('mobile-menu-close-m3n4');
+
+      if (mobileMenuBtn && mobileMenu && mobileMenuClose) {
+        mobileMenuBtn.addEventListener('click', function() {
+          mobileMenu.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+          document.body.style.overflow = '';
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(function(link) {
+          link.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+
+      // ===== Navbar background on scroll =====
+      const navbar = document.getElementById('navbar-a1b2');
+      if (navbar) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 80) {
+            navbar.style.background = 'rgba(4, 11, 20, 0.99)';
+          } else {
+            navbar.style.background = 'rgba(4, 11, 20, 0.96)';
+          }
+        });
+      }
+
+      // ===== Scroll-triggered fade-up animations =====
+      const fadeUpElements = document.querySelectorAll('.fade-up');
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -60px 0px',
+        threshold: 0.1,
+      };
+
+      const fadeUpObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            const delay = parseInt(entry.target.getAttribute('data-delay') || '0', 10);
+            setTimeout(function() {
+              entry.target.classList.add('visible');
+            }, delay);
+            fadeUpObserver.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      fadeUpElements.forEach(function(el) {
+        fadeUpObserver.observe(el);
+      });
+
+      // ===== Smooth scroll for scroll arrow =====
+      const scrollArrow = document.getElementById('scroll-arrow-y5z6');
+      if (scrollArrow) {
+        scrollArrow.addEventListener('click', function() {
+          const missionSection = document.getElementById('mission-a2b3');
+          if (missionSection) {
+            missionSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+        scrollArrow.style.cursor = 'pointer';
+      }
+    </script>
+
+</body></html>
