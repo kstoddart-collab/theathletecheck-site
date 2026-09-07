@@ -12,15 +12,15 @@ tailwind.config = {
 theme: {
 extend: {
 colors: {
-steel: '#3576b5',
-'steel-light': '#4a90d9',
-iron: '#c0392b',
-'iron-light': '#e74c3c',
-dark: '#111827',
-'dark-card': '#1a2332',
-muted: '#9ca3af',
-bgCard: '#1a2332',
-bgInput: '#0f1923'
+steel: '#002856',
+'steel-light': '#3D7CC9',
+iron: '#BA0C2F',
+'iron-light': '#BA0C2F',
+dark: '#EDF1F3',
+'dark-card': '#D8DFE1',
+muted: '#575856',
+bgCard: '#D8DFE1',
+bgInput: '#FFFFFF'
 }
 }
 }
@@ -30,7 +30,7 @@ emailjs.init('uOKlxkuTvvG_oTXoM');
 });
 </script>
 <style>
-html, body { margin: 0; padding: 0; background: #0a0f1a; overflow-x: hidden; }
+html, body { margin: 0; padding: 0; background: #EDF1F3; overflow-x: hidden; }
 .view { display: none !important; }
 .view.active { display: block !important; }
 .fade-in { animation: fadeIn 0.6s ease forwards; }
@@ -38,54 +38,65 @@ html, body { margin: 0; padding: 0; background: #0a0f1a; overflow-x: hidden; }
 .fade-in-up { animation: fadeIn 0.5s ease 0.1s both; }
 .fade-in-up-2 { animation: fadeIn 0.5s ease 0.25s both; }
 .fade-in-up-3 { animation: fadeIn 0.5s ease 0.4s both; }
-.name-input:focus { outline: none; border-color: #3576b5; box-shadow: 0 0 0 3px rgba(53,118,181,0.15); }
+.name-input:focus { outline: none; border-color: #D8DFE1; box-shadow: 0 0 0 3px rgba(0,40,86,0.01); }
 .rating-btn { transition: all 0.15s ease; cursor: pointer; border: 2px solid transparent; }
-.rating-btn:hover { border-color: #3576b5; background: rgba(53,118,181,0.12); }
-.rating-btn.selected { background: #3576b5 !important; border-color: #3576b5 !important; color: white !important; }
+.rating-btn:hover { border-color: #D8DFE1; background: rgba(0,40,86,0.01); }
+.rating-btn.selected { background: #002856 !important; border-color: #D8DFE1 !important; color: white !important; }
 .progress-fill { transition: width 0.4s ease; }
 .domain-bar-fill { transition: width 1s ease; }
 .pulse-ring { animation: pulseRing 2s ease-in-out infinite; }
-@keyframes pulseRing { 0%,100% { box-shadow: 0 0 0 0 rgba(53,118,181,0.25); } 50% { box-shadow: 0 0 0 20px rgba(53,118,181,0); } }
+@keyframes pulseRing { 0%,100% { box-shadow: 0 0 0 0 rgba(0,40,86,0.03); } 50% { box-shadow: 0 0 0 20px rgba(0,40,86,0.00); } }
 .calc-progress { transition: width 0.3s ease; }
-.pillar-card { border-left: 4px solid #3576b5; }
-.pillar-readiness { border-left-color: #3576b5; }
-.pillar-clarity { border-left-color: #10b981; }
-.pillar-transition { border-left-color: #f59e0b; }
-.tier-ironmind { background: linear-gradient(135deg, #1e3a5f, #2d5a8e); border: 1px solid #3576b5; }
-.tier-ready { background: linear-gradient(135deg, #1a3a2a, #2d6b4a); border: 1px solid #10b981; }
-.tier-developing { background: linear-gradient(135deg, #2a2a1a, #5a5a2a); border: 1px solid #f59e0b; }
-.tier-emerging { background: linear-gradient(135deg, #2a1a1a, #5a2a2a); border: 1px solid #ef4444; }
-.off-white { background: #f8f9fa; }
-.bg-off-white { background-color: #f8f9fa; }
+.pillar-card { border-left: 4px solid #D8DFE1; }
+.pillar-readiness { border-left-color: #D8DFE1; }
+.pillar-clarity { border-left-color: #1E7A52; }
+.pillar-transition { border-left-color: #EDAE17; }
+.tier-ironmind { background: linear-gradient(135deg, #FFFFFF, #002856); border: 1px solid #D8DFE1; }
+.tier-ready { background: linear-gradient(135deg, #D7EFE1, #1E7A52); border: 1px solid #1E7A52; }
+.tier-developing { background: linear-gradient(135deg, #FAF0D3, #8A6208); border: 1px solid #EDAE17; }
+.tier-emerging { background: linear-gradient(135deg, #F3D3D9, #BA0C2F); border: 1px solid #BA0C2F; }
+.off-white { background: #EDF1F3; }
+.bg-off-white { background-color: #EDF1F3; }
 /* Scrollable results */
 #view-results { overflow-y: auto; }
+
+/* small-screen safety: long footer CTA and wide tables must not push the page sideways */
+.tac-footer-cta{max-width:100%;overflow-wrap:anywhere}
+table{max-width:100%}
+@media (max-width:520px){.tac-footer-cta{font-size:0.8rem;letter-spacing:.06em}}
 </style>
 <!-- ===== SHARED SITE HEADER (self-contained: scoped classes, no Tailwind required) ===== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap">
 <style>
+
+.tac-brand-type{line-height:1;text-decoration:none;display:block}
+.tac-wm{display:block;font-family:'Archivo','Arial Narrow',Impact,sans-serif;font-style:italic;font-weight:900;font-stretch:68%;font-variation-settings:"wdth" 68,"wght" 900;text-transform:uppercase;font-size:1.6rem;line-height:.9;color:#002856;letter-spacing:.01em;white-space:nowrap}
+.tac-wm b{color:#3D7CC9;font-weight:inherit}
+.tac-sub{display:block;margin-top:5px;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:.5rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#575856}
+@media (max-width:430px){.tac-wm{font-size:1.28rem}.tac-sub{font-size:.45rem;letter-spacing:.18em}}
 /* Mirrors the homepage nav exactly. Every property is declared explicitly so the
    header renders identically on pages that do not load Tailwind or its reset. */
 .tac-navbar,.tac-navbar *,.tac-navbar *::before,.tac-navbar *::after{box-sizing:border-box}
-.tac-navbar{position:fixed;top:0;left:0;right:auto;bottom:auto;width:100%;z-index:1000;margin:0;padding:0;background:rgba(4, 11, 20, 0.96);border:0;border-bottom:1px solid rgba(26,143,227,0.2);box-shadow:none;backdrop-filter:none;text-align:left;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-navbar{position:fixed;top:0;left:0;right:auto;bottom:auto;width:100%;z-index:1000;margin:0;padding:0;background:rgba(237,241,243,0.94);border:0;border-bottom:1px solid #D8DFE1;box-shadow:none;backdrop-filter:none;text-align:left;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
 .tac-nav-inner{width:100%;max-width:80rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:0;padding:0.75rem 1.25rem}
 .tac-nav-brand{flex:0 0 auto;display:block;padding:0;margin:0;border:0;background:none;line-height:0;text-decoration:none}
 .tac-nav-logo{display:block;height:44px;width:auto;max-width:none;min-width:0;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none;object-fit:contain}
 .tac-nav-links{display:none;align-items:center;gap:2rem}
-.tac-nav-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-style:normal;font-size:1.125rem;line-height:1.75rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
-.tac-nav-link:hover{color:#1A8FE3;text-decoration:none}
-.tac-nav-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1rem;line-height:1.5rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.5rem 1.5rem;margin:0;border:0;border-radius:0.25rem;box-shadow:none;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-nav-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-style:normal;font-size:1.125rem;line-height:1.75rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;color:#002856;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-nav-link:hover{color:#BA0C2F;text-decoration:none}
+.tac-nav-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1rem;line-height:1.5rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;display:inline-block;color:#ffffff;text-decoration:none;background:#002856;padding:0.5rem 1.5rem;margin:0;border:0;border-radius:0.25rem;box-shadow:none;transition:filter 0.2s ease,transform 0.2s ease}
 .tac-nav-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
-.tac-nav-toggle,.tac-nav-close{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;width:auto;height:auto;padding:0.5rem;margin:0;background:none;border:0;border-radius:0;color:#ffffff;cursor:pointer;line-height:0;-webkit-appearance:none;appearance:none}
+.tac-nav-toggle,.tac-nav-close{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;width:auto;height:auto;padding:0.5rem;margin:0;background:none;border:0;border-radius:0;color:#002856;cursor:pointer;line-height:0;-webkit-appearance:none;appearance:none}
 .tac-nav-toggle svg,.tac-nav-close svg{display:block;width:28px;height:28px}
-.tac-mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1001;flex-direction:column;background:rgba(4, 11, 20, 0.99);font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1001;flex-direction:column;background:#002856;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
 .tac-mobile-menu.tac-open{display:flex}
-.tac-mobile-top{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid rgba(26,143,227,0.2)}
+.tac-mobile-top{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid rgba(123,173,211,0.35)}
 .tac-mobile-links{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1 1 0%;gap:2rem;padding:0;margin:0}
 .tac-mobile-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.875rem;line-height:2.25rem;letter-spacing:0.1em;text-transform:none;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
-.tac-mobile-link:hover{color:#1A8FE3;text-decoration:none}
-.tac-mobile-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.25rem;line-height:1.75rem;letter-spacing:0.1em;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.75rem 2rem;margin:1rem 0 0;border:0;border-radius:0.25rem;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-mobile-link:hover{color:#EDAE17;text-decoration:none}
+.tac-mobile-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.25rem;line-height:1.75rem;letter-spacing:0.1em;display:inline-block;color:#ffffff;text-decoration:none;background:#002856;padding:0.75rem 2rem;margin:1rem 0 0;border:0;border-radius:0.25rem;transition:filter 0.2s ease,transform 0.2s ease}
 .tac-mobile-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
 @media (min-width:1250px){
   .tac-nav-links{display:flex;gap:0.8rem;flex-wrap:nowrap}
@@ -98,26 +109,28 @@ body.tac-nav-offset{padding-top:69px}
 
 /* ===== SHARED SITE FOOTER — every property explicit so it renders the same everywhere ===== */
 .tac-footer,.tac-footer *,.tac-footer *::before,.tac-footer *::after{box-sizing:border-box}
-.tac-footer{display:block;width:100%;margin:0;padding:60px 20px 40px;background:#020810;border:0;border-top:1px solid rgba(26,143,227,0.2);color:#94a3b8;text-align:center;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-footer{display:block;width:100%;margin:0;padding:60px 20px 40px;background:#002856;border:0;border-top:1px solid rgba(123,173,211,0.3);color:#FFFFFF;text-align:center;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
 .tac-footer-inner{width:100%;max-width:56rem;margin:0 auto;padding:0}
 .tac-footer-logo{display:block;height:56px;width:auto;max-width:100%;margin:0 auto 24px;padding:0;border:0;background:none;object-fit:contain}
 .tac-footer-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0.5rem 1rem;margin:0 0 24px;padding:0}
-.tac-footer-nav a{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-size:0.875rem;font-weight:500;line-height:1.4;letter-spacing:0.02em;color:#94a3b8;text-decoration:none;background:none;transition:color 0.2s ease}
-.tac-footer-nav a:hover{color:#1A8FE3;text-decoration:none}
-.tac-footer-tag{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.875rem;line-height:1.5;letter-spacing:0.15em;color:#94a3b8;margin:0 0 4px;padding:0}
-.tac-footer-tag2{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.75rem;line-height:1.5;letter-spacing:0.1em;color:#94a3b8;margin:0 0 20px;padding:0}
-.tac-footer-cta{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.9375rem;letter-spacing:0.12em;color:#1A8FE3;text-decoration:none;display:inline-block;margin:0 0 24px;padding:0}
-.tac-footer-cta:hover{color:#4FB0F0;text-decoration:none}
-.tac-footer-legal{font-size:0.75rem;line-height:1.6;color:#64748b;margin:0 0 6px;padding:0}
-.tac-footer-founders{font-size:0.75rem;line-height:1.6;color:#475569;margin:0;padding:0}
+.tac-footer-nav a{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-size:0.875rem;font-weight:500;line-height:1.4;letter-spacing:0.02em;color:#A9C0D2;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-footer-nav a:hover{color:#EDAE17;text-decoration:none}
+.tac-footer-tag{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.875rem;line-height:1.5;letter-spacing:0.15em;color:#EDF1F3;margin:0 0 4px;padding:0}
+.tac-footer-tag2{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.75rem;line-height:1.5;letter-spacing:0.1em;color:#A9C0D2;margin:0 0 20px;padding:0}
+.tac-footer-cta{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.9375rem;letter-spacing:0.12em;color:#EDAE17;text-decoration:none;display:inline-block;margin:0 0 24px;padding:0}
+.tac-footer-cta:hover{color:#FFFFFF;text-decoration:none}
+.tac-footer-legal{font-size:0.75rem;line-height:1.6;color:#8FA8BC;margin:0 0 6px;padding:0}
+.tac-footer-founders{font-size:0.75rem;line-height:1.6;color:#8FA8BC;margin:0;padding:0}
 </style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=JetBrains+Mono:wght@500;700&display=swap">
 </head>
-<body class="bg-[#0a0f1a] tac-nav-offset">
+<body class="bg-[#EDF1F3] tac-nav-offset">
 <!-- ===== SHARED SITE HEADER ===== -->
 <nav class="tac-navbar" id="tac-navbar">
   <div class="tac-nav-inner">
-    <a class="tac-nav-brand" href="/">
-      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+    <a class="tac-nav-brand tac-brand-type" href="/" aria-label="The Athlete Check — home">
+      <span class="tac-wm">THE ATHLETE <b>CHECK</b></span>
+      <span class="tac-sub">AN IRONMIND COMPANY</span>
     </a>
     <div class="tac-nav-links">
       <a class="tac-nav-link" href="/registration">REGISTRATION</a><a class="tac-nav-link" href="/about">ABOUT</a>
@@ -135,7 +148,7 @@ body.tac-nav-offset{padding-top:69px}
   </div>
   <div class="tac-mobile-menu" id="tac-mobile-menu">
     <div class="tac-mobile-top">
-      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+      <img class="tac-nav-logo" src="/athlete-check-logo-white.png" alt="The Athlete Check" style="height:52px">
       <button class="tac-nav-close" id="tac-nav-close" type="button" aria-label="Close menu">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
       </button>
@@ -211,7 +224,7 @@ body.tac-nav-offset{padding-top:69px}
 <span class="text-steel text-xs font-semibold tracking-[0.2em] uppercase">✦ IronMind for Student Athletes</span>
 </div>
 <!-- Headline -->
-<h1 class="text-3xl md:text-[52px] font-bold text-white leading-[1.08] tracking-tight mb-6">
+<h1 class="text-3xl md:text-[52px] font-bold text-white leading-[1.08] tracking-tight mb-6" style="color:#002856">
 Discover Your<br>IronMind Readiness Profile™
 </h1>
 <!-- Subheadline -->
@@ -225,28 +238,28 @@ Discover Your<br>IronMind Readiness Profile™
 <div class="flex items-start gap-3">
 <span class="mt-1.5 w-2.5 h-2.5 rounded-full bg-steel flex-shrink-0"></span>
 <div>
-<span class="text-white font-semibold">3 Readiness Pillars</span>
+<span class="text-white font-semibold" style="color:#002856">3 Readiness Pillars</span>
 <span class="text-muted text-sm block mt-0.5">Readiness · Clarity · Transition Strength — the three indicators of real-world preparedness</span>
 </div>
 </div>
 <div class="flex items-start gap-3">
 <span class="mt-1.5 w-2.5 h-2.5 rounded-full bg-steel flex-shrink-0"></span>
 <div>
-<span class="text-white font-semibold">8 Domains</span>
+<span class="text-white font-semibold" style="color:#002856">8 Domains</span>
 <span class="text-muted text-sm block mt-0.5">Professional Readiness, Communication, Brand Identity, Identity Beyond the Jersey, Purpose &amp; Direction, Values, Resilience, Leadership Without a Title</span>
 </div>
 </div>
 <div class="flex items-start gap-3">
 <span class="mt-1.5 w-2.5 h-2.5 rounded-full bg-steel flex-shrink-0"></span>
 <div>
-<span class="text-white font-semibold">40 Questions · 10–15 Minutes</span>
+<span class="text-white font-semibold" style="color:#002856">40 Questions · 10–15 Minutes</span>
 <span class="text-muted text-sm block mt-0.5">5 questions per domain, rated 1–5. Answer based on who you are today — not who you plan to be.</span>
 </div>
 </div>
 <div class="flex items-start gap-3">
 <span class="mt-1.5 w-2.5 h-2.5 rounded-full bg-steel flex-shrink-0"></span>
 <div>
-<span class="text-white font-semibold">Your IronMind Readiness Level</span>
+<span class="text-white font-semibold" style="color:#002856">Your IronMind Readiness Level</span>
 <span class="text-muted text-sm block mt-0.5">A personalized profile showing exactly where you stand — and what to focus on next</span>
 </div>
 </div>
@@ -265,7 +278,7 @@ Discover Your<br>IronMind Readiness Profile™
 Begin My Assessment →
 </button>
 <!-- Tagline -->
-<p class="text-muted/40 text-xs mt-6 tracking-widest uppercase">Forged in Identity. Built for Impact.</p>
+<p class="text-muted/40 text-xs mt-6 tracking-widest uppercase" style="color:#002856">Forged in Identity. Built for Impact.</p>
 </div>
 </div>
 </div>
@@ -280,7 +293,7 @@ Begin My Assessment →
 <div class="flex items-center justify-between px-4 md:px-8 py-3">
 <button id="prev-btn" class="text-muted hover:text-white text-sm flex items-center gap-1 transition-colors min-h-[44px] min-w-[44px] justify-center">
 <i data-lucide="arrow-left" class="w-4 h-4"></i>
-<span class="hidden sm:inline">Previous</span>
+<span class="hidden sm:inline" style="color:#FFFFFF">Previous</span>
 </button>
 <span id="domain-label" class="text-muted text-xs tracking-[0.15em] uppercase font-medium"></span>
 <div class="w-[44px]"></div>
@@ -315,7 +328,7 @@ Next Domain →
 <div class="text-center">
 <div class="pulse-ring w-48 h-48 md:w-56 md:h-56 rounded-full border-2 border-steel/40 flex items-center justify-center mx-auto mb-10 relative">
 <div class="absolute inset-1 rounded-full border border-steel/20"></div>
-<span class="text-white text-lg md:text-xl font-medium px-4">Building your profile...</span>
+<span class="text-white text-lg md:text-xl font-medium px-4" style="color:#002856">Building your profile...</span>
 </div>
 <div id="calc-domains" class="flex flex-wrap justify-center gap-x-3 gap-y-2 max-w-lg mx-auto mb-10 text-sm text-muted"></div>
 <div class="max-w-xs mx-auto">
@@ -331,7 +344,7 @@ Next Domain →
 <div id="view-results" class="view">
 
 <!-- Hero -->
-<section class="bg-[#0a0f1a] py-14 md:py-20 px-4">
+<section class="bg-[#EDF1F3] py-14 md:py-20 px-4">
 <div class="max-w-3xl mx-auto text-center">
 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-steel/30 bg-steel/10 mb-6">
 <span class="text-steel text-xs font-semibold tracking-[0.2em] uppercase">✦ IronMind for Student Athletes</span>
@@ -346,25 +359,25 @@ Next Domain →
 <div class="flex justify-center mb-10">
 <div class="relative w-44 h-44 md:w-52 md:h-52">
 <svg class="w-full h-full -rotate-90" viewBox="0 0 120 120">
-<circle cx="60" cy="60" r="50" fill="none" stroke="#1a2332" stroke-width="10"></circle>
-<circle id="score-ring" cx="60" cy="60" r="50" fill="none" stroke="#3576b5" stroke-width="10" stroke-dasharray="314" stroke-dashoffset="314" stroke-linecap="round" style="transition: stroke-dashoffset 1.2s ease;"></circle>
+<circle cx="60" cy="60" r="50" fill="none" stroke="#D8DFE1" stroke-width="10"></circle>
+<circle id="score-ring" cx="60" cy="60" r="50" fill="none" stroke="#D8DFE1" stroke-width="10" stroke-dasharray="314" stroke-dashoffset="314" stroke-linecap="round" style="transition: stroke-dashoffset 1.2s ease;"></circle>
 </svg>
 <div class="absolute inset-0 flex flex-col items-center justify-center">
 <span class="text-muted text-[10px] tracking-widest uppercase">Overall</span>
-<span id="overall-pct" class="text-4xl md:text-5xl font-bold text-white tabular-nums">0%</span>
+<span id="overall-pct" class="text-4xl md:text-5xl font-bold text-white tabular-nums" style="color:#002856">0%</span>
 <span class="text-muted text-xs mt-0.5">readiness</span>
 </div>
 </div>
 </div>
 
-<p class="text-muted/60 text-xs tracking-widest uppercase">Forged in Identity. Built for Impact.</p>
+<p class="text-muted/60 text-xs tracking-widest uppercase" style="color:#002856">Forged in Identity. Built for Impact.</p>
 </div>
 </section>
 
 <!-- 3 Pillar Scores -->
 <section class="bg-dark-card py-12 md:py-16 px-4">
 <div class="max-w-3xl mx-auto">
-<h2 class="text-white text-2xl md:text-3xl font-bold mb-2 text-center">Your Readiness Pillars</h2>
+<h2 class="text-white text-2xl md:text-3xl font-bold mb-2 text-center" style="color:#002856">Your Readiness Pillars</h2>
 <p class="text-muted text-sm text-center mb-10">The three dimensions that define your real-world preparedness</p>
 <div id="pillar-cards" class="grid grid-cols-1 md:grid-cols-3 gap-5"></div>
 </div>
@@ -373,16 +386,16 @@ Next Domain →
 <!-- Domain Breakdown -->
 <section class="bg-off-white py-12 md:py-16 px-4">
 <div class="max-w-3xl mx-auto">
-<h2 class="text-dark text-2xl md:text-3xl font-bold mb-2 text-center">Domain Breakdown</h2>
-<p class="text-gray-500 text-sm text-center mb-10">How you scored across each of the 8 domains</p>
+<h2 class="text-dark text-2xl md:text-3xl font-bold mb-2 text-center" style="color:#002856">Domain Breakdown</h2>
+<p class="text-gray-500 text-sm text-center mb-10" style="color:#002856">How you scored across each of the 8 domains</p>
 <div id="domain-bars" class="space-y-4"></div>
 </div>
 </section>
 
 <!-- Personalized Insights -->
-<section class="bg-[#0a0f1a] py-12 md:py-16 px-4">
+<section class="bg-[#EDF1F3] py-12 md:py-16 px-4">
 <div class="max-w-3xl mx-auto">
-<h2 class="text-white text-2xl md:text-3xl font-bold mb-2 text-center">What Your Profile Reveals</h2>
+<h2 class="text-white text-2xl md:text-3xl font-bold mb-2 text-center" style="color:#002856">What Your Profile Reveals</h2>
 <p class="text-muted text-sm text-center mb-10">Personalized insights for each domain</p>
 <div id="insight-cards" class="space-y-4"></div>
 </div>
@@ -394,21 +407,21 @@ Next Domain →
 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-steel/30 bg-steel/10 mb-6">
 <span class="text-steel text-xs font-semibold tracking-[0.2em] uppercase">✦ Get Your Full Report</span>
 </div>
-<h2 class="text-white text-2xl md:text-3xl font-bold mb-2">Want Your Full Report?</h2>
+<h2 class="text-white text-2xl md:text-3xl font-bold mb-2" style="color:#002856">Want Your Full Report?</h2>
 <p class="text-muted text-sm mb-8 leading-relaxed max-w-md mx-auto">Enter a valid email address and we'll send your complete IronMind Readiness Report — your overall score, all three pillars, every domain breakdown, and your personalized insights — straight to your inbox.</p>
 <div class="space-y-4 text-left">
 <div>
-<label for="contact-name" class="block text-muted text-xs tracking-widest uppercase mb-2">Name <span class="text-muted/50 normal-case tracking-normal">(optional)</span></label>
-<input id="contact-name" type="text" autocomplete="name" placeholder="Your name" class="w-full bg-[#0a0f1a] border border-steel/20 rounded-lg px-4 py-3 text-white placeholder-muted/40 focus:outline-none focus:border-steel transition-colors">
+<label for="contact-name" class="block text-muted text-xs tracking-widest uppercase mb-2">Name <span class="text-muted/50 normal-case tracking-normal" style="color:#002856">(optional)</span></label>
+<input id="contact-name" type="text" autocomplete="name" placeholder="Your name" class="w-full bg-[#EDF1F3] border border-steel/20 rounded-lg px-4 py-3 text-white placeholder-muted/40 focus:outline-none focus:border-steel transition-colors">
 </div>
 <div>
 <label for="contact-email" class="block text-muted text-xs tracking-widest uppercase mb-2">Email Address</label>
-<input id="contact-email" type="email" autocomplete="email" inputmode="email" required="" placeholder="you@example.com" class="w-full bg-[#0a0f1a] border border-steel/20 rounded-lg px-4 py-3 text-white placeholder-muted/40 focus:outline-none focus:border-steel transition-colors">
+<input id="contact-email" type="email" autocomplete="email" inputmode="email" required="" placeholder="you@example.com" class="w-full bg-[#EDF1F3] border border-steel/20 rounded-lg px-4 py-3 text-white placeholder-muted/40 focus:outline-none focus:border-steel transition-colors">
 </div>
 <button id="contact-submit-btn" class="w-full bg-steel hover:bg-steel-light text-white font-bold py-4 px-8 rounded-lg transition-all hover:shadow-[0_0_24px_rgba(53,118,181,0.35)] disabled:opacity-40 disabled:cursor-not-allowed">
 Email Me My Full Report →
 </button>
-<p class="text-muted/50 text-xs text-center">We'll only use your email to send your report. No spam.</p>
+<p class="text-muted/50 text-xs text-center" style="color:#002856">We'll only use your email to send your report. No spam.</p>
 <p id="contact-confirm" class="hidden text-center text-sm pt-1"></p>
 </div>
 </div>
@@ -420,14 +433,14 @@ Email Me My Full Report →
 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-steel/30 bg-steel/10 mb-6">
 <span class="text-steel text-xs font-semibold tracking-[0.2em] uppercase">✦ Your Next Step</span>
 </div>
-<h2 class="text-white text-2xl md:text-4xl font-bold mb-4">Ready to Close the Gap?</h2>
+<h2 class="text-white text-2xl md:text-4xl font-bold mb-4" style="color:#002856">Ready to Close the Gap?</h2>
 <p class="text-muted text-base mb-8 leading-relaxed">
 IronMind for Student Athletes exists to prepare you for exactly what this assessment reveals. The program doesn't just identify gaps — it closes them.
 </p>
 <a href="https://ironmindadvisors.com" target="_blank" class="inline-block bg-steel hover:bg-steel-light text-white font-bold py-4 px-10 rounded-lg transition-all hover:shadow-[0_0_24px_rgba(53,118,181,0.35)] text-base">
 Learn About IronMind →
 </a>
-<p class="text-muted/40 text-xs mt-8 tracking-widest uppercase">Forged in Identity. Built for Impact.</p>
+<p class="text-muted/40 text-xs mt-8 tracking-widest uppercase" style="color:#002856">Forged in Identity. Built for Impact.</p>
 </div>
 </section>
 </div>
@@ -441,7 +454,7 @@ const DOMAINS = [
 {
 pillar: 'readiness',
 pillarLabel: 'Readiness',
-pillarColor: '#3576b5',
+pillarColor: '#002856',
 name: 'Professional Readiness',
 desc: 'How prepared you are to enter and perform in real-world professional environments.',
 icon: 'briefcase',
@@ -458,7 +471,7 @@ insightLow: 'Professional readiness is a skill, not a gift — and it is built t
 {
 pillar: 'readiness',
 pillarLabel: 'Readiness',
-pillarColor: '#3576b5',
+pillarColor: '#002856',
 name: 'Communication & Executive Presence',
 desc: 'Your ability to communicate clearly, confidently, and professionally in high-stakes situations.',
 icon: 'message-square',
@@ -475,7 +488,7 @@ insightLow: 'Communication is the currency of the real world. In sports, your pe
 {
 pillar: 'readiness',
 pillarLabel: 'Readiness',
-pillarColor: '#3576b5',
+pillarColor: '#002856',
 name: 'Brand & Professional Identity',
 desc: 'How clearly and consistently you present yourself as a professional — online and in person.',
 icon: 'star',
@@ -494,7 +507,7 @@ insightLow: 'Most athletes let their sport define them until it ends. Then they 
 {
 pillar: 'clarity',
 pillarLabel: 'Clarity',
-pillarColor: '#10b981',
+pillarColor: '#1E7A52',
 name: 'Identity Beyond the Jersey',
 desc: 'How well you know who you are when athletics is removed from the equation.',
 icon: 'user',
@@ -511,7 +524,7 @@ insightLow: 'This is the most common and most costly blind spot for athletes. Wh
 {
 pillar: 'clarity',
 pillarLabel: 'Clarity',
-pillarColor: '#10b981',
+pillarColor: '#1E7A52',
 name: 'Purpose & Direction',
 desc: 'The clarity you have about your path, your goals, and why you are pursuing them.',
 icon: 'compass',
@@ -528,7 +541,7 @@ insightLow: 'Without a clear purpose, you will keep chasing other people\'s defi
 {
 pillar: 'clarity',
 pillarLabel: 'Clarity',
-pillarColor: '#10b981',
+pillarColor: '#1E7A52',
 name: 'Values & Decision-Making',
 desc: 'How clearly your values guide your choices, relationships, and behavior under pressure.',
 icon: 'shield',
@@ -547,7 +560,7 @@ insightLow: 'Values are not decoration — they are the operating system of your
 {
 pillar: 'transition',
 pillarLabel: 'Transition Strength',
-pillarColor: '#f59e0b',
+pillarColor: '#EDAE17',
 name: 'Resilience & Adaptability',
 desc: 'Your capacity to handle adversity, uncertainty, and major change without losing your footing.',
 icon: 'zap',
@@ -564,7 +577,7 @@ insightLow: 'Athletics gives you resilience within a structured environment — 
 {
 pillar: 'transition',
 pillarLabel: 'Transition Strength',
-pillarColor: '#f59e0b',
+pillarColor: '#EDAE17',
 name: 'Leadership Without a Title',
 desc: 'Your ability to influence, contribute, and add value in settings where your athletic status is irrelevant.',
 icon: 'users',
@@ -584,9 +597,9 @@ insightLow: 'Athletic leadership is often positional — captain, starter, star.
 // PILLAR CONFIG
 // ============================================================
 const PILLARS = {
-readiness: { label: 'Readiness', color: '#3576b5', bg: 'pillar-readiness', desc: 'How equipped you are to enter and perform in professional environments.' },
-clarity: { label: 'Clarity', color: '#10b981', bg: 'pillar-clarity', desc: 'How well you know who you are, where you\'re going, and what drives you.' },
-transition: { label: 'Transition Strength', color: '#f59e0b', bg: 'pillar-transition', desc: 'Your capacity to adapt, recover, and lead through major life change.' }
+readiness: { label: 'Readiness', color: '#002856', bg: 'pillar-readiness', desc: 'How equipped you are to enter and perform in professional environments.' },
+clarity: { label: 'Clarity', color: '#1E7A52', bg: 'pillar-clarity', desc: 'How well you know who you are, where you\'re going, and what drives you.' },
+transition: { label: 'Transition Strength', color: '#8A6208', bg: 'pillar-transition', desc: 'Your capacity to adapt, recover, and lead through major life change.' }
 };
 
 // ============================================================
@@ -622,11 +635,11 @@ return Math.round((getDomainScore(domainIndex) / 25) * 100);
 }
 
 function getTierInfo(pct) {
-if (pct >= 80) return { label: 'IronMind Prepared', cls: 'tier-ironmind', color: '#3576b5', desc: 'You are ready. The foundation is built — now it is time to build the structure.' };
-if (pct >= 65) return { label: 'IronMind Ready', cls: 'tier-ready', color: '#10b981', desc: 'You have the foundation. With intention and exposure, the gap closes quickly.' };
-if (pct >= 50) return { label: 'Developing', cls: 'tier-developing', color: '#f59e0b', desc: 'You are building the right things. Awareness is the first step — now comes the work.' };
-if (pct >= 35) return { label: 'Emerging', cls: 'tier-emerging', color: '#ef4444', desc: 'The awareness is there. The real work begins here — and IronMind meets you exactly where you are.' };
-return { label: 'Beginning', cls: 'tier-emerging', color: '#ef4444', desc: 'This is precisely where IronMind starts. Honest self-assessment is courage — and you just showed it.' };
+if (pct >= 80) return { label: 'IronMind Prepared', cls: 'tier-ironmind', color: '#002856', desc: 'You are ready. The foundation is built — now it is time to build the structure.' };
+if (pct >= 65) return { label: 'IronMind Ready', cls: 'tier-ready', color: '#1E7A52', desc: 'You have the foundation. With intention and exposure, the gap closes quickly.' };
+if (pct >= 50) return { label: 'Developing', cls: 'tier-developing', color: '#8A6208', desc: 'You are building the right things. Awareness is the first step — now comes the work.' };
+if (pct >= 35) return { label: 'Emerging', cls: 'tier-emerging', color: '#BA0C2F', desc: 'The awareness is there. The real work begins here — and IronMind meets you exactly where you are.' };
+return { label: 'Beginning', cls: 'tier-emerging', color: '#BA0C2F', desc: 'This is precisely where IronMind starts. Honest self-assessment is courage — and you just showed it.' };
 }
 
 function getPillarPct(pillarKey) {
@@ -955,7 +968,7 @@ Object.entries(PILLARS).forEach(([key, p]) => {
 const pct = getPillarPct(key);
 const t = getTierInfo(pct);
 const card = document.createElement('div');
-card.className = `pillar-card ${p.bg} bg-[#111827] rounded-xl p-6`;
+card.className = `pillar-card ${p.bg} bg-[#EDF1F3] rounded-xl p-6`;
 card.innerHTML = `
 <p class="text-xs font-semibold tracking-widest uppercase mb-1" style="color:${p.color}">${p.label}</p>
 <div class="flex items-end gap-2 mb-3">
@@ -1033,7 +1046,7 @@ if (typeof lucide !== 'undefined') lucide.createIcons();
 <!-- ===== SHARED SITE FOOTER ===== -->
 <footer class="tac-footer">
   <div class="tac-footer-inner">
-    <a href="/"><img class="tac-footer-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check"></a>
+    <a href="/"><img class="tac-footer-logo" src="/athlete-check-logo-white.png" alt="The Athlete Check" style="height:76px"></a>
     <nav class="tac-footer-nav">
       <a href="/">Home</a>
       <a href="/registration">Registration</a>

@@ -5,16 +5,16 @@
 <title>IronMind Mentality</title>
 <style>
 :root {
---ink: #02081f;
---muted: #586273;
---line: #c9d8f2;
---panel: #ffffff;
---page: #f6f9ff;
---brand: #0047c7;
---brand-dark: #000a2e;
---brand-mid: #063a9d;
---accent: #008cff;
---accent-light: #e7f3ff;
+--ink: #002856;
+--muted: #575856;
+--line: #D8DFE1;
+--panel: #FFFFFF;
+--page: #EDF1F3;
+--brand: #002856;
+--brand-dark: #002856;
+--brand-mid: #002856;
+--accent: #3D7CC9;
+--accent-light: #E4EDF4;
 }
 
 * {
@@ -46,11 +46,11 @@ margin: 0 auto;
 
 .hero {
 background:
-linear-gradient(135deg, rgba(0, 10, 46, 0.96), rgba(0, 71, 199, 0.86) 58%, rgba(0, 140, 255, 0.78)),
-radial-gradient(circle at 86% 20%, rgba(255, 255, 255, 0.28), transparent 28%);
+linear-gradient(135deg, rgba(237,241,243,0.96), rgba(0,40,86,0.06) 58%, rgba(0, 140, 255, 0.78)),
+radial-gradient(circle at 86% 20%, rgba(0,40,86,0.03), transparent 28%);
 background-position: center;
 background-size: cover;
-color: #fff;
+color: #002856;
 padding: 72px 0 56px;
 }
 
@@ -59,7 +59,7 @@ width: min(460px, 100%);
 height: auto;
 margin-bottom: 32px;
 border-radius: 8px;
-box-shadow: 0 22px 48px rgba(0, 8, 38, 0.3);
+box-shadow: 0 22px 48px rgba(0,40,86,0.03);
 }
 
 .hero h1 {
@@ -73,7 +73,7 @@ letter-spacing: 0;
 .hero p {
 max-width: 680px;
 margin: 22px 0 0;
-color: rgba(255, 255, 255, 0.88);
+color: rgba(0,40,86,0.88);
 font-size: 20px;
 }
 
@@ -90,16 +90,16 @@ align-items: center;
 justify-content: center;
 min-height: 46px;
 padding: 0 18px;
-border: 1px solid rgba(255, 255, 255, 0.35);
+border: 1px solid rgba(0,40,86,0.35);
 border-radius: 6px;
-background: #fff;
+background: #FFFFFF;
 color: var(--brand-dark);
 font-weight: 800;
 }
 
 .button.secondary {
 background: transparent;
-color: #fff;
+color: #002856;
 }
 
 .button:hover {
@@ -108,7 +108,7 @@ text-decoration: none;
 }
 
 .button.secondary:hover {
-background: rgba(255, 255, 255, 0.12);
+background: rgba(0,40,86,0.01);
 }
 
 section {
@@ -136,7 +136,7 @@ border-collapse: collapse;
 overflow: hidden;
 background: var(--panel);
 border: 1px solid var(--line);
-box-shadow: 0 14px 34px rgba(0, 10, 46, 0.07);
+box-shadow: 0 14px 34px rgba(0,40,86,0.01);
 }
 
 .comparison th,
@@ -149,7 +149,7 @@ vertical-align: top;
 
 .comparison th {
 background: var(--brand-dark);
-color: #fff;
+color: #FFFFFF;
 font-size: 14px;
 text-transform: uppercase;
 letter-spacing: 0.04em;
@@ -172,7 +172,7 @@ padding: 22px;
 border: 1px solid var(--line);
 border-radius: 8px;
 background: var(--panel);
-box-shadow: 0 12px 26px rgba(0, 10, 46, 0.08);
+box-shadow: 0 12px 26px rgba(0,40,86,0.01);
 }
 
 .card strong {
@@ -213,33 +213,45 @@ display: block;
 overflow-x: auto;
 }
 }
+
+/* small-screen safety: long footer CTA and wide tables must not push the page sideways */
+.tac-footer-cta{max-width:100%;overflow-wrap:anywhere}
+table{max-width:100%}
+@media (max-width:520px){.tac-footer-cta{font-size:0.8rem;letter-spacing:.06em}}
+.comparison{display:block;overflow-x:auto;white-space:nowrap}
 </style>
 <!-- ===== SHARED SITE HEADER (self-contained: scoped classes, no Tailwind required) ===== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap">
 <style>
+
+.tac-brand-type{line-height:1;text-decoration:none;display:block}
+.tac-wm{display:block;font-family:'Archivo','Arial Narrow',Impact,sans-serif;font-style:italic;font-weight:900;font-stretch:68%;font-variation-settings:"wdth" 68,"wght" 900;text-transform:uppercase;font-size:1.6rem;line-height:.9;color:#002856;letter-spacing:.01em;white-space:nowrap}
+.tac-wm b{color:#3D7CC9;font-weight:inherit}
+.tac-sub{display:block;margin-top:5px;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:.5rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#575856}
+@media (max-width:430px){.tac-wm{font-size:1.28rem}.tac-sub{font-size:.45rem;letter-spacing:.18em}}
 /* Mirrors the homepage nav exactly. Every property is declared explicitly so the
    header renders identically on pages that do not load Tailwind or its reset. */
 .tac-navbar,.tac-navbar *,.tac-navbar *::before,.tac-navbar *::after{box-sizing:border-box}
-.tac-navbar{position:fixed;top:0;left:0;right:auto;bottom:auto;width:100%;z-index:1000;margin:0;padding:0;background:rgba(4, 11, 20, 0.96);border:0;border-bottom:1px solid rgba(26,143,227,0.2);box-shadow:none;backdrop-filter:none;text-align:left;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-navbar{position:fixed;top:0;left:0;right:auto;bottom:auto;width:100%;z-index:1000;margin:0;padding:0;background:rgba(237,241,243,0.94);border:0;border-bottom:1px solid #D8DFE1;box-shadow:none;backdrop-filter:none;text-align:left;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
 .tac-nav-inner{width:100%;max-width:80rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:0;padding:0.75rem 1.25rem}
 .tac-nav-brand{flex:0 0 auto;display:block;padding:0;margin:0;border:0;background:none;line-height:0;text-decoration:none}
 .tac-nav-logo{display:block;height:44px;width:auto;max-width:none;min-width:0;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none;object-fit:contain}
 .tac-nav-links{display:none;align-items:center;gap:2rem}
-.tac-nav-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-style:normal;font-size:1.125rem;line-height:1.75rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
-.tac-nav-link:hover{color:#1A8FE3;text-decoration:none}
-.tac-nav-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1rem;line-height:1.5rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.5rem 1.5rem;margin:0;border:0;border-radius:0.25rem;box-shadow:none;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-nav-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-style:normal;font-size:1.125rem;line-height:1.75rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;color:#002856;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-nav-link:hover{color:#BA0C2F;text-decoration:none}
+.tac-nav-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1rem;line-height:1.5rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;display:inline-block;color:#ffffff;text-decoration:none;background:#002856;padding:0.5rem 1.5rem;margin:0;border:0;border-radius:0.25rem;box-shadow:none;transition:filter 0.2s ease,transform 0.2s ease}
 .tac-nav-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
-.tac-nav-toggle,.tac-nav-close{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;width:auto;height:auto;padding:0.5rem;margin:0;background:none;border:0;border-radius:0;color:#ffffff;cursor:pointer;line-height:0;-webkit-appearance:none;appearance:none}
+.tac-nav-toggle,.tac-nav-close{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;width:auto;height:auto;padding:0.5rem;margin:0;background:none;border:0;border-radius:0;color:#002856;cursor:pointer;line-height:0;-webkit-appearance:none;appearance:none}
 .tac-nav-toggle svg,.tac-nav-close svg{display:block;width:28px;height:28px}
-.tac-mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1001;flex-direction:column;background:rgba(4, 11, 20, 0.99);font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1001;flex-direction:column;background:#002856;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
 .tac-mobile-menu.tac-open{display:flex}
-.tac-mobile-top{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid rgba(26,143,227,0.2)}
+.tac-mobile-top{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid rgba(123,173,211,0.35)}
 .tac-mobile-links{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1 1 0%;gap:2rem;padding:0;margin:0}
 .tac-mobile-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.875rem;line-height:2.25rem;letter-spacing:0.1em;text-transform:none;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
-.tac-mobile-link:hover{color:#1A8FE3;text-decoration:none}
-.tac-mobile-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.25rem;line-height:1.75rem;letter-spacing:0.1em;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.75rem 2rem;margin:1rem 0 0;border:0;border-radius:0.25rem;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-mobile-link:hover{color:#EDAE17;text-decoration:none}
+.tac-mobile-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.25rem;line-height:1.75rem;letter-spacing:0.1em;display:inline-block;color:#ffffff;text-decoration:none;background:#002856;padding:0.75rem 2rem;margin:1rem 0 0;border:0;border-radius:0.25rem;transition:filter 0.2s ease,transform 0.2s ease}
 .tac-mobile-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
 @media (min-width:1250px){
   .tac-nav-links{display:flex;gap:0.8rem;flex-wrap:nowrap}
@@ -252,26 +264,28 @@ body.tac-nav-offset{padding-top:69px}
 
 /* ===== SHARED SITE FOOTER — every property explicit so it renders the same everywhere ===== */
 .tac-footer,.tac-footer *,.tac-footer *::before,.tac-footer *::after{box-sizing:border-box}
-.tac-footer{display:block;width:100%;margin:0;padding:60px 20px 40px;background:#020810;border:0;border-top:1px solid rgba(26,143,227,0.2);color:#94a3b8;text-align:center;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-footer{display:block;width:100%;margin:0;padding:60px 20px 40px;background:#002856;border:0;border-top:1px solid rgba(123,173,211,0.3);color:#FFFFFF;text-align:center;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
 .tac-footer-inner{width:100%;max-width:56rem;margin:0 auto;padding:0}
 .tac-footer-logo{display:block;height:56px;width:auto;max-width:100%;margin:0 auto 24px;padding:0;border:0;background:none;object-fit:contain}
 .tac-footer-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0.5rem 1rem;margin:0 0 24px;padding:0}
-.tac-footer-nav a{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-size:0.875rem;font-weight:500;line-height:1.4;letter-spacing:0.02em;color:#94a3b8;text-decoration:none;background:none;transition:color 0.2s ease}
-.tac-footer-nav a:hover{color:#1A8FE3;text-decoration:none}
-.tac-footer-tag{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.875rem;line-height:1.5;letter-spacing:0.15em;color:#94a3b8;margin:0 0 4px;padding:0}
-.tac-footer-tag2{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.75rem;line-height:1.5;letter-spacing:0.1em;color:#94a3b8;margin:0 0 20px;padding:0}
-.tac-footer-cta{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.9375rem;letter-spacing:0.12em;color:#1A8FE3;text-decoration:none;display:inline-block;margin:0 0 24px;padding:0}
-.tac-footer-cta:hover{color:#4FB0F0;text-decoration:none}
-.tac-footer-legal{font-size:0.75rem;line-height:1.6;color:#64748b;margin:0 0 6px;padding:0}
-.tac-footer-founders{font-size:0.75rem;line-height:1.6;color:#475569;margin:0;padding:0}
+.tac-footer-nav a{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-size:0.875rem;font-weight:500;line-height:1.4;letter-spacing:0.02em;color:#A9C0D2;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-footer-nav a:hover{color:#EDAE17;text-decoration:none}
+.tac-footer-tag{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.875rem;line-height:1.5;letter-spacing:0.15em;color:#EDF1F3;margin:0 0 4px;padding:0}
+.tac-footer-tag2{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.75rem;line-height:1.5;letter-spacing:0.1em;color:#A9C0D2;margin:0 0 20px;padding:0}
+.tac-footer-cta{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.9375rem;letter-spacing:0.12em;color:#EDAE17;text-decoration:none;display:inline-block;margin:0 0 24px;padding:0}
+.tac-footer-cta:hover{color:#FFFFFF;text-decoration:none}
+.tac-footer-legal{font-size:0.75rem;line-height:1.6;color:#8FA8BC;margin:0 0 6px;padding:0}
+.tac-footer-founders{font-size:0.75rem;line-height:1.6;color:#8FA8BC;margin:0;padding:0}
 </style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=JetBrains+Mono:wght@500;700&display=swap">
 </head>
 <body class="tac-nav-offset">
 <!-- ===== SHARED SITE HEADER ===== -->
 <nav class="tac-navbar" id="tac-navbar">
   <div class="tac-nav-inner">
-    <a class="tac-nav-brand" href="/">
-      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+    <a class="tac-nav-brand tac-brand-type" href="/" aria-label="The Athlete Check — home">
+      <span class="tac-wm">THE ATHLETE <b>CHECK</b></span>
+      <span class="tac-sub">AN IRONMIND COMPANY</span>
     </a>
     <div class="tac-nav-links">
       <a class="tac-nav-link" href="/registration">REGISTRATION</a><a class="tac-nav-link" href="/about">ABOUT</a>
@@ -289,7 +303,7 @@ body.tac-nav-offset{padding-top:69px}
   </div>
   <div class="tac-mobile-menu" id="tac-mobile-menu">
     <div class="tac-mobile-top">
-      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+      <img class="tac-nav-logo" src="/athlete-check-logo-white.png" alt="The Athlete Check" style="height:52px">
       <button class="tac-nav-close" id="tac-nav-close" type="button" aria-label="Close menu">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
       </button>
@@ -449,7 +463,7 @@ body.tac-nav-offset{padding-top:69px}
 <!-- ===== SHARED SITE FOOTER ===== -->
 <footer class="tac-footer">
   <div class="tac-footer-inner">
-    <a href="/"><img class="tac-footer-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check"></a>
+    <a href="/"><img class="tac-footer-logo" src="/athlete-check-logo-white.png" alt="The Athlete Check" style="height:76px"></a>
     <nav class="tac-footer-nav">
       <a href="/">Home</a>
       <a href="/registration">Registration</a>

@@ -11,17 +11,17 @@ theme: {
 extend: {
 colors: {
 navy: {
-900: '#040B14',
-800: '#071525',
-700: '#0A1929',
-600: '#081020',
-500: '#122a45',
+900: '#EDF1F3',
+800: '#F5F8FA',
+700: '#FFFFFF',
+600: '#F5F8FA',
+500: '#F5F8FA',
 },
 blue: {
-DEFAULT: '#1A8FE3',
-light: '#00B4FF',
-dark: '#1478c0',
-50: '#e8f4fd',
+DEFAULT: '#002856',
+light: '#3D7CC9',
+dark: '#002856',
+50: '#E4EDF4',
 },
 },
 fontFamily: {
@@ -39,11 +39,11 @@ body: ['"Inter"', 'sans-serif'],
 <style>
 
 :root {
---navy-900: #040B14;
---navy-800: #071525;
---navy-700: #0A1929;
---accent: #1A8FE3;
---accent-light: #00B4FF;
+--navy-900: #EDF1F3;
+--navy-800: #F5F8FA;
+--navy-700: #FFFFFF;
+--accent: #002856;
+--accent-light: #3D7CC9;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -55,7 +55,7 @@ scroll-behavior: smooth;
 body {
 font-family: 'Inter', sans-serif;
 background-color: var(--navy-900);
-color: #ffffff;
+color: #002856;
 overflow-x: hidden;
 }
 
@@ -120,8 +120,8 @@ border-radius: 2px;
 /* Form inputs */
 .form-input {
 background: var(--navy-800);
-border: 1.5px solid rgba(26,143,227,0.2);
-color: #fff;
+border: 1.5px solid #D8DFE1;
+color: #002856;
 border-radius: 8px;
 padding: 12px 16px;
 font-size: 15px;
@@ -132,19 +132,19 @@ font-family: 'Inter', sans-serif;
 .form-input:focus {
 outline: none;
 border-color: var(--accent);
-box-shadow: 0 0 0 3px rgba(26,143,227,0.15);
+box-shadow: 0 0 0 3px #D8DFE1;
 }
 .form-input::placeholder {
-color: rgba(255,255,255,0.35);
+color: rgba(0,40,86,0.35);
 }
 .form-input.error {
-border-color: #ef4444;
-box-shadow: 0 0 0 3px rgba(239,68,68,0.15);
+border-color: #BA0C2F;
+box-shadow: 0 0 0 3px rgba(0,40,86,0.01);
 }
 .form-label {
 font-size: 13px;
 font-weight: 600;
-color: rgba(255,255,255,0.8);
+color: rgba(0,40,86,0.8);
 margin-bottom: 6px;
 display: block;
 letter-spacing: 0.5px;
@@ -170,7 +170,7 @@ transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card-hover:hover {
 transform: translateY(-6px);
-box-shadow: 0 20px 40px rgba(26,143,227,0.15);
+box-shadow: 0 20px 40px #D8DFE1;
 }
 
 /* Checklist item */
@@ -192,9 +192,9 @@ animation: subtlePulse 3s ease-in-out infinite;
 
 /* Sticky nav styling */
 .nav-scrolled {
-background: rgba(4,11,20,0.97) !important;
+background: rgba(237,241,243,0.97) !important;
 backdrop-filter: blur(12px);
-box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+box-shadow: 0 4px 20px rgba(0,40,86,0.04);
 }
 
 /* Select dropdown styling */
@@ -206,33 +206,44 @@ background-position: right 12px center;
 padding-right: 40px;
 }
 select.form-input option {
-background: #071525;
-color: #fff;
+background: #F5F8FA;
+color: #002856;
 }
+
+/* small-screen safety: long footer CTA and wide tables must not push the page sideways */
+.tac-footer-cta{max-width:100%;overflow-wrap:anywhere}
+table{max-width:100%}
+@media (max-width:520px){.tac-footer-cta{font-size:0.8rem;letter-spacing:.06em}}
 </style>
 <!-- ===== SHARED SITE HEADER (self-contained: scoped classes, no Tailwind required) ===== -->
 <style>
+
+.tac-brand-type{line-height:1;text-decoration:none;display:block}
+.tac-wm{display:block;font-family:'Archivo','Arial Narrow',Impact,sans-serif;font-style:italic;font-weight:900;font-stretch:68%;font-variation-settings:"wdth" 68,"wght" 900;text-transform:uppercase;font-size:1.6rem;line-height:.9;color:#002856;letter-spacing:.01em;white-space:nowrap}
+.tac-wm b{color:#3D7CC9;font-weight:inherit}
+.tac-sub{display:block;margin-top:5px;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:.5rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#575856}
+@media (max-width:430px){.tac-wm{font-size:1.28rem}.tac-sub{font-size:.45rem;letter-spacing:.18em}}
 /* Mirrors the homepage nav exactly. Every property is declared explicitly so the
    header renders identically on pages that do not load Tailwind or its reset. */
 .tac-navbar,.tac-navbar *,.tac-navbar *::before,.tac-navbar *::after{box-sizing:border-box}
-.tac-navbar{position:fixed;top:0;left:0;right:auto;bottom:auto;width:100%;z-index:1000;margin:0;padding:0;background:rgba(4, 11, 20, 0.96);border:0;border-bottom:1px solid rgba(26,143,227,0.2);box-shadow:none;backdrop-filter:none;text-align:left;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-navbar{position:fixed;top:0;left:0;right:auto;bottom:auto;width:100%;z-index:1000;margin:0;padding:0;background:rgba(237,241,243,0.94);border:0;border-bottom:1px solid #D8DFE1;box-shadow:none;backdrop-filter:none;text-align:left;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
 .tac-nav-inner{width:100%;max-width:80rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:0;padding:0.75rem 1.25rem}
 .tac-nav-brand{flex:0 0 auto;display:block;padding:0;margin:0;border:0;background:none;line-height:0;text-decoration:none}
 .tac-nav-logo{display:block;height:44px;width:auto;max-width:none;min-width:0;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none;object-fit:contain}
 .tac-nav-links{display:none;align-items:center;gap:2rem}
-.tac-nav-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-style:normal;font-size:1.125rem;line-height:1.75rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
-.tac-nav-link:hover{color:#1A8FE3;text-decoration:none}
-.tac-nav-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1rem;line-height:1.5rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.5rem 1.5rem;margin:0;border:0;border-radius:0.25rem;box-shadow:none;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-nav-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-style:normal;font-size:1.125rem;line-height:1.75rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;color:#002856;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-nav-link:hover{color:#BA0C2F;text-decoration:none}
+.tac-nav-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1rem;line-height:1.5rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;display:inline-block;color:#ffffff;text-decoration:none;background:#002856;padding:0.5rem 1.5rem;margin:0;border:0;border-radius:0.25rem;box-shadow:none;transition:filter 0.2s ease,transform 0.2s ease}
 .tac-nav-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
-.tac-nav-toggle,.tac-nav-close{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;width:auto;height:auto;padding:0.5rem;margin:0;background:none;border:0;border-radius:0;color:#ffffff;cursor:pointer;line-height:0;-webkit-appearance:none;appearance:none}
+.tac-nav-toggle,.tac-nav-close{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;width:auto;height:auto;padding:0.5rem;margin:0;background:none;border:0;border-radius:0;color:#002856;cursor:pointer;line-height:0;-webkit-appearance:none;appearance:none}
 .tac-nav-toggle svg,.tac-nav-close svg{display:block;width:28px;height:28px}
-.tac-mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1001;flex-direction:column;background:rgba(4, 11, 20, 0.99);font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1001;flex-direction:column;background:#002856;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
 .tac-mobile-menu.tac-open{display:flex}
-.tac-mobile-top{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid rgba(26,143,227,0.2)}
+.tac-mobile-top{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid rgba(123,173,211,0.35)}
 .tac-mobile-links{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1 1 0%;gap:2rem;padding:0;margin:0}
 .tac-mobile-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.875rem;line-height:2.25rem;letter-spacing:0.1em;text-transform:none;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
-.tac-mobile-link:hover{color:#1A8FE3;text-decoration:none}
-.tac-mobile-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.25rem;line-height:1.75rem;letter-spacing:0.1em;display:inline-block;color:#ffffff;text-decoration:none;background:#1A8FE3;padding:0.75rem 2rem;margin:1rem 0 0;border:0;border-radius:0.25rem;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-mobile-link:hover{color:#EDAE17;text-decoration:none}
+.tac-mobile-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.25rem;line-height:1.75rem;letter-spacing:0.1em;display:inline-block;color:#ffffff;text-decoration:none;background:#002856;padding:0.75rem 2rem;margin:1rem 0 0;border:0;border-radius:0.25rem;transition:filter 0.2s ease,transform 0.2s ease}
 .tac-mobile-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
 @media (min-width:1250px){
   .tac-nav-links{display:flex;gap:0.8rem;flex-wrap:nowrap}
@@ -245,26 +256,28 @@ body.tac-nav-offset{padding-top:69px}
 
 /* ===== SHARED SITE FOOTER — every property explicit so it renders the same everywhere ===== */
 .tac-footer,.tac-footer *,.tac-footer *::before,.tac-footer *::after{box-sizing:border-box}
-.tac-footer{display:block;width:100%;margin:0;padding:60px 20px 40px;background:#020810;border:0;border-top:1px solid rgba(26,143,227,0.2);color:#94a3b8;text-align:center;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-footer{display:block;width:100%;margin:0;padding:60px 20px 40px;background:#002856;border:0;border-top:1px solid rgba(123,173,211,0.3);color:#FFFFFF;text-align:center;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
 .tac-footer-inner{width:100%;max-width:56rem;margin:0 auto;padding:0}
 .tac-footer-logo{display:block;height:56px;width:auto;max-width:100%;margin:0 auto 24px;padding:0;border:0;background:none;object-fit:contain}
 .tac-footer-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0.5rem 1rem;margin:0 0 24px;padding:0}
-.tac-footer-nav a{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-size:0.875rem;font-weight:500;line-height:1.4;letter-spacing:0.02em;color:#94a3b8;text-decoration:none;background:none;transition:color 0.2s ease}
-.tac-footer-nav a:hover{color:#1A8FE3;text-decoration:none}
-.tac-footer-tag{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.875rem;line-height:1.5;letter-spacing:0.15em;color:#94a3b8;margin:0 0 4px;padding:0}
-.tac-footer-tag2{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.75rem;line-height:1.5;letter-spacing:0.1em;color:#94a3b8;margin:0 0 20px;padding:0}
-.tac-footer-cta{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.9375rem;letter-spacing:0.12em;color:#1A8FE3;text-decoration:none;display:inline-block;margin:0 0 24px;padding:0}
-.tac-footer-cta:hover{color:#4FB0F0;text-decoration:none}
-.tac-footer-legal{font-size:0.75rem;line-height:1.6;color:#64748b;margin:0 0 6px;padding:0}
-.tac-footer-founders{font-size:0.75rem;line-height:1.6;color:#475569;margin:0;padding:0}
+.tac-footer-nav a{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-size:0.875rem;font-weight:500;line-height:1.4;letter-spacing:0.02em;color:#A9C0D2;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-footer-nav a:hover{color:#EDAE17;text-decoration:none}
+.tac-footer-tag{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.875rem;line-height:1.5;letter-spacing:0.15em;color:#EDF1F3;margin:0 0 4px;padding:0}
+.tac-footer-tag2{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.75rem;line-height:1.5;letter-spacing:0.1em;color:#A9C0D2;margin:0 0 20px;padding:0}
+.tac-footer-cta{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.9375rem;letter-spacing:0.12em;color:#EDAE17;text-decoration:none;display:inline-block;margin:0 0 24px;padding:0}
+.tac-footer-cta:hover{color:#FFFFFF;text-decoration:none}
+.tac-footer-legal{font-size:0.75rem;line-height:1.6;color:#8FA8BC;margin:0 0 6px;padding:0}
+.tac-footer-founders{font-size:0.75rem;line-height:1.6;color:#8FA8BC;margin:0;padding:0}
 </style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=JetBrains+Mono:wght@500;700&display=swap">
 </head>
 <body class="tac-nav-offset" data-id="0">
 <!-- ===== SHARED SITE HEADER ===== -->
 <nav class="tac-navbar" id="tac-navbar">
   <div class="tac-nav-inner">
-    <a class="tac-nav-brand" href="/">
-      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+    <a class="tac-nav-brand tac-brand-type" href="/" aria-label="The Athlete Check — home">
+      <span class="tac-wm">THE ATHLETE <b>CHECK</b></span>
+      <span class="tac-sub">AN IRONMIND COMPANY</span>
     </a>
     <div class="tac-nav-links">
       <a class="tac-nav-link" href="/registration">REGISTRATION</a><a class="tac-nav-link" href="/about">ABOUT</a>
@@ -282,7 +295,7 @@ body.tac-nav-offset{padding-top:69px}
   </div>
   <div class="tac-mobile-menu" id="tac-mobile-menu">
     <div class="tac-mobile-top">
-      <img class="tac-nav-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check Logo">
+      <img class="tac-nav-logo" src="/athlete-check-logo-white.png" alt="The Athlete Check" style="height:52px">
       <button class="tac-nav-close" id="tac-nav-close" type="button" aria-label="Close menu">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
       </button>
@@ -335,12 +348,12 @@ body.tac-nav-offset{padding-top:69px}
 <app-icon data-id="1" hidden="" data-icon="zap" data-palette="Blue"></app-icon>
 
 <!-- ===== PAGE ANCHOR SUB-NAVIGATION (sits directly below the shared site header) ===== -->
-<nav data-id="2" id="navbar-a1b2" class="fixed left-0 w-full z-40 transition-all duration-300" style="top: 69px; background: rgba(4,11,20,0.95); backdrop-filter: blur(8px);">
+<nav data-id="2" id="navbar-a1b2" class="fixed left-0 w-full z-40 transition-all duration-300" style="top: 69px; background: rgba(237,241,243,0.95); backdrop-filter: blur(8px);">
 <div data-id="3" class="max-w-7xl mx-auto px-4 md:px-8 flex flex-wrap items-center justify-center gap-3 md:gap-6 py-2.5">
-<a data-id="7" href="#about-e5f6" class="text-sm font-medium text-white/70 hover:text-blue transition-colors">About</a>
-<a data-id="8" href="#criteria-g7h8" class="text-sm font-medium text-white/70 hover:text-blue transition-colors">Who We Want</a>
-<a data-id="9" href="#benefits-i9j0" class="text-sm font-medium text-white/70 hover:text-blue transition-colors">Benefits</a>
-<a data-id="10" href="#apply-k1l2" class="bg-blue hover:bg-blue-light text-white font-bold text-sm px-6 py-2.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue/20">Apply Now</a>
+<a data-id="7" href="#about-e5f6" class="text-sm font-medium text-white/70 hover:text-blue transition-colors" style="color:#002856">About</a>
+<a data-id="8" href="#criteria-g7h8" class="text-sm font-medium text-white/70 hover:text-blue transition-colors" style="color:#002856">Who We Want</a>
+<a data-id="9" href="#benefits-i9j0" class="text-sm font-medium text-white/70 hover:text-blue transition-colors" style="color:#002856">Benefits</a>
+<a data-id="10" href="#apply-k1l2" class="bg-blue hover:bg-blue-light text-white font-bold text-sm px-6 py-2.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue/20" style="color:#002856">Apply Now</a>
 </div>
 </nav>
 
@@ -349,8 +362,8 @@ body.tac-nav-offset{padding-top:69px}
 <section data-id="21" id="hero-s9t0" class="relative min-h-screen flex items-center justify-center bg-navy-900 hero-pattern overflow-hidden">
 <div data-id="22" class="absolute inset-0 hero-grid-overlay"></div>
 <!-- Decorative diagonal blue lines -->
-<div data-id="23" class="absolute top-0 right-0 w-1/2 h-full opacity-[0.04]" style="background: linear-gradient(135deg, transparent 40%, #1A8FE3 40%, #1A8FE3 40.5%, transparent 40.5%, transparent 60%, #1A8FE3 60%, #1A8FE3 60.5%, transparent 60.5%);"></div>
-<div data-id="24" class="absolute bottom-0 left-0 w-96 h-96 rounded-full opacity-[0.05]" style="background: radial-gradient(circle, #1A8FE3, transparent 70%);"></div>
+<div data-id="23" class="absolute top-0 right-0 w-1/2 h-full opacity-[0.04]" style="background: linear-gradient(135deg, transparent 40%, #002856 40%, #002856 40.5%, transparent 40.5%, transparent 60%, #002856 60%, #002856 60.5%, transparent 60.5%);"></div>
+<div data-id="24" class="absolute bottom-0 left-0 w-96 h-96 rounded-full opacity-[0.05]" style="background: radial-gradient(circle, #002856, transparent 70%);"></div>
 
 <div data-id="25" class="relative z-10 text-center px-4 md:px-8 max-w-5xl mx-auto pt-20">
 <div data-id="26" class="fade-up">
@@ -387,91 +400,91 @@ Are you a student athlete who believes mental strength is just as important as p
 <section data-id="43" id="about-e5f6" class="py-20 md:py-28 bg-white text-navy-900">
 <div data-id="44" class="max-w-6xl mx-auto px-4 md:px-8">
 <div data-id="45" class="text-center mb-14 md:mb-20 fade-up">
-<p data-id="46" class="font-display text-blue-dark text-base md:text-lg tracking-[0.25em] mb-3" style="color:#1478c0;">WHAT IS THE ATHLETE CHECK?</p>
-<h2 data-id="47" class="font-display text-4xl md:text-6xl text-navy-900 tracking-wide">More Than an App. A Movement.</h2>
+<p data-id="46" class="font-display text-blue-dark text-base md:text-lg tracking-[0.25em] mb-3" style="color:#002856;">WHAT IS THE ATHLETE CHECK?</p>
+<h2 data-id="47" class="font-display text-4xl md:text-6xl text-navy-900 tracking-wide" style="color:#002856">More Than an App. A Movement.</h2>
 </div>
 
 <div data-id="48" class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
 <!-- Card 1 -->
-<div data-id="49" class="fade-up card-hover rounded-2xl p-8 md:p-10 text-center" id="card1-u1v2" style="background:#0A1929;">
+<div data-id="49" class="fade-up card-hover rounded-2xl p-8 md:p-10 text-center" id="card1-u1v2" style="background:#FFFFFF;">
 <div data-id="50" class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-blue/10 flex items-center justify-center">
-<i data-id="51" data-lucide="brain" class="w-8 h-8" style="color:#1A8FE3;"></i>
+<i data-id="51" data-lucide="brain" class="w-8 h-8" style="color:#2E67AC;"></i>
 </div>
-<h3 data-id="52" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-4">Mental Wellness First</h3>
-<p data-id="53" class="text-white/60 text-sm leading-relaxed">We help student athletes prioritize their mental health, emotional resilience, and overall well-being throughout their athletic career.</p>
+<h3 data-id="52" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-4" style="color:#002856">Mental Wellness First</h3>
+<p data-id="53" class="text-white/60 text-sm leading-relaxed" style="color:#002856">We help student athletes prioritize their mental health, emotional resilience, and overall well-being throughout their athletic career.</p>
 </div>
 
 <!-- Card 2 -->
-<div data-id="54" class="fade-up card-hover rounded-2xl p-8 md:p-10 text-center" id="card2-w3x4" style="transition-delay: 0.1s; background:#0A1929;">
+<div data-id="54" class="fade-up card-hover rounded-2xl p-8 md:p-10 text-center" id="card2-w3x4" style="transition-delay: 0.1s; background:#FFFFFF;">
 <div data-id="55" class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-blue/10 flex items-center justify-center">
-<i data-id="56" data-lucide="zap" class="w-8 h-8" style="color:#1A8FE3;"></i>
+<i data-id="56" data-lucide="zap" class="w-8 h-8" style="color:#2E67AC;"></i>
 </div>
-<h3 data-id="57" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-4">IronMind Mentality</h3>
-<p data-id="58" class="text-white/60 text-sm leading-relaxed">A philosophy of mental toughness, focus, and preparation. Training the mind just as hard as the body — because champions are built from the inside out.</p>
+<h3 data-id="57" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-4" style="color:#002856">IronMind Mentality</h3>
+<p data-id="58" class="text-white/60 text-sm leading-relaxed" style="color:#002856">A philosophy of mental toughness, focus, and preparation. Training the mind just as hard as the body — because champions are built from the inside out.</p>
 </div>
 
 <!-- Card 3 -->
-<div data-id="59" class="fade-up card-hover rounded-2xl p-8 md:p-10 text-center" id="card3-y5z6" style="transition-delay: 0.2s; background:#0A1929;">
+<div data-id="59" class="fade-up card-hover rounded-2xl p-8 md:p-10 text-center" id="card3-y5z6" style="transition-delay: 0.2s; background:#FFFFFF;">
 <div data-id="60" class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-blue/10 flex items-center justify-center">
-<i data-id="61" data-lucide="graduation-cap" class="w-8 h-8" style="color:#1A8FE3;"></i>
+<i data-id="61" data-lucide="graduation-cap" class="w-8 h-8" style="color:#2E67AC;"></i>
 </div>
-<h3 data-id="62" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-4">Life After the Game</h3>
-<p data-id="63" class="text-white/60 text-sm leading-relaxed">We prepare student athletes for the next phase of their lives — helping them translate athletic discipline into career success and personal fulfillment.</p>
+<h3 data-id="62" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-4" style="color:#002856">Life After the Game</h3>
+<p data-id="63" class="text-white/60 text-sm leading-relaxed" style="color:#002856">We prepare student athletes for the next phase of their lives — helping them translate athletic discipline into career success and personal fulfillment.</p>
 </div>
 </div>
 </div>
 </section>
 
 <!-- ===== WHO WE'RE LOOKING FOR ===== -->
-<section data-id="64" id="criteria-g7h8" class="py-20 md:py-28 relative overflow-hidden" style="background:#040B14;">
+<section data-id="64" id="criteria-g7h8" class="py-20 md:py-28 relative overflow-hidden" style="background:#EDF1F3;">
 <!-- Subtle background accent -->
-<div data-id="65" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-[0.03]" style="background: radial-gradient(circle, #1A8FE3, transparent 70%);"></div>
+<div data-id="65" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-[0.03]" style="background: radial-gradient(circle, #002856, transparent 70%);"></div>
 
 <div data-id="66" class="max-w-4xl mx-auto px-4 md:px-8 relative z-10">
 <div data-id="67" class="text-center mb-14 md:mb-18 fade-up">
-<p data-id="68" class="font-display text-blue text-base md:text-lg tracking-[0.25em] mb-3" style="color:#1A8FE3;">WHO WE'RE LOOKING FOR</p>
+<p data-id="68" class="font-display text-blue text-base md:text-lg tracking-[0.25em] mb-3" style="color:#2E67AC;">WHO WE'RE LOOKING FOR</p>
 <h2 data-id="69" class="font-display text-4xl md:text-6xl text-white tracking-wide">
-<span data-id="70" class="gold-underline">Are You Our Next Advocate?</span>
+<span data-id="70" class="gold-underline" style="color:#002856">Are You Our Next Advocate?</span>
 </h2>
-<p data-id="71" class="text-white/60 mt-8 md:mt-10 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">We're seeking passionate student athletes who embody the IronMind Mentality and are ready to lead.</p>
+<p data-id="71" class="text-white/60 mt-8 md:mt-10 text-base md:text-lg max-w-2xl mx-auto leading-relaxed" style="color:#002856">We're seeking passionate student athletes who embody the IronMind Mentality and are ready to lead.</p>
 </div>
 
 <!-- Checklist -->
 <div data-id="72" class="space-y-5 md:space-y-6 mb-14 md:mb-18">
-<div data-id="73" class="check-item fade-up flex items-start gap-4 md:gap-5 rounded-xl p-5 md:p-6 border border-blue/10" id="chk1-a7b8" style="background:rgba(10,25,41,0.5);">
+<div data-id="73" class="check-item fade-up flex items-start gap-4 md:gap-5 rounded-xl p-5 md:p-6 border border-blue/10" id="chk1-a7b8" style="background:rgba(0,40,86,0.05);">
 <div data-id="74" class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-blue/15 flex items-center justify-center mt-0.5">
-<i data-id="75" data-lucide="check" class="w-5 h-5 md:w-6 md:h-6" style="color:#1A8FE3;"></i>
+<i data-id="75" data-lucide="check" class="w-5 h-5 md:w-6 md:h-6" style="color:#2E67AC;"></i>
 </div>
-<p data-id="76" class="text-white text-base md:text-lg font-medium leading-relaxed">Currently a student athlete (any sport, any level)</p>
+<p data-id="76" class="text-white text-base md:text-lg font-medium leading-relaxed" style="color:#002856">Currently a student athlete (any sport, any level)</p>
 </div>
 
-<div data-id="77" class="check-item fade-up flex items-start gap-4 md:gap-5 rounded-xl p-5 md:p-6 border border-blue/10" id="chk2-c9d0" style="transition-delay:0.08s; background:rgba(10,25,41,0.5);">
+<div data-id="77" class="check-item fade-up flex items-start gap-4 md:gap-5 rounded-xl p-5 md:p-6 border border-blue/10" id="chk2-c9d0" style="transition-delay:0.08s; background:rgba(0,40,86,0.05);">
 <div data-id="78" class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-blue/15 flex items-center justify-center mt-0.5">
-<i data-id="79" data-lucide="check" class="w-5 h-5 md:w-6 md:h-6" style="color:#1A8FE3;"></i>
+<i data-id="79" data-lucide="check" class="w-5 h-5 md:w-6 md:h-6" style="color:#2E67AC;"></i>
 </div>
-<p data-id="80" class="text-white text-base md:text-lg font-medium leading-relaxed">Passionate about mental health and athlete well-being</p>
+<p data-id="80" class="text-white text-base md:text-lg font-medium leading-relaxed" style="color:#002856">Passionate about mental health and athlete well-being</p>
 </div>
 
-<div data-id="81" class="check-item fade-up flex items-start gap-4 md:gap-5 rounded-xl p-5 md:p-6 border border-blue/10" id="chk3-e1f2" style="transition-delay:0.16s; background:rgba(10,25,41,0.5);">
+<div data-id="81" class="check-item fade-up flex items-start gap-4 md:gap-5 rounded-xl p-5 md:p-6 border border-blue/10" id="chk3-e1f2" style="transition-delay:0.16s; background:rgba(0,40,86,0.05);">
 <div data-id="82" class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-blue/15 flex items-center justify-center mt-0.5">
-<i data-id="83" data-lucide="check" class="w-5 h-5 md:w-6 md:h-6" style="color:#1A8FE3;"></i>
+<i data-id="83" data-lucide="check" class="w-5 h-5 md:w-6 md:h-6" style="color:#2E67AC;"></i>
 </div>
-<p data-id="84" class="text-white text-base md:text-lg font-medium leading-relaxed">Committed to the IronMind Mentality philosophy</p>
+<p data-id="84" class="text-white text-base md:text-lg font-medium leading-relaxed" style="color:#002856">Committed to the IronMind Mentality philosophy</p>
 </div>
 
-<div data-id="85" class="check-item fade-up flex items-start gap-4 md:gap-5 rounded-xl p-5 md:p-6 border border-blue/10" id="chk4-g3h4" style="transition-delay:0.24s; background:rgba(10,25,41,0.5);">
+<div data-id="85" class="check-item fade-up flex items-start gap-4 md:gap-5 rounded-xl p-5 md:p-6 border border-blue/10" id="chk4-g3h4" style="transition-delay:0.24s; background:rgba(0,40,86,0.05);">
 <div data-id="86" class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-blue/15 flex items-center justify-center mt-0.5">
-<i data-id="87" data-lucide="check" class="w-5 h-5 md:w-6 md:h-6" style="color:#1A8FE3;"></i>
+<i data-id="87" data-lucide="check" class="w-5 h-5 md:w-6 md:h-6" style="color:#2E67AC;"></i>
 </div>
-<p data-id="88" class="text-white text-base md:text-lg font-medium leading-relaxed">Eager to help fellow athletes prepare for life beyond sports</p>
+<p data-id="88" class="text-white text-base md:text-lg font-medium leading-relaxed" style="color:#002856">Eager to help fellow athletes prepare for life beyond sports</p>
 </div>
 </div>
 
 <!-- Pull Quote -->
 <div data-id="89" class="fade-up text-center">
 <div data-id="90" class="inline-block relative">
-<span data-id="91" class="font-display text-blue/20 text-7xl md:text-9xl absolute -top-6 -left-4 md:-top-8 md:-left-6 select-none" style="color:rgba(26,143,227,0.2);">"</span>
-<blockquote data-id="92" class="font-display text-2xl md:text-4xl lg:text-5xl tracking-wide leading-tight italic relative z-10 px-6 md:px-12" id="quote-i5j6" style="color:#1A8FE3;">
+<span data-id="91" class="font-display text-blue/20 text-7xl md:text-9xl absolute -top-6 -left-4 md:-top-8 md:-left-6 select-none" style="color:#D8DFE1;">"</span>
+<blockquote data-id="92" class="font-display text-2xl md:text-4xl lg:text-5xl tracking-wide leading-tight italic relative z-10 px-6 md:px-12" id="quote-i5j6" style="color:#2E67AC;">
 The strongest muscle is the mind.<br data-id="93">Be the reason another athlete believes that.
 </blockquote>
 </div>
@@ -483,64 +496,64 @@ The strongest muscle is the mind.<br data-id="93">Be the reason another athlete 
 <section data-id="94" id="benefits-i9j0" class="py-20 md:py-28 bg-white text-navy-900">
 <div data-id="95" class="max-w-6xl mx-auto px-4 md:px-8">
 <div data-id="96" class="text-center mb-14 md:mb-20 fade-up">
-<p data-id="97" class="font-display text-base md:text-lg tracking-[0.25em] mb-3" style="color:#1478c0;">ADVOCATE BENEFITS</p>
-<h2 data-id="98" class="font-display text-4xl md:text-6xl text-navy-900 tracking-wide">What You'll Gain as an Advocate</h2>
+<p data-id="97" class="font-display text-base md:text-lg tracking-[0.25em] mb-3" style="color:#002856;">ADVOCATE BENEFITS</p>
+<h2 data-id="98" class="font-display text-4xl md:text-6xl text-navy-900 tracking-wide" style="color:#002856">What You'll Gain as an Advocate</h2>
 </div>
 
 <div data-id="99" class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
 <!-- Benefit 1 -->
-<div data-id="100" class="fade-up card-hover rounded-2xl p-8 md:p-10" id="ben1-k7l8" style="background:#0A1929;">
+<div data-id="100" class="fade-up card-hover rounded-2xl p-8 md:p-10" id="ben1-k7l8" style="background:#FFFFFF;">
 <div data-id="101" class="w-14 h-14 mb-5 rounded-xl bg-blue/10 flex items-center justify-center">
-<i data-id="102" data-lucide="users" class="w-7 h-7" style="color:#1A8FE3;"></i>
+<i data-id="102" data-lucide="users" class="w-7 h-7" style="color:#2E67AC;"></i>
 </div>
-<h3 data-id="103" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-3">Community Access</h3>
-<p data-id="104" class="text-white/55 text-sm leading-relaxed">Exclusive access to The Athlete Check advocate network — connect with like-minded student athletes across the nation who share your mission.</p>
+<h3 data-id="103" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-3" style="color:#002856">Community Access</h3>
+<p data-id="104" class="text-white/55 text-sm leading-relaxed" style="color:#002856">Exclusive access to The Athlete Check advocate network — connect with like-minded student athletes across the nation who share your mission.</p>
 </div>
 
 <!-- Benefit 2 -->
-<div data-id="105" class="fade-up card-hover rounded-2xl p-8 md:p-10" id="ben2-m9n0" style="transition-delay:0.1s; background:#0A1929;">
+<div data-id="105" class="fade-up card-hover rounded-2xl p-8 md:p-10" id="ben2-m9n0" style="transition-delay:0.1s; background:#FFFFFF;">
 <div data-id="106" class="w-14 h-14 mb-5 rounded-xl bg-blue/10 flex items-center justify-center">
-<i data-id="107" data-lucide="book-open" class="w-7 h-7" style="color:#1A8FE3;"></i>
+<i data-id="107" data-lucide="book-open" class="w-7 h-7" style="color:#2E67AC;"></i>
 </div>
-<h3 data-id="108" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-3">IronMind Resources</h3>
-<p data-id="109" class="text-white/55 text-sm leading-relaxed">Early access to mental performance tools, guides, and workshops designed to sharpen your mind and elevate your game.</p>
+<h3 data-id="108" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-3" style="color:#002856">IronMind Resources</h3>
+<p data-id="109" class="text-white/55 text-sm leading-relaxed" style="color:#002856">Early access to mental performance tools, guides, and workshops designed to sharpen your mind and elevate your game.</p>
 </div>
 
 <!-- Benefit 3 -->
-<div data-id="110" class="fade-up card-hover rounded-2xl p-8 md:p-10" id="ben3-o1p2" style="transition-delay:0.2s; background:#0A1929;">
+<div data-id="110" class="fade-up card-hover rounded-2xl p-8 md:p-10" id="ben3-o1p2" style="transition-delay:0.2s; background:#FFFFFF;">
 <div data-id="111" class="w-14 h-14 mb-5 rounded-xl bg-blue/10 flex items-center justify-center">
-<i data-id="112" data-lucide="trophy" class="w-7 h-7" style="color:#1A8FE3;"></i>
+<i data-id="112" data-lucide="trophy" class="w-7 h-7" style="color:#2E67AC;"></i>
 </div>
-<h3 data-id="113" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-3">Recognition</h3>
-<p data-id="114" class="text-white/55 text-sm leading-relaxed">Featured on AthleteCheck.com and across our social platforms — build your personal brand as a mental health champion in athletics.</p>
+<h3 data-id="113" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-3" style="color:#002856">Recognition</h3>
+<p data-id="114" class="text-white/55 text-sm leading-relaxed" style="color:#002856">Featured on AthleteCheck.com and across our social platforms — build your personal brand as a mental health champion in athletics.</p>
 </div>
 
 <!-- Benefit 4 -->
-<div data-id="115" class="fade-up card-hover rounded-2xl p-8 md:p-10" id="ben4-q3r4" style="transition-delay:0.3s; background:#0A1929;">
+<div data-id="115" class="fade-up card-hover rounded-2xl p-8 md:p-10" id="ben4-q3r4" style="transition-delay:0.3s; background:#FFFFFF;">
 <div data-id="116" class="w-14 h-14 mb-5 rounded-xl bg-blue/10 flex items-center justify-center">
-<i data-id="117" data-lucide="rocket" class="w-7 h-7" style="color:#1A8FE3;"></i>
+<i data-id="117" data-lucide="rocket" class="w-7 h-7" style="color:#2E67AC;"></i>
 </div>
-<h3 data-id="118" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-3">Leadership Experience</h3>
-<p data-id="119" class="text-white/55 text-sm leading-relaxed">Build your personal brand and advocacy portfolio. Gain meaningful leadership experience that sets you apart on and off the field.</p>
+<h3 data-id="118" class="font-display text-2xl md:text-3xl text-white tracking-wide mb-3" style="color:#002856">Leadership Experience</h3>
+<p data-id="119" class="text-white/55 text-sm leading-relaxed" style="color:#002856">Build your personal brand and advocacy portfolio. Gain meaningful leadership experience that sets you apart on and off the field.</p>
 </div>
 </div>
 </div>
 </section>
 
 <!-- ===== APPLICATION FORM ===== -->
-<section data-id="120" id="apply-k1l2" class="py-20 md:py-28 relative overflow-hidden" style="background:#040B14;">
+<section data-id="120" id="apply-k1l2" class="py-20 md:py-28 relative overflow-hidden" style="background:#EDF1F3;">
 <div data-id="121" class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue/30 to-transparent" style="background:linear-gradient(to right, transparent, rgba(26,143,227,0.3), transparent);"></div>
-<div data-id="122" class="absolute bottom-1/4 right-0 w-72 h-72 rounded-full opacity-[0.04]" style="background: radial-gradient(circle, #1A8FE3, transparent 70%);"></div>
+<div data-id="122" class="absolute bottom-1/4 right-0 w-72 h-72 rounded-full opacity-[0.04]" style="background: radial-gradient(circle, #002856, transparent 70%);"></div>
 
 <div data-id="123" class="max-w-3xl mx-auto px-4 md:px-8 relative z-10">
 <div data-id="124" class="text-center mb-12 md:mb-16 fade-up">
-<p data-id="125" class="font-display text-base md:text-lg tracking-[0.25em] mb-3" style="color:#1A8FE3;">TAKE THE FIRST STEP</p>
-<h2 data-id="126" class="font-display text-4xl md:text-6xl text-white tracking-wide mb-4">Ready to Make an Impact?</h2>
-<p data-id="127" class="text-white/60 text-base md:text-lg max-w-xl mx-auto leading-relaxed">Fill out the form below and take the first step toward becoming an Athlete Check Advocate.</p>
+<p data-id="125" class="font-display text-base md:text-lg tracking-[0.25em] mb-3" style="color:#2E67AC;">TAKE THE FIRST STEP</p>
+<h2 data-id="126" class="font-display text-4xl md:text-6xl text-white tracking-wide mb-4" style="color:#002856">Ready to Make an Impact?</h2>
+<p data-id="127" class="text-white/60 text-base md:text-lg max-w-xl mx-auto leading-relaxed" style="color:#002856">Fill out the form below and take the first step toward becoming an Athlete Check Advocate.</p>
 </div>
 
 <!-- Form Card -->
-<div data-id="128" id="form-card-s5t6" class="fade-up rounded-2xl p-6 md:p-10 border border-blue/10 shadow-2xl" style="background:rgba(10,25,41,0.6);">
+<div data-id="128" id="form-card-s5t6" class="fade-up rounded-2xl p-6 md:p-10 border border-blue/10 shadow-2xl" style="background:rgba(0,40,86,0.06);">
 <form data-id="129" id="advocate-form-u7v8" novalidate="">
 <div data-id="130" class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
 <!-- First Name -->
@@ -636,13 +649,13 @@ The strongest muscle is the mind.<br data-id="93">Be the reason another athlete 
 
 <!-- Checkbox -->
 <div data-id="197" class="flex items-start gap-3">
-<input data-id="198" type="checkbox" id="agree-m0n0" class="mt-1 w-5 h-5 rounded border-blue/30 bg-navy-800 flex-shrink-0 cursor-pointer" style="accent-color:#1A8FE3;" required="">
-<label data-id="199" for="agree-m0n0" class="text-white/60 text-sm leading-relaxed cursor-pointer">I agree to be contacted by The Athlete Check team regarding my application. <span data-id="200" class="text-xs" style="color:#1A8FE3;">*</span></label>
+<input data-id="198" type="checkbox" id="agree-m0n0" class="mt-1 w-5 h-5 rounded border-blue/30 bg-navy-800 flex-shrink-0 cursor-pointer" style="accent-color:#002856;" required="">
+<label data-id="199" for="agree-m0n0" class="text-white/60 text-sm leading-relaxed cursor-pointer" style="color:#002856">I agree to be contacted by The Athlete Check team regarding my application. <span data-id="200" class="text-xs" style="color:#2E67AC;">*</span></label>
 </div>
 <p data-id="201" class="text-red-400 text-xs hidden -mt-3" id="err-agree-o1p1"></p>
 
 <!-- Submit Button -->
-<button data-id="202" type="submit" id="submit-btn-q2r2" class="w-full text-white font-bold text-base md:text-lg py-4 rounded-xl transition-all duration-300 tracking-wider font-display flex items-center justify-center gap-2" style="background:#1A8FE3; box-shadow:0 8px 24px rgba(26,143,227,0.2);" onmouseenter="" onmouseleave="">
+<button data-id="202" type="submit" id="submit-btn-q2r2" class="w-full text-white font-bold text-base md:text-lg py-4 rounded-xl transition-all duration-300 tracking-wider font-display flex items-center justify-center gap-2" style="background:#002856; box-shadow:0 8px 24px #D8DFE1;" onmouseenter="" onmouseleave="">
 SUBMIT MY APPLICATION
 <i data-id="203" data-lucide="arrow-right" class="w-5 h-5"></i>
 </button>
@@ -652,15 +665,15 @@ SUBMIT MY APPLICATION
 
 <!-- Success State (hidden by default) -->
 <div data-id="204" id="success-state-s3t3" class="hidden fade-up">
-<div data-id="205" class="rounded-2xl p-10 md:p-16 border border-blue/20 text-center shadow-2xl" style="background:rgba(10,25,41,0.6);">
+<div data-id="205" class="rounded-2xl p-10 md:p-16 border border-blue/20 text-center shadow-2xl" style="background:rgba(0,40,86,0.06);">
 <div data-id="206" class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-6 rounded-full bg-blue/15 flex items-center justify-center success-check">
-<i data-id="207" data-lucide="check-circle" class="w-10 h-10 md:w-12 md:h-12" style="color:#1A8FE3;"></i>
+<i data-id="207" data-lucide="check-circle" class="w-10 h-10 md:w-12 md:h-12" style="color:#2E67AC;"></i>
 </div>
-<h3 data-id="208" class="font-display text-3xl md:text-5xl text-white tracking-wide mb-4" id="success-name-u4v4">Thank You!</h3>
-<p data-id="209" class="text-white/70 text-base md:text-lg leading-relaxed max-w-md mx-auto">
+<h3 data-id="208" class="font-display text-3xl md:text-5xl text-white tracking-wide mb-4" id="success-name-u4v4" style="color:#002856">Thank You!</h3>
+<p data-id="209" class="text-white/70 text-base md:text-lg leading-relaxed max-w-md mx-auto" style="color:#002856">
 Your application has been received. The Athlete Check team will be in touch soon.
 </p>
-<p data-id="210" class="font-display text-2xl md:text-3xl mt-6 tracking-wide" style="color:#1A8FE3;">Keep that IronMind strong. 💪</p>
+<p data-id="210" class="font-display text-2xl md:text-3xl mt-6 tracking-wide" style="color:#2E67AC;">Keep that IronMind strong. 💪</p>
 </div>
 </div>
 </div>
@@ -671,7 +684,7 @@ Your application has been received. The Athlete Check team will be in touch soon
 <!-- ===== SHARED SITE FOOTER ===== -->
 <footer class="tac-footer">
   <div class="tac-footer-inner">
-    <a href="/"><img class="tac-footer-logo" src="images/theathletecheck-logo.png" alt="The Athlete Check"></a>
+    <a href="/"><img class="tac-footer-logo" src="/athlete-check-logo-white.png" alt="The Athlete Check" style="height:76px"></a>
     <nav class="tac-footer-nav">
       <a href="/">Home</a>
       <a href="/registration">Registration</a>
@@ -711,12 +724,12 @@ tacRenderIcons();
 var submitBtn = document.getElementById('submit-btn-q2r2');
 if (submitBtn) {
 submitBtn.addEventListener('mouseenter', function() {
-this.style.background = '#00B4FF';
+this.style.background = '#3D7CC9';
 this.style.boxShadow = '0 12px 32px rgba(0,180,255,0.3)';
 });
 submitBtn.addEventListener('mouseleave', function() {
-this.style.background = '#1A8FE3';
-this.style.boxShadow = '0 8px 24px rgba(26,143,227,0.2)';
+this.style.background = '#002856';
+this.style.boxShadow = '0 8px 24px #D8DFE1';
 });
 }
 
