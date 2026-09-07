@@ -1,0 +1,41 @@
+THE ATHLETE CHECK — the other nine pages, Citadel palette
+Repo: github.com/kstoddart-collab/theathletecheck-site
+
+Upload all 9 HTML files to:  "theathletecheck-site 2/"
+
+Link that opens the right folder:
+  https://github.com/kstoddart-collab/theathletecheck-site/upload/main/theathletecheck-site%202
+
+Click "choose your files", select all nine, commit directly to main.
+Every one replaces a file that already exists there. No new paths,
+no images, nothing to move afterwards.
+
+  about.html                 coaches.html          contact.html
+  courses.html               assessment.html       performanceblueprint.html
+  advocate.html              registration.html     proudmoment.html
+
+What changed
+------------
+Colour only, plus one deliberate swap in the shared header.
+
+* Shared header and footer now match the homepage: paper bar, Flag Blue
+  footer, gold hover. The nav logo image is replaced by the same live
+  "THE ATHLETE CHECK" wordmark the homepage uses - the logo lockup is
+  illegible at 44px tall. This is the ONLY text change on any page.
+* Page grounds flip from near-black navy to paper (#EDF1F3); cards to white.
+* Accents map to Flag Blue #002856, Ring Gold #EDAE17, Big Red #BA0C2F,
+  Modern Blue #3D7CC9 (darkened to #2E67AC where it carries small text).
+* Muted text becomes Pepper Gray #575856; rules become Bulldog Gray #D8DFE1.
+
+Verified on every page, at 1440px and 390px
+-------------------------------------------
+  zero WCAG AA contrast failures  (measured against each element's real
+    composited background, including translucent layers)
+  zero broken images
+  no horizontal overflow from 320px to 1600px - this also fixes a
+    pre-existing 24-28px overflow at 320px on six pages
+  body text identical to the current live pages, word for word,
+    except the nav wordmark noted above
+
+Known cosmetic leftover: registration.html still overflows by 5px at 320px
+(it was 24px before). Nothing clips; 320px is narrower than any current iPhone.
