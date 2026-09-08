@@ -49,12 +49,12 @@ html, body { margin: 0; padding: 0; background: #EDF1F3; overflow-x: hidden; }
 .calc-progress { transition: width 0.3s ease; }
 .pillar-card { border-left: 4px solid #D8DFE1; }
 .pillar-readiness { border-left-color: #D8DFE1; }
-.pillar-clarity { border-left-color: #1E7A52; }
+.pillar-clarity { border-left-color: #17603F; }
 .pillar-transition { border-left-color: #EDAE17; }
-.tier-ironmind { background: linear-gradient(135deg, #FFFFFF, #002856); border: 1px solid #D8DFE1; }
-.tier-ready { background: linear-gradient(135deg, #D7EFE1, #1E7A52); border: 1px solid #1E7A52; }
-.tier-developing { background: linear-gradient(135deg, #FAF0D3, #8A6208); border: 1px solid #EDAE17; }
-.tier-emerging { background: linear-gradient(135deg, #F3D3D9, #BA0C2F); border: 1px solid #BA0C2F; }
+.tier-ironmind { background: linear-gradient(135deg, #003A7A, #002856); border: 1px solid #002856; }
+.tier-ready { background: linear-gradient(135deg, #1A6B47, #17603F); border: 1px solid #17603F; }
+.tier-developing { background: linear-gradient(135deg, #8A6208, #6B4C06); border: 1px solid #6B4C06; }
+.tier-emerging { background: linear-gradient(135deg, #BA0C2F, #8E0924); border: 1px solid #8E0924; }
 .off-white { background: #EDF1F3; }
 .bg-off-white { background-color: #EDF1F3; }
 /* Scrollable results */
@@ -286,16 +286,16 @@ Begin My Assessment →
 <!-- ============ VIEW 2: ASSESSMENT ============ -->
 <div id="view-assessment" class="view">
 <!-- Top bar -->
-<div class="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm">
+<div class="fixed top-0 left-0 right-0 z-50 bg-[#002856]/95 backdrop-blur-sm">
 <div class="h-1 bg-dark-card w-full">
 <div id="progress-bar" class="progress-fill h-full bg-steel" style="width:0%"></div>
 </div>
 <div class="flex items-center justify-between px-4 md:px-8 py-3">
-<button id="prev-btn" class="text-muted hover:text-white text-sm flex items-center gap-1 transition-colors min-h-[44px] min-w-[44px] justify-center">
+<button id="prev-btn" class="text-[#A9C0D2] hover:text-white text-sm flex items-center gap-1 transition-colors min-h-[44px] min-w-[44px] justify-center">
 <i data-lucide="arrow-left" class="w-4 h-4"></i>
 <span class="hidden sm:inline" style="color:#FFFFFF">Previous</span>
 </button>
-<span id="domain-label" class="text-muted text-xs tracking-[0.15em] uppercase font-medium"></span>
+<span id="domain-label" class="text-[#A9C0D2] text-xs tracking-[0.15em] uppercase font-medium"></span>
 <div class="w-[44px]"></div>
 </div>
 </div>
@@ -304,7 +304,7 @@ Begin My Assessment →
 <div class="text-center py-8 md:py-12 px-4">
 <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-steel/15 text-steel text-lg font-bold mb-4" id="domain-num"></div>
 <div id="pillar-badge" class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase mb-4 ml-2"></div>
-<h2 id="domain-title" class="text-2xl md:text-4xl font-bold text-white mb-3"></h2>
+<h2 id="domain-title" class="text-2xl md:text-4xl font-bold text-[#002856] mb-3"></h2>
 <p id="domain-desc" class="text-muted text-sm md:text-base max-w-[560px] mx-auto leading-relaxed"></p>
 </div>
 <div class="bg-off-white mx-4 md:mx-auto max-w-[720px] rounded-2xl p-5 md:p-10">
@@ -312,9 +312,9 @@ Begin My Assessment →
 </div>
 </div>
 <!-- Bottom nav -->
-<div class="fixed bottom-0 left-0 right-0 bg-black/90 border-t border-steel/15 z-50">
+<div class="fixed bottom-0 left-0 right-0 bg-[#002856]/90 border-t border-steel/15 z-50">
 <div class="flex items-center justify-between px-4 md:px-8 py-4 max-w-[720px] mx-auto">
-<span id="domain-counter" class="text-muted text-sm"></span>
+<span id="domain-counter" class="text-[#A9C0D2] text-sm"></span>
 <button id="next-btn" class="bg-steel text-white font-bold text-sm md:text-base py-3 px-6 md:px-8 rounded-lg transition-all hover:bg-steel-light disabled:opacity-40 disabled:cursor-not-allowed min-h-[44px]" disabled="">
 Next Domain →
 </button>
@@ -350,7 +350,7 @@ Next Domain →
 <span class="text-steel text-xs font-semibold tracking-[0.2em] uppercase">✦ IronMind for Student Athletes</span>
 </div>
 <p id="report-label" class="text-muted text-sm mb-2"></p>
-<h1 id="results-headline" class="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight"></h1>
+<h1 id="results-headline" class="text-3xl md:text-5xl font-bold text-[#002856] mb-4 leading-tight"></h1>
 <!-- Tier badge -->
 <div id="tier-badge" class="inline-flex items-center px-6 py-2.5 rounded-full text-white text-sm font-bold tracking-wider uppercase mb-6 mt-2"></div>
 <p id="tier-desc" class="text-muted italic text-base max-w-lg mx-auto mb-10"></p>
@@ -386,8 +386,8 @@ Next Domain →
 <!-- Domain Breakdown -->
 <section class="bg-off-white py-12 md:py-16 px-4">
 <div class="max-w-3xl mx-auto">
-<h2 class="text-dark text-2xl md:text-3xl font-bold mb-2 text-center" style="color:#002856">Domain Breakdown</h2>
-<p class="text-gray-500 text-sm text-center mb-10" style="color:#002856">How you scored across each of the 8 domains</p>
+<h2 class="text-[#002856] text-2xl md:text-3xl font-bold mb-2 text-center" style="color:#002856">Domain Breakdown</h2>
+<p class="text-gray-600 text-sm text-center mb-10" style="color:#002856">How you scored across each of the 8 domains</p>
 <div id="domain-bars" class="space-y-4"></div>
 </div>
 </section>
@@ -507,7 +507,7 @@ insightLow: 'Most athletes let their sport define them until it ends. Then they 
 {
 pillar: 'clarity',
 pillarLabel: 'Clarity',
-pillarColor: '#1E7A52',
+pillarColor: '#17603F',
 name: 'Identity Beyond the Jersey',
 desc: 'How well you know who you are when athletics is removed from the equation.',
 icon: 'user',
@@ -524,7 +524,7 @@ insightLow: 'This is the most common and most costly blind spot for athletes. Wh
 {
 pillar: 'clarity',
 pillarLabel: 'Clarity',
-pillarColor: '#1E7A52',
+pillarColor: '#17603F',
 name: 'Purpose & Direction',
 desc: 'The clarity you have about your path, your goals, and why you are pursuing them.',
 icon: 'compass',
@@ -541,7 +541,7 @@ insightLow: 'Without a clear purpose, you will keep chasing other people\'s defi
 {
 pillar: 'clarity',
 pillarLabel: 'Clarity',
-pillarColor: '#1E7A52',
+pillarColor: '#17603F',
 name: 'Values & Decision-Making',
 desc: 'How clearly your values guide your choices, relationships, and behavior under pressure.',
 icon: 'shield',
@@ -598,7 +598,7 @@ insightLow: 'Athletic leadership is often positional — captain, starter, star.
 // ============================================================
 const PILLARS = {
 readiness: { label: 'Readiness', color: '#002856', bg: 'pillar-readiness', desc: 'How equipped you are to enter and perform in professional environments.' },
-clarity: { label: 'Clarity', color: '#1E7A52', bg: 'pillar-clarity', desc: 'How well you know who you are, where you\'re going, and what drives you.' },
+clarity: { label: 'Clarity', color: '#17603F', bg: 'pillar-clarity', desc: 'How well you know who you are, where you\'re going, and what drives you.' },
 transition: { label: 'Transition Strength', color: '#8A6208', bg: 'pillar-transition', desc: 'Your capacity to adapt, recover, and lead through major life change.' }
 };
 
@@ -636,7 +636,7 @@ return Math.round((getDomainScore(domainIndex) / 25) * 100);
 
 function getTierInfo(pct) {
 if (pct >= 80) return { label: 'IronMind Prepared', cls: 'tier-ironmind', color: '#002856', desc: 'You are ready. The foundation is built — now it is time to build the structure.' };
-if (pct >= 65) return { label: 'IronMind Ready', cls: 'tier-ready', color: '#1E7A52', desc: 'You have the foundation. With intention and exposure, the gap closes quickly.' };
+if (pct >= 65) return { label: 'IronMind Ready', cls: 'tier-ready', color: '#17603F', desc: 'You have the foundation. With intention and exposure, the gap closes quickly.' };
 if (pct >= 50) return { label: 'Developing', cls: 'tier-developing', color: '#8A6208', desc: 'You are building the right things. Awareness is the first step — now comes the work.' };
 if (pct >= 35) return { label: 'Emerging', cls: 'tier-emerging', color: '#BA0C2F', desc: 'The awareness is there. The real work begins here — and IronMind meets you exactly where you are.' };
 return { label: 'Beginning', cls: 'tier-emerging', color: '#BA0C2F', desc: 'This is precisely where IronMind starts. Honest self-assessment is courage — and you just showed it.' };
@@ -841,11 +841,11 @@ qEl.innerHTML = `
 <p class="text-gray-800 text-sm md:text-base font-medium mb-4 leading-relaxed">${qi + 1}. ${q}</p>
 <div class="flex gap-2 flex-wrap">
 ${[1,2,3,4,5].map(v => `
-<button class="rating-btn flex-1 min-w-[40px] h-11 rounded-lg text-sm font-bold text-gray-500 bg-gray-100 ${saved === v ? 'selected' : ''}"
+<button class="rating-btn flex-1 min-w-[40px] h-11 rounded-lg text-sm font-bold text-gray-600 bg-gray-100 ${saved === v ? 'selected' : ''}"
 data-q="${qi}" data-v="${v}">${v}</button>
 `).join('')}
 </div>
-<div class="flex justify-between text-[10px] text-gray-400 mt-2 px-0.5">
+<div class="flex justify-between text-[10px] text-gray-600 mt-2 px-0.5">
 <span>Strongly Disagree</span><span>Strongly Agree</span>
 </div>
 `;
@@ -972,10 +972,10 @@ card.className = `pillar-card ${p.bg} bg-[#EDF1F3] rounded-xl p-6`;
 card.innerHTML = `
 <p class="text-xs font-semibold tracking-widest uppercase mb-1" style="color:${p.color}">${p.label}</p>
 <div class="flex items-end gap-2 mb-3">
-<span class="text-4xl font-bold text-white">${pct}%</span>
+<span class="text-4xl font-bold text-[#002856]">${pct}%</span>
 <span class="text-muted text-sm mb-1">${t.label}</span>
 </div>
-<div class="w-full h-1.5 bg-white/10 rounded-full mb-3">
+<div class="w-full h-1.5 bg-[#D8DFE1] rounded-full mb-3">
 <div class="h-full rounded-full domain-bar-fill" style="width:0%;background:${p.color}" data-target="${pct}"></div>
 </div>
 <p class="text-muted text-xs leading-relaxed">${p.desc}</p>
@@ -994,10 +994,10 @@ bar.className = 'bg-white rounded-xl p-4 shadow-sm';
 bar.innerHTML = `
 <div class="flex items-center justify-between mb-2">
 <div>
-<span class="text-dark font-semibold text-sm">${domain.name}</span>
+<span class="text-[#002856] font-semibold text-sm">${domain.name}</span>
 <span class="ml-2 text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full" style="background:${pillar.color}22;color:${pillar.color}">${pillar.label}</span>
 </div>
-<span class="text-dark font-bold text-sm">${pct}%</span>
+<span class="text-[#002856] font-bold text-sm">${pct}%</span>
 </div>
 <div class="w-full h-2 bg-gray-100 rounded-full">
 <div class="h-full rounded-full domain-bar-fill" style="width:0%;background:${pillar.color}" data-target="${pct}"></div>
@@ -1014,14 +1014,14 @@ const pct = getDomainPct(i);
 const pillar = PILLARS[domain.pillar];
 const isHigh = pct >= 60;
 const card = document.createElement('div');
-card.className = 'bg-dark-card border border-white/5 rounded-xl p-6';
+card.className = 'bg-white border border-[#D8DFE1] rounded-xl p-6 shadow-sm';
 card.innerHTML = `
 <div class="flex items-center gap-3 mb-3">
 <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background:${pillar.color}22">
 <span class="text-xs font-bold" style="color:${pillar.color}">${pct}%</span>
 </div>
 <div>
-<p class="text-white font-semibold text-sm">${domain.name}</p>
+<p class="text-[#002856] font-semibold text-sm">${domain.name}</p>
 <p class="text-[10px] font-semibold tracking-wider uppercase" style="color:${pillar.color}">${pillar.label}</p>
 </div>
 </div>
