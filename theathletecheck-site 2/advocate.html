@@ -397,6 +397,77 @@ Are you a student athlete who believes mental strength is just as important as p
 </section>
 
 <!-- ===== WHAT IS ATHLETE CHECK? ===== -->
+<!-- ===== FEATURED ADVOCATE — self-contained, no Tailwind required ===== -->
+<style>
+.ish-sec{background:#EDF1F3;padding:clamp(56px,8vw,96px) 0;border-top:1px solid #D8DFE1;border-bottom:1px solid #D8DFE1;
+  font-family:'Figtree',ui-sans-serif,system-ui,-apple-system,sans-serif;color:#002856}
+.ish-sec *,.ish-sec *::before,.ish-sec *::after{box-sizing:border-box}
+.ish-wrap{width:100%;max-width:1120px;margin:0 auto;padding-inline:24px;display:grid;grid-template-columns:1fr;gap:34px;align-items:center}
+.ish-figure{position:relative;margin:0;max-width:460px}
+.ish-figure img{display:block;width:100%;height:auto;border:3px solid #002856;background:#002856}
+.ish-num{position:absolute;right:-10px;bottom:-16px;background:#EDAE17;color:#002856;
+  font-family:'Archivo','Arial Narrow',Impact,sans-serif;font-style:italic;font-weight:900;font-stretch:70%;
+  font-variation-settings:"wdth" 70,"wght" 900;font-size:2.6rem;line-height:1;padding:8px 16px 6px;border:3px solid #002856}
+.ish-eyebrow{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:.7rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:#BA0C2F;margin:0 0 14px}
+.ish-name{font-family:'Archivo','Arial Narrow',Impact,sans-serif;font-style:italic;font-weight:900;font-stretch:70%;
+  font-variation-settings:"wdth" 70,"wght" 900;text-transform:uppercase;line-height:.94;letter-spacing:.005em;
+  font-size:clamp(2.2rem,5.4vw,3.9rem);margin:0 0 12px;color:#002856;text-wrap:balance}
+.ish-role{font-family:'Archivo','Arial Narrow',Impact,sans-serif;font-style:italic;font-weight:800;font-stretch:82%;
+  font-variation-settings:"wdth" 82,"wght" 800;text-transform:uppercase;letter-spacing:.04em;
+  font-size:1.05rem;color:#2E67AC;margin:0 0 18px}
+.ish-body{font-size:1.05rem;line-height:1.72;color:#24333F;max-width:56ch;margin:0 0 22px}
+.ish-facts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;padding:0;list-style:none}
+.ish-facts li{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:.68rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:#002856;background:#FFFFFF;border:1px solid #D8DFE1;padding:7px 11px}
+.ish-ctas{display:flex;flex-wrap:wrap;gap:12px}
+.ish-btn{display:inline-flex;align-items:center;gap:.55rem;font-family:'Archivo','Arial Narrow',Impact,sans-serif;
+  font-style:italic;font-weight:800;font-stretch:82%;font-variation-settings:"wdth" 82,"wght" 800;
+  text-transform:uppercase;letter-spacing:.03em;font-size:1rem;padding:15px 26px 13px;text-decoration:none;
+  border:2px solid #002856;transition:transform .16s ease,box-shadow .16s ease,background-color .16s ease,color .16s ease}
+.ish-btn--go{background:#002856;color:#FFFFFF;box-shadow:5px 5px 0 #EDAE17}
+.ish-btn--go:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 #EDAE17;color:#FFFFFF}
+.ish-btn--ghost{background:transparent;color:#002856}
+.ish-btn--ghost:hover{background:#002856;color:#EDF1F3;transform:translate(-2px,-2px)}
+.ish-btn:focus-visible{outline:3px solid #BA0C2F;outline-offset:3px}
+@media (min-width:860px){
+  .ish-wrap{grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:56px}
+}
+@media (prefers-reduced-motion:reduce){.ish-btn{transition:none}}
+</style>
+
+<section class="ish-sec" id="featured-advocate" aria-labelledby="ish-name-h">
+  <div class="ish-wrap">
+    <figure class="ish-figure">
+      <img src="/ish-zamor.jpg" width="1200" height="1600"
+           alt="Ismael &quot;Ish&quot; Zamor in his Citadel number 6 uniform on the sideline">
+      <span class="ish-num" aria-hidden="true">06</span>
+    </figure>
+    <div>
+      <p class="ish-eyebrow">Athlete Check Advocate</p>
+      <h2 class="ish-name" id="ish-name-h">Ismael &ldquo;Ish&rdquo; Zamor</h2>
+      <p class="ish-role">Wide Receiver &middot; The Citadel</p>
+      <p class="ish-body">
+        Ish is an Athlete Check Advocate. Advocates carry the platform into their own locker rooms &mdash;
+        putting the readiness assessment in front of teammates and opening the conversation about identity,
+        mental health, and what comes after the jersey.
+      </p>
+      <ul class="ish-facts">
+        <li>No. 6</li>
+        <li>Wide Receiver</li>
+        <li>Graduate Student</li>
+        <li>Everett, Massachusetts</li>
+        <li>Previously Boston College</li>
+      </ul>
+      <div class="ish-ctas">
+        <a class="ish-btn ish-btn--go" href="/assessment">Take the Athlete Check <span aria-hidden="true">&rarr;</span></a>
+        <a class="ish-btn ish-btn--ghost" href="#apply-k1l2">Become an Advocate</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <section data-id="43" id="about-e5f6" class="py-20 md:py-28 bg-white text-navy-900">
 <div data-id="44" class="max-w-6xl mx-auto px-4 md:px-8">
 <div data-id="45" class="text-center mb-14 md:mb-20 fade-up">
