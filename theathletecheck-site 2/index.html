@@ -177,20 +177,71 @@ a:focus-visible, button:focus-visible{
     rgba(0,40,86,.07) 62px 64px
   );
 }
-.hero__in{ position:relative; display:grid; grid-template-columns: 1fr; gap:30px; }
-.hero__copy{ width:100%; }
-.hero h1{ font-size: clamp(2.4rem, 5.4vw, 4.5rem); max-width: 1150px; }
-/* headline runs full width; CTAs and the mark share the row beneath it */
-.hero__foot{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:34px; }
-.hero__actions{ flex:1 1 360px; min-width:0; }
-.hero__mark{ flex:0 1 460px; min-width:0; max-width:460px; }
+/* copy on the left, the featured advocate on the right */
+.hero__in{
+  position:relative; display:grid; grid-template-columns:1fr;
+  grid-template-areas:"copy" "ish" "actions";
+  gap:30px; align-items:start;
+}
+.hero__copy{ grid-area:copy; width:100%; min-width:0; }
+.hero__actions{ grid-area:actions; min-width:0; }
+.hero h1{ font-size: clamp(1.95rem, 3.7vw, 2.9rem); max-width: 22ch; }
+
+/* Ish, in the slot the winged-sandal mark used to hold */
+.hero__ish{ grid-area:ish; margin:0; width:100%; max-width:250px; justify-self:start; }
+.hero__ish-img{ position:relative; }
+.hero__ish-img img{ width:100%; height:auto; border:3px solid var(--ink); background:var(--ink); }
+.hero__ish-num{
+  position:absolute; right:-10px; bottom:-14px;
+  background:var(--volt); color:var(--ink);
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:70%; font-variation-settings:"wdth" 70,"wght" 900;
+  font-size:2rem; line-height:1; padding:7px 14px 5px; border:3px solid var(--ink);
+}
+.hero__ish-cap{ margin:28px 0 0; display:flex; flex-direction:column; gap:5px; }
+.hero__ish-eyebrow{
+  font-family:var(--mono); font-size:.66rem; font-weight:700;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--ember-txt);
+}
+.hero__ish-name{
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:70%; font-variation-settings:"wdth" 70,"wght" 900;
+  text-transform:uppercase; font-size:1.55rem; line-height:1;
+  color:var(--ink); text-decoration:none;
+}
+.hero__ish-name:hover{ color:var(--sky); }
+.hero__ish-role{
+  font-family:var(--mono); font-size:.64rem; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft);
+}
+/* on phones he runs as a compact card so the headline, his photo and the
+   buttons all clear the fold */
+@media (max-width:899px){
+  .hero__ish{ max-width:none; display:flex; align-items:center; gap:18px; }
+  .hero__ish-img{ width:148px; flex:none; }
+  .hero__ish-num{ right:-7px; bottom:-9px; font-size:1.25rem; padding:5px 9px 3px; border-width:2px; }
+  .hero__ish-cap{ margin:0; min-width:0; }
+  .hero__ish-name{ font-size:1.3rem; }
+}
+@media (min-width:900px){
+  .hero__in{
+    grid-template-columns: minmax(0,1fr) minmax(0,340px);
+    /* the empty third row soaks up the slack when the portrait is taller than
+       the copy, instead of it opening a gap between headline and buttons */
+    grid-template-areas:"copy ish" "actions ish" "pad ish";
+    grid-template-rows:auto auto 1fr;
+    column-gap:60px; row-gap:26px;
+  }
+  .hero__ish{ max-width:340px; align-self:center; }
+  .hero h1{ max-width:none; }
+}
 .hero h1 .blue{ color:var(--royal); }
 .hero h1 .mark{
   background: linear-gradient(transparent 58%, var(--volt) 58% 94%, transparent 94%);
   padding-inline:.06em;
   white-space:nowrap;   /* keep the highlighted phrase on one line at every width */
 }
-.hero__ctas{ display:flex; flex-wrap:wrap; gap:14px; margin:0 0 22px; }
+.hero__ctas{ display:flex; flex-wrap:wrap; gap:14px; margin:0 0 20px; }
 .hero__meta{ display:flex; flex-wrap:wrap; gap:10px 28px; color:var(--ink-soft); }
 .hero__meta span{ display:inline-flex; align-items:center; gap:8px; }
 .dot{ width:7px; height:7px; background:var(--ember); border-radius:50%; flex:none; }
@@ -374,22 +425,31 @@ a:focus-visible, button:focus-visible{
           <span class="blue"><span class="mark">where you stand</span></span>
           &mdash; mentally, physically, and professionally.
         </h1>
-        <div class="hero__foot">
-          <div class="hero__actions">
-            <div class="hero__ctas">
-              <a class="btn btn--go" href="/assessment">Take the Athlete Check <span class="arw">&rarr;</span></a>
-              <a class="btn btn--ghost" href="/advocate">Become an Advocate</a>
-            </div>
-            <div class="hero__meta">
-              <span><i class="dot"></i> About 5 minutes &middot; 40 clicks</span>
-              <span><i class="dot"></i> Built by Division I athletes</span>
-            </div>
-          </div>
-          <div class="hero__mark">
-            <img src="/athlete-check-logo-transparent.png" alt="The Athlete Check — winged sandal logo" width="843" height="466">
-          </div>
+      </div>
+
+      <div class="hero__actions">
+        <div class="hero__ctas">
+          <a class="btn btn--go" href="/assessment">Take the Athlete Check <span class="arw">&rarr;</span></a>
+          <a class="btn btn--ghost" href="/advocate">Become an Advocate</a>
+        </div>
+        <div class="hero__meta">
+          <span><i class="dot"></i> About 5 minutes &middot; 40 clicks</span>
+          <span><i class="dot"></i> Built by Division I athletes</span>
         </div>
       </div>
+
+      <figure class="hero__ish">
+        <div class="hero__ish-img">
+          <img src="/ish-zamor.jpg" width="1200" height="1600"
+               alt="Ismael &quot;Ish&quot; Zamor in his Citadel number 6 uniform on the sideline">
+          <span class="hero__ish-num" aria-hidden="true">06</span>
+        </div>
+        <figcaption class="hero__ish-cap">
+          <span class="hero__ish-eyebrow">Athlete Check Advocate</span>
+          <a class="hero__ish-name" href="#featured-advocate">Ismael &ldquo;Ish&rdquo; Zamor</a>
+          <span class="hero__ish-role">Wide Receiver &middot; The Citadel</span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -431,19 +491,18 @@ a:focus-visible, button:focus-visible{
 .ish-btn--ghost{background:transparent;color:#002856}
 .ish-btn--ghost:hover{background:#002856;color:#EDF1F3;transform:translate(-2px,-2px)}
 .ish-btn:focus-visible{outline:3px solid #BA0C2F;outline-offset:3px}
+/* the portrait now lives in the hero; this section runs as a single measure */
+.ish-wrap--noimg{max-width:820px}
+.ish-wrap--noimg .ish-body{max-width:none}
 @media (min-width:860px){
   .ish-wrap{grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:56px}
+  .ish-wrap--noimg{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){.ish-btn{transition:none}}
 </style>
 
 <section class="ish-sec" id="featured-advocate" aria-labelledby="ish-name-h">
-  <div class="ish-wrap">
-    <figure class="ish-figure">
-      <img src="/ish-zamor.jpg" width="1200" height="1600"
-           alt="Ismael &quot;Ish&quot; Zamor in his Citadel number 6 uniform on the sideline">
-      <span class="ish-num" aria-hidden="true">06</span>
-    </figure>
+  <div class="ish-wrap ish-wrap--noimg">
     <div>
       <p class="ish-eyebrow">Athlete Check Advocate</p>
       <h2 class="ish-name" id="ish-name-h">Ismael &ldquo;Ish&rdquo; Zamor</h2>
