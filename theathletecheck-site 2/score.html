@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="description" content="A 40-question check for high school juniors heading into college athletics. Three pillars, eight domains, one score out of 1,000. An IronMind Company.">
+<title>College Readiness Score | The Athlete Check</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=Figtree:wght@400;500;600;800&family=JetBrains+Mono:wght@500;700&display=swap">
+
+<style>
+/* ==========================================================================
+   THE ATHLETE CHECK — Citadel edition
+   Palette: The Citadel official brand colours (brand.citadel.edu/identity/colors)
+   Deliberately single-theme (light). This is a brand site: the ground is
+   paper-white on every device, so every colour is painted explicitly and
+   no dark-mode inversion is applied.
+   ========================================================================== */
+
+:root{
+  color-scheme: light;
+
+  /* Colour — The Citadel official palette. Contrast ratios noted are vs --paper
+     unless stated; every text pairing below meets WCAG AA. */
+  --paper:      #EDF1F3;   /* light tint of Bulldog Gray */
+  --paper-2:    #FFFFFF;
+  --ink:        #002856;   /* Flag Blue        12.9:1 */
+  --ink-soft:   #575856;   /* Pepper Gray       6.3:1 */
+  --royal:      #002856;   /* Flag Blue — primary actions, dark grounds */
+  --sky:        #3D7CC9;   /* Modern Blue       3.8:1 — large display text only */
+  --infantry:   #7BADD3;   /* Infantry Blue — graphic, and type on Flag Blue (6.1:1) */
+  --volt:       #EDAE17;   /* Ring Gold — ground only; carries Flag Blue at 7.4:1 */
+  --ember:      #BA0C2F;   /* Big Red           5.8:1 */
+  --ember-txt:  #BA0C2F;   /* Big Red already passes AA — no darkened variant needed */
+  --rule:       #D8DFE1;   /* Bulldog Gray */
+
+  /* Type */
+  --display: "Archivo", "Arial Narrow", Impact, sans-serif;
+  --body:    "Figtree", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --mono:    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --shell: 1240px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img{ max-width:100%; height:auto; display:block; }
+a{ color: var(--royal); }
+
+.shell{ width:100%; max-width:var(--shell); margin-inline:auto; padding-inline:24px; }
+
+/* ---- Type roles ---------------------------------------------------------- */
+.d{
+  font-family: var(--display);
+  font-weight:900; font-stretch:70%; font-variation-settings:"wdth" 70,"wght" 900;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: 0.005em;
+  text-wrap: balance;
+  margin:0;
+}
+.d--wide{ font-weight:800; font-stretch:88%; font-variation-settings:"wdth" 88,"wght" 800; }
+
+.lane{                                  /* bib / lane label */
+  font-family: var(--mono);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.lead{ font-size:1.14rem; line-height:1.75; color:#24333F; max-width:62ch; }
+
+/* ---- Buttons ------------------------------------------------------------- */
+.btn{
+  display:inline-flex; align-items:center; gap:.6rem;
+  font-family:var(--display); font-style:italic;
+  font-weight:800; font-stretch:82%; font-variation-settings:"wdth" 82,"wght" 800;
+  text-transform:uppercase; letter-spacing:.03em;
+  font-size:1.05rem;
+  padding: 17px 30px 15px;
+  text-decoration:none;
+  border:2px solid var(--ink);
+  transition: transform .16s ease, background-color .16s ease, color .16s ease, box-shadow .16s ease;
+}
+.btn--go{ background:var(--royal); border-color:var(--royal); color:#fff; box-shadow:5px 5px 0 var(--volt); }
+.btn--go:hover{ transform:translate(-2px,-2px); box-shadow:8px 8px 0 var(--volt); }
+.btn--ghost{ background:transparent; color:var(--ink); }
+.btn--ghost:hover{ background:var(--ink); color:var(--paper); transform:translate(-2px,-2px); }
+.btn--ongold{ background:var(--ink); border-color:var(--ink); color:#fff; box-shadow:5px 5px 0 var(--paper-2); }
+.btn--ongold:hover{ transform:translate(-2px,-2px); box-shadow:8px 8px 0 var(--paper-2); }
+.btn .arw{ transition: transform .16s ease; }
+.btn:hover .arw{ transform: translateX(4px); }
+
+a:focus-visible, button:focus-visible{
+  outline:3px solid var(--ember); outline-offset:3px;
+}
+
+/* ---- Nav ----------------------------------------------------------------- */
+.nav{
+  position:sticky; top:0; z-index:60;
+  background: rgba(237,241,243,.92);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.nav__in{ display:flex; align-items:center; justify-content:space-between; gap:20px; padding-block:14px; }
+.nav__logo{ text-decoration:none; display:block; line-height:1; }
+.nav__logo .wm{
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:68%; font-variation-settings:"wdth" 68,"wght" 900;
+  text-transform:uppercase; font-size:1.72rem; line-height:.9;
+  color:var(--ink); letter-spacing:.01em; white-space:nowrap;
+}
+.nav__logo .wm b{ color:var(--sky); font-weight:inherit; }
+@media (max-width:430px){ .nav__logo .wm{ font-size:1.32rem; } .nav__logo .sub{ font-size:.48rem; letter-spacing:.18em; } }
+.nav__logo .sub{
+  font-family:var(--mono); font-size:.53rem; font-weight:700;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--ink-soft);
+  margin-top:5px; display:block;
+}
+.nav__links{ display:flex; align-items:center; gap:30px; }
+.nav__links a{
+  font-family:var(--display); font-style:italic;
+  font-weight:700; font-stretch:80%; font-variation-settings:"wdth" 80,"wght" 700;
+  text-transform:uppercase; font-size:1rem; letter-spacing:.04em;
+  color:var(--ink); text-decoration:none; padding-block:4px;
+  border-bottom:3px solid transparent;
+}
+.nav__links a:hover{ border-bottom-color:var(--volt); }
+.nav__cta{
+  background:var(--royal); color:#fff !important; border-bottom:none !important;
+  padding:11px 20px 9px !important;
+}
+.nav__cta:hover{ background:var(--ink); }
+.burger{ display:none; background:none; border:2px solid var(--ink); padding:8px 10px; cursor:pointer; }
+.burger span{ display:block; width:20px; height:2px; background:var(--ink); margin:4px 0; }
+
+.sheet{ display:none; }
+.sheet.open{
+  display:flex; flex-direction:column; gap:6px;
+  position:fixed; inset:0; z-index:70; background:var(--ink);
+  padding:24px; justify-content:center; align-items:flex-start;
+}
+.sheet a{
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:72%; font-variation-settings:"wdth" 72,"wght" 900;
+  text-transform:uppercase; font-size:clamp(2rem,9vw,3.4rem); line-height:1.05;
+  color:var(--paper); text-decoration:none;
+}
+.sheet a:hover{ color:var(--volt); }
+.sheet__x{
+  position:absolute; top:20px; right:20px; background:none; border:2px solid var(--paper);
+  color:var(--paper); font-size:1.4rem; line-height:1; padding:6px 12px; cursor:pointer;
+}
+
+/* ---- Hero ---------------------------------------------------------------- */
+.hero{ position:relative; overflow:hidden; padding: clamp(48px,7vw,88px) 0 clamp(40px,5vw,64px); }
+.hero__stripes{
+  position:absolute; inset:0; pointer-events:none;
+  background: repeating-linear-gradient(
+    100deg,
+    transparent 0 62px,
+    rgba(0,40,86,.07) 62px 64px
+  );
+}
+/* copy on the left, the featured advocate on the right */
+.hero__in{
+  position:relative; display:grid; grid-template-columns:1fr;
+  grid-template-areas:"copy" "ish" "actions";
+  gap:30px; align-items:start;
+}
+.hero__copy{ grid-area:copy; width:100%; min-width:0; }
+.hero__actions{ grid-area:actions; min-width:0; }
+.hero h1{ font-size: clamp(1.95rem, 3.7vw, 2.9rem); max-width: 22ch; }
+
+/* Ish, in the slot the winged-sandal mark used to hold */
+.hero__ish{ grid-area:ish; margin:0; width:100%; max-width:250px; justify-self:start; }
+.hero__ish-img{ position:relative; }
+.hero__ish-img img{ width:100%; height:auto; border:3px solid var(--ink); background:var(--ink); }
+.hero__ish-num{
+  position:absolute; right:-10px; bottom:-14px;
+  background:var(--volt); color:var(--ink);
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:70%; font-variation-settings:"wdth" 70,"wght" 900;
+  font-size:2rem; line-height:1; padding:7px 14px 5px; border:3px solid var(--ink);
+}
+.hero__ish-cap{ margin:28px 0 0; display:flex; flex-direction:column; gap:5px; }
+.hero__ish-eyebrow{
+  font-family:var(--mono); font-size:.66rem; font-weight:700;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--ember-txt);
+}
+.hero__ish-name{
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:70%; font-variation-settings:"wdth" 70,"wght" 900;
+  text-transform:uppercase; font-size:1.55rem; line-height:1;
+  color:var(--ink); text-decoration:none;
+}
+.hero__ish-name:hover{ color:var(--sky); }
+.hero__ish-role{
+  font-family:var(--mono); font-size:.64rem; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft);
+}
+/* on phones he runs as a compact card so the headline, his photo and the
+   buttons all clear the fold */
+@media (max-width:899px){
+  .hero__ish{ max-width:none; display:flex; align-items:center; gap:18px; }
+  .hero__ish-img{ width:148px; flex:none; }
+  .hero__ish-num{ right:-7px; bottom:-9px; font-size:1.25rem; padding:5px 9px 3px; border-width:2px; }
+  .hero__ish-cap{ margin:0; min-width:0; }
+  .hero__ish-name{ font-size:1.3rem; }
+}
+@media (min-width:900px){
+  .hero__in{
+    grid-template-columns: minmax(0,1fr) minmax(0,340px);
+    /* the empty third row soaks up the slack when the portrait is taller than
+       the copy, instead of it opening a gap between headline and buttons */
+    grid-template-areas:"copy ish" "actions ish" "pad ish";
+    grid-template-rows:auto auto 1fr;
+    column-gap:60px; row-gap:26px;
+  }
+  .hero__ish{ max-width:340px; align-self:center; }
+  .hero h1{ max-width:none; }
+}
+.hero h1 .blue{ color:var(--royal); }
+.hero h1 .mark{
+  background: linear-gradient(transparent 58%, var(--volt) 58% 94%, transparent 94%);
+  padding-inline:.06em;
+  white-space:nowrap;   /* keep the highlighted phrase on one line at every width */
+}
+.hero__ctas{ display:flex; flex-wrap:wrap; gap:14px; margin:0 0 20px; }
+.hero__meta{ display:flex; flex-wrap:wrap; gap:10px 28px; color:var(--ink-soft); }
+.hero__meta span{ display:inline-flex; align-items:center; gap:8px; }
+.dot{ width:7px; height:7px; background:var(--ember); border-radius:50%; flex:none; }
+
+/* ---- Ribbon (stadium board) --------------------------------------------- */
+.ribbon{ background:var(--ink); color:var(--volt); overflow:hidden; padding:13px 0; }
+.ribbon__track{ display:flex; width:max-content; animation: roll 34s linear infinite; }
+.ribbon__track span{
+  font-family:var(--display); font-style:italic;
+  font-weight:800; font-stretch:78%; font-variation-settings:"wdth" 78,"wght" 800;
+  text-transform:uppercase; font-size:1.05rem; letter-spacing:.05em;
+  padding-inline:22px; white-space:nowrap;
+}
+.ribbon__track span:nth-child(even){ color:var(--paper); }
+@keyframes roll{ to{ transform: translateX(-50%); } }
+
+/* ---- Section chrome ------------------------------------------------------ */
+.sec{ padding: clamp(60px,8vw,104px) 0; }
+.sec--white{ background:var(--paper-2); }
+.sec__head{
+  display:flex; align-items:baseline; gap:16px;
+  border-top:2px solid var(--ink); padding-top:12px; margin-bottom:34px;
+}
+.sec__head .lane{ color:var(--ember-txt); flex:none; }
+.sec__head h2{ font-size: clamp(1.9rem,4.4vw,3.2rem); }
+
+/* ---- Mission ------------------------------------------------------------- */
+.mission__quote{
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:76%; font-variation-settings:"wdth" 76,"wght" 900;
+  text-transform:uppercase;
+  font-size: clamp(1.7rem,4.4vw,3.1rem);
+  line-height:1.03; margin: 30px 0 0; max-width:18ch;
+  color:var(--sky);
+}
+.mission__grid{ display:grid; grid-template-columns:1fr; gap:34px; }
+
+/* ---- Pillar cards -------------------------------------------------------- */
+.cards{ display:grid; grid-template-columns:1fr; gap:20px; }
+.card{
+  position:relative; background:var(--paper-2);
+  border:2px solid var(--ink); border-left-width:12px;
+  padding:30px 26px 28px;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.card:nth-child(1){ border-left-color:var(--royal); }
+.card:nth-child(2){ border-left-color:var(--ember); }
+.card:nth-child(3){ border-left-color:var(--volt); }
+.card:hover{ transform:translateY(-5px); box-shadow:0 14px 0 -6px rgba(10,18,48,.14); }
+.card .lane{ color:var(--ink-soft); }
+.card h3{
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:72%; font-variation-settings:"wdth" 72,"wght" 900;
+  text-transform:uppercase; font-size:1.85rem; line-height:.98;
+  margin:.55rem 0 .7rem;
+}
+.card p{ margin:0; color:#24333F; font-size:.99rem; line-height:1.66; }
+.card__icon{ width:44px; height:44px; }
+.sec--white .card{ background:var(--paper); }
+
+/* ---- Founders ------------------------------------------------------------ */
+.founders{ display:grid; grid-template-columns:1fr; gap:24px; }
+.fig{ background:var(--paper-2); border:2px solid var(--ink); }
+.sec--white .fig{ background:var(--paper); }
+.fig__img{ aspect-ratio: 4/3; overflow:hidden; background:var(--ink); }
+.fig__img img{ width:100%; height:100%; object-fit:cover; object-position:center 22%; filter:saturate(1.05); }
+.fig__plate{ display:flex; align-items:flex-end; justify-content:space-between; gap:16px; padding:18px 20px 20px; }
+.fig__plate h3{
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:70%; font-variation-settings:"wdth" 70,"wght" 900;
+  text-transform:uppercase; font-size:clamp(1.6rem,3.4vw,2.2rem); line-height:.95; margin:0 0 6px;
+}
+.fig__plate p{ margin:0; color:var(--ink-soft); font-size:.86rem; }
+.fig__num{
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:70%; font-variation-settings:"wdth" 70,"wght" 900;
+  font-size:2.6rem; line-height:.8; color:var(--infantry); flex:none;
+}
+
+/* ---- Closing CTA --------------------------------------------------------- */
+.close{ background:var(--volt); color:var(--ink); position:relative; overflow:hidden; padding: clamp(60px,8vw,96px) 0; }
+.close__stripes{
+  position:absolute; inset:0; opacity:.5; pointer-events:none;
+  background: repeating-linear-gradient(100deg, transparent 0 46px, rgba(0,40,86,.10) 46px 50px);
+}
+.close__in{ position:relative; display:grid; gap:24px; justify-items:start; }
+.close h2{ font-size: clamp(2.2rem,6vw,4.6rem); max-width:16ch; line-height:1.1; }
+/* inverts the hero: there gold highlights navy, here navy highlights gold */
+.close h2 em{ font-style:italic; color:var(--volt); background:var(--ink); padding:.02em .14em; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+.close p{ margin:0; max-width:52ch; color:var(--ink); font-size:1.08rem; }
+
+/* ---- Footer -------------------------------------------------------------- */
+.foot{ background:var(--ink); color:#A6AFC9; padding: 56px 0 34px; }
+.foot__top{ display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:space-between; gap:30px; }
+.foot__logo{ height:88px; width:auto; }
+.foot__nav{ display:flex; flex-wrap:wrap; gap:8px 22px; }
+.foot__nav a{ color:#A9C0D2; text-decoration:none; font-size:.94rem; }
+.foot__nav a:hover{ color:var(--volt); }
+.foot__tag{
+  font-family:var(--display); font-style:italic;
+  font-weight:900; font-stretch:74%; font-variation-settings:"wdth" 74,"wght" 900;
+  text-transform:uppercase; color:var(--paper);
+  font-size:clamp(1.5rem,4vw,2.4rem); line-height:.98; margin:38px 0 0;
+}
+.foot__tag b{ color:var(--volt); font-weight:inherit; }
+.foot__rule{ height:2px; background:#1B4470; margin:26px 0 20px; }
+.foot__fine{ display:flex; flex-wrap:wrap; gap:6px 20px; font-size:.8rem; color:#8FA8BC; }
+
+/* ---- Reveal -------------------------------------------------------------- */
+.up{ opacity:0; transform: translateY(26px); transition: opacity .6s ease, transform .6s ease; }
+.up.in{ opacity:1; transform:none; }
+
+/* ---- Breakpoints --------------------------------------------------------- */
+@media (min-width: 760px){
+  .cards{ grid-template-columns: repeat(3,1fr); }
+  .founders{ grid-template-columns: repeat(2,1fr); }
+  .mission__grid{ grid-template-columns: 1.05fr .95fr; gap:56px; align-items:start; }
+  .fig__img{ aspect-ratio: 3/4; }
+}
+@media (min-width:1081px) and (max-width:1240px){
+  .nav__links{ gap:20px; }
+  .nav__links a{ font-size:.92rem; }
+  .nav__cta{ padding:10px 15px 8px !important; }
+}
+@media (max-width: 1080px){
+  .nav__links{ display:none; }
+  .burger{ display:block; }
+}
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
+  .up{ opacity:1; transform:none; }
+}
+</style>
+<style>
+/* ===== COLLEGE READINESS SCORE — page-specific ===== */
+.tr-hero{ position:relative; overflow:hidden; padding: clamp(44px,6vw,76px) 0 clamp(36px,4vw,56px); }
+.tr-eyebrow{ display:flex; flex-wrap:wrap; gap:8px 14px; margin:0 0 20px; }
+.tr-eyebrow span{ font-family:var(--mono); font-size:.66rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); }
+.tr-eyebrow span:first-child{ color:var(--ember-txt); }
+.tr-eyebrow i{ color:var(--rule); font-style:normal; }
+.tr-hook{ font-size:clamp(2rem,4.4vw,3.5rem); max-width:17ch; margin:0 0 24px; }
+.tr-hook .soft{ color:var(--sky); }
+.tr-lede{ font-size:clamp(1.02rem,1.6vw,1.16rem); line-height:1.7; color:#24333F;
+  max-width:60ch; margin:0 0 30px; }
+.tr-lede b{ color:var(--ink); font-weight:700; }
+
+/* ladder strip */
+.tr-ladder{ margin:0 0 32px; }
+.tr-rungs{ display:grid; grid-template-columns:repeat(5,1fr); gap:4px; }
+.tr-rungs div{ background:var(--ink); color:#fff; text-align:center;
+  font-family:var(--display); font-style:italic; font-weight:800; font-stretch:78%;
+  font-variation-settings:"wdth" 78,"wght" 800; text-transform:uppercase;
+  font-size:clamp(.56rem,1.15vw,.82rem); letter-spacing:.04em; padding:11px 4px 9px; }
+.tr-rungs div:nth-child(1){ background:#001B3D; }
+.tr-rungs div:nth-child(2){ background:#002856; }
+.tr-rungs div:nth-child(3){ background:#10406F; }
+.tr-rungs div:nth-child(4){ background:#1D5590; }
+.tr-rungs div:nth-child(5){ background:#2E67AC; }
+.tr-marks{ display:grid; grid-template-columns:repeat(5,1fr); gap:4px; margin-top:6px; }
+.tr-marks span{ font-family:var(--mono); font-size:.6rem; font-weight:700;
+  color:var(--ink-soft); text-align:center; }
+.tr-meta{ font-family:var(--mono); font-size:.7rem; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-soft); margin:18px 0 0; }
+
+/* evidence band */
+.tr-stats{ background:var(--ink); color:#fff; padding: clamp(40px,5vw,64px) 0; }
+.tr-stats .grid{ display:grid; grid-template-columns:1fr; gap:30px; }
+.tr-stat .n{ font-family:var(--display); font-style:italic; font-weight:900; font-stretch:70%;
+  font-variation-settings:"wdth" 70,"wght" 900; font-size:clamp(2.6rem,5vw,3.9rem);
+  line-height:.92; color:var(--volt); margin:0 0 10px; }
+.tr-stat p{ margin:0; color:#D8E2EC; line-height:1.6; font-size:.97rem; max-width:34ch; }
+.tr-stat cite{ display:block; margin-top:10px; font-family:var(--mono); font-style:normal;
+  font-size:.6rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:#9FB6CC; }
+
+/* pillars */
+.tr-pillar{ background:#fff; border:1px solid var(--rule); border-top:5px solid var(--sky);
+  padding:26px 24px; margin:0 0 18px; }
+.tr-pillar:nth-of-type(2){ border-top-color:var(--volt); }
+.tr-pillar:nth-of-type(3){ border-top-color:var(--ember); }
+.tr-pillar .tag{ font-family:var(--mono); font-size:.64rem; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 10px; }
+.tr-pillar h3{ font-family:var(--display); font-style:italic; font-weight:900; font-stretch:72%;
+  font-variation-settings:"wdth" 72,"wght" 900; text-transform:uppercase;
+  font-size:clamp(1.5rem,3vw,2.1rem); line-height:.96; margin:0 0 12px; color:var(--ink); }
+.tr-pillar p{ margin:0 0 16px; color:#24333F; line-height:1.7; max-width:62ch; }
+.tr-pillar ul{ margin:0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:8px; }
+.tr-pillar li{ font-family:var(--mono); font-size:.66rem; font-weight:700; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--ink); background:var(--paper); border:1px solid var(--rule);
+  padding:7px 11px; }
+
+/* domains */
+.tr-domains{ display:grid; grid-template-columns:1fr; gap:2px; background:var(--rule);
+  border:1px solid var(--rule); }
+.tr-dom{ background:#fff; padding:22px 22px 20px; }
+.tr-dom .num{ font-family:var(--display); font-style:italic; font-weight:900; font-stretch:70%;
+  font-variation-settings:"wdth" 70,"wght" 900; font-size:1.5rem; line-height:1;
+  color:var(--sky); margin:0 0 8px; }
+.tr-dom h4{ font-family:var(--display); font-style:italic; font-weight:800; font-stretch:80%;
+  font-variation-settings:"wdth" 80,"wght" 800; text-transform:uppercase;
+  font-size:1.12rem; line-height:1.05; margin:0 0 9px; color:var(--ink); }
+.tr-dom p{ margin:0; color:#24333F; line-height:1.65; font-size:.95rem; }
+
+/* ladder detail */
+.tr-levels{ display:grid; grid-template-columns:1fr; gap:2px; background:var(--rule);
+  border:1px solid var(--rule); }
+.tr-lvl{ background:#fff; padding:20px 22px; display:grid; grid-template-columns:1fr; gap:6px; }
+.tr-lvl .band{ font-family:var(--mono); font-size:.66rem; font-weight:700; letter-spacing:.1em;
+  color:var(--ember-txt); }
+.tr-lvl h4{ font-family:var(--display); font-style:italic; font-weight:900; font-stretch:74%;
+  font-variation-settings:"wdth" 74,"wght" 900; text-transform:uppercase;
+  font-size:1.32rem; line-height:1; margin:0; color:var(--ink); }
+.tr-lvl p{ margin:0; color:#24333F; line-height:1.6; font-size:.95rem; }
+
+/* steps */
+.tr-steps{ display:grid; grid-template-columns:1fr; gap:18px; }
+.tr-step{ border-left:4px solid var(--volt); padding:4px 0 4px 20px; }
+.tr-step .tag{ font-family:var(--mono); font-size:.64rem; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-soft); margin:0 0 7px; }
+.tr-step h4{ font-family:var(--display); font-style:italic; font-weight:800; font-stretch:80%;
+  font-variation-settings:"wdth" 80,"wght" 800; text-transform:uppercase;
+  font-size:1.2rem; line-height:1.05; margin:0 0 8px; color:var(--ink); }
+.tr-step p{ margin:0; color:#24333F; line-height:1.65; font-size:.95rem; max-width:56ch; }
+
+/* parent note */
+.tr-note{ background:var(--paper); border:1px solid var(--rule); border-left:4px solid var(--sky);
+  padding:22px 24px; }
+.tr-note h4{ font-family:var(--display); font-style:italic; font-weight:800; font-stretch:80%;
+  font-variation-settings:"wdth" 80,"wght" 800; text-transform:uppercase; font-size:1.15rem;
+  margin:0 0 10px; color:var(--ink); }
+.tr-note p{ margin:0; color:#24333F; line-height:1.7; max-width:64ch; }
+
+@media (min-width:760px){
+  .tr-stats .grid{ grid-template-columns:repeat(3,1fr); gap:34px; }
+  .tr-domains{ grid-template-columns:1fr 1fr; }
+  .tr-lvl{ grid-template-columns:150px 210px 1fr; align-items:baseline; gap:18px; }
+  .tr-steps{ grid-template-columns:repeat(3,1fr); }
+}
+@media (min-width:1040px){
+  .tr-domains{ grid-template-columns:repeat(2,1fr); }
+}
+</style>
+
+</head>
+<body>
+<!-- ============================== NAV ============================== -->
+<header class="nav">
+  <div class="shell nav__in">
+    <a class="nav__logo" href="/" aria-label="The Athlete Check — home">
+      <span class="wm">The Athlete <b>Check</b></span>
+      <span class="sub">An IronMind Company</span>
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="/about">About</a>
+      <a href="/assessment">Assessment</a>
+      <a href="/advocate">Advocate</a>
+      <a href="/performanceblueprint">Blueprint</a>
+      <a href="/coaches">Coaches &amp; ADs</a>
+      <a href="/courses">Courses</a>
+      <a class="nav__cta" href="/assessment">Take the Check</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="sheet__x" id="sheetX" aria-label="Close menu">&times;</button>
+  <a href="/about">About</a>
+  <a href="/assessment">Assessment</a>
+  <a href="/advocate">Advocate</a>
+  <a href="/performanceblueprint">Blueprint</a>
+  <a href="/coaches">Coaches &amp; ADs</a>
+  <a href="/courses">Courses</a>
+  <a href="/registration">Registration</a>
+  <a href="/proudmoment">Proud Moment</a>
+  <a href="/contact">Contact</a>
+  <a href="/assessment" style="color:var(--volt)">Take the Check &rarr;</a>
+</div>
+
+
+<main>
+
+  <!-- ============================== HERO ============================== -->
+  <section class="hero tr-hero">
+    <div class="hero__stripes" aria-hidden="true"></div>
+    <div class="shell">
+      <p class="tr-eyebrow">
+        <span>College Readiness Score</span><i>/</i>
+        <span>An Athlete Check assessment</span><i>/</i>
+        <span>High school juniors &amp; seniors</span>
+      </p>
+      <h1 class="d tr-hook">Everybody grades your film.
+        <span class="soft">Nobody grades whether you&rsquo;re ready.</span></h1>
+      <p class="tr-lede">
+        The College Readiness Score is a 40-question check that measures how prepared you actually
+        are for college athletics &mdash; not whether you&rsquo;ll get recruited, but whether
+        you&rsquo;ll still be standing in year two. Scored across
+        <b>three pillars</b>, <b>eight domains</b>, and one number out of <b>1,000</b>.
+      </p>
+      <div class="tr-ladder"><div class="tr-rungs"><div>Talent</div><div>Prospect</div><div>Recruit</div><div>Competitor</div><div>Standard</div></div><div class="tr-marks"><span>200</span><span>500</span><span>700</span><span>850</span><span>950</span></div></div>
+      <div class="hero__ctas">
+        <a class="btn btn--go" href="/assessment">Get my College Readiness Score <span class="arw">&rarr;</span></a>
+        <a class="btn btn--ghost" href="#architecture">See the framework</a>
+      </div>
+      <p class="tr-meta">40 questions &middot; about 5 minutes &middot; free</p>
+    </div>
+  </section>
+
+  <section class="tr-stats"><div class="shell"><div class="grid"><div class="tr-stat"><p class="n">7%</p><p>About eight million kids play high school sports. Roughly 560,000 of them go on to compete for an NCAA school.</p><cite>NCAA / NFHS, 2024&ndash;25</cite></div><div class="tr-stat"><p class="n">34 hrs</p><p>The median week a Division I athlete spends on their sport, in season. FBS football reports 45. Add classes and the median week runs to about 67 hours.</p><cite>NCAA GOALS Study, 2025</cite></div><div class="tr-stat"><p class="n">98%</p><p>Of NCAA student-athletes go pro in something other than sports. The NCAA says so itself, in its own advertising.</p><cite>NCAA</cite></div></div></div></section>
+
+  <!-- ============================== THE GAP ============================== -->
+  <section class="sec sec--white">
+    <div class="shell">
+      <p class="lane" style="color:var(--ember-txt); margin:0 0 14px;">The gap nobody measures</p>
+      <h2 class="d" style="font-size:clamp(1.8rem,4vw,2.9rem); max-width:20ch; margin:0 0 24px;">
+        Recruiting measures your ceiling. Nobody measures your floor.</h2>
+      <p class="lead" style="margin:0 0 18px;">
+        Every evaluation you have ever received as an athlete has been about the ceiling &mdash;
+        how fast, how big, how much upside. Coaches watch the film. Services rank you. Camps put a
+        number on you. All of it is a bet on how good you might get.
+      </p>
+      <p class="lead" style="margin:0 0 18px;">
+        None of it measures the floor: whether you can carry a 34-hour training week and a full
+        course load at the same time, whether you can be told you are not starting and go back to
+        work, whether you know who to call in October of your freshman year when you are eight
+        hours from home and it is not going the way you pictured.
+      </p>
+      <p class="lead" style="margin:0;">
+        Those things decide the first two years far more often than talent does. They are all
+        learnable, and your junior year is the moment there is still time to learn them. This is a
+        measurement of the part nobody has been measuring.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================== PILLARS ============================== -->
+  <section class="sec" id="architecture">
+    <div class="shell">
+      <p class="lane" style="color:var(--ember-txt); margin:0 0 14px;">The architecture</p>
+      <h2 class="d" style="font-size:clamp(1.8rem,4vw,2.9rem); max-width:18ch; margin:0 0 12px;">
+        Three pillars</h2>
+      <p class="lead" style="margin:0 0 28px;">
+        Can you get through the door &middot; Do you know which door &middot; Can you carry what is
+        on the other side.
+      </p>
+      <article class="tr-pillar"><p class="tag">Pillar 01 · 250 pts</p><h3>The Gate</h3><p>The mechanics that decide whether the door opens at all. Neither of these is about talent, and both of them are on a clock that starts in your junior year.</p><ul><li>Academic Eligibility</li><li>Recruiting Command</li></ul></article><article class="tr-pillar"><p class="tag">Pillar 02 · 375 pts</p><h3>The Fit</h3><p>Knowing where you are actually going and why — a level you can honestly play at, a program that fits the person and not just the athlete, and a decision you can own in a room full of people who love you.</p><ul><li>Level &amp; Program Fit</li><li>Identity Beyond the Recruit</li><li>Decision &amp; Family Alignment</li></ul></article><article class="tr-pillar"><p class="tag">Pillar 03 · 375 pts</p><h3>The Load</h3><p>What happens after signing day. The first year is where most of the falling-off happens, and it is almost never about ability — it is hours, feedback, and whether you know how to ask for help.</p><ul><li>Time &amp; Self-Command</li><li>Coachability Under Pressure</li><li>Support &amp; Help-Seeking</li></ul></article>
+    </div>
+  </section>
+
+  <!-- ============================== DOMAINS ============================== -->
+  <section class="sec sec--white">
+    <div class="shell">
+      <p class="lane" style="color:var(--ember-txt); margin:0 0 14px;">The measurement</p>
+      <h2 class="d" style="font-size:clamp(1.8rem,4vw,2.9rem); max-width:22ch; margin:0 0 12px;">
+        Eight domains, one hundred and twenty-five points each</h2>
+      <p class="lead" style="margin:0 0 28px;">
+        Every domain is scored on its own, so you can see exactly where the strength sits and where
+        the next ninety days should go.
+      </p>
+      <div class="tr-domains"><article class="tr-dom"><p class="num">01</p><h4>Academic Eligibility</h4><p>Core courses, GPA, and the NCAA Eligibility Center. The one domain that can end the conversation before a coach ever sees you — and the one most juniors find out about too late.</p></article><article class="tr-dom"><p class="num">02</p><h4>Recruiting Command</h4><p>Whether you run your own recruitment. Film that shows the right things, emails you actually send, and the ability to talk to a coach without a parent on the line.</p></article><article class="tr-dom"><p class="num">03</p><h4>Level &amp; Program Fit</h4><p>An honest read on where you can actually play, and what you want from a program beyond its logo. The gap between the offer you want and the offer that fits.</p></article><article class="tr-dom"><p class="num">04</p><h4>Identity Beyond the Recruit</h4><p>Who you are when the offer does not come, or when you arrive and sit. The load-bearing wall of the whole profile.</p></article><article class="tr-dom"><p class="num">05</p><h4>Decision &amp; Family Alignment</h4><p>This is the first large decision of your life, and you are not making it alone. Whether you can own the choice — and hold your own inside your family while you make it.</p></article><article class="tr-dom"><p class="num">06</p><h4>Time &amp; Self-Command</h4><p>Thirty-plus hours a week of sport on top of a full course load, with nobody making you go. What structure looks like when the structure is yours.</p></article><article class="tr-dom"><p class="num">07</p><h4>Coachability Under Pressure</h4><p>You are about to be the worst player in the room for the first time. How you take hard coaching, lose a starting job, and keep working anyway.</p></article><article class="tr-dom"><p class="num">08</p><h4>Support &amp; Help-Seeking</h4><p>Knowing who you call — before it is a crisis. Homesickness, injury, and playing time are the three that hit first, and none of them are handled alone.</p></article></div>
+    </div>
+  </section>
+
+  <!-- ============================== LADDER ============================== -->
+  <section class="sec">
+    <div class="shell">
+      <p class="lane" style="color:var(--ember-txt); margin:0 0 14px;">The ladder</p>
+      <h2 class="d" style="font-size:clamp(1.8rem,4vw,2.9rem); max-width:18ch; margin:0 0 12px;">
+        Five levels of ready</h2>
+      <p class="lead" style="margin:0 0 28px;">
+        Your composite puts you on one of five rungs. Every rung is honest &mdash; a junior at the
+        bottom of this ladder has two full years to climb it, which is the entire point of taking
+        it now.
+      </p>
+      <div class="tr-levels"><div class="tr-lvl"><span class="band">200–499</span><h4>The Talent</h4><p>The ability is real and nothing else is built yet. Everything here is learnable, and you have two years to learn it.</p></div><div class="tr-lvl"><span class="band">500–699</span><h4>The Prospect</h4><p>You are doing some of this on purpose now. The parts that work are the parts you chose.</p></div><div class="tr-lvl"><span class="band">700–849</span><h4>The Recruit</h4><p>You run your own recruitment — the film, the emails, the questions — rather than waiting to be found.</p></div><div class="tr-lvl"><span class="band">850–949</span><h4>The Competitor</h4><p>Built for the load, not just for the offer. You know what a college week actually costs.</p></div><div class="tr-lvl"><span class="band">950–1000</span><h4>The Standard</h4><p>You could walk into a college locker room next week and raise the level of the room.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ============================== HOW IT WORKS ============================== -->
+  <section class="sec sec--white">
+    <div class="shell">
+      <p class="lane" style="color:var(--ember-txt); margin:0 0 14px;">How it works</p>
+      <h2 class="d" style="font-size:clamp(1.8rem,4vw,2.9rem); max-width:20ch; margin:0 0 28px;">
+        Forty questions. One honest number.</h2>
+      <div class="tr-steps"><div class="tr-step"><p class="tag">Step 01</p><h4>Take the check</h4><p>Forty questions across the eight domains, rated one to five. About five minutes. Answer as the athlete you are in your junior year &mdash; not the one you intend to be by signing day.</p></div><div class="tr-step"><p class="tag">Step 02</p><h4>Get your score</h4><p>Your composite out of 1,000, your level on the ladder, and the split across all three pillars &mdash; so you can see the shape of the result and not just the number.</p></div><div class="tr-step"><p class="tag">Step 03</p><h4>Get the plan</h4><p>All eight domain scores, your strongest domain named, your growth edges, and a 90-day plan built around the two or three that move fastest from where you are now.</p></div></div>
+      <div class="tr-note" style="margin-top:34px;">
+        <h4>If you&rsquo;re the parent</h4>
+        <p>
+          You are part of this decision, and the check is built knowing that. Domain 05 asks
+          directly about how the choice gets made at home. Take it yourself if you want to see what
+          your athlete is being asked &mdash; and then let them answer it honestly on their own,
+          because a score filled in to please someone is worth nothing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== CLOSE ============================== -->
+  <section class="close">
+    <div class="shell">
+      <p class="lane" style="margin:0 0 14px;">Start here</p>
+      <h2 class="d">You can&rsquo;t fix what nobody ever measured.</h2>
+      <p class="lead" style="color:#24333F; margin:22px 0 28px; max-width:56ch;">
+        Forty questions, about five minutes, and one number you can act on. Answer as the athlete
+        you are today &mdash; the score is only worth having if it is honest.
+      </p>
+      <div class="hero__ctas">
+        <a class="btn btn--ongold" href="/assessment">Get my College Readiness Score <span class="arw">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+<!-- ============================== FOOTER ============================== -->
+<footer class="foot">
+  <div class="shell">
+    <div class="foot__top">
+      <img class="foot__logo" src="/athlete-check-logo-white.png" alt="The Athlete Check">
+      <nav class="foot__nav" aria-label="Footer">
+        <a href="/about">About</a>
+        <a href="/assessment">Assessment</a>
+        <a href="/advocate">Advocate</a>
+        <a href="/performanceblueprint">Blueprint</a>
+        <a href="/coaches">Coaches &amp; ADs</a>
+        <a href="/courses">Courses</a>
+        <a href="/registration">Registration</a>
+        <a href="/proudmoment">Proud Moment</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </div>
+    <p class="foot__tag">Test. <b>Train.</b> Transform.</p>
+    <div class="foot__rule"></div>
+    <div class="foot__fine">
+      <span>&copy; 2026 The Athlete Check &middot; theathletecheck.com</span>
+      <span>An IronMind Company &middot; Built for more</span>
+      <span>Founded by Luke Stenson &amp; Wyatt Porch</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* Stadium ribbon — duplicated once so the -50% loop is seamless */
+  var phrases = ["Test. Train. Transform.","Know where you stand","An IronMind Company",
+                 "Built for more","Mental. Physical. Professional.","Built by Division I athletes"];
+  var track = document.getElementById('ribbon');
+  if (track){
+    var html = phrases.map(function(p){ return '<span>'+p+'</span><span>&#9679;</span>'; }).join('');
+    track.innerHTML = html + html;
+  }
+
+  /* Mobile sheet */
+  var burger = document.getElementById('burger'),
+      sheet  = document.getElementById('sheet'),
+      sheetX = document.getElementById('sheetX');
+  function setSheet(open){
+    sheet.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  if (burger && sheet && sheetX){
+    burger.addEventListener('click', function(){ setSheet(true); });
+    sheetX.addEventListener('click', function(){ setSheet(false); });
+    sheet.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setSheet(false); }); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setSheet(false); });
+  }
+
+  /* Scroll reveal */
+  var els = document.querySelectorAll('.up');
+  if (!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en, i){
+        if (en.isIntersecting){
+          setTimeout(function(){ en.target.classList.add('in'); }, i * 90);
+          io.unobserve(en.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -50px 0px', threshold: 0.08 });
+    els.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+
+</body>
+</html>
