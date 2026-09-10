@@ -188,6 +188,7 @@ a:focus-visible, button:focus-visible{
 .hero h1 .mark{
   background: linear-gradient(transparent 58%, var(--volt) 58% 94%, transparent 94%);
   padding-inline:.06em;
+  white-space:nowrap;   /* keep the highlighted phrase on one line at every width */
 }
 .hero__ctas{ display:flex; flex-wrap:wrap; gap:14px; margin:0 0 22px; }
 .hero__meta{ display:flex; flex-wrap:wrap; gap:10px 28px; color:var(--ink-soft); }
@@ -369,9 +370,9 @@ a:focus-visible, button:focus-visible{
       <div class="hero__copy">
         <p class="lane" style="color:var(--ember-txt); margin:0 0 18px;">An IronMind Company</p>
         <h1 class="d">
-          Built by student athletes.<br>
-          Backed by IronMind.<br>
-          Designed for <span class="blue"><span class="mark">the next level.</span></span>
+          A free and easy readiness score that shows you exactly
+          <span class="blue"><span class="mark">where you stand</span></span>
+          &mdash; mentally, physically, and professionally.
         </h1>
         <div class="hero__foot">
           <div class="hero__actions">
