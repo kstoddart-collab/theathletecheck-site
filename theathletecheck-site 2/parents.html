@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<meta name="description" content="The Athlete Check is a readiness and identity platform built by Division I student athletes, for student athletes. An IronMind Company.">
-<title>The Athlete Check</title>
+<meta name="description" content="For parents of college-bound young people. What the College Readiness programme does, who runs it, what your child walks away holding, and what it costs.">
+<title>For Parents | The Athlete Check</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=Figtree:wght@400;500;600;800&family=JetBrains+Mono:wght@500;700&display=swap">
@@ -375,6 +375,111 @@ a:focus-visible, button:focus-visible{
   .up{ opacity:1; transform:none; }
 }
 </style>
+<style>
+/* ===== PARENTS PAGE ===== */
+.pa-hero{ position:relative; overflow:hidden; padding: clamp(44px,6vw,80px) 0 clamp(36px,4vw,56px); }
+.pa-eyebrow{ display:flex; flex-wrap:wrap; gap:8px 14px; margin:0 0 22px; }
+.pa-eyebrow span{ font-family:var(--mono); font-size:.66rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); }
+.pa-eyebrow span:first-child{ color:var(--ember-txt); }
+.pa-eyebrow i{ color:var(--rule); font-style:normal; }
+.pa-hero__in{ display:grid; grid-template-columns:1fr; gap:30px; align-items:start; }
+.pa-title{ font-size:clamp(2.3rem,5.4vw,4.1rem); max-width:12ch; margin:0 0 26px; }
+.pa-intro p{ margin:0 0 16px; color:#24333F; line-height:1.75; font-size:1.05rem; }
+.pa-intro p:last-child{ margin-bottom:0; }
+.pa-intro b{ color:var(--ink); }
+.pa-sub{ font-family:var(--mono); font-size:.68rem; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-soft); margin:20px 0 0; }
+
+.pa-num{ font-family:var(--mono); font-size:.68rem; font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ember-txt); margin:0 0 14px; }
+.pa-h2{ font-size:clamp(1.7rem,3.8vw,2.7rem); max-width:22ch; margin:0 0 22px; }
+
+/* credential row */
+.pa-creds{ display:grid; grid-template-columns:repeat(2,1fr); gap:2px;
+  background:var(--rule); border:1px solid var(--rule); margin:30px 0 0; }
+.pa-cred{ background:var(--paper-2); padding:18px 16px; }
+.pa-cred .v{ font-family:var(--display); font-style:italic; font-weight:900; font-stretch:70%;
+  font-variation-settings:"wdth" 70,"wght" 900; font-size:clamp(1.5rem,3vw,2rem);
+  line-height:1; color:var(--ink); margin:0 0 7px; }
+.pa-cred .l{ font-family:var(--mono); font-size:.58rem; font-weight:700; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--ink-soft); margin:0; line-height:1.5; }
+
+.pa-quote{ background:var(--ink); color:#fff; padding: clamp(32px,4vw,52px) 0; margin:0; }
+.pa-quote p{ font-family:var(--display); font-style:italic; font-weight:800; font-stretch:80%;
+  font-variation-settings:"wdth" 80,"wght" 800; text-transform:uppercase;
+  font-size:clamp(1.3rem,3vw,2.05rem); line-height:1.12; margin:0 0 16px; max-width:24ch; }
+.pa-quote cite{ font-family:var(--mono); font-style:normal; font-size:.62rem; font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--infantry); }
+
+/* the four steps of the programme */
+.pa-steps{ display:grid; grid-template-columns:1fr; gap:2px; background:var(--rule);
+  border:1px solid var(--rule); }
+.pa-step{ background:var(--paper-2); padding:26px 24px; }
+.pa-step .tag{ font-family:var(--mono); font-size:.62rem; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-soft); margin:0 0 10px; }
+.pa-step h3{ font-family:var(--display); font-style:italic; font-weight:900; font-stretch:74%;
+  font-variation-settings:"wdth" 74,"wght" 900; text-transform:uppercase;
+  font-size:1.35rem; line-height:1; margin:0 0 12px; color:var(--ink); }
+.pa-step p{ margin:0 0 12px; color:#24333F; line-height:1.7; font-size:.98rem; }
+.pa-step p:last-child{ margin-bottom:0; }
+.pa-step ul{ margin:12px 0 0; padding:0 0 0 18px; color:#24333F; line-height:1.7; font-size:.95rem; }
+.pa-step li{ margin:0 0 5px; }
+
+/* the certification */
+.pa-cert{ background:var(--ink); color:#fff; border-top:6px solid var(--volt); padding:30px 26px; }
+.pa-cert .mark{ font-family:var(--display); font-style:italic; font-weight:900; font-stretch:70%;
+  font-variation-settings:"wdth" 70,"wght" 900; text-transform:uppercase;
+  font-size:clamp(1.7rem,4vw,2.6rem); line-height:.98; color:var(--volt); margin:0 0 8px; }
+.pa-cert .by{ font-family:var(--mono); font-size:.62rem; font-weight:700; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--infantry); margin:0 0 20px; }
+.pa-cert p{ margin:0 0 14px; color:#D8E2EC; line-height:1.72; }
+.pa-cert p:last-child{ margin-bottom:0; }
+.pa-cert b{ color:#fff; }
+
+/* investment */
+.pa-price{ display:grid; grid-template-columns:1fr; gap:2px; background:var(--rule);
+  border:1px solid var(--rule); margin:0 0 26px; }
+.pa-price div{ background:var(--paper-2); padding:22px 22px; }
+.pa-price .big{ font-family:var(--display); font-style:italic; font-weight:900; font-stretch:70%;
+  font-variation-settings:"wdth" 70,"wght" 900; font-size:clamp(2.4rem,5vw,3.4rem);
+  line-height:1; color:var(--ink); margin:0 0 8px; }
+.pa-price .cap{ font-family:var(--mono); font-size:.62rem; font-weight:700; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--ink-soft); margin:0; line-height:1.55; }
+.pa-covers{ margin:0; padding:0; list-style:none; }
+.pa-covers li{ border-top:1px solid var(--rule); padding:14px 0; color:#24333F; line-height:1.7; }
+.pa-covers li:last-child{ border-bottom:1px solid var(--rule); }
+.pa-covers b{ color:var(--ink); }
+
+.pa-callout{ background:var(--paper); border:1px solid var(--rule); border-left:5px solid var(--ember);
+  padding:24px 26px; margin:26px 0 0; }
+.pa-callout h4{ font-family:var(--display); font-style:italic; font-weight:800; font-stretch:80%;
+  font-variation-settings:"wdth" 80,"wght" 800; text-transform:uppercase; font-size:1.15rem;
+  margin:0 0 12px; color:var(--ink); }
+.pa-callout p{ margin:0 0 12px; color:#24333F; line-height:1.72; max-width:66ch; }
+.pa-callout p:last-child{ margin-bottom:0; }
+
+/* contact */
+.pa-contact{ display:grid; grid-template-columns:1fr; gap:2px; background:var(--rule);
+  border:1px solid var(--rule); margin:28px 0 0; }
+.pa-contact div{ background:var(--paper-2); padding:18px 20px; }
+.pa-contact .k{ font-family:var(--mono); font-size:.58rem; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-soft); margin:0 0 6px; }
+.pa-contact .v{ margin:0; color:var(--ink); font-weight:600; }
+.pa-contact a{ color:var(--ink); text-decoration:none; border-bottom:2px solid var(--volt); }
+
+.pa-sign{ font-family:var(--mono); font-size:.62rem; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-soft); line-height:1.8; margin:26px 0 0; }
+
+@media (min-width:820px){
+  .pa-hero__in{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:56px; }
+  .pa-creds{ grid-template-columns:repeat(5,1fr); }
+  .pa-steps{ grid-template-columns:repeat(2,1fr); }
+  .pa-price{ grid-template-columns:1fr 1fr; }
+  .pa-contact{ grid-template-columns:repeat(4,1fr); }
+}
+</style>
+
 </head>
 <body>
 <!-- ============================== NAV ============================== -->
@@ -415,231 +520,229 @@ a:focus-visible, button:focus-visible{
   <a href="/assessment" style="color:var(--volt)">Take the Check &rarr;</a>
 </div>
 
+
 <main>
+
   <!-- ============================== HERO ============================== -->
-  <section class="hero">
+  <section class="hero pa-hero">
     <div class="hero__stripes" aria-hidden="true"></div>
-    <div class="shell hero__in">
-      <div class="hero__copy">
-        <p class="lane" style="color:var(--ember-txt); margin:0 0 18px;">An IronMind Company</p>
-        <h1 class="d">
-          A free and easy readiness score that shows you exactly
-          <span class="blue"><span class="mark">where you stand</span></span>
-          &mdash; mentally, physically, and professionally.
-        </h1>
-      </div>
-
-      <div class="hero__actions">
-        <div class="hero__ctas">
-          <a class="btn btn--go" href="/assessment">Take the Athlete Check <span class="arw">&rarr;</span></a>
-          <a class="btn btn--ghost" href="/advocate">Become an Advocate</a>
-        </div>
-        <div class="hero__meta">
-          <span><i class="dot"></i> About 5 minutes &middot; 40 clicks</span>
-          <span><i class="dot"></i> Built by Division I athletes</span>
-        </div>
-      </div>
-
-      <figure class="hero__ish">
-        <div class="hero__ish-img">
-          <img src="/ish-zamor.jpg" width="1200" height="1600"
-               alt="Ismael &quot;Ish&quot; Zamor in his Citadel number 6 uniform on the sideline">
-          <span class="hero__ish-num" aria-hidden="true">06</span>
-        </div>
-        <figcaption class="hero__ish-cap">
-          <span class="hero__ish-eyebrow">Athlete Check Advocate</span>
-          <a class="hero__ish-name" href="#featured-advocate">Ismael &ldquo;Ish&rdquo; Zamor</a>
-          <span class="hero__ish-role">Wide Receiver &middot; The Citadel</span>
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ============================== RIBBON ============================== -->
-  <div class="ribbon" aria-hidden="true">
-    <div class="ribbon__track" id="ribbon"></div>
-  </div>
-
-<!-- ===== FEATURED ADVOCATE — self-contained, no Tailwind required ===== -->
-<style>
-.ish-sec{background:#EDF1F3;padding:clamp(56px,8vw,96px) 0;border-top:1px solid #D8DFE1;border-bottom:1px solid #D8DFE1;
-  font-family:'Figtree',ui-sans-serif,system-ui,-apple-system,sans-serif;color:#002856}
-.ish-sec *,.ish-sec *::before,.ish-sec *::after{box-sizing:border-box}
-.ish-wrap{width:100%;max-width:1120px;margin:0 auto;padding-inline:24px;display:grid;grid-template-columns:1fr;gap:34px;align-items:center}
-.ish-figure{position:relative;margin:0;max-width:460px}
-.ish-figure img{display:block;width:100%;height:auto;border:3px solid #002856;background:#002856}
-.ish-num{position:absolute;right:-10px;bottom:-16px;background:#EDAE17;color:#002856;
-  font-family:'Archivo','Arial Narrow',Impact,sans-serif;font-style:italic;font-weight:900;font-stretch:70%;
-  font-variation-settings:"wdth" 70,"wght" 900;font-size:2.6rem;line-height:1;padding:8px 16px 6px;border:3px solid #002856}
-.ish-eyebrow{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:.7rem;font-weight:700;
-  letter-spacing:.18em;text-transform:uppercase;color:#BA0C2F;margin:0 0 14px}
-.ish-name{font-family:'Archivo','Arial Narrow',Impact,sans-serif;font-style:italic;font-weight:900;font-stretch:70%;
-  font-variation-settings:"wdth" 70,"wght" 900;text-transform:uppercase;line-height:.94;letter-spacing:.005em;
-  font-size:clamp(2.2rem,5.4vw,3.9rem);margin:0 0 12px;color:#002856;text-wrap:balance}
-.ish-role{font-family:'Archivo','Arial Narrow',Impact,sans-serif;font-style:italic;font-weight:800;font-stretch:82%;
-  font-variation-settings:"wdth" 82,"wght" 800;text-transform:uppercase;letter-spacing:.04em;
-  font-size:1.05rem;color:#2E67AC;margin:0 0 18px}
-.ish-body{font-size:1.05rem;line-height:1.72;color:#24333F;max-width:56ch;margin:0 0 22px}
-.ish-facts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;padding:0;list-style:none}
-.ish-facts li{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:.68rem;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;color:#002856;background:#FFFFFF;border:1px solid #D8DFE1;padding:7px 11px}
-.ish-ctas{display:flex;flex-wrap:wrap;gap:12px}
-.ish-btn{display:inline-flex;align-items:center;gap:.55rem;font-family:'Archivo','Arial Narrow',Impact,sans-serif;
-  font-style:italic;font-weight:800;font-stretch:82%;font-variation-settings:"wdth" 82,"wght" 800;
-  text-transform:uppercase;letter-spacing:.03em;font-size:1rem;padding:15px 26px 13px;text-decoration:none;
-  border:2px solid #002856;transition:transform .16s ease,box-shadow .16s ease,background-color .16s ease,color .16s ease}
-.ish-btn--go{background:#002856;color:#FFFFFF;box-shadow:5px 5px 0 #EDAE17}
-.ish-btn--go:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 #EDAE17;color:#FFFFFF}
-.ish-btn--ghost{background:transparent;color:#002856}
-.ish-btn--ghost:hover{background:#002856;color:#EDF1F3;transform:translate(-2px,-2px)}
-.ish-btn:focus-visible{outline:3px solid #BA0C2F;outline-offset:3px}
-/* the portrait now lives in the hero; this section runs as a single measure */
-.ish-wrap--noimg{max-width:820px}
-.ish-wrap--noimg .ish-body{max-width:none}
-@media (min-width:860px){
-  .ish-wrap{grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:56px}
-  .ish-wrap--noimg{grid-template-columns:1fr}
-}
-@media (prefers-reduced-motion:reduce){.ish-btn{transition:none}}
-</style>
-
-<section class="ish-sec" id="featured-advocate" aria-labelledby="ish-name-h">
-  <div class="ish-wrap ish-wrap--noimg">
-    <div>
-      <p class="ish-eyebrow">Athlete Check Advocate</p>
-      <h2 class="ish-name" id="ish-name-h">Ismael &ldquo;Ish&rdquo; Zamor</h2>
-      <p class="ish-role">Wide Receiver &middot; The Citadel</p>
-      <p class="ish-body">
-        Ish is an Athlete Check Advocate. Advocates carry the platform into their own locker rooms &mdash;
-        putting the readiness assessment in front of teammates and opening the conversation about identity,
-        mental health, and what comes after the jersey.
-      </p>
-      <ul class="ish-facts">
-        <li>No. 6</li>
-        <li>Wide Receiver</li>
-        <li>Graduate Student</li>
-        <li>Everett, Massachusetts</li>
-        <li>Previously Boston College</li>
-      </ul>
-      <div class="ish-ctas">
-        <a class="ish-btn ish-btn--go" href="/assessment">Take the Athlete Check <span aria-hidden="true">&rarr;</span></a>
-        <a class="ish-btn ish-btn--ghost" href="/advocate#apply-k1l2">Become an Advocate</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-  <!-- ============================== MISSION ============================== -->
-  <section class="sec sec--white">
     <div class="shell">
-      <div class="sec__head up">
-        <span class="lane">Our mission</span>
-        <h2 class="d">Know where you stand</h2>
-      </div>
-      <div class="mission__grid up">
+      <p class="pa-eyebrow">
+        <span>A note for parents</span><i>/</i>
+        <span>The Athlete Check</span><i>/</i>
+        <span>College readiness</span>
+      </p>
+      <div class="pa-hero__in">
         <div>
-          <p class="lead">
-            The Athlete Check is a readiness and identity platform created by student athletes, for
-            student athletes. Founded by Luke Stenson and Wyatt Porch, both Division I athletes, the
-            platform was born out of the IronMind Summer Internship Program — a high performance
-            environment built around identity, leadership, and personal development.
+          <h1 class="d pa-title">Send them ready.</h1>
+          <div class="hero__ctas">
+            <a class="btn btn--go" href="tel:+14048311961">Call Kenny directly <span class="arw">&rarr;</span></a>
+            <a class="btn btn--ghost" href="/score">See the College Readiness Score</a>
+          </div>
+          <p class="pa-sub">The first conversation is a conversation, not a pitch.</p>
+        </div>
+        <div class="pa-intro">
+          <p>
+            You have spent eighteen years getting your child to this point. The applications, the
+            early mornings, the tuition conversations, the hard ones. Here is what nobody tells
+            you: <b>the acceptance letter proves they can do the work. It does not prove they are
+            ready to live it.</b>
+          </p>
+          <p>
+            In under a year they will be somewhere else, with nobody making them go to anything.
+            No study hall, no ride home, no one noticing when they stop showing up. That is the
+            part no transcript measures and no campus tour explains.
+          </p>
+          <p>
+            What follows is who I am, exactly what I do with your son or daughter, what they walk
+            away holding, and what it costs.
           </p>
         </div>
-        <div>
-          <p class="mission__quote">Help athletes see where they truly stand — and get ready for what comes next.</p>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================== PILLARS ============================== -->
-  <section class="sec">
-    <div class="shell">
-      <div class="sec__head up">
-        <span class="lane">What we do</span>
-        <h2 class="d">Three ways we move you</h2>
-      </div>
-      <div class="cards">
-        <article class="card up">
-          <svg class="card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-            <circle cx="24" cy="24" r="19" stroke="#002856" stroke-width="3"/>
-            <circle cx="24" cy="24" r="10" stroke="#002856" stroke-width="3"/>
-            <circle cx="24" cy="24" r="3.5" fill="#BA0C2F"/>
-          </svg>
-          <p class="lane">Assess</p>
-          <h3>Know your edge</h3>
-          <p>A readiness assessment that shows you exactly where you stand — mentally, physically, and professionally.</p>
-        </article>
-        <article class="card up">
-          <svg class="card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-            <path d="M26 4 11 27h10l-3 17 19-24H26l4-16Z" fill="#BA0C2F" stroke="#002856" stroke-width="2.5" stroke-linejoin="round"/>
-          </svg>
-          <p class="lane">Train</p>
-          <h3>IronMind mentality</h3>
-          <p>Train your mind like your body. Build the toughness, identity, and resilience to compete at every level of life.</p>
-        </article>
-        <article class="card up">
-          <svg class="card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-            <path d="M8 40 40 8" stroke="#002856" stroke-width="3" stroke-linecap="round"/>
-            <path d="M26 8h14v14" stroke="#002856" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M8 30h9M8 36h16" stroke="#002856" stroke-width="3" stroke-linecap="round"/>
-          </svg>
-          <p class="lane">Transform</p>
-          <h3>Prepare for what's next</h3>
-          <p>Carry your athletic identity into every room you walk into — from the locker room to the interview room.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================== FOUNDERS ============================== -->
+  <!-- ============================== WHY ============================== -->
   <section class="sec sec--white">
     <div class="shell">
-      <div class="sec__head up">
-        <span class="lane">The founders</span>
-        <h2 class="d">Built by athletes, for athletes</h2>
-      </div>
-      <p class="lead up" style="margin:-14px 0 34px;">
-        The Athlete Check was created by Division I athletes who lived the experience firsthand.
+      <p class="pa-num">01 &mdash; Why I built this</p>
+      <h2 class="d pa-h2">I looked unstoppable. I was falling apart.</h2>
+      <p class="lead" style="margin:0 0 18px;">
+        I graduated from The Citadel in 1997 and walked straight into cybersecurity during one of
+        the most explosive stretches in tech history. By 24 I was a millionaire. For the next 27
+        years I chased the next promotion, the next quota, and every other external marker
+        corporate America hands you as proof that you matter.
       </p>
-      <div class="founders">
-        <figure class="fig up" style="margin:0;">
-          <div class="fig__img"><img src="/images/luke-stenson-action.jpg" alt="Luke Stenson in a Marist football uniform on the sideline"></div>
-          <figcaption class="fig__plate">
-            <div>
-              <h3>Luke Stenson</h3>
-              <p>Co-Founder &middot; Division I Football<br>IronMind Summer Internship alumnus</p>
-            </div>
-            <span class="fig__num" aria-hidden="true">01</span>
-          </figcaption>
-        </figure>
-        <figure class="fig up" style="margin:0;">
-          <div class="fig__img"><img src="/images/wyatt-porch-action.jpg" alt="Wyatt Porch in cap and goggles on the pool deck"></div>
-          <figcaption class="fig__plate">
-            <div>
-              <h3>Wyatt Porch</h3>
-              <p>Co-Founder &middot; Division I Swimming<br>IronMind Summer Internship alumnus</p>
-            </div>
-            <span class="fig__num" aria-hidden="true">02</span>
-          </figcaption>
-        </figure>
+      <p class="lead" style="margin:0 0 18px;">
+        The higher I climbed, the less I recognised myself. I got very good at wearing what I now
+        call the Superman cape &mdash; composed, capable, crushing it in every meeting, while
+        privately dealing with depression, burnout, and a body that was breaking down. I believed
+        asking for help was the one thing a leader could never do. Eventually the pressure caught
+        up with me and I lost nearly everything.
+      </p>
+      <p class="lead" style="margin:0 0 18px;">
+        What I found underneath the burnout was the real problem: I had lost my identity.
+        Rebuilding took what Ironman racing takes &mdash; a plan, daily reps, and people who would
+        not let me quit. I have since finished ten Ironman races and beaten Stage 3 prostate
+        cancer. I earned my MBA from The Citadel&rsquo;s Baker School of Business, and I am
+        completing my Master&rsquo;s in Clinical Mental Health Counseling at Liberty University,
+        because I wanted real clinical training behind the lived experience before I ever coached
+        anyone through theirs.
+      </p>
+      <p class="lead" style="margin:0;">
+        Nobody reached me at eighteen. That is the entire reason this exists.
+      </p>
+      <div class="pa-creds"><div class="pa-cred"><p class="v">10&times;</p><p class="l">Ironman<br>finisher</p></div><div class="pa-cred"><p class="v">27 yrs</p><p class="l">Executive<br>leadership</p></div><div class="pa-cred"><p class="v">Stage 3</p><p class="l">Cancer<br>survivor</p></div><div class="pa-cred"><p class="v">MA-CMHC</p><p class="l">Clinical mental health<br>counseling &middot; Liberty &rsquo;26</p></div><div class="pa-cred"><p class="v">Citadel</p><p class="l">BSBA &rsquo;97<br>MBA &rsquo;24</p></div></div>
+    </div>
+  </section>
+
+  <section class="pa-quote">
+    <div class="shell">
+      <p>I am trying to reach your son or daughter 25 years earlier than anyone reached me.</p>
+      <cite>Kenny Stoddart &middot; Founder &amp; CEO, IronMind Advisors</cite>
+    </div>
+  </section>
+
+  <!-- ============================== WHAT I DO ============================== -->
+  <section class="sec">
+    <div class="shell">
+      <p class="pa-num">02 &mdash; What I actually do with your child</p>
+      <h2 class="d pa-h2">Four steps. No mystery about any of them.</h2>
+      <p class="lead" style="margin:0 0 28px;">
+        This is the part most programmes keep vague. I would rather you read it in full before we
+        ever speak, so the first call is about your child and not about what the thing is.
+      </p>
+      <div class="pa-steps"><article class="pa-step"><p class="tag">Step 01</p><h3>I get to know them</h3><p>Before anything is measured, we talk. A call with you first, then a call with your son or daughter on their own. I want to hear how they describe their own life &mdash; what they think they are good at, what they are avoiding, what they actually want from the next four years as opposed to what they have been told to want.</p><p>No money changes hands until I am confident this is a fit. If it is not, I will tell you that on the first call and we part well.</p></article><article class="pa-step"><p class="tag">Step 02</p><h3>The Athlete Check</h3><p>They take the College Readiness Score &mdash; forty questions across eight domains, scored out of 1,000, with a level on the ladder and a breakdown of every domain.</p><p>This is the honest baseline. It is not a personality quiz and it is not designed to flatter anyone. It tells us where the strength actually sits and which two or three things are worth the next ninety days.</p></article><article class="pa-step"><p class="tag">Step 03</p><h3>The system</h3><p>Three months of work built on the score, not on a generic curriculum. Your young person gets both halves of how I coach:</p><ul><li>Direct one-to-one time with me &mdash; not a course, not a portal, not a chatbot with my face on it.</li><li>A small cohort of other students doing the same hard work at the same time. At this age, the peer group does as much of the work as I do.</li><li>A 90-day plan built around the domains that move fastest from where they are.</li><li>The five pillars &mdash; discipline, resilience, consistency, accountability, and community.</li></ul></article><article class="pa-step"><p class="tag">Step 04</p><h3>The sign-off</h3><p>At the end, we sit down &mdash; you, them, and me &mdash; and I give you my honest read. If they have done the work and they are ready, I certify it in writing.</p><p>If they are not there yet, I will say so plainly and tell you what is still missing. A certification I hand out regardless of the work is worth nothing to anybody.</p></article></div>
+    </div>
+  </section>
+
+  <!-- ============================== CERTIFICATION ============================== -->
+  <section class="sec sec--white">
+    <div class="shell">
+      <p class="pa-num">03 &mdash; What they walk away holding</p>
+      <h2 class="d pa-h2">A certification with my name on it.</h2>
+      <div class="pa-cert">
+        <p class="mark">Certified College Ready</p>
+        <p class="by">Issued by IronMind Advisors &middot; The Athlete Check</p>
+        <p>
+          A written certification stating that your son or daughter has completed the College
+          Readiness Score, done the ninety days of work, and reached a standard I am willing to
+          put my name against. It travels with them &mdash; something to hand a coach, an
+          admissions officer, or a first employer alongside a transcript that only says what they
+          know.
+        </p>
+        <p>
+          <b>Let me be straight about what this is.</b> It is not accredited by a university, an
+          athletic association, or a licensing board, and I will never imply otherwise. It carries
+          exactly as much weight as my name carries with the person reading it &mdash; which is
+          precisely why I will not sign one that is not true.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== INVESTMENT ============================== -->
+  <section class="sec">
+    <div class="shell">
+      <p class="pa-num">04 &mdash; The investment</p>
+      <h2 class="d pa-h2">What it costs, and why it costs that.</h2>
+      <p class="lead" style="margin:0 0 26px;">
+        Let me be straight with you: this is not a financial move for me. But without commitment
+        nothing works &mdash; not training, not coaching, not mentorship. The number exists to
+        create commitment, not revenue. And at this age that first commitment has to come from
+        you, which is the whole reason this is framed as a gift.
+      </p>
+      <div class="pa-price">
+        <div>
+          <p class="big">$2,500</p>
+          <p class="cap">Three months of concierge coaching<br>plus the cohort</p>
+        </div>
+        <div>
+          <p class="big">$250<span style="font-size:.4em"> / month</span></p>
+          <p class="cap">Optional thereafter<br>community membership</p>
+        </div>
+      </div>
+      <ul class="pa-covers"><li><b>My time.</b> Direct, concierge-level coaching from me across the three months.</li><li><b>The cohort.</b> A peer group of other college-bound students doing the same work at the same time.</li><li><b>The assessment.</b> The College Readiness Score, scored and read back to them in full.</li><li><b>The plan.</b> A 90-day roadmap built around their actual domain scores.</li><li><b>My network.</b> Real introductions and access &mdash; the thing young people need most and get least.</li><li><b>The certification.</b> Issued at the end, if and only if the work has been done.</li></ul>
+      <div class="pa-callout">
+        <h4>The investment is fully refundable</h4>
+        <p>
+          If you call me at any point and say &ldquo;Kenny, we want a different path&rdquo; &mdash;
+          here comes your money. No argument, no retention pitch, no hard feelings. I mean that
+          literally.
+        </p>
+        <p>
+          I have to put a price on this because it costs money to deliver and I am running a
+          business. But I do not want the number to be the reason a young person who needs this
+          does not get it. If it is the obstacle, call me. We will talk.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PARENT TO PARENT ============================== -->
+  <section class="sec sec--white">
+    <div class="shell">
+      <p class="pa-num">Parent to parent</p>
+      <h2 class="d pa-h2">Three things you should know before you call.</h2>
+      <div class="pa-callout" style="margin:0 0 18px;">
+        <h4>I will hold them to a standard</h4>
+        <p>
+          I will not co-sign excuses. If your son or daughter brings me complaints disconnected
+          from growth, I will redirect them. That is not a lack of care &mdash; it is the opposite,
+          and it is the whole reason this works.
+        </p>
+      </div>
+      <div class="pa-callout" style="margin:0 0 18px;">
+        <h4>This is coaching, not therapy</h4>
+        <p>
+          I am completing clinical training and I am not your child&rsquo;s counselor. What I do is
+          mentorship and coaching. If something surfaces that belongs with a licensed clinician, I
+          will tell you plainly and help you find the right person &mdash; I will not quietly work
+          around it.
+        </p>
+      </div>
+      <div class="pa-callout" style="margin:0;">
+        <h4>You are not on the outside of this</h4>
+        <p>
+          We start with a call with you and we finish with a sit-down that includes you. Your young
+          person needs room to be honest with me, and you need to know how it is going. Those two
+          things are not in conflict, and I will tell you at the start exactly how I balance them.
+        </p>
       </div>
     </div>
   </section>
 
   <!-- ============================== CLOSE ============================== -->
   <section class="close">
-    <div class="close__stripes" aria-hidden="true"></div>
-    <div class="shell close__in">
-      <p class="lane" style="color:var(--ink); margin:0;">Start line</p>
-      <h2 class="d">Ready to know <em>where you stand?</em></h2>
-      <p>Take the Athlete Check and start preparing for the next level.</p>
-      <a class="btn btn--ongold" href="/assessment">Take the Check now <span class="arw">&rarr;</span></a>
+    <div class="shell">
+      <p class="lane" style="margin:0 0 14px;">Let&rsquo;s talk</p>
+      <h2 class="d">Your child doesn&rsquo;t have to figure this out the way I did.</h2>
+      <p class="lead" style="color:#24333F; margin:22px 0 28px; max-width:58ch;">
+        The first conversation is a conversation, not a pitch. Call me directly &mdash; I would
+        rather answer your questions myself than have you decide from a page.
+      </p>
+      <div class="hero__ctas">
+        <a class="btn btn--ongold" href="tel:+14048311961">Call 404-831-1961 <span class="arw">&rarr;</span></a>
+      </div>
     </div>
   </section>
-</main>
 
+  <section class="sec sec--white">
+    <div class="shell">
+      <div class="pa-contact">
+        <div><p class="k">Email</p><p class="v"><a href="mailto:kenny@ironmindadvisors.com">kenny@ironmindadvisors.com</a></p></div>
+        <div><p class="k">Phone</p><p class="v"><a href="tel:+14048311961">404-831-1961</a></p></div>
+        <div><p class="k">Web</p><p class="v"><a href="https://ironmindadvisors.com">ironmindadvisors.com</a></p></div>
+        <div><p class="k">Based in</p><p class="v">Jacksonville Beach, FL</p></div>
+      </div>
+      <p class="pa-sign">
+        &mdash; Kenny Stoddart &middot; Founder &amp; CEO, IronMind Advisors &middot;
+        Jon Gordon Certified Trainer &middot; Creator of the Identity Gain OS&trade;
+      </p>
+    </div>
+  </section>
+
+</main>
 <!-- ============================== FOOTER ============================== -->
 <footer class="foot">
   <div class="shell">
