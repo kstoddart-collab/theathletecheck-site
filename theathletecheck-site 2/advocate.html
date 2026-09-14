@@ -33,6 +33,7 @@ body: ['"Inter"', 'sans-serif'],
 };
 </script>
 <script src="https://unpkg.com/lucide@latest" defer=""></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
@@ -730,6 +731,7 @@ The strongest muscle is the mind.<br data-id="93">Be the reason another athlete 
 SUBMIT MY APPLICATION
 <i data-id="203" data-lucide="arrow-right" class="w-5 h-5"></i>
 </button>
+<p class="text-red-400 text-xs text-center hidden" id="err-submit-r3s3"></p>
 </div>
 </form>
 </div>
@@ -862,6 +864,44 @@ observer.observe(el);
 const form = document.getElementById('advocate-form-u7v8');
 const formCard = document.getElementById('form-card-s5t6');
 const successState = document.getElementById('success-state-s3t3');
+const submitErr = document.getElementById('err-submit-r3s3');
+
+// ===== EMAILJS (same account/service as assessment.html) =====
+// Template "Advocate Application" in the EmailJS dashboard uses the
+// variable names sent in sendApplication() below.
+const EMAILJS_PUBLIC_KEY = 'uOKlxkuTvvG_oTXoM';
+const EMAILJS_SERVICE = 'service_rqkabua';
+const EMAILJS_ADVOCATE_TEMPLATE = 'template_advocate_app';
+if (typeof emailjs !== 'undefined') emailjs.init(EMAILJS_PUBLIC_KEY);
+
+function fieldVal(id) {
+const el = document.getElementById(id);
+return el ? el.value.trim() : '';
+}
+
+function sendApplication() {
+if (typeof emailjs === 'undefined') {
+return Promise.reject(new Error('EmailJS SDK failed to load'));
+}
+const firstName = fieldVal('firstName-w9x0');
+const lastName = fieldVal('lastName-c2d2');
+return emailjs.send(EMAILJS_SERVICE, EMAILJS_ADVOCATE_TEMPLATE, {
+from_name: (firstName + ' ' + lastName).trim(),
+first_name: firstName,
+last_name: lastName,
+reply_to: fieldVal('email-g4h4'),
+phone: fieldVal('phone-k6l6') || 'Not provided',
+school: fieldVal('school-m7n7'),
+sport: fieldVal('sport-q9r9'),
+year: fieldVal('year-u1v1'),
+platform: fieldVal('platform-y3z3') || 'Not provided',
+handle: fieldVal('handle-a4b4') || 'Not provided',
+why: fieldVal('why-c5d5'),
+ironmind: fieldVal('ironmind-g7h7'),
+help: fieldVal('help-k9l9') || 'Not provided',
+submitted_at: new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })
+});
+}
 
 // Validation config
 const requiredFields = [
@@ -952,9 +992,13 @@ return;
 }
 
 // Get first name for personalized success message
-const firstNameVal = document.getElementById('firstName-w9x0').value.trim();
+const firstNameVal = fieldVal('firstName-w9x0');
 
-// Show success state
+// Send the application, then show the success state
+if (submitErr) { submitErr.textContent = ''; submitErr.classList.add('hidden'); }
+if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.6'; }
+
+sendApplication().then(function() {
 if (formCard) formCard.classList.add('hidden');
 if (successState) {
 successState.classList.remove('hidden');
@@ -965,23 +1009,17 @@ successName.textContent = 'Thank You, ' + firstNameVal + '!';
 // Re-initialize lucide icons for the success state
 if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
 lucide.createIcons();
-  // Send results email
-  emailjs.send('service_rqkabua', 'template_38yv0ev', {
-    to_name: userName || 'Athlete',
-    overall_score: allPct + '%',
-    tier_label: tier.label,
-    tier_desc: tier.desc,
-    readiness_pct: getPillarPct('readiness') + '%',
-    clarity_pct: getPillarPct('clarity') + '%',
-    transition_pct: getPillarPct('transition') + '%'
-  }).then(function() {
-    console.log('Results email sent!');
-  }).catch(function(err) {
-    console.error('Email failed:', err);
-  });
 }
 successState.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
+}).catch(function(err) {
+console.error('Application email failed:', err);
+if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ''; }
+if (submitErr) {
+submitErr.textContent = 'Something went wrong sending your application. Please try again, or email us directly.';
+submitErr.classList.remove('hidden');
+}
+});
 });
 }
 
