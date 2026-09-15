@@ -273,6 +273,31 @@ body.tac-nav-offset{padding-top:69px}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=JetBrains+Mono:wght@500;700&display=swap">
 </head>
 <body class="tac-nav-offset" data-id="0">
+
+<!-- Hidden form so Netlify detects "advocate-applications" at build time. Every
+     application is captured server-side and an email notification is sent on
+     each submission (Project configuration > Notifications). Submitted via
+     AJAX from the form below. This is the reliable path: unlike the
+     client-only EmailJS call, it does not depend on a third-party
+     account/template being configured correctly. -->
+<form hidden="" method="post" name="advocate-applications">
+<input type="hidden" name="form-name" value="advocate-applications">
+<input name="bot-field">
+<input name="first_name">
+<input name="last_name">
+<input name="email">
+<input name="phone">
+<input name="school">
+<input name="sport">
+<input name="year">
+<input name="platform">
+<input name="handle">
+<textarea name="why"></textarea>
+<textarea name="ironmind"></textarea>
+<textarea name="help"></textarea>
+<input name="submitted_at">
+</form>
+
 <!-- ===== SHARED SITE HEADER ===== -->
 <nav class="tac-navbar" id="tac-navbar">
   <div class="tac-nav-inner">
@@ -903,6 +928,37 @@ submitted_at: new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyl
 });
 }
 
+// Reliable, server-side capture + owner email notification via Netlify Forms.
+// Runs in parallel with the EmailJS send so an application is never lost if
+// the EmailJS template or account is misconfigured.
+function submitApplicationToNetlify() {
+const data = {
+'form-name': 'advocate-applications',
+first_name: fieldVal('firstName-w9x0'),
+last_name: fieldVal('lastName-c2d2'),
+email: fieldVal('email-g4h4'),
+phone: fieldVal('phone-k6l6') || 'Not provided',
+school: fieldVal('school-m7n7'),
+sport: fieldVal('sport-q9r9'),
+year: fieldVal('year-u1v1'),
+platform: fieldVal('platform-y3z3') || 'Not provided',
+handle: fieldVal('handle-a4b4') || 'Not provided',
+why: fieldVal('why-c5d5'),
+ironmind: fieldVal('ironmind-g7h7'),
+help: fieldVal('help-k9l9') || 'Not provided',
+submitted_at: new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })
+};
+
+return fetch('/', {
+method: 'POST',
+headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+body: new URLSearchParams(data).toString()
+}).then(function(r) {
+if (!r.ok) throw new Error('Netlify Forms returned ' + r.status);
+return r;
+});
+}
+
 // Validation config
 const requiredFields = [
 { id: 'firstName-w9x0', errId: 'err-fn-a1b1', msg: 'First name is required.' },
@@ -998,7 +1054,32 @@ const firstNameVal = fieldVal('firstName-w9x0');
 if (submitErr) { submitErr.textContent = ''; submitErr.classList.add('hidden'); }
 if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.6'; }
 
-sendApplication().then(function() {
+// Fire both paths. The application counts as received if EITHER the
+// server-side Netlify capture or the EmailJS notification succeeds.
+Promise.allSettled([
+submitApplicationToNetlify(),
+sendApplication()
+]).then(function(results) {
+const netlifyResult = results[0];
+const emailResult = results[1];
+
+if (netlifyResult.status === 'rejected') {
+console.error('Netlify Forms capture failed:', netlifyResult.reason);
+}
+if (emailResult.status === 'rejected') {
+console.error('EmailJS notification failed:', emailResult.reason);
+}
+
+// Both paths failed — the application was not recorded anywhere.
+if (netlifyResult.status === 'rejected' && emailResult.status === 'rejected') {
+if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ''; }
+if (submitErr) {
+submitErr.textContent = 'Something went wrong sending your application. Please try again, or email us directly.';
+submitErr.classList.remove('hidden');
+}
+return;
+}
+
 if (formCard) formCard.classList.add('hidden');
 if (successState) {
 successState.classList.remove('hidden');
@@ -1011,13 +1092,6 @@ if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
 lucide.createIcons();
 }
 successState.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-}).catch(function(err) {
-console.error('Application email failed:', err);
-if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ''; }
-if (submitErr) {
-submitErr.textContent = 'Something went wrong sending your application. Please try again, or email us directly.';
-submitErr.classList.remove('hidden');
 }
 });
 });
