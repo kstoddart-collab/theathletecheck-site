@@ -57,6 +57,21 @@ html, body { margin: 0; padding: 0; background: #EDF1F3; overflow-x: hidden; }
 .tier-emerging { background: linear-gradient(135deg, #BA0C2F, #8E0924); border: 1px solid #8E0924; }
 .off-white { background: #EDF1F3; }
 .bg-off-white { background-color: #EDF1F3; }
+/* ===== Meet Coach Kenny card ===== */
+.ck-card{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;display:block;max-width:460px;margin:28px auto 0;text-align:left;background:#002856;color:#fff;border-radius:18px;overflow:hidden;box-shadow:0 14px 34px rgba(0,40,86,.22);border-bottom:4px solid #BA0C2F}
+.ck-card-top{display:flex;align-items:center;gap:14px;padding:16px 16px 14px;text-decoration:none;color:#fff}
+.ck-card-top img{width:64px;height:64px;flex:0 0 64px;border-radius:50%;object-fit:cover;object-position:50% 12%;border:3px solid #EDAE17}
+.ck-card-kicker{display:block;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:.62rem;font-weight:700;letter-spacing:.18em;color:#A9C0D2;text-transform:uppercase}
+.ck-card-name{display:block;font-size:1.3rem;font-weight:800;line-height:1.15}
+.ck-card-sub{display:block;font-size:.8rem;color:#D3DEEA;line-height:1.3;margin-top:2px}
+.ck-card-arrow{margin-left:auto;font-size:1.4rem;color:#EDAE17;flex:0 0 auto}
+.ck-card-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 16px 16px}
+.ck-card-btns a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border-radius:12px;color:#fff;text-decoration:none;font-weight:700;font-size:.95rem;transition:transform .15s ease,filter .15s ease}
+.ck-card-btns a:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.ck-card-btns svg{width:22px;height:22px}
+.ck-card-wa{background:#1FAF55}
+.ck-card-ig{background:linear-gradient(45deg,#F58529 0%,#DD2A7B 45%,#8134AF 75%,#515BD4 100%)}
+.ck-inline-link{display:inline-block;margin-top:14px;font-weight:700;color:#002856;text-decoration:underline;text-underline-offset:3px}
 /* Scrollable results */
 #view-results { overflow-y: auto; }
 
@@ -279,6 +294,18 @@ Begin My Assessment →
 </button>
 <!-- Tagline -->
 <p class="text-muted/40 text-xs mt-6 tracking-widest uppercase" style="color:#002856">Forged in Identity. Built for Impact.</p>
+<!-- Meet Coach Kenny -->
+<div class="ck-card">
+<a class="ck-card-top" href="/coach-kenny">
+<img src="/images/coach-kenny-stage.jpg" alt="Coach Kenny Stoddart">
+<span><span class="ck-card-kicker">Questions? Talk to a coach</span><span class="ck-card-name">Meet Coach Kenny</span><span class="ck-card-sub">Mental strength &amp; leadership coach</span></span>
+<span class="ck-card-arrow" aria-hidden="true">→</span>
+</a>
+<div class="ck-card-btns">
+<a class="ck-card-wa" href="https://wa.me/14048311961?text=Hi%20Coach%20Kenny%2C%20I%20just%20took%20The%20Athlete%20Check." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg>WhatsApp</a>
+<a class="ck-card-ig" href="https://www.instagram.com/ironmindkenny/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4a3.8 3.8 0 0 1-1.4-.9 3.8 3.8 0 0 1-.9-1.4c-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 4.9a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8zm0 8.1a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.1-9.4a1.1 1.1 0 1 0 0 2.3 1.1 1.1 0 0 0 0-2.3z"/></svg>Instagram</a>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -440,6 +467,18 @@ IronMind for Student Athletes exists to prepare you for exactly what this assess
 <a href="https://ironmindadvisors.com" target="_blank" class="inline-block bg-steel hover:bg-steel-light text-white font-bold py-4 px-10 rounded-lg transition-all hover:shadow-[0_0_24px_rgba(53,118,181,0.35)] text-base">
 Learn About IronMind →
 </a>
+<!-- Meet Coach Kenny -->
+<div class="ck-card">
+<a class="ck-card-top" href="/coach-kenny">
+<img src="/images/coach-kenny-stage.jpg" alt="Coach Kenny Stoddart">
+<span><span class="ck-card-kicker">Questions? Talk to a coach</span><span class="ck-card-name">Meet Coach Kenny</span><span class="ck-card-sub">Mental strength &amp; leadership coach</span></span>
+<span class="ck-card-arrow" aria-hidden="true">→</span>
+</a>
+<div class="ck-card-btns">
+<a class="ck-card-wa" href="https://wa.me/14048311961?text=Hi%20Coach%20Kenny%2C%20I%20just%20took%20The%20Athlete%20Check." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg>WhatsApp</a>
+<a class="ck-card-ig" href="https://www.instagram.com/ironmindkenny/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4a3.8 3.8 0 0 1-1.4-.9 3.8 3.8 0 0 1-.9-1.4c-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 4.9a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8zm0 8.1a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.1-9.4a1.1 1.1 0 1 0 0 2.3 1.1 1.1 0 0 0 0-2.3z"/></svg>Instagram</a>
+</div>
+</div>
 <p class="text-muted/40 text-xs mt-8 tracking-widest uppercase" style="color:#002856">Forged in Identity. Built for Impact.</p>
 </div>
 </section>

@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Meet Coach Kenny — The Athlete Check™</title>
+  <meta name="description" content="Meet Coach Kenny Stoddart, mental strength and leadership coach at The Athlete Check. Reach him on WhatsApp or Instagram." />
+  <meta property="og:title" content="Meet Coach Kenny — The Athlete Check" />
+  <meta property="og:description" content="Mental strength and leadership coach for athletes at every level. Message Coach Kenny on WhatsApp or Instagram." />
+  <meta property="og:image" content="https://www.theathletecheck.com/images/coach-kenny-stage.jpg" />
+  <meta name="theme-color" content="#002856" />
+<style>
+:root{--navy:#002856;--navy2:#003A7A;--red:#BA0C2F;--blue:#3D7CC9;--gold:#EDAE17;--bg:#EDF1F3;--card:#FFFFFF;--line:#D8DFE1;--muted:#4E5A66}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--navy);font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;line-height:1.55;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.ck-wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 20px}
+.ck-kicker{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.ck-display{font-family:'Archivo','Arial Narrow',Impact,sans-serif;font-style:italic;font-weight:900;font-stretch:72%;font-variation-settings:"wdth" 72,"wght" 900;text-transform:uppercase;line-height:.92;letter-spacing:-.005em;margin:0}
+
+/* hero */
+.ck-hero{background:var(--navy);color:#fff;padding:28px 0 36px;position:relative;overflow:hidden}
+.ck-hero:after{content:"";position:absolute;inset:auto 0 0 0;height:5px;background:var(--red)}
+.ck-hero-grid{display:grid;grid-template-columns:1fr;gap:24px;align-items:center}
+.ck-photo{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;max-height:300px;background:#0B3A70;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.ck-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.ck-photo-tag{position:absolute;left:12px;bottom:12px;background:rgba(0,40,86,.88);color:#fff;border-radius:999px;padding:6px 12px;font-size:.72rem;font-weight:700;letter-spacing:.08em}
+.ck-hero .ck-kicker{color:#A9C0D2;margin-bottom:10px}
+.ck-hero h1{font-size:clamp(3.4rem,15vw,6.4rem);color:#fff}
+.ck-hero h1 b{color:var(--gold);font-weight:inherit}
+.ck-role{font-size:1.05rem;font-weight:700;margin:12px 0 6px}
+.ck-lede{color:#D3DEEA;font-size:1rem;margin:0 0 20px;max-width:520px}
+
+/* contact buttons */
+.ck-actions{display:grid;grid-template-columns:1fr;gap:10px}
+.ck-btn{display:flex;align-items:center;gap:14px;min-height:60px;padding:12px 16px;border-radius:14px;text-decoration:none;transition:transform .15s ease,filter .15s ease;-webkit-tap-highlight-color:transparent}
+.ck-btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.ck-btn:active{transform:scale(.98)}
+.ck-btn svg{width:28px;height:28px;flex:0 0 28px}
+.ck-btn span{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+.ck-btn strong{font-size:1.02rem}
+.ck-btn small{font-size:.8rem;opacity:.9;overflow-wrap:anywhere}
+.ck-wa{background:#1FAF55;color:#fff}
+.ck-ig{background:linear-gradient(45deg,#F58529 0%,#DD2A7B 45%,#8134AF 75%,#515BD4 100%);color:#fff}
+.ck-plain{background:#fff;color:var(--navy);border:1.5px solid var(--line)}
+.ck-hero .ck-plain{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.22)}
+
+/* stats */
+.ck-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:-18px auto 0;position:relative;z-index:2}
+.ck-stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px;box-shadow:0 8px 24px rgba(0,40,86,.08)}
+.ck-stat .ck-display{font-size:2.1rem;color:var(--navy)}
+.ck-stat p{margin:4px 0 0;font-size:.82rem;color:var(--muted);line-height:1.35}
+
+/* sections */
+.ck-section{padding:44px 0 8px}
+.ck-section h2{font-size:clamp(2.1rem,8vw,3rem);color:var(--navy);margin-bottom:14px}
+.ck-section h2 b{color:var(--red);font-weight:inherit}
+.ck-section .ck-kicker{color:var(--blue);margin-bottom:8px}
+.ck-p{font-size:1.02rem;color:#23303F;margin:0 0 14px;max-width:680px}
+
+/* photo strip: swipe on phones */
+.ck-strip{display:grid;grid-auto-flow:column;grid-auto-columns:78%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:20px;padding:4px 20px 14px;margin:0 -20px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.ck-strip::-webkit-scrollbar{display:none}
+.ck-shot{scroll-snap-align:start;background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.ck-shot img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.ck-shot div{padding:12px 14px;border-top:4px solid var(--red)}
+.ck-shot strong{display:block;font-size:1rem}
+.ck-shot small{color:var(--muted);font-size:.82rem}
+.ck-hint{font-size:.78rem;color:var(--muted);margin:2px 0 0}
+
+/* levels + credentials */
+.ck-levels{display:grid;grid-template-columns:1fr;gap:10px}
+.ck-level{background:#fff;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:12px;padding:14px 16px}
+.ck-level .ck-kicker{color:var(--red);margin:0 0 4px;font-size:.68rem}
+.ck-level p{margin:0;font-size:.98rem}
+.ck-creds{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ck-creds li{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.96rem}
+.ck-creds li:before{content:"";flex:0 0 10px;height:10px;margin-top:7px;border-radius:50%;background:var(--red)}
+
+/* quote + contact card */
+.ck-quote{margin:40px 0 0;background:var(--navy);color:#fff;border-radius:18px;padding:26px 22px;border-left:6px solid var(--gold)}
+.ck-quote p{margin:0;font-size:1.25rem;font-weight:700;line-height:1.35}
+.ck-contact{margin:40px 0 48px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 20px;box-shadow:0 12px 32px rgba(0,40,86,.08)}
+.ck-contact h2{font-size:clamp(2.2rem,9vw,3rem);margin-bottom:8px}
+.ck-note{font-size:.86rem;color:var(--muted);margin:14px 0 0}
+.ck-note strong{color:var(--navy)}
+.ck-crisis{font-size:.84rem;color:var(--muted);margin:10px 0 0;padding:10px 12px;background:#F4F6F8;border-radius:10px}
+
+/* sticky bottom bar on phones */
+.ck-sticky{position:fixed;left:0;right:0;bottom:0;z-index:900;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(237,241,243,.97);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .25s ease}
+.ck-sticky.show{transform:none}
+.ck-sticky a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border-radius:12px;color:#fff;text-decoration:none;font-weight:700;font-size:.98rem}
+.ck-sticky svg{width:22px;height:22px}
+body.ck-page{padding-bottom:78px}
+
+@media (min-width:560px){
+  .ck-actions.ck-two{grid-template-columns:1fr 1fr}
+  .ck-stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .ck-levels{grid-template-columns:1fr 1fr}
+}
+@media (min-width:860px){
+  .ck-hero{padding:56px 0 64px}
+  .ck-hero-grid{grid-template-columns:1.25fr .9fr;gap:48px}
+  .ck-photo{order:2;aspect-ratio:4/5;max-height:520px}
+  .ck-photo img{object-position:50% 12%}
+  .ck-strip{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);grid-auto-columns:auto;overflow:visible;margin:0;padding:4px 0 0}
+  .ck-hint{display:none}
+  .ck-two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .ck-contact{padding:40px}
+  .ck-sticky{display:none}
+  body.ck-page{padding-bottom:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+<style>
+
+.tac-brand-type{line-height:1;text-decoration:none;display:block}
+.tac-wm{display:block;font-family:'Archivo','Arial Narrow',Impact,sans-serif;font-style:italic;font-weight:900;font-stretch:68%;font-variation-settings:"wdth" 68,"wght" 900;text-transform:uppercase;font-size:1.6rem;line-height:.9;color:#002856;letter-spacing:.01em;white-space:nowrap}
+.tac-wm b{color:#3D7CC9;font-weight:inherit}
+.tac-sub{display:block;margin-top:5px;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:.5rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#575856}
+@media (max-width:430px){.tac-wm{font-size:1.28rem}.tac-sub{font-size:.45rem;letter-spacing:.18em}}
+/* Mirrors the homepage nav exactly. Every property is declared explicitly so the
+   header renders identically on pages that do not load Tailwind or its reset. */
+.tac-navbar,.tac-navbar *,.tac-navbar *::before,.tac-navbar *::after{box-sizing:border-box}
+.tac-navbar{position:fixed;top:0;left:0;right:auto;bottom:auto;width:100%;z-index:1000;margin:0;padding:0;background:rgba(237,241,243,0.94);border:0;border-bottom:1px solid #D8DFE1;box-shadow:none;backdrop-filter:none;text-align:left;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-nav-inner{width:100%;max-width:80rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:0;padding:0.75rem 1.25rem}
+.tac-nav-brand{flex:0 0 auto;display:block;padding:0;margin:0;border:0;background:none;line-height:0;text-decoration:none}
+.tac-nav-logo{display:block;height:44px;width:auto;max-width:none;min-width:0;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none;object-fit:contain}
+.tac-nav-links{display:none;align-items:center;gap:2rem}
+.tac-nav-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-style:normal;font-size:1.125rem;line-height:1.75rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;color:#002856;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-nav-link:hover{color:#BA0C2F;text-decoration:none}
+.tac-nav-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1rem;line-height:1.5rem;letter-spacing:0.1em;text-transform:none;white-space:nowrap;display:inline-block;color:#ffffff;text-decoration:none;background:#002856;padding:0.5rem 1.5rem;margin:0;border:0;border-radius:0.25rem;box-shadow:none;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-nav-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
+.tac-nav-toggle,.tac-nav-close{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;width:auto;height:auto;padding:0.5rem;margin:0;background:none;border:0;border-radius:0;color:#002856;cursor:pointer;line-height:0;-webkit-appearance:none;appearance:none}
+.tac-nav-toggle svg,.tac-nav-close svg{display:block;width:28px;height:28px}
+.tac-mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1001;flex-direction:column;background:#002856;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-mobile-menu.tac-open{display:flex}
+.tac-mobile-top{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid rgba(123,173,211,0.35)}
+.tac-mobile-links{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1 1 0%;gap:2rem;padding:0;margin:0}
+.tac-mobile-link{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.875rem;line-height:2.25rem;letter-spacing:0.1em;text-transform:none;color:#ffffff;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-mobile-link:hover{color:#EDAE17;text-decoration:none}
+.tac-mobile-cta{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:1.25rem;line-height:1.75rem;letter-spacing:0.1em;display:inline-block;color:#ffffff;text-decoration:none;background:#002856;padding:0.75rem 2rem;margin:1rem 0 0;border:0;border-radius:0.25rem;transition:filter 0.2s ease,transform 0.2s ease}
+.tac-mobile-cta:hover{filter:brightness(1.15);transform:translateY(-2px);color:#ffffff;text-decoration:none}
+@media (min-width:1250px){
+  .tac-nav-links{display:flex;gap:0.8rem;flex-wrap:nowrap}
+  .tac-nav-link{font-size:0.9375rem;letter-spacing:0.06em}
+  .tac-nav-cta{font-size:0.875rem;letter-spacing:0.06em;padding:0.5rem 1.125rem}
+  .tac-nav-toggle{display:none}
+}
+/* Keeps page content clear of the fixed header (44px logo + 2x12px padding + 1px border). */
+body.tac-nav-offset{padding-top:69px}
+
+/* ===== SHARED SITE FOOTER — every property explicit so it renders the same everywhere ===== */
+.tac-footer,.tac-footer *,.tac-footer *::before,.tac-footer *::after{box-sizing:border-box}
+.tac-footer{display:block;width:100%;margin:0;padding:60px 20px 40px;background:#002856;border:0;border-top:1px solid rgba(123,173,211,0.3);color:#FFFFFF;text-align:center;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.tac-footer-inner{width:100%;max-width:56rem;margin:0 auto;padding:0}
+.tac-footer-logo{display:block;height:56px;width:auto;max-width:100%;margin:0 auto 24px;padding:0;border:0;background:none;object-fit:contain}
+.tac-footer-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0.5rem 1rem;margin:0 0 24px;padding:0}
+.tac-footer-nav a{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-size:0.875rem;font-weight:500;line-height:1.4;letter-spacing:0.02em;color:#A9C0D2;text-decoration:none;background:none;transition:color 0.2s ease}
+.tac-footer-nav a:hover{color:#EDAE17;text-decoration:none}
+.tac-footer-tag{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.875rem;line-height:1.5;letter-spacing:0.15em;color:#EDF1F3;margin:0 0 4px;padding:0}
+.tac-footer-tag2{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.75rem;line-height:1.5;letter-spacing:0.1em;color:#A9C0D2;margin:0 0 20px;padding:0}
+.tac-footer-cta{font-family:'Bebas Neue',Impact,sans-serif;font-size:0.9375rem;letter-spacing:0.12em;color:#EDAE17;text-decoration:none;display:inline-block;margin:0 0 24px;padding:0}
+.tac-footer-cta:hover{color:#FFFFFF;text-decoration:none}
+.tac-footer-legal{font-size:0.75rem;line-height:1.6;color:#8FA8BC;margin:0 0 6px;padding:0}
+.tac-footer-founders{font-size:0.75rem;line-height:1.6;color:#8FA8BC;margin:0;padding:0}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=JetBrains+Mono:wght@500;700&display=swap">
+</head>
+
+<body class="tac-nav-offset ck-page">
+
+<!-- ===== SHARED SITE HEADER ===== -->
+<nav class="tac-navbar" id="tac-navbar">
+  <div class="tac-nav-inner">
+    <a class="tac-nav-brand tac-brand-type" href="/" aria-label="The Athlete Check — home">
+      <span class="tac-wm">THE ATHLETE <b>CHECK</b></span>
+      <span class="tac-sub">AN IRONMIND COMPANY</span>
+    </a>
+    <div class="tac-nav-links">
+      <a class="tac-nav-link" href="/registration">REGISTRATION</a><a class="tac-nav-link" href="/about">ABOUT</a>
+      <a class="tac-nav-link" href="/assessment">ASSESSMENT</a>
+      <a class="tac-nav-link" href="/advocate">ADVOCATE</a>
+      <a class="tac-nav-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-nav-link" href="/performanceblueprint">BLUEPRINT</a>
+      <a class="tac-nav-link" href="/courses">COURSES</a>
+      <a class="tac-nav-link" href="/proudmoment">PROUD MOMENT</a>
+      <a class="tac-nav-cta" href="/assessment">TAKE THE CHECK</a>
+    </div>
+    <button class="tac-nav-toggle" id="tac-nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="tac-mobile-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="tac-mobile-menu" id="tac-mobile-menu">
+    <div class="tac-mobile-top">
+      <img class="tac-nav-logo" src="/athlete-check-logo-white.png" alt="The Athlete Check" style="height:52px">
+      <button class="tac-nav-close" id="tac-nav-close" type="button" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+    </div>
+    <div class="tac-mobile-links">
+      <a class="tac-mobile-link" href="/registration">REGISTRATION</a><a class="tac-mobile-link" href="/about">ABOUT</a>
+      <a class="tac-mobile-link" href="/assessment">ASSESSMENT</a>
+      <a class="tac-mobile-link" href="/advocate">ADVOCATE</a>
+      <a class="tac-mobile-link" href="/coaches">COACHES/ADS</a>
+      <a class="tac-mobile-link" href="/performanceblueprint">BLUEPRINT</a>
+      <a class="tac-mobile-link" href="/courses">COURSES</a>
+      <a class="tac-mobile-link" href="/proudmoment">PROUD MOMENT</a><a class="tac-mobile-link" href="/score">COLLEGE READINESS SCORE</a><a class="tac-mobile-link" href="/parents">FOR PARENTS</a>
+      <a class="tac-mobile-cta" href="/assessment">TAKE THE CHECK</a>
+    </div>
+  </div>
+</nav>
+<script>
+/* Shared site header: mobile menu toggle + scroll background, self-contained. */
+(function () {
+  var toggle = document.getElementById('tac-nav-toggle');
+  var menu = document.getElementById('tac-mobile-menu');
+  var closeBtn = document.getElementById('tac-nav-close');
+
+  if (toggle && menu && closeBtn) {
+    var openMenu = function () {
+      menu.classList.add('tac-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+    var closeMenu = function () {
+      menu.classList.remove('tac-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    toggle.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    Array.prototype.forEach.call(menu.querySelectorAll('a'), function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  var bar = document.getElementById('tac-navbar');
+  if (bar) {
+    window.addEventListener('scroll', function () {
+      bar.style.background = window.scrollY > 80 ? 'rgba(237, 241, 243, 0.99)' : 'rgba(237, 241, 243, 0.94)';
+    });
+  }
+})();
+</script>
+
+
+<main>
+
+<section class="ck-hero">
+  <div class="ck-wrap ck-hero-grid">
+    <div class="ck-photo"><img src="/images/coach-kenny-stage.jpg" alt="Coach Kenny Stoddart speaking on stage in a Find Your IronMind shirt"><span class="ck-photo-tag">MENTAL STRENGTH &amp; LEADERSHIP</span></div>
+    <div>
+      <div class="ck-kicker">Meet your coach</div>
+      <h1 class="ck-display">Coach<br><b>Kenny</b></h1>
+      <p class="ck-role">Kenny Stoddart · Mental Strength &amp; Leadership Coach</p>
+      <p class="ck-lede">I coach the part of the game you can't see: focus, confidence, composure and leadership. Got a question about your Athlete Check or your game? Reach out.</p>
+      <div class="ck-actions ck-two">
+      <a class="ck-btn ck-wa" href="https://wa.me/14048311961?text=Hi%20Coach%20Kenny%2C%20I%20found%20you%20on%20The%20Athlete%20Check." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg><span><strong>WhatsApp</strong><small>Message Coach Kenny</small></span></a>
+      <a class="ck-btn ck-ig" href="https://www.instagram.com/ironmindkenny/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4a3.8 3.8 0 0 1-1.4-.9 3.8 3.8 0 0 1-.9-1.4c-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 4.9a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8zm0 8.1a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.1-9.4a1.1 1.1 0 1 0 0 2.3 1.1 1.1 0 0 0 0-2.3z"/></svg><span><strong>Instagram</strong><small>@ironmindkenny</small></span></a>
+      <a class="ck-btn ck-plain" href="sms:+14048311961"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span><strong>Text</strong><small>(404) 831-1961</small></span></a>
+      <a class="ck-btn ck-plain" href="mailto:kenny@ironmindadvisors.com?subject=Question%20for%20Coach%20Kenny"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span><strong>Email</strong><small>kenny@ironmindadvisors.com</small></span></a>
+    </div>
+    </div>
+  </div>
+</section>
+
+<div class="ck-wrap">
+  <div class="ck-stats">
+    <div class="ck-stat"><div class="ck-display">10×</div><p>Ironman finisher</p></div>
+    <div class="ck-stat"><div class="ck-display">XTERRA</div><p>World Championship racer</p></div>
+    <div class="ck-stat"><div class="ck-display">Stage 3</div><p>Cancer survivor</p></div>
+    <div class="ck-stat"><div class="ck-display">27 yrs</div><p>Leading high-pressure teams</p></div>
+  </div>
+
+  <section class="ck-section">
+    <div class="ck-kicker">Who I am</div>
+    <h2 class="ck-display">The part of the game <b>you can't see</b></h2>
+    <p class="ck-p">I'm a mental strength and leadership coach and the founder of The Athlete Check, an IronMind company. I help athletes stay locked in when the game gets loud, bounce back fast from a bad play, build confidence they can count on, and lead the people around them.</p>
+    <p class="ck-p">I compete too. I've finished ten Ironman races, raced the XTERRA World Championship, and beat Stage 3 cancer along the way. I know what it takes to keep going when your body and your mind both want to stop.</p>
+  </section>
+
+  <div class="ck-strip" aria-label="Photos of Coach Kenny">
+    <figure class="ck-shot" style="margin:0"><img src="/images/coach-kenny-cadet.jpg" alt="Kenny Stoddart as a cadet at The Citadel" loading="lazy"><div><strong>The Cadet</strong><small>The Citadel · Class of 1997</small></div></figure>
+    <figure class="ck-shot" style="margin:0"><img src="/images/coach-kenny-xterra.jpg" alt="Kenny Stoddart running the XTERRA World Championship" loading="lazy" style="object-position:50% 15%"><div><strong>The Competitor</strong><small>XTERRA World Championship</small></div></figure>
+    <figure class="ck-shot" style="margin:0"><img src="/images/coach-kenny-mba.jpg" alt="Kenny Stoddart in graduation robes at The Citadel" loading="lazy" style="object-position:50% 30%"><div><strong>The Graduate</strong><small>The Citadel · MBA 2024</small></div></figure>
+  </div>
+  <p class="ck-hint">Swipe for more →</p>
+
+  <section class="ck-section ck-two-col">
+    <div>
+      <div class="ck-kicker">Who I work with</div>
+      <h2 class="ck-display">Every <b>level</b></h2>
+      <div class="ck-levels">
+        <div class="ck-level"><div class="ck-kicker">Professional</div><p>Mental strength for professional athletes and endurance racers.</p></div>
+        <div class="ck-level"><div class="ck-kicker">College</div><p>Mental performance work with The Citadel football program.</p></div>
+        <div class="ck-level"><div class="ck-kicker">High school</div><p>Team leadership programs at top high schools in the Southeast.</p></div>
+        <div class="ck-level"><div class="ck-kicker">Amateur</div><p>Club and endurance athletes, the world I still race in myself.</p></div>
+      </div>
+    </div>
+    <div>
+      <div class="ck-kicker">Credentials</div>
+      <h2 class="ck-display">The <b>résumé</b></h2>
+      <ul class="ck-creds">
+        <li>The Citadel, BSBA 1997 and MBA 2024</li>
+        <li>Completing a Master's in Clinical Mental Health Counseling, Liberty University</li>
+        <li>Jon Gordon Certified Trainer</li>
+        <li>Founder, The Athlete Check and IronMind Advisors; creator of the Identity Gain OS™</li>
+        <li>27 years leading teams in cybersecurity</li>
+        <li>Top 100 Most Influential Entrepreneurs, 2025</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="ck-quote"><p>Talent gets you on the field. What happens between your ears decides what you do once you're there.</p></div>
+
+  <section class="ck-contact" id="contact">
+    <div class="ck-kicker" style="color:var(--blue)">Let's talk</div>
+    <h2 class="ck-display">Reach <b>Coach Kenny</b></h2>
+    <p class="ck-p">Questions about your results, your game or what's next? Send a message. Parents are always welcome to reach out too.</p>
+    <div class="ck-actions ck-two">
+      <a class="ck-btn ck-wa" href="https://wa.me/14048311961?text=Hi%20Coach%20Kenny%2C%20I%20found%20you%20on%20The%20Athlete%20Check." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg><span><strong>WhatsApp</strong><small>Message Coach Kenny</small></span></a>
+      <a class="ck-btn ck-ig" href="https://www.instagram.com/ironmindkenny/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4a3.8 3.8 0 0 1-1.4-.9 3.8 3.8 0 0 1-.9-1.4c-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 4.9a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8zm0 8.1a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.1-9.4a1.1 1.1 0 1 0 0 2.3 1.1 1.1 0 0 0 0-2.3z"/></svg><span><strong>Instagram</strong><small>@ironmindkenny</small></span></a>
+      <a class="ck-btn ck-plain" href="sms:+14048311961"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span><strong>Text</strong><small>(404) 831-1961</small></span></a>
+      <a class="ck-btn ck-plain" href="mailto:kenny@ironmindadvisors.com?subject=Question%20for%20Coach%20Kenny"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span><strong>Email</strong><small>kenny@ironmindadvisors.com</small></span></a>
+    </div>
+    <p class="ck-note"><strong>Under 18?</strong> Please include a parent or guardian when you reach out.</p>
+    <p class="ck-crisis">Coaching isn't emergency help. If you or a teammate are struggling right now, call or text <strong>988</strong> anytime, or call <strong>911</strong> in an emergency.</p>
+  </section>
+</div>
+
+</main>
+
+<div class="ck-sticky" id="ck-sticky" aria-label="Quick contact">
+  <a class="ck-wa" href="https://wa.me/14048311961?text=Hi%20Coach%20Kenny%2C%20I%20found%20you%20on%20The%20Athlete%20Check." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg>WhatsApp</a>
+  <a class="ck-ig" href="https://www.instagram.com/ironmindkenny/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4a3.8 3.8 0 0 1-1.4-.9 3.8 3.8 0 0 1-.9-1.4c-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 4.9a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8zm0 8.1a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.1-9.4a1.1 1.1 0 1 0 0 2.3 1.1 1.1 0 0 0 0-2.3z"/></svg>Instagram</a>
+</div>
+
+<!-- ===== SHARED SITE FOOTER ===== -->
+<footer class="tac-footer">
+  <div class="tac-footer-inner">
+    <a href="/"><img class="tac-footer-logo" src="/athlete-check-logo-white.png" alt="The Athlete Check" style="height:76px"></a>
+    <nav class="tac-footer-nav">
+      <a href="/">Home</a>
+      <a href="/registration">Registration</a>
+      <a href="/about">About</a>
+      <a href="/assessment">Assessment</a>
+      <a href="/advocate">Advocate</a>
+      <a href="/coaches">Coaches/ADs</a>
+      <a href="/performanceblueprint">Blueprint</a>
+      <a href="/courses">Courses</a>
+      <a href="/proudmoment">Proud Moment</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <a class="tac-footer-cta" href="/advocate">JOIN THE MOVEMENT — THEATHLETECHECK.COM/ADVOCATE</a>
+    <p class="tac-footer-tag">TEST. TRAIN. TRANSFORM.</p>
+    <p class="tac-footer-tag2">POWERED BY IRONMIND · BUILT FOR MORE</p>
+    <p class="tac-footer-legal">© 2026 The Athlete Check · TheAthleteCheck.com · All Rights Reserved</p>
+    <p class="tac-footer-founders">Founded by Luke Stenson &amp; Wyatt Porch</p>
+  </div>
+</footer>
+<script>
+(function(){var t=document.getElementById('navToggle'),l=document.getElementById('navLinks');if(t&&l){t.addEventListener('click',function(){var o=l.classList.toggle('open');t.setAttribute('aria-expanded',o);});l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){l.classList.remove('open');t.setAttribute('aria-expanded','false');});});}})();
+</script>
+<script>
+(function(){
+  var bar=document.getElementById('ck-sticky'),hero=document.querySelector('.ck-hero'),contact=document.getElementById('contact');
+  if(!bar||!hero)return;
+  function upd(){
+    var past=hero.getBoundingClientRect().bottom<0;
+    var r=contact?contact.getBoundingClientRect():null;
+    var atContact=r&&r.top<window.innerHeight&&r.bottom>0;
+    bar.classList.toggle('show',past&&!atContact);
+  }
+  window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd();
+})();
+</script>
+</body>
+</html>
