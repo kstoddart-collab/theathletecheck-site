@@ -351,6 +351,35 @@ a:focus-visible, button:focus-visible{
 .foot__fine{ display:flex; flex-wrap:wrap; gap:6px 20px; font-size:.8rem; color:#8FA8BC; }
 
 /* ---- Reveal -------------------------------------------------------------- */
+/* ---- Meet Coach Kenny ---------------------------------------------------- */
+.coach{ display:grid; grid-template-columns:1fr; gap:26px; align-items:center; }
+.coach__photo{ position:relative; border-radius:18px; overflow:hidden; aspect-ratio:4/3; max-height:320px; background:var(--royal); box-shadow:8px 8px 0 var(--volt); }
+.coach__photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 6%; }
+.coach__tag{ position:absolute; left:12px; bottom:12px; background:rgba(0,40,86,.9); color:#fff; border-radius:999px; padding:6px 12px; font-family:var(--mono); font-size:.66rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+.coach__name{ font-family:var(--display); font-style:italic; font-weight:900; font-stretch:72%; font-variation-settings:"wdth" 72,"wght" 900; text-transform:uppercase; line-height:.92; font-size:clamp(3rem,11vw,5.2rem); margin:6px 0 10px; color:var(--ink); }
+.coach__name em{ color:var(--ember); font-style:inherit; }
+.coach__role{ font-weight:700; margin:0 0 6px; }
+.coach .lead{ margin:0 0 20px; }
+.coach__btns{ display:grid; grid-template-columns:1fr; gap:10px; }
+.coach__btn{ display:flex; align-items:center; gap:14px; min-height:60px; padding:12px 16px; border-radius:14px; text-decoration:none; transition:transform .15s ease, filter .15s ease; -webkit-tap-highlight-color:transparent; }
+.coach__btn:hover{ transform:translateY(-2px); filter:brightness(1.06); }
+.coach__btn:active{ transform:scale(.98); }
+.coach__btn svg{ width:28px; height:28px; flex:0 0 28px; }
+.coach__btn span{ display:flex; flex-direction:column; line-height:1.2; min-width:0; }
+.coach__btn strong{ font-size:1.02rem; }
+.coach__btn small{ font-size:.8rem; opacity:.92; overflow-wrap:anywhere; }
+.coach__btn--wa{ background:#1FAF55; color:#fff; }
+.coach__btn--ig{ background:linear-gradient(45deg,#F58529 0%,#DD2A7B 45%,#8134AF 75%,#515BD4 100%); color:#fff; }
+.coach__btn--plain{ background:var(--paper-2); color:var(--ink); border:1.5px solid var(--rule); }
+.coach__more{ display:inline-block; margin-top:18px; font-weight:700; color:var(--ink); text-underline-offset:4px; }
+.coach__note{ margin:10px 0 0; font-size:.86rem; color:var(--ink-soft); }
+@media (min-width:600px){ .coach__btns{ grid-template-columns:1fr 1fr; } }
+@media (min-width:900px){
+  .coach{ grid-template-columns:.85fr 1.15fr; gap:56px; }
+  .coach__photo{ aspect-ratio:4/5; max-height:520px; }
+  .coach__photo img{ object-position:50% 12%; }
+}
+
 .up{ opacity:0; transform: translateY(26px); transition: opacity .6s ease, transform .6s ease; }
 .up.in{ opacity:1; transform:none; }
 
@@ -624,6 +653,33 @@ a:focus-visible, button:focus-visible{
             <span class="fig__num" aria-hidden="true">02</span>
           </figcaption>
         </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== MEET COACH KENNY ============================== -->
+  <section class="sec" id="coach-kenny">
+    <div class="shell">
+      <div class="sec__head up">
+        <span class="lane">Get in touch</span>
+        <h2 class="d">Questions? Talk to a coach</h2>
+      </div>
+      <div class="coach">
+        <div class="coach__photo up"><img src="/images/coach-kenny-stage.jpg" alt="Coach Kenny Stoddart speaking on stage" loading="lazy"><span class="coach__tag">Mental strength &amp; leadership</span></div>
+        <div class="up">
+          <p class="lane" style="color:var(--ink-soft); margin:0;">Kenny Stoddart</p>
+          <p class="coach__name">Coach <em>Kenny</em></p>
+          <p class="coach__role">Mental Strength &amp; Leadership Coach</p>
+          <p class="lead">I coach the part of the game you can't see: focus, confidence, composure and leadership. Questions about your Athlete Check or your game? Reach out.</p>
+          <div class="coach__btns">
+            <a class="coach__btn coach__btn--wa" href="https://wa.me/14048311961?text=Hi%20Coach%20Kenny%2C%20I%20found%20you%20on%20The%20Athlete%20Check." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg><span><strong>WhatsApp</strong><small>Message Coach Kenny</small></span></a>
+            <a class="coach__btn coach__btn--ig" href="https://www.instagram.com/ironmindkenny/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4a3.8 3.8 0 0 1-1.4-.9 3.8 3.8 0 0 1-.9-1.4c-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 4.9a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8zm0 8.1a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.1-9.4a1.1 1.1 0 1 0 0 2.3 1.1 1.1 0 0 0 0-2.3z"/></svg><span><strong>Instagram</strong><small>@ironmindkenny</small></span></a>
+            <a class="coach__btn coach__btn--plain" href="sms:+14048311961"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span><strong>Text</strong><small>(404) 831-1961</small></span></a>
+            <a class="coach__btn coach__btn--plain" href="mailto:kenny@ironmindadvisors.com?subject=Question%20for%20Coach%20Kenny"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span><strong>Email</strong><small>kenny@ironmindadvisors.com</small></span></a>
+          </div>
+          <p class="coach__note">Under 18? Please include a parent or guardian when you reach out.</p>
+          <a class="coach__more" href="/coach-kenny">More about Coach Kenny &rarr;</a>
+        </div>
       </div>
     </div>
   </section>
