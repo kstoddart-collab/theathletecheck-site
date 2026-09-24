@@ -359,6 +359,31 @@ form.ws p.hp{display:none}
 .topbar .lg-dog{width:38px;border-radius:0}
 .sechead .secmark{display:block;position:absolute;right:0;top:0;width:60px;height:54px}
 @media (max-width:560px){.sechead .secmark{width:46px;height:42px}}
+
+/* ---------- leaders statement ---------- */
+.leaders{background:var(--panel);color:#dbe4f2;border-radius:8px;padding:20px;margin:24px 0}
+.leaders .l{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#f3a766;font-weight:800;margin-bottom:8px}
+.leaders h2{margin:0 0 10px;font-size:21px;color:#fff}
+.leaders p{margin:0 0 10px;font-size:16px;color:#c9d6e8;line-height:1.55}
+.leaders p:last-child{margin-bottom:0}
+.leaders strong{color:#fff}
+
+.btns a.ig{flex:1 1 100%;text-align:center;background:#fff;color:var(--panel);border:2px solid var(--steel)}
+.btns a.ig::before{content:"\1F4F7";margin-right:8px}
+.sitefoot .ig2{display:block;margin-top:8px;font-weight:700;color:var(--panel);text-decoration:none}
+
+/* ---------- reading list ---------- */
+.reading{border-top:1px solid var(--hairline);margin-top:34px;padding-top:24px}
+.reading .l{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:800;margin-bottom:6px}
+.reading h2{margin:0 0 6px;font-size:22px;color:var(--panel)}
+.reading .sub{font-size:15px;color:var(--muted);margin:0 0 16px}
+.book{border:1px solid var(--rule);border-left:4px solid var(--steel);border-radius:8px;padding:16px 18px;margin:12px 0}
+.book h3{margin:0 0 2px;font-size:17px;color:var(--panel)}
+.book .by{font-size:14px;color:var(--muted);margin:0 0 8px;font-weight:700}
+.book p{margin:0;font-size:15px;line-height:1.55}
+.hero .jump{margin:14px 0 0;font-size:15px}
+.hero .jump a{color:var(--panel);font-weight:800;text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:2px}
+.reading{scroll-margin-top:76px}
 </style>
 </head>
 <body>
@@ -388,8 +413,21 @@ form.ws p.hp{display:none}
     <div class="btns">
       <a class="o" href="sms:+14048311961">Text Coach Kenny</a>
       <a class="s" href="https://wa.me/14048311961">WhatsApp</a>
-      <a class="s" href="https://instagram.com/ironmindkenny">@ironmindkenny</a>
     </div>
+    <div class="btns">
+      <a class="ig" href="https://instagram.com/ironmindkenny" target="_blank" rel="noopener">Follow @ironmindkenny on Instagram</a>
+    </div>
+    <p class="jump"><a href="#reading">What I'm reading on leadership →</a></p>
+  </div>
+
+
+  <div class="leaders">
+    <div class="l">A resource for leaders</div>
+    <h2>This page belongs to the leaders.</h2>
+    <p>This is not a team handout. It was built for the senior leadership group, and <strong>the only people
+      contributing to it are the leaders</strong> — the guys doing the work, filling in the sheets, and sending
+      their answers in. Nothing shows up here by default. It shows up because someone decided to lead.</p>
+    <p>If you are reading this, you are one of them. Act like it.</p>
   </div>
 
   <div class="callout">
@@ -1626,10 +1664,44 @@ form.ws p.hp{display:none}
 </details>
   </div>
 
+
+  <div class="reading" id="reading">
+    <div class="l">What I'm reading</div>
+    <h2>On my nightstand</h2>
+    <p class="sub">If you want to know where this material comes from, start here. Read one, then come tell me
+      what you think of it — that conversation is worth more than the book.</p>
+
+    <div class="book">
+      <h3>No One Wins Alone</h3>
+      <p class="by">Mark Messier</p>
+      <p>Six Stanley Cups, and the book is about the room, not the stats. Messier writes about what a captain
+        actually does — setting a standard, handling the teammate who isn't pulling his weight, carrying a
+        group when the season gets long. If you read one of these, read this one.</p>
+    </div>
+
+    <div class="book">
+      <h3>The Power of a Positive Team</h3>
+      <p class="by">Jon Gordon</p>
+      <p>Where the 11 Thoughts came from. Short, practical, and the source of the language we use in these
+        sessions: energy, unity, the standard, We &gt; me. I'm a Jon Gordon Certified Trainer, so you'll hear
+        this one from me all season.</p>
+    </div>
+
+    <div class="book">
+      <h3>The Body Keeps the Score</h3>
+      <p class="by">Bessel van der Kolk, M.D.</p>
+      <p>This one comes from my counseling work, not the locker room, and it is a heavy read. It explains how
+        stress and hard experiences live in the body, and why "just get over it" has never worked for anyone.
+        If you or someone you care about is carrying something, this is the book that made it make sense to me.
+        Take your time with it, and bring me your questions.</p>
+    </div>
+  </div>
+
   <div class="sitefoot">
     <p><b>IronMind Elite × The Bolles School Bulldogs Lacrosse.</b> A program of IronMind Advisors ·
       Kenny Stoddart, Founder &amp; CEO · Jacksonville Beach, FL ·
-      <a href="https://ironmindadvisors.com">ironmindadvisors.com</a></p>
+      <a href="https://ironmindadvisors.com">ironmindadvisors.com</a>
+      <a class="ig2" href="https://instagram.com/ironmindkenny" target="_blank" rel="noopener">Follow the work on Instagram — @ironmindkenny</a></p>
     <p>This page is for educational and coaching purposes and is not licensed clinical care, medical, legal or
       financial advice. If you are in crisis, call or text 988.</p>
   </div>
