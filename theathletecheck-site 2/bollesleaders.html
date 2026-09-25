@@ -384,6 +384,34 @@ form.ws p.hp{display:none}
 .hero .jump{margin:14px 0 0;font-size:15px}
 .hero .jump a{color:var(--panel);font-weight:800;text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:2px}
 .reading{scroll-margin-top:76px}
+
+/* ---------- quick poll ---------- */
+.poll{border:1px solid var(--rule);border-top:4px solid var(--red);border-radius:8px;padding:18px;margin:24px 0}
+.poll .l{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:800;margin-bottom:6px}
+.poll h2{margin:0 0 4px;font-size:21px;color:var(--panel)}
+.poll .sub{font-size:14px;color:var(--muted);margin:0 0 14px}
+.poll .opts{display:grid;gap:8px;margin-bottom:12px}
+.poll label.opt{display:flex;align-items:center;gap:10px;border:1px solid var(--rule);border-radius:8px;padding:12px 14px;font-size:16px;font-weight:700;color:var(--panel);cursor:pointer;background:#fff}
+.poll label.opt:has(input:checked){border-color:var(--steel);background:var(--tint2);box-shadow:0 0 0 2px rgba(47,86,160,.12)}
+.poll input[type=radio]{width:20px;height:20px;accent-color:#2f56a0;margin:0}
+.poll .f{margin:12px 0}
+.poll label.fl{display:block;font-size:14px;font-weight:700;color:var(--panel);margin-bottom:6px}
+.poll input[type=text]{width:100%;font:inherit;font-size:16px;padding:11px 12px;border:1px solid var(--rule);border-radius:6px;background:#fbfcfe;color:var(--ink)}
+.poll button{width:100%;font:inherit;font-size:16px;font-weight:800;padding:14px;border:0;border-radius:8px;background:var(--panel);color:#fff;cursor:pointer;margin-top:4px}
+.poll .sent{margin:12px 0 0;font-size:15px;font-weight:700;color:var(--red)}
+.poll p.hp{display:none}
+
+.poll .bars{display:grid;gap:10px;margin-top:4px}
+.poll .bar{border:1px solid var(--hairline);border-radius:8px;padding:10px 12px;background:#fff}
+.poll .bar .top{display:flex;justify-content:space-between;font-size:15px;font-weight:700;color:var(--panel);margin-bottom:6px}
+.poll .bar .top span.n{color:var(--muted);font-weight:800}
+.poll .bar .track{height:10px;border-radius:999px;background:var(--tint2);overflow:hidden}
+.poll .bar .fill{height:100%;background:var(--steel);border-radius:999px;transition:width .4s ease}
+.poll .bar.mine{border-color:var(--steel);background:var(--tint3)}
+.poll .bar.mine .fill{background:var(--red)}
+.poll .tot{margin:12px 0 0;font-size:14px;color:var(--muted);font-weight:700}
+.poll .others{margin:8px 0 0;font-size:14px;color:var(--body);line-height:1.5}
+.poll .pollmsg{margin:12px 0 0;font-size:15px;font-weight:700;color:var(--red)}
 </style>
 </head>
 <body>
@@ -428,6 +456,35 @@ form.ws p.hp{display:none}
       contributing to it are the leaders</strong> — the guys doing the work, filling in the sheets, and sending
       their answers in. Nothing shows up here by default. It shows up because someone decided to lead.</p>
     <p>If you are reading this, you are one of them. Act like it.</p>
+  </div>
+
+
+  <div class="poll" id="poll">
+    <div class="l">Quick question</div>
+    <h2>Who is your favorite sports leader?</h2>
+    <p class="sub">Anonymous — no name needed. Results show as soon as you vote.</p>
+
+    <div id="pollVote">
+      <div class="opts">
+        <label class="opt"><input type="radio" name="leader" value="Aaron Judge">Aaron Judge</label>
+        <label class="opt"><input type="radio" name="leader" value="Lionel Messi">Lionel Messi</label>
+        <label class="opt"><input type="radio" name="leader" value="Michael Jordan">Michael Jordan</label>
+        <label class="opt"><input type="radio" name="leader" value="Derek Jeter">Derek Jeter</label>
+        <label class="opt"><input type="radio" name="leader" value="Other">Other</label>
+      </div>
+      <div class="f" id="otherWrap" hidden>
+        <label class="fl" for="pollOther">Who?</label>
+        <input id="pollOther" type="text" maxlength="60" placeholder="Name them here">
+      </div>
+      <button type="button" id="pollSend">Send my answer</button>
+      <p class="pollmsg" id="pollMsg" hidden></p>
+    </div>
+
+    <div id="pollResults" hidden>
+      <div class="bars" id="pollBars"></div>
+      <p class="tot" id="pollTotal"></p>
+      <p class="others" id="pollOthers" hidden></p>
+    </div>
   </div>
 
   <div class="callout">
@@ -1717,7 +1774,7 @@ function showTab(which){
   document.getElementById('tabWs').setAttribute('aria-selected', which==='ws');
   window.scrollTo({top:0,behavior:'instant'});
 }
-document.querySelectorAll('form.ws').forEach(function(f){
+document.querySelectorAll('form.ws, form.poll-form').forEach(function(f){
   f.addEventListener('submit', function(e){
     e.preventDefault();
     var btn = f.querySelector('button'), note = f.querySelector('.sent');
@@ -1729,11 +1786,93 @@ document.querySelectorAll('form.ws').forEach(function(f){
         f.reset(); note.hidden = false; btn.textContent = 'Sent';
       })
       .catch(function(){
-        btn.disabled = false; btn.textContent = 'Send to Coach Kenny';
+        btn.disabled = false; btn.textContent = f.classList.contains('poll-form') ? 'Send my answer' : 'Send to Coach Kenny';
         note.hidden = false; note.textContent = "That didn't send. Check your signal and try again, or text me at 404-831-1961.";
       });
   });
 });
+</script>
+<script>
+(function(){
+  var VOTE_URL = '/.netlify/functions/vote';
+  var KEY = 'bolles-poll-vote';
+  var wrap = document.getElementById('poll');
+  if(!wrap) return;
+  var voteBox = document.getElementById('pollVote');
+  var resBox = document.getElementById('pollResults');
+  var barsEl = document.getElementById('pollBars');
+  var totalEl = document.getElementById('pollTotal');
+  var othersEl = document.getElementById('pollOthers');
+  var msg = document.getElementById('pollMsg');
+  var btn = document.getElementById('pollSend');
+  var otherWrap = document.getElementById('otherWrap');
+  var otherInput = document.getElementById('pollOther');
+  var mine = null;
+  try { mine = localStorage.getItem(KEY); } catch(e) {}
+
+  wrap.addEventListener('change', function(e){
+    if(e.target.name === 'leader'){
+      otherWrap.hidden = e.target.value !== 'Other';
+    }
+  });
+
+  function render(data){
+    var counts = data.counts || {};
+    var total = data.total || 0;
+    barsEl.innerHTML = '';
+    Object.keys(counts).forEach(function(name){
+      var n = counts[name] || 0;
+      var pct = total ? Math.round(n * 100 / total) : 0;
+      var div = document.createElement('div');
+      div.className = 'bar' + (name === mine ? ' mine' : '');
+      div.innerHTML = '<div class="top"><span>' + name + (name === mine ? ' — your pick' : '') +
+                      '</span><span class="n">' + n + ' · ' + pct + '%</span></div>' +
+                      '<div class="track"><div class="fill" style="width:' + pct + '%"></div></div>';
+      barsEl.appendChild(div);
+    });
+    totalEl.textContent = total === 1 ? '1 vote so far.' : total + ' votes so far.';
+    var others = (data.others || []).slice(-12);
+    if(others.length){
+      othersEl.hidden = false;
+      othersEl.innerHTML = '<strong>Also named:</strong> ' + others.join(' · ');
+    } else {
+      othersEl.hidden = true;
+    }
+    voteBox.hidden = true;
+    resBox.hidden = false;
+  }
+
+  function load(){
+    fetch(VOTE_URL, {headers:{'accept':'application/json'}})
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(render)
+      .catch(function(){ voteBox.hidden = false; resBox.hidden = true; });
+  }
+
+  if(mine) load();
+
+  btn.addEventListener('click', function(){
+    var picked = wrap.querySelector('input[name="leader"]:checked');
+    if(!picked){ msg.hidden = false; msg.textContent = 'Pick one first.'; return; }
+    msg.hidden = true;
+    btn.disabled = true; btn.textContent = 'Sending…';
+    fetch(VOTE_URL, {
+      method: 'POST',
+      headers: {'content-type':'application/json'},
+      body: JSON.stringify({choice: picked.value, other: otherInput.value || ''})
+    })
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(data){
+        mine = picked.value;
+        try { localStorage.setItem(KEY, mine); } catch(e) {}
+        render(data);
+      })
+      .catch(function(){
+        btn.disabled = false; btn.textContent = 'Send my answer';
+        msg.hidden = false; msg.textContent = "That didn't send. Check your signal and try again.";
+      });
+  });
+})();
 </script>
 </body>
 </html>
