@@ -39,12 +39,8 @@ document.body.insertAdjacentHTML('afterbegin', `
          onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#ffffff'">HOME</a>
       <a href="assessment.html" style="color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s;"
          onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#ffffff'">ASSESSMENT</a>
-      <a href="coaches.html" style="color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s;"
-         onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#ffffff'">COACHES/ADS</a>
       <a href="courses.html" style="color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s;"
          onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#ffffff'">COURSES</a>
-      <a href="proudmoment.html" style="color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s;"
-         onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#ffffff'">PROUD MOMENT</a>
       <a href="about.html" style="color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s;"
          onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#ffffff'">ABOUT</a>
     </div>
