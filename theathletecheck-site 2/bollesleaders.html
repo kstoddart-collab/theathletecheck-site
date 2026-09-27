@@ -459,14 +459,14 @@ form.ws p.hp{display:none}
     <div class="reel" id="reel">
       <div class="vcard" data-id="d2jIP82PWQI" data-title="Kobe Bryant on mental toughness">
         <div class="frame">
-          <img class="thumb" src="https://i.ytimg.com/vi/d2jIP82PWQI/oardefault.jpg" alt="Kobe Bryant on mental toughness" loading="lazy">
+          <img class="thumb" src="https://i.ytimg.com/vi/d2jIP82PWQI/oar2.jpg" alt="Kobe Bryant on mental toughness" loading="lazy">
           <button class="play" type="button" aria-label="Play: Kobe Bryant on mental toughness"></button>
         </div>
         <p class="vt">Kobe Bryant on mental toughness</p>
       </div>
       <div class="vcard" data-id="_1uVSv5r8Vc" data-title="This Is How Champions Build Habits">
         <div class="frame">
-          <img class="thumb" src="https://i.ytimg.com/vi/_1uVSv5r8Vc/oardefault.jpg" alt="This Is How Champions Build Habits" loading="lazy">
+          <img class="thumb" src="https://i.ytimg.com/vi/_1uVSv5r8Vc/oar2.jpg" alt="This Is How Champions Build Habits" loading="lazy">
           <button class="play" type="button" aria-label="Play: This Is How Champions Build Habits"></button>
         </div>
         <p class="vt">This Is How Champions Build Habits</p>
@@ -1933,10 +1933,13 @@ document.querySelectorAll('form.ws, form.poll-form').forEach(function(f){
   if(!reel) return;
   // vertical Shorts thumbnail isn't always available — fall back to the standard one
   reel.querySelectorAll('img.thumb').forEach(function(img){
-    img.addEventListener('error', function(){
+    var fallback = function(){
       var id = img.closest('.vcard').getAttribute('data-id');
-      if(img.src.indexOf('oardefault') > -1){ img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'; }
-    });
+      if(img.src.indexOf('hqdefault') === -1){ img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'; }
+    };
+    img.addEventListener('error', fallback);
+    img.addEventListener('load', function(){ if(img.naturalWidth && img.naturalWidth < 200) fallback(); });
+    if(img.complete && img.naturalWidth && img.naturalWidth < 200) fallback();
   });
   reel.addEventListener('click', function(e){
     var btn=e.target.closest('.play'); if(!btn) return;
