@@ -420,6 +420,22 @@ form.ws p.hp{display:none}
 .videotop .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .videotop .cap{margin:10px auto 0;max-width:340px;text-align:center;font-size:14px;color:var(--muted);line-height:1.5}
 .videotop .cap a{color:var(--panel);font-weight:700}
+
+.videotop .reel{display:flex;align-items:center;gap:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:2px 2px 6px;scroll-snap-type:x mandatory}
+.videotop .vcard{flex:0 0 auto;width:196px;scroll-snap-align:center}
+.videotop .vcard .frame{position:relative;width:196px;aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#000;border:1px solid var(--rule)}
+.videotop .vcard .frame img.thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.videotop .vcard .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.videotop .vcard .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:999px;border:0;background:rgba(14,34,64,.86);cursor:pointer;padding:0}
+.videotop .vcard .play::after{content:"";position:absolute;left:21px;top:16px;border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent #fff}
+.videotop .vcard .play:hover{background:var(--red)}
+.videotop .vt{margin:8px 0 0;font-size:13px;line-height:1.35;font-weight:700;color:var(--panel)}
+.videotop .cap{margin:6px auto 0;text-align:center;font-size:14px;color:var(--muted)}
+@media (min-width:560px){.videotop .reel{justify-content:center;overflow-x:visible}}
+
+.videotop .vcard.wide{width:300px}
+.videotop .vcard.wide .frame{width:300px;aspect-ratio:16/9}
+@media (max-width:420px){.videotop .vcard.wide{width:260px}.videotop .vcard.wide .frame{width:260px}}
 </style>
 </head>
 <body>
@@ -439,17 +455,31 @@ form.ws p.hp{display:none}
 
 
   <div class="videotop">
-    <div class="l">Watch this first</div>
-    <div class="frame">
-      <iframe src="https://www.youtube-nocookie.com/embed/d2jIP82PWQI?rel=0&amp;playsinline=1"
-        title="Kobe Bryant on mental toughness"
-        loading="lazy"
-        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen></iframe>
+    <div class="l">Film room — watch these first</div>
+    <div class="reel" id="reel">
+      <div class="vcard" data-id="d2jIP82PWQI" data-title="Kobe Bryant on mental toughness">
+        <div class="frame">
+          <img class="thumb" src="https://i.ytimg.com/vi/d2jIP82PWQI/oardefault.jpg" alt="Kobe Bryant on mental toughness" loading="lazy">
+          <button class="play" type="button" aria-label="Play: Kobe Bryant on mental toughness"></button>
+        </div>
+        <p class="vt">Kobe Bryant on mental toughness</p>
+      </div>
+      <div class="vcard" data-id="_1uVSv5r8Vc" data-title="This Is How Champions Build Habits">
+        <div class="frame">
+          <img class="thumb" src="https://i.ytimg.com/vi/_1uVSv5r8Vc/oardefault.jpg" alt="This Is How Champions Build Habits" loading="lazy">
+          <button class="play" type="button" aria-label="Play: This Is How Champions Build Habits"></button>
+        </div>
+        <p class="vt">This Is How Champions Build Habits</p>
+      </div>
+      <div class="vcard wide" data-id="NL4pMR_owrk" data-title="Justin Jefferson FOX NFL Week 3 Interview">
+        <div class="frame">
+          <img class="thumb" src="https://i.ytimg.com/vi/NL4pMR_owrk/hqdefault.jpg" alt="Justin Jefferson FOX NFL Week 3 Interview" loading="lazy">
+          <button class="play" type="button" aria-label="Play: Justin Jefferson FOX NFL Week 3 Interview"></button>
+        </div>
+        <p class="vt">Justin Jefferson — FOX NFL Week 3 interview</p>
+      </div>
     </div>
-    <p class="cap">Ninety seconds. Then read the rest of this page.
-      <a href="https://www.youtube.com/shorts/d2jIP82PWQI" target="_blank" rel="noopener">Open on YouTube</a></p>
+    <p class="cap">Tap one. Then read the rest of this page.</p>
   </div>
 
   <div class="hero">
@@ -1894,6 +1924,31 @@ document.querySelectorAll('form.ws, form.poll-form').forEach(function(f){
         btn.disabled = false; btn.textContent = 'Send my answer';
         msg.hidden = false; msg.textContent = "That didn't send. Check your signal and try again.";
       });
+  });
+})();
+</script>
+<script>
+(function(){
+  var reel=document.getElementById('reel');
+  if(!reel) return;
+  // vertical Shorts thumbnail isn't always available — fall back to the standard one
+  reel.querySelectorAll('img.thumb').forEach(function(img){
+    img.addEventListener('error', function(){
+      var id = img.closest('.vcard').getAttribute('data-id');
+      if(img.src.indexOf('oardefault') > -1){ img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'; }
+    });
+  });
+  reel.addEventListener('click', function(e){
+    var btn=e.target.closest('.play'); if(!btn) return;
+    var card=btn.closest('.vcard'); var frame=card.querySelector('.frame');
+    var id=card.getAttribute('data-id');
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1';
+    f.title=card.getAttribute('data-title')||'Video';
+    f.allow='autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+    f.setAttribute('allowfullscreen','');
+    frame.innerHTML=''; frame.appendChild(f);
   });
 })();
 </script>
