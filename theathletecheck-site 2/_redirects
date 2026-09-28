@@ -1,1 +1,3 @@
-/parents  https://kstoddart.gumroad.com/l/IRONIND-GIFT-CARD  301!
+# Serve the parent coaching page instead of redirecting to the Gumroad bundle.
+/parents /parents.html 200!
+/parents/ /parents.html 200!
