@@ -271,7 +271,13 @@ Discover Your<br>IronMind Readiness Profile™
 </p>
 <!-- Name input -->
 <div class="max-w-[400px] mx-auto mb-6">
-<input type="text" id="name-input" class="name-input w-full bg-dark border border-steel/25 rounded-lg px-4 py-3.5 text-white text-base placeholder-muted/60 transition-all" placeholder="Enter your first name to personalize your profile">
+<input type="text" id="name-input" autocomplete="given-name" class="name-input w-full bg-dark border border-steel/25 rounded-lg px-4 py-3.5 text-white text-base placeholder-muted/60 transition-all" placeholder="First name">
+</div>
+<div class="max-w-[400px] mx-auto mb-3">
+<input type="email" id="welcome-email" inputmode="email" autocomplete="email" class="name-input w-full bg-dark border border-steel/25 rounded-lg px-4 py-3.5 text-white text-base placeholder-muted/60 transition-all" placeholder="Email — where your report is sent">
+</div>
+<div class="max-w-[400px] mx-auto mb-3">
+<input type="tel" id="welcome-phone" autocomplete="tel" class="name-input w-full bg-dark border border-steel/25 rounded-lg px-4 py-3.5 text-white text-base placeholder-muted/60 transition-all" placeholder="Phone (optional)">
 </div>
 <!-- Begin button -->
 <button id="begin-btn" class="max-w-[400px] w-full bg-steel hover:bg-steel-light text-white text-base font-bold py-4 px-8 rounded-lg transition-all hover:shadow-[0_0_24px_rgba(53,118,181,0.35)] disabled:opacity-40 disabled:cursor-not-allowed" disabled="">
@@ -727,9 +733,10 @@ resultsEmailSent = true;
 userName = getFirstName() || userName;
 
 // Reliable, server-side capture + owner email notification via Netlify Forms.
-submitResultsToNetlify(allPct, tier, {});
+// One row per athlete, always carrying the contact captured on the welcome screen.
+submitResultsToNetlify(allPct, tier, athleteContact);
 
-buildAndSendEmail(allPct, tier, {})
+buildAndSendEmail(allPct, tier, athleteContact)
 .then(function() {
 console.log('Results email sent!');
 })
@@ -742,14 +749,33 @@ console.error('EmailJS failed:', error);
 // WELCOME
 // ============================================================
 const nameInput = document.getElementById('name-input');
+const welcomeEmail = document.getElementById('welcome-email');
+const welcomePhone = document.getElementById('welcome-phone');
 const beginBtn = document.getElementById('begin-btn');
+const WELCOME_EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-nameInput.addEventListener('input', function() {
-beginBtn.disabled = this.value.trim().length === 0;
-});
+// Captured once, up front. Every stored result carries it, so no athlete
+// finishes the assessment anonymously.
+let athleteContact = { name: '', email: '', phone: '' };
+
+function checkBeginReady() {
+const ok = nameInput.value.trim().length > 0 && WELCOME_EMAIL_RE.test(welcomeEmail.value.trim());
+beginBtn.disabled = !ok;
+}
+nameInput.addEventListener('input', checkBeginReady);
+welcomeEmail.addEventListener('input', checkBeginReady);
 
 beginBtn.addEventListener('click', function() {
 userName = getFirstName();
+athleteContact = {
+name: nameInput.value.trim(),
+email: welcomeEmail.value.trim(),
+phone: welcomePhone.value.trim()
+};
+var cn = document.getElementById('contact-name');
+var ce = document.getElementById('contact-email');
+if (cn) cn.value = athleteContact.name;
+if (ce) ce.value = athleteContact.email;
 currentDomain = 0;
 answers = {};
 resultsEmailSent = false;
@@ -784,9 +810,8 @@ if (contactEmailSent) return;
 contactSubmitBtn.disabled = true;
 contactSubmitBtn.textContent = 'Sending...';
 
-// Reliable, server-side capture + owner email notification via Netlify Forms.
-submitResultsToNetlify(lastAllPct, lastTier, contact);
-
+// Re-send only. The athlete's row was already stored once at score time with
+// the contact captured on the welcome screen — writing again would duplicate it.
 buildAndSendEmail(lastAllPct, lastTier, contact)
 .then(function() {
 contactEmailSent = true;
