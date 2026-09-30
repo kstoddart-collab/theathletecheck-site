@@ -436,6 +436,24 @@ form.ws p.hp{display:none}
 .videotop .vcard.wide{width:300px}
 .videotop .vcard.wide .frame{width:300px;aspect-ratio:16/9}
 @media (max-width:420px){.videotop .vcard.wide{width:260px}.videotop .vcard.wide .frame{width:260px}}
+
+/* ---------- are you in? roster ---------- */
+.inbox{border:1px solid var(--rule);border-top:4px solid var(--panel);border-radius:8px;padding:18px;margin:24px 0}
+.inbox .l{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:800;margin-bottom:6px}
+.inbox h2{margin:0 0 6px;font-size:22px;color:var(--panel)}
+.inbox .sub{font-size:15px;color:var(--body);margin:0 0 14px;line-height:1.5}
+.inbox label.fl{display:block;font-size:14px;font-weight:700;color:var(--panel);margin-bottom:6px}
+.inbox input[type=text]{width:100%;font:inherit;font-size:16px;padding:12px;border:1px solid var(--rule);border-radius:6px;background:#fbfcfe;color:var(--ink)}
+.inbox .two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.inbox button{font:inherit;font-size:16px;font-weight:800;padding:14px 10px;border:0;border-radius:8px;cursor:pointer}
+.inbox button.yes{background:var(--panel);color:#fff}
+.inbox button.no{background:#fff;color:var(--panel);border:1.5px solid var(--rule)}
+.inbox .msg{margin:12px 0 0;font-size:15px;font-weight:700;color:var(--red)}
+.roster{margin-top:16px;border-top:1px solid var(--hairline);padding-top:14px}
+.roster .rl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:800;margin-bottom:10px}
+.roster .tally{margin:0;font-size:26px;font-weight:800;color:var(--panel);line-height:1.2}
+.roster .tally span{color:var(--red)}
+.roster .note{margin:6px 0 0;font-size:13px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -511,6 +529,31 @@ form.ws p.hp{display:none}
     <p>If you are reading this, you are one of them. Act like it.</p>
   </div>
 
+
+
+  <div class="inbox" id="inbox">
+    <div class="l">The ask</div>
+    <h2>Are you in?</h2>
+    <p class="sub">This program is optional. It only works for the guys who choose it. Put your name down
+      and answer straight — no wrong answer, and nobody gets chased for saying no. Your name comes to me;
+      the page only shows the count.</p>
+
+    <div id="inForm">
+      <label class="fl" for="inName">Your name</label>
+      <input id="inName" type="text" maxlength="40" placeholder="First and last name">
+      <div class="two">
+        <button type="button" class="yes" id="inYes">I'm in</button>
+        <button type="button" class="no" id="inNo">Not this time</button>
+      </div>
+      <p class="msg" id="inMsg" hidden></p>
+    </div>
+
+    <div class="roster" id="roster" hidden>
+      <div class="rl">The count</div>
+      <p class="tally" id="rosterTally"></p>
+      <p class="note" id="rosterNote">Names go to Coach Kenny only — they are not shown on this page.</p>
+    </div>
+  </div>
 
   <div class="poll" id="poll">
     <div class="l">Quick question</div>
@@ -1953,6 +1996,52 @@ document.querySelectorAll('form.ws, form.poll-form').forEach(function(f){
     f.setAttribute('allowfullscreen','');
     frame.innerHTML=''; frame.appendChild(f);
   });
+})();
+</script>
+<script>
+(function(){
+  var URL_='/.netlify/functions/roster';
+  var KEY='bolles-are-you-in';
+  var box=document.getElementById('inbox'); if(!box) return;
+  var form=document.getElementById('inForm'), nameEl=document.getElementById('inName'),
+      msg=document.getElementById('inMsg'), roster=document.getElementById('roster'),
+      tally=document.getElementById('rosterTally');
+  var me=null; try{ me=localStorage.getItem(KEY); }catch(e){}
+
+  function render(d){
+    roster.hidden=false;
+    var n = d.inCount || 0;
+    tally.innerHTML = n===0 ? 'Nobody yet. <span>Be the first.</span>'
+                    : (n===1 ? '<span>1</span> guy is in.' : '<span>' + n + '</span> guys are in.');
+  }
+
+  function load(){
+    fetch(URL_,{headers:{accept:'application/json'}})
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(render).catch(function(){});
+  }
+  load();
+
+  function send(answer, btn){
+    var name=(nameEl.value||'').trim();
+    if(name.length<2){ msg.hidden=false; msg.textContent='Put your name in first.'; nameEl.focus(); return; }
+    msg.hidden=true;
+    var label0=btn.textContent; btn.disabled=true; btn.textContent='Sending…';
+    fetch(URL_,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({name:name,answer:answer})})
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(d){
+        try{ localStorage.setItem(KEY, name); }catch(e){}
+        me=name;
+        form.hidden=true;
+        render(d);
+        var p=document.createElement('p');
+        p.className='msg';
+        p.textContent = answer==='yes' ? "You're on the list. See you at the next session." : "Got it. No hard feelings — the page stays open to you.";
+        box.insertBefore(p, roster);
+      })
+      .catch(function(){ btn.disabled=false; btn.textContent=label0; msg.hidden=false; msg.textContent="That didn't send. Check your signal and try again."; });
+  }
+  document.getElementById('inYes').addEventListener('click', function(){ send('yes', this); });
+  document.getElementById('inNo').addEventListener('click', function(){ send('no', this); });
 })();
 </script>
 </body>
