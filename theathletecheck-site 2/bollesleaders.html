@@ -454,6 +454,25 @@ form.ws p.hp{display:none}
 .roster .tally{margin:0;font-size:26px;font-weight:800;color:var(--panel);line-height:1.2}
 .roster .tally span{color:var(--red)}
 .roster .note{margin:6px 0 0;font-size:13px;color:var(--muted)}
+
+/* ---------- article reading list (live) ---------- */
+.articles{margin-top:26px;border-top:1px solid var(--hairline);padding-top:20px}
+.articles .l{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:800;margin-bottom:6px}
+.articles h2{margin:0 0 6px;font-size:22px;color:var(--panel)}
+.articles .sub{font-size:15px;color:var(--muted);margin:0 0 14px}
+.artlist{display:grid;gap:10px}
+.art{border:1px solid var(--rule);border-left:4px solid var(--steel);border-radius:8px;padding:14px 16px;background:#fff}
+.art a.t{display:block;font-size:16px;font-weight:800;color:var(--panel);text-decoration:none;line-height:1.35}
+.art a.t:hover{text-decoration:underline}
+.art .src{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:4px}
+.art .note{margin:6px 0 0;font-size:14px;color:var(--body);line-height:1.5}
+.art .rm{margin-top:8px;font-size:12px;font-weight:700;color:var(--red);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline}
+.artnone{font-size:14px;color:var(--muted)}
+.adminbox{border:1.5px dashed var(--red);border-radius:8px;padding:14px 16px;margin:0 0 14px;background:#fff}
+.adminbox .al{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:800;margin-bottom:8px}
+.adminbox input{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--rule);border-radius:6px;background:#fbfcfe;margin-bottom:8px;color:var(--ink)}
+.adminbox button{width:100%;font:inherit;font-size:15px;font-weight:800;padding:12px;border:0;border-radius:8px;background:var(--panel);color:#fff;cursor:pointer}
+.adminbox .amsg{margin:8px 0 0;font-size:14px;font-weight:700;color:var(--red)}
 </style>
 </head>
 <body>
@@ -495,6 +514,13 @@ form.ws p.hp{display:none}
           <button class="play" type="button" aria-label="Play: Justin Jefferson FOX NFL Week 3 Interview"></button>
         </div>
         <p class="vt">Justin Jefferson — FOX NFL Week 3 interview</p>
+      </div>
+      <div class="vcard wide" data-id="yGFQ_7eqfaw" data-title="Matthew Schaefer's Unbelievable Story Of Adversity And Perseverance">
+        <div class="frame">
+          <img class="thumb" src="https://i.ytimg.com/vi/yGFQ_7eqfaw/maxresdefault.jpg" alt="Matthew Schaefer's story of adversity and perseverance" loading="lazy">
+          <button class="play" type="button" aria-label="Play: Matthew Schaefer's story of adversity and perseverance"></button>
+        </div>
+        <p class="vt">Matthew Schaefer — adversity and perseverance</p>
       </div>
     </div>
     <p class="cap">Tap one. Then read the rest of this page.</p>
@@ -1818,6 +1844,16 @@ form.ws p.hp{display:none}
   </div>
 
 
+
+  <div class="articles" id="articles">
+    <div class="l">Read this week</div>
+    <h2>Articles I'm sending you</h2>
+    <p class="sub">Short reads on leadership. New ones get added through the season.</p>
+    <div id="adminSlot"></div>
+    <div class="artlist" id="artList"></div>
+    <p class="artnone" id="artNone" hidden>Nothing here yet.</p>
+  </div>
+
   <div class="reading" id="reading">
     <div class="l">What I'm reading</div>
     <h2>On my nightstand</h2>
@@ -2042,6 +2078,69 @@ document.querySelectorAll('form.ws, form.poll-form').forEach(function(f){
   }
   document.getElementById('inYes').addEventListener('click', function(){ send('yes', this); });
   document.getElementById('inNo').addEventListener('click', function(){ send('no', this); });
+})();
+</script>
+<script>
+(function(){
+  var URL_='/.netlify/functions/links';
+  var list=document.getElementById('artList'); if(!list) return;
+  var none=document.getElementById('artNone'), slot=document.getElementById('adminSlot');
+  var adminKey=new URLSearchParams(location.search).get('admin');
+
+  function host(u){ try{ return new URL(u).hostname.replace(/^www\./,''); }catch(e){ return ''; } }
+
+  function render(links){
+    list.innerHTML='';
+    (links||[]).forEach(function(l){
+      var d=document.createElement('div'); d.className='art';
+      var a=document.createElement('a'); a.className='t'; a.href=l.url; a.target='_blank'; a.rel='noopener'; a.textContent=l.title||l.url;
+      var s=document.createElement('div'); s.className='src'; s.textContent=host(l.url);
+      d.appendChild(a); d.appendChild(s);
+      if(l.note){ var n=document.createElement('p'); n.className='note'; n.textContent=l.note; d.appendChild(n); }
+      if(adminKey){
+        var b=document.createElement('button'); b.className='rm'; b.type='button'; b.textContent='Remove';
+        b.addEventListener('click', function(){
+          fetch(URL_,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({key:adminKey,remove:l.id})})
+            .then(function(r){ return r.json(); }).then(function(d2){ render(d2.links); }).catch(function(){});
+        });
+        d.appendChild(b);
+      }
+      list.appendChild(d);
+    });
+    none.hidden=(links||[]).length>0;
+  }
+
+  fetch(URL_).then(function(r){ return r.json(); }).then(function(d){ render(d.links); }).catch(function(){ none.hidden=false; });
+
+  if(adminKey){
+    var box=document.createElement('div'); box.className='adminbox';
+    box.innerHTML='<div class="al">Coach only — add a link</div>'+
+      '<input id="alUrl" type="url" placeholder="Paste the link">'+
+      '<input id="alTitle" type="text" placeholder="Title (optional)">'+
+      '<input id="alNote" type="text" placeholder="One line on why they should read it (optional)">'+
+      '<button type="button" id="alAdd">Add to the list</button>'+
+      '<p class="amsg" id="alMsg" hidden></p>';
+    slot.appendChild(box);
+    document.getElementById('alAdd').addEventListener('click', function(){
+      var btn=this, msg=document.getElementById('alMsg');
+      var url=document.getElementById('alUrl').value.trim();
+      if(!/^https?:\/\//i.test(url)){ msg.hidden=false; msg.textContent='Paste a full link starting with http.'; return; }
+      msg.hidden=true; btn.disabled=true; btn.textContent='Adding…';
+      fetch(URL_,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({
+        key:adminKey, url:url,
+        title:document.getElementById('alTitle').value.trim(),
+        note:document.getElementById('alNote').value.trim()
+      })})
+        .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+        .then(function(d){
+          render(d.links);
+          document.getElementById('alUrl').value=''; document.getElementById('alTitle').value=''; document.getElementById('alNote').value='';
+          btn.disabled=false; btn.textContent='Add to the list';
+          msg.hidden=false; msg.textContent='Added.';
+        })
+        .catch(function(){ btn.disabled=false; btn.textContent='Add to the list'; msg.hidden=false; msg.textContent="Didn't add — check the key in the address bar."; });
+    });
+  }
 })();
 </script>
 </body>
