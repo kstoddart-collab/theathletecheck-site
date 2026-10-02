@@ -1,6 +1,6 @@
 // Bolles Leaders — "Are you in?" roster
-// GET  /.netlify/functions/roster -> { inCount, outCount, total }
-// POST { name, answer: "yes" | "no" } -> records the answer, returns the same shape
+// GET  /.netlify/functions/roster -> { inCount, outCount, total }   (+ entries with ?key=)
+// POST { name, answer: "yes" | "no" } -> records the answer and emails Kenny
 import { getStore } from "@netlify/blobs";
 
 const KEY = "are-you-in";
@@ -37,12 +37,33 @@ async function read(store) {
     .slice(-MAX_ENTRIES);
 }
 
+// Fire a Netlify Forms submission so Kenny gets an email for every answer.
+async function notify(entry, counts) {
+  const site = process.env.URL;
+  if (!site) return;
+  const body = new URLSearchParams({
+    "form-name": "roster-signup",
+    "Player name": entry.name,
+    Answer: entry.answer === "yes" ? "IN" : "Not this time",
+    When: entry.at,
+    "Running total in": String(counts.inCount),
+  }).toString();
+  try {
+    await fetch(site + "/", {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      body,
+    });
+  } catch {
+    // never let a notification failure break the sign-up
+  }
+}
+
 export default async (req) => {
   const store = getStore({ name: "bolles-poll", consistency: "strong" });
 
   if (req.method === "GET") {
     const entries = await read(store);
-    // Coach-only view: /.netlify/functions/roster?key=... with the key set in Netlify env vars
     const key = new URL(req.url).searchParams.get("key");
     const secret = process.env.ROSTER_KEY;
     if (key && secret && key === secret) {
@@ -75,7 +96,9 @@ export default async (req) => {
   else entries.push(entry);
 
   await store.setJSON(KEY, entries.slice(-MAX_ENTRIES));
-  return json(publicView(entries));
+  const counts = publicView(entries);
+  await notify(entry, counts);
+  return json(counts);
 };
 
 export const config = { path: "/.netlify/functions/roster" };
