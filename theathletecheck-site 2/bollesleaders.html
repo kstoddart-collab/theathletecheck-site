@@ -488,6 +488,21 @@ form.ws p.hp{display:none}
 .bannerstrip a{display:block;max-width:270px;margin:0 auto;border:1px solid var(--hairline);border-radius:10px;overflow:hidden}
 .bannerstrip img{display:block;width:100%;height:auto}
 @media (min-width:1260px){ .bannerstrip{display:none} }
+
+/* ---------- chaptered guide ---------- */
+.menucard{display:block;width:100%;text-align:left;border:1px solid var(--rule);border-radius:10px;background:#fff;padding:14px 16px;margin:0 0 10px;cursor:pointer;font:inherit;position:relative}
+.menucard:hover{border-color:var(--steel);box-shadow:0 2px 10px rgba(14,34,64,.07)}
+.menucard .n{font-size:12px;font-weight:800;color:var(--red);letter-spacing:.1em}
+.menucard .t{display:block;font-size:17px;font-weight:800;color:var(--panel);line-height:1.3;margin-top:3px;padding-right:22px}
+.menucard .s{display:block;font-size:13px;color:var(--muted);margin-top:3px}
+.menucard::after{content:"›";position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:24px;color:var(--steel);font-weight:700;line-height:1}
+.chapnav{display:flex;align-items:center;gap:10px;margin:0 0 14px;flex-wrap:wrap;scroll-margin-top:80px}
+.chapter > .chapnav:first-child{position:sticky;top:72px;z-index:4;background:#fff;padding:8px 0;margin-bottom:8px}
+.chapter{scroll-margin-top:80px}
+.chapnav button{font:inherit;font-size:14px;font-weight:800;padding:10px 14px;border-radius:999px;border:1px solid var(--rule);background:#fff;color:var(--panel);cursor:pointer}
+.chapnav button.primary{background:var(--panel);color:#fff;border-color:var(--panel)}
+.chapend{margin:26px 0 6px;border-top:1px solid var(--hairline);padding-top:18px}
+.menuhint{font-size:14px;color:var(--muted);margin:0 0 14px}
 </style>
 </head>
 <body>
@@ -2178,6 +2193,112 @@ document.querySelectorAll('form.ws, form.poll-form').forEach(function(f){
         .catch(function(){ btn.disabled=false; btn.textContent='Add to the list'; msg.hidden=false; msg.textContent="Didn't add — check the key in the address bar."; });
     });
   }
+})();
+</script>
+<script>
+(function(){
+  var guide=document.getElementById('guide'); if(!guide) return;
+  var toc=guide.querySelector('.toc'); if(!toc) return;
+  var kids=Array.prototype.slice.call(guide.children);
+  var tocIndex=kids.indexOf(toc);
+
+  // group everything after the contents into chapters, split at each section head
+  var groups=[], current=null;
+  for(var i=tocIndex+1;i<kids.length;i++){
+    var el=kids[i];
+    if(el.classList && el.classList.contains('sechead')){
+      current={title:'', sub:'', blocks:[]};
+      var h1=el.querySelector('h1.sec');
+      if(h1){
+        var span=h1.querySelector('span');
+        current.sub = span ? span.textContent.trim() : '';
+        current.title = h1.textContent.replace(current.sub,'').trim();
+      }
+      groups.push(current);
+      current.blocks.push(el);
+    } else if(current){
+      current.blocks.push(el);
+    } else {
+      if(!groups.frontMatter) groups.frontMatter=[];
+      groups.frontMatter.push(el);
+    }
+  }
+  if(!groups.length) return;
+
+  // front matter becomes chapter zero
+  var chapters=[];
+  if(groups.frontMatter && groups.frontMatter.length){
+    chapters.push({n:'Start here', title:'Why this exists', sub:'What you just got, the foreword, and a note from me', blocks:groups.frontMatter});
+  }
+  groups.forEach(function(g,idx){
+    chapters.push({n:('0'+(idx+1)).slice(-2), title:g.title, sub:g.sub, blocks:g.blocks});
+  });
+
+  // wrap each chapter's blocks in a container
+  chapters.forEach(function(c){
+    var box=document.createElement('div');
+    box.className='chapter'; box.hidden=true;
+    c.blocks[0].parentNode.insertBefore(box, c.blocks[0]);
+    c.blocks.forEach(function(b){ box.appendChild(b); });
+    c.box=box;
+
+    var nav=document.createElement('div'); nav.className='chapnav';
+    var back=document.createElement('button'); back.type='button'; back.textContent='← All chapters';
+    back.addEventListener('click', showMenu);
+    nav.appendChild(back);
+    box.insertBefore(nav, box.firstChild);
+
+    var end=document.createElement('div'); end.className='chapend';
+    var nav2=document.createElement('div'); nav2.className='chapnav';
+    var back2=document.createElement('button'); back2.type='button'; back2.textContent='← All chapters';
+    back2.addEventListener('click', showMenu);
+    nav2.appendChild(back2);
+    end.appendChild(nav2);
+    box.appendChild(end);
+    c.endNav=nav2;
+  });
+
+  // next buttons
+  chapters.forEach(function(c,i){
+    if(i<chapters.length-1){
+      var nx=document.createElement('button'); nx.type='button'; nx.className='primary';
+      nx.textContent='Next: '+chapters[i+1].title+' →';
+      nx.addEventListener('click', function(){ openChapter(i+1); });
+      c.endNav.appendChild(nx);
+    }
+  });
+
+  // rebuild the contents list as tappable cards
+  var label=toc.querySelector('.l');
+  toc.innerHTML='';
+  if(label) toc.appendChild(label);
+  var hint=document.createElement('p'); hint.className='menuhint';
+  hint.textContent='Tap a chapter to open it. One at a time — no endless scrolling.';
+  toc.appendChild(hint);
+  chapters.forEach(function(c,i){
+    var b=document.createElement('button'); b.type='button'; b.className='menucard';
+    b.innerHTML='<span class="n">'+c.n+'</span><span class="t"></span>'+(c.sub?'<span class="s"></span>':'');
+    b.querySelector('.t').textContent=c.title;
+    if(c.sub) b.querySelector('.s').textContent=c.sub;
+    b.addEventListener('click', function(){ openChapter(i); });
+    toc.appendChild(b);
+  });
+
+  var note=guide.querySelector('.wsnote');
+
+  function showMenu(){
+    chapters.forEach(function(c){ c.box.hidden=true; });
+    toc.hidden=false; if(note) note.hidden=false;
+    var y=toc.getBoundingClientRect().top+window.scrollY-84;
+    window.scrollTo({top:Math.max(0,y), behavior:'instant'});
+  }
+  function openChapter(i){
+    chapters.forEach(function(c,j){ c.box.hidden = j!==i; });
+    toc.hidden=true; if(note) note.hidden=true;
+    var y=chapters[i].box.getBoundingClientRect().top+window.scrollY-84;
+    window.scrollTo({top:Math.max(0,y), behavior:'instant'});
+  }
+  showMenu();
 })();
 </script>
 </body>
