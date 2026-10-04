@@ -503,6 +503,9 @@ form.ws p.hp{display:none}
 .chapnav button.primary{background:var(--panel);color:#fff;border-color:var(--panel)}
 .chapend{margin:26px 0 6px;border-top:1px solid var(--hairline);padding-top:18px}
 .menuhint{font-size:14px;color:var(--muted);margin:0 0 14px}
+
+.btns a.book{flex:1 1 100%;text-align:center;background:#fff;color:var(--panel);border:2px solid var(--red)}
+.btns a.book::before{content:"\1F4C5";margin-right:8px}
 </style>
 </head>
 <body>
@@ -582,6 +585,7 @@ form.ws p.hp{display:none}
     <div class="btns">
       <a class="o" href="sms:+14048311961">Text Coach Kenny</a>
       <a class="s" href="https://wa.me/14048311961">WhatsApp</a>
+      <a class="book" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1kcwho4O6ZYNo7VD8gPoH4Q0k_7F13-L_GHg5ceK0caIS75yR_dil-B8JqmTMPyvUsUopzV5tk" target="_blank" rel="noopener">Book 15 minutes with me</a>
     </div>
     <div class="btns">
       <a class="ig" href="https://instagram.com/ironmindkenny" target="_blank" rel="noopener">Follow @ironmindkenny on Instagram</a>
@@ -650,39 +654,6 @@ form.ws p.hp{display:none}
       <div class="bars" id="pollBars"></div>
       <p class="tot" id="pollTotal"></p>
       <p class="others" id="pollOthers" hidden></p>
-    </div>
-  </div>
-
-  <div class="poll" id="trad">
-    <div class="l">Quick question</div>
-    <h2>Best tradition in college football?</h2>
-    <p class="sub">Anonymous — no name needed. Results show as soon as you vote.</p>
-
-    <div id="tradVote">
-      <div class="opts">
-        <label class="opt"><input type="radio" name="tradition" value="The Hawkeye Wave (Iowa)">The Hawkeye Wave (Iowa)</label>
-        <label class="opt"><input type="radio" name="tradition" value="Enter Sandman (Virginia Tech)">Enter Sandman (Virginia Tech)</label>
-        <label class="opt"><input type="radio" name="tradition" value="Jump Around (Wisconsin)">Jump Around (Wisconsin)</label>
-        <label class="opt"><input type="radio" name="tradition" value="I Won&#39;t Back Down (Florida)">I Won&#39;t Back Down (Florida)</label>
-        <label class="opt"><input type="radio" name="tradition" value="White Out (Penn State)">White Out (Penn State)</label>
-        <label class="opt"><input type="radio" name="tradition" value="Howard&#39;s Rock and the Hill (Clemson)">Howard&#39;s Rock and the Hill (Clemson)</label>
-        <label class="opt"><input type="radio" name="tradition" value="Script Ohio (Ohio State)">Script Ohio (Ohio State)</label>
-        <label class="opt"><input type="radio" name="tradition" value="Ralphie&#39;s Run (Colorado)">Ralphie&#39;s Run (Colorado)</label>
-        <label class="opt"><input type="radio" name="tradition" value="Osceola and Renegade (Florida State)">Osceola and Renegade (Florida State)</label>
-        <label class="opt"><input type="radio" name="tradition" value="Other">Other</label>
-      </div>
-      <div class="f" id="tradOtherWrap" hidden>
-        <label class="fl" for="tradOther">Which one?</label>
-        <input id="tradOther" type="text" maxlength="60" placeholder="Name it here">
-      </div>
-      <button type="button" id="tradSend">Send my answer</button>
-      <p class="pollmsg" id="tradMsg" hidden></p>
-    </div>
-
-    <div id="tradResults" hidden>
-      <div class="bars" id="tradBars"></div>
-      <p class="tot" id="tradTotal"></p>
-      <p class="others" id="tradOthers" hidden></p>
     </div>
   </div>
 
@@ -2051,10 +2022,7 @@ document.querySelectorAll('form.ws, form.poll-form').forEach(function(f){
     var others = (data.others || []).slice(-12);
     if(others.length){
       othersEl.hidden = false;
-      othersEl.textContent = '';
-      var lead = document.createElement('strong'); lead.textContent = 'Also named:';
-      othersEl.appendChild(lead);
-      othersEl.appendChild(document.createTextNode(' ' + others.join(' · ')));
+      othersEl.innerHTML = '<strong>Also named:</strong> ' + others.join(' · ');
     } else {
       othersEl.hidden = true;
     }
@@ -2073,99 +2041,6 @@ document.querySelectorAll('form.ws, form.poll-form').forEach(function(f){
 
   btn.addEventListener('click', function(){
     var picked = wrap.querySelector('input[name="leader"]:checked');
-    if(!picked){ msg.hidden = false; msg.textContent = 'Pick one first.'; return; }
-    msg.hidden = true;
-    btn.disabled = true; btn.textContent = 'Sending…';
-    fetch(VOTE_URL, {
-      method: 'POST',
-      headers: {'content-type':'application/json'},
-      body: JSON.stringify({choice: picked.value, other: otherInput.value || ''})
-    })
-      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-      .then(function(data){
-        mine = picked.value;
-        try { localStorage.setItem(KEY, mine); } catch(e) {}
-        render(data);
-      })
-      .catch(function(){
-        btn.disabled = false; btn.textContent = 'Send my answer';
-        msg.hidden = false; msg.textContent = "That didn't send. Check your signal and try again.";
-      });
-  });
-})();
-</script>
-<script>
-(function(){
-  var VOTE_URL = '/.netlify/functions/tradition';
-  var KEY = 'bolles-tradition-vote';
-  var wrap = document.getElementById('trad');
-  if(!wrap) return;
-  var voteBox = document.getElementById('tradVote');
-  var resBox = document.getElementById('tradResults');
-  var barsEl = document.getElementById('tradBars');
-  var totalEl = document.getElementById('tradTotal');
-  var othersEl = document.getElementById('tradOthers');
-  var msg = document.getElementById('tradMsg');
-  var btn = document.getElementById('tradSend');
-  var otherWrap = document.getElementById('tradOtherWrap');
-  var otherInput = document.getElementById('tradOther');
-  var mine = null;
-  try { mine = localStorage.getItem(KEY); } catch(e) {}
-
-  wrap.addEventListener('change', function(e){
-    if(e.target.name === 'tradition'){
-      otherWrap.hidden = e.target.value !== 'Other';
-    }
-  });
-
-  function render(data){
-    var counts = data.counts || {};
-    var total = data.total || 0;
-    barsEl.textContent = '';
-    Object.keys(counts).forEach(function(name){
-      var n = counts[name] || 0;
-      var pct = total ? Math.round(n * 100 / total) : 0;
-      var div = document.createElement('div');
-      div.className = 'bar' + (name === mine ? ' mine' : '');
-      var top = document.createElement('div'); top.className = 'top';
-      var label = document.createElement('span');
-      label.textContent = name + (name === mine ? ' — your pick' : '');
-      var num = document.createElement('span'); num.className = 'n';
-      num.textContent = n + ' · ' + pct + '%';
-      top.appendChild(label); top.appendChild(num);
-      var track = document.createElement('div'); track.className = 'track';
-      var fill = document.createElement('div'); fill.className = 'fill';
-      fill.style.width = pct + '%';
-      track.appendChild(fill);
-      div.appendChild(top); div.appendChild(track);
-      barsEl.appendChild(div);
-    });
-    totalEl.textContent = total === 1 ? '1 vote so far.' : total + ' votes so far.';
-    var others = (data.others || []).slice(-12);
-    othersEl.textContent = '';
-    if(others.length){
-      var lead = document.createElement('strong'); lead.textContent = 'Also named:';
-      othersEl.appendChild(lead);
-      othersEl.appendChild(document.createTextNode(' ' + others.join(' · ')));
-      othersEl.hidden = false;
-    } else {
-      othersEl.hidden = true;
-    }
-    voteBox.hidden = true;
-    resBox.hidden = false;
-  }
-
-  function load(){
-    fetch(VOTE_URL, {headers:{'accept':'application/json'}})
-      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-      .then(render)
-      .catch(function(){ voteBox.hidden = false; resBox.hidden = true; });
-  }
-
-  if(mine) load();
-
-  btn.addEventListener('click', function(){
-    var picked = wrap.querySelector('input[name="tradition"]:checked');
     if(!picked){ msg.hidden = false; msg.textContent = 'Pick one first.'; return; }
     msg.hidden = true;
     btn.disabled = true; btn.textContent = 'Sending…';
@@ -2415,9 +2290,11 @@ document.querySelectorAll('form.ws, form.poll-form').forEach(function(f){
 
   var note=guide.querySelector('.wsnote');
 
+  var firstPaint=true;
   function showMenu(){
     chapters.forEach(function(c){ c.box.hidden=true; });
     toc.hidden=false; if(note) note.hidden=false;
+    if(firstPaint){ firstPaint=false; return; }   // on load, leave them at the top of the page
     var y=toc.getBoundingClientRect().top+window.scrollY-84;
     window.scrollTo({top:Math.max(0,y), behavior:'instant'});
   }
