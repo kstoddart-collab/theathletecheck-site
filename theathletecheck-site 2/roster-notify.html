@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Form notifications (setup only)</title>
+</head>
+<body>
+<!--
+  This page exists only so Netlify registers the forms below at deploy time.
+  The "Are you in?" and "Athlete profile" functions post to them so Kenny gets
+  an email on every submission. Nobody needs to visit this page.
+-->
+<form name="roster-signup" data-netlify="true" hidden>
+  <input type="text" name="Player name">
+  <input type="text" name="Answer">
+  <input type="text" name="When">
+  <input type="text" name="Running total in">
+</form>
+
+<form name="athlete-profile" data-netlify="true" hidden>
+  <input type="text" name="Player name">
+  <input type="text" name="Team">
+  <input type="text" name="Number">
+  <input type="text" name="Position">
+  <input type="text" name="Email">
+  <input type="text" name="Phone">
+</form>
+
+<p>Setup page for IronMind Elite form notifications.</p>
+</body>
+</html>
