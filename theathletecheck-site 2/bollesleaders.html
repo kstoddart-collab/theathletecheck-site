@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Bolles Lacrosse | Senior Leadership Hub</title>
+<title>IronMind Elite × Bolles Lacrosse — Senior Leaders</title>
 <meta name="description" content="The IronMind Elite field guide for the senior leadership group of Bolles Bulldogs lacrosse.">
 <style>
 :root{
@@ -506,29 +506,21 @@ form.ws p.hp{display:none}
 
 .btns a.book{flex:1 1 100%;text-align:center;background:#fff;color:var(--panel);border:2px solid var(--red)}
 .btns a.book::before{content:"\1F4C5";margin-right:8px}
-</style>
-<style>
-/* Team identity stays visible at every screen size. */
-.team-header{background:var(--panel);border-top:5px solid var(--red);color:#fff}
-.team-header-inner{max-width:760px;margin:0 auto;padding:28px 18px;display:flex;align-items:center;gap:22px}
-.team-header .team-crest{display:block;flex:0 0 88px;width:88px;height:88px;background-color:#fff;border-radius:50%;background-size:82%;background-position:center;background-repeat:no-repeat;box-shadow:0 0 0 4px rgba(255,255,255,.14)}
-.team-identity{min-width:0}
-.team-identity h1{margin:0;color:#fff;font-size:clamp(25px,5.6vw,42px);font-weight:900;line-height:1.08;letter-spacing:-.025em}
-.team-identity .team-subtitle{margin:7px 0 0;color:#fff;font-size:clamp(15px,3vw,21px);font-weight:700;line-height:1.3}
-.team-identity .team-purpose{margin:8px 0 0;color:#c9d5e9;font-size:14px;line-height:1.4}
-.program-brand{display:flex;align-items:center;gap:8px;font-size:10px;line-height:1.3;color:var(--muted)}
-.program-brand b{color:var(--panel);font-size:12px}
-.topbar .in{flex-wrap:nowrap;gap:14px;padding-top:10px;padding-bottom:10px}
-.topbar .tabs{width:auto;margin-left:auto;flex:1;justify-content:flex-end}
-.topbar .tabs button{flex:1;font-size:11px;white-space:nowrap}
-@media(max-width:480px){
- .team-header-inner{padding:24px 18px;gap:14px}
- .team-header .team-crest{flex-basis:62px;width:62px;height:62px}
- .team-identity .team-purpose{font-size:12px}
- .topbar .in{flex-wrap:wrap;gap:8px}
- .program-brand{display:none}
- .topbar .tabs{width:100%;margin:0}
-}
+
+/* ---------- athlete profile ---------- */
+.profilebox{border:1px solid var(--rule);border-top:4px solid var(--panel);border-radius:8px;padding:18px;margin:24px 0}
+.profilebox .l{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:800;margin-bottom:6px}
+.profilebox h2{margin:0 0 6px;font-size:22px;color:var(--panel)}
+.profilebox .sub{font-size:15px;color:var(--body);margin:0 0 14px;line-height:1.5}
+.profilebox .f{margin:14px 0}
+.profilebox .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.profilebox label{display:block;font-size:14px;font-weight:700;color:var(--panel);margin-bottom:6px}
+.profilebox label span{font-weight:400;color:var(--muted)}
+.profilebox input{width:100%;font:inherit;font-size:16px;padding:12px;border:1px solid var(--rule);border-radius:6px;background:#fbfcfe;color:var(--ink);-webkit-appearance:none}
+.profilebox input:focus{outline:none;border-color:var(--steel);box-shadow:0 0 0 3px rgba(47,86,160,.12)}
+.profilebox button{width:100%;font:inherit;font-size:16px;font-weight:800;padding:14px;border:0;border-radius:8px;background:var(--panel);color:#fff;cursor:pointer;margin-top:6px}
+.profilebox .msg{margin:12px 0 0;font-size:15px;font-weight:700;color:var(--red)}
+.profilebox .fine{margin:12px 0 0;font-size:13px;color:var(--muted);line-height:1.5}
 </style>
 </head>
 <body>
@@ -547,18 +539,10 @@ form.ws p.hp{display:none}
   <p class="cap">ironmindadvisors.com</p>
 </div>
 
-<header class="team-header">
-  <div class="team-header-inner">
-    <span class="lg lg-dog team-crest" role="img" aria-label="Bolles Bulldogs"></span>
-    <div class="team-identity">
-      <h1>BOLLES LACROSSE</h1>
-      <p class="team-subtitle">Senior Leadership Hub</p>
-      <p class="team-purpose">Lead your team. Set the standard.</p>
-    </div>
-  </div>
-</header>
 <div class="topbar"><div class="in">
-  <div class="program-brand"><span class="lg lg-elite" role="img" aria-label="IronMind Elite"></span><span>Powered by<br><b>IronMind Elite</b></span></div>
+  <span class="lg lg-elite" role="img" aria-label="IronMind Elite"></span>
+  <span class="lg lg-dog" role="img" aria-label="Bolles Bulldogs"></span>
+  <div class="t">Bolles Lacrosse<b>Senior Leaders</b></div>
   <div class="tabs">
     <button id="tabGuide" aria-selected="true" onclick="showTab('guide')">Field Guide</button>
     <button id="tab11" aria-selected="false" onclick="showTab('t11')">11 Thoughts</button>
@@ -657,6 +641,47 @@ form.ws p.hp{display:none}
       <div class="rl">The count</div>
       <p class="tally" id="rosterTally"></p>
       <p class="note" id="rosterNote">Names go to Coach Kenny only — they are not shown on this page.</p>
+    </div>
+  </div>
+
+
+  <div class="profilebox" id="profilebox">
+    <div class="l">Athlete profile</div>
+    <h2>Tell me about you</h2>
+    <p class="sub">So I know who I'm working with, and so I can reach you when something comes up for you
+      specifically. This goes to me only — it is not shown on this page and it is not shared with anybody.</p>
+
+    <div id="profForm">
+      <div class="f">
+        <label for="pfName">Your name</label>
+        <input id="pfName" type="text" maxlength="60" autocomplete="name">
+      </div>
+      <div class="two">
+        <div class="f">
+          <label for="pfNumber">Number <span>(optional)</span></label>
+          <input id="pfNumber" type="text" maxlength="4" inputmode="numeric">
+        </div>
+        <div class="f">
+          <label for="pfPos">Position <span>(optional)</span></label>
+          <input id="pfPos" type="text" maxlength="40">
+        </div>
+      </div>
+      <div class="f">
+        <label for="pfTeam">Team</label>
+        <input id="pfTeam" type="text" maxlength="60" value="Bolles Bulldogs Lacrosse">
+      </div>
+      <div class="f">
+        <label for="pfEmail">Email <span>(optional)</span></label>
+        <input id="pfEmail" type="email" maxlength="80" autocomplete="email">
+      </div>
+      <div class="f">
+        <label for="pfPhone">Phone <span>(optional)</span></label>
+        <input id="pfPhone" type="tel" maxlength="24" autocomplete="tel">
+      </div>
+      <button type="button" id="pfSend">Send my profile</button>
+      <p class="msg" id="pfMsg" hidden></p>
+      <p class="fine">Only your name is required. Email and phone are so I can reach you directly — if you'd
+        rather not give them, leave them blank and text me instead. If you're not sure, ask your parents first.</p>
     </div>
   </div>
 
@@ -2336,6 +2361,39 @@ document.querySelectorAll('form.ws, form.poll-form').forEach(function(f){
     window.scrollTo({top:Math.max(0,y), behavior:'instant'});
   }
   showMenu();
+})();
+</script>
+<script>
+(function(){
+  var URL_='/.netlify/functions/profile?team=bolles';
+  var box=document.getElementById('profilebox'); if(!box) return;
+  var form=document.getElementById('profForm'), msg=document.getElementById('pfMsg'), btn=document.getElementById('pfSend');
+  var KEY='bolles-profile-sent';
+  try{ if(localStorage.getItem(KEY)){ form.hidden=true; var p=document.createElement('p'); p.className='msg';
+    p.textContent="Profile sent. Text me if anything changes."; box.appendChild(p); } }catch(e){}
+  btn.addEventListener('click', function(){
+    var name=(document.getElementById('pfName').value||'').trim();
+    if(name.length<2){ msg.hidden=false; msg.textContent='Put your name in first.'; return; }
+    msg.hidden=true; btn.disabled=true; btn.textContent='Sending…';
+    fetch(URL_,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({
+      team:'bolles', name:name,
+      number:(document.getElementById('pfNumber').value||'').trim(),
+      position:(document.getElementById('pfPos').value||'').trim(),
+      teamName:(document.getElementById('pfTeam').value||'').trim(),
+      email:(document.getElementById('pfEmail').value||'').trim(),
+      phone:(document.getElementById('pfPhone').value||'').trim()
+    })})
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(){
+        try{ localStorage.setItem(KEY,'1'); }catch(e){}
+        form.hidden=true;
+        var p=document.createElement('p'); p.className='msg';
+        p.textContent="Got it. Thanks — that helps more than you think.";
+        box.appendChild(p);
+      })
+      .catch(function(){ btn.disabled=false; btn.textContent='Send my profile';
+        msg.hidden=false; msg.textContent="That didn't send. Check your signal and try again."; });
+  });
 })();
 </script>
 </body>
