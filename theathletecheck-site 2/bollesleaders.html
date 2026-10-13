@@ -384,6 +384,7 @@ form.ws p.hp{display:none}
 .hero .jump{margin:14px 0 0;font-size:15px}
 .hero .jump a{color:var(--panel);font-weight:800;text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:2px}
 .reading{scroll-margin-top:76px}
+.toc{scroll-margin-top:84px}
 
 /* ---------- quick poll ---------- */
 .poll{border:1px solid var(--rule);border-top:4px solid var(--red);border-radius:8px;padding:18px;margin:24px 0}
@@ -537,6 +538,28 @@ form.ws p.hp{display:none}
 .topbar .powered{display:flex;align-items:center;gap:7px;margin-right:auto}
 .topbar .powered .cap{font-size:9px;line-height:1.25;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
 .topbar .powered .cap b{display:block;color:var(--panel);font-size:10.5px;letter-spacing:.06em}
+
+/* ---------- weekly lesson ---------- */
+.lesson{border:1px solid var(--rule);border-top:4px solid var(--red);border-radius:10px;padding:18px;margin:22px 0 6px;background:#fff}
+.lesson .wk{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.lesson .wk .n{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);font-weight:800}
+.lesson .wk .dot{color:var(--rule)}
+.lesson .wk .len{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.lesson h2{margin:2px 0 6px;font-size:23px;line-height:1.2;color:var(--panel)}
+.lesson .sub{margin:0 0 14px;font-size:15px;line-height:1.5;color:var(--body)}
+.lesson .vwrap{position:relative;width:100%;border-radius:8px;overflow:hidden;background:#000;border:1px solid var(--hairline)}
+.lesson video{display:block;width:100%;height:auto}
+.lesson .after{margin:14px 0 0;padding-top:13px;border-top:1px solid var(--hairline);font-size:14px;line-height:1.55;color:var(--body)}
+.lesson .after b{color:var(--panel)}
+.lesson .after a{color:var(--panel);font-weight:700}
+
+.lesson .vwrap{aspect-ratio:16/9;cursor:pointer}
+.lesson .vwrap img.lthumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lesson .vwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.lesson .lplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:70px;height:70px;border-radius:999px;border:0;background:rgba(14,34,64,.88);cursor:pointer;padding:0;transition:background .15s}
+.lesson .lplay::after{content:"";position:absolute;left:28px;top:21px;border-style:solid;border-width:14px 0 14px 23px;border-color:transparent transparent transparent #fff}
+.lesson .vwrap:hover .lplay{background:var(--red)}
+@media (max-width:420px){.lesson .lplay{width:58px;height:58px}.lesson .lplay::after{left:23px;top:17px;border-width:11px 0 11px 19px}}
 </style>
 </head>
 <body>
@@ -577,8 +600,24 @@ form.ws p.hp{display:none}
 <div class="wrap">
 
 
+  <div class="lesson" id="week1">
+    <div class="wk"><span class="n">Week one</span><span class="dot">·</span><span class="len">5 min 27 sec</span></div>
+    <h2>Identity &amp; Self-Belief</h2>
+    <p class="sub">Watch this before the next session. It's me, not a highlight reel — five and a half
+      minutes on who you are when nobody is watching, and why that question comes before everything else
+      we do this season.</p>
+    <div class="vwrap" id="lessonVid" data-id="-Z-r2Y9NEyo">
+      <img class="lthumb" src="https://i.ytimg.com/vi/-Z-r2Y9NEyo/maxresdefault.jpg"
+           alt="Week one — Identity and Self-Belief" loading="lazy">
+      <button class="lplay" type="button" aria-label="Play the week one lesson"></button>
+    </div>
+    <p class="after"><b>Then do this:</b> open <a href="#chapters">Chapter 01 — The IronMind Foundation</a>
+      in the field guide below and fill in the Pre-Game Mindset Audit. Bring it to the session. If something in the video lands or
+      annoys you, text me — that's the conversation I want.</p>
+  </div>
+
   <div class="videotop">
-    <div class="l">Film room — watch these first</div>
+    <div class="l">Film room — short clips</div>
     <div class="reel" id="reel">
       <div class="vcard" data-id="d2jIP82PWQI" data-title="Kobe Bryant on mental toughness">
         <div class="frame">
@@ -609,7 +648,7 @@ form.ws p.hp{display:none}
         <p class="vt">Matthew Schaefer — adversity and perseverance</p>
       </div>
     </div>
-    <p class="cap">Tap one. Then read the rest of this page.</p>
+    <p class="cap">Tap one. Short clips to go with the lesson above.</p>
   </div>
 
   <div class="hero">
@@ -758,7 +797,7 @@ form.ws p.hp{display:none}
   </div>
 
   <div id="guide">
-    <div class="toc">
+    <div class="toc" id="chapters">
       <div class="l">What's in here</div>
       <a href="#sec1"><span>01</span>The IronMind Foundation</a><a href="#sec2"><span>02</span>Mental Anticipation Skills</a><a href="#sec3"><span>03</span>Leading Your Teammates</a><a href="#sec4"><span>04</span>Energy, Boundaries &amp; Burnout</a><a href="#sec5"><span>05</span>Recruiting &amp; What Comes After</a><a href="#sec6"><span>06</span>Mentor-On-Call</a><a href="#sec7"><span>07</span>The IronMind Daily Protocol</a><a href="#sec8"><span>08</span>Closing Charge</a>
     </div>
@@ -2417,6 +2456,32 @@ document.querySelectorAll('form.ws, form.poll-form').forEach(function(f){
       })
       .catch(function(){ btn.disabled=false; btn.textContent='Send my profile';
         msg.hidden=false; msg.textContent="That didn't send. Check your signal and try again."; });
+  });
+})();
+</script>
+<script>
+(function(){
+  var box=document.getElementById('lessonVid'); if(!box) return;
+  var img=box.querySelector('img.lthumb');
+  if(img){
+    // YouTube generates the big thumbnails a little after upload — walk down until one exists
+    var sizes=['maxresdefault','hq720','sddefault','hqdefault'], at=0;
+    var step=function(){
+      at++;
+      if(at<sizes.length) img.src='https://i.ytimg.com/vi/'+box.dataset.id+'/'+sizes[at]+'.jpg';
+    };
+    img.addEventListener('error', step);
+    img.addEventListener('load', function(){ if(img.naturalWidth && img.naturalWidth<200) step(); });
+  }
+  box.addEventListener('click', function(){
+    if(box.querySelector('iframe')) return;
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/'+box.dataset.id+'?autoplay=1&rel=0&playsinline=1';
+    f.title='Week one — Identity and Self-Belief';
+    f.allow='autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+    f.setAttribute('allowfullscreen','');
+    box.innerHTML=''; box.appendChild(f);
   });
 })();
 </script>
