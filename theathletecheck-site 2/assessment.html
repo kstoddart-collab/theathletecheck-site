@@ -241,6 +241,15 @@ Discover Your<br>IronMind Readiness Profile™
 <p class="text-muted text-base md:text-lg max-w-[580px] mx-auto mb-10 leading-relaxed">
 40 questions. 8 domains. 3 pillars. One honest look at how prepared you are for life beyond the sport.
 </p>
+<!-- Assessment introduction video -->
+<section aria-labelledby="assessment-video-title" style="margin:0 0 36px">
+<h2 id="assessment-video-title" style="color:#002856;font-size:22px;font-weight:700;line-height:1.3;margin:0 0 8px">Before You Begin: A Message from Coach Kenny</h2>
+<p style="color:#575856;font-size:15px;line-height:1.6;margin:0 0 18px">Watch this 53-second introduction to the assessment and the value of your readiness profile.</p>
+<video id="assessment-intro-video" controls playsinline preload="none" poster="/videos/readiness-assessment-intro.jpg" aria-label="Coach Kenny explains the IronMind Readiness Assessment" style="display:block;width:100%;max-width:320px;aspect-ratio:9/16;height:auto;margin:0 auto;border-radius:16px;background:#002856;box-shadow:0 8px 24px rgba(0,40,86,.16)">
+<source src="/videos/readiness-assessment-intro.mp4" type="video/mp4">
+Your browser does not support embedded video. <a href="/videos/readiness-assessment-intro.mp4">Watch Coach Kenny’s introduction.</a>
+</video>
+</section>
 <!-- What to Expect Card -->
 <div class="bg-dark-card border border-steel/25 rounded-2xl p-6 md:p-8 text-left mb-8">
 <p class="text-steel text-xs font-semibold tracking-[0.15em] uppercase mb-5">What You'll Discover</p>
@@ -783,6 +792,7 @@ beginBtn.disabled = this.value.trim().length === 0;
 });
 
 beginBtn.addEventListener('click', function() {
+document.getElementById('assessment-intro-video').pause();
 userName = getFirstName();
 currentDomain = 0;
 answers = {};
