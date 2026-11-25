@@ -56,7 +56,7 @@ async function notify(entry, counts, team) {
     "Running total in": team + ": " + counts.inCount,
   }).toString();
   try {
-    await fetch(site + "/", {
+    await fetch(site + "/legacy-form-receiver.html", {
       method: "POST",
       headers: { "content-type": "application/x-www-form-urlencoded" },
       body,
